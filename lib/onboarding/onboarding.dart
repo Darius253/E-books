@@ -8,18 +8,25 @@ class OnBoardingScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         body: ListView(
+      physics: const BouncingScrollPhysics(),
       children: [
         Center(
-          child: SvgPicture.asset(
-            'assets/images/onboarding.svg',
-            height: MediaQuery.of(context).size.height / 2,
+          child: ClipRRect(
+            borderRadius: BorderRadius.circular(200),
+            child: SvgPicture.asset(
+              'assets/images/onboarding.svg',
+              height: MediaQuery.of(context).size.height / 2,
+            ),
           ),
         ),
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
             "Reader APP",
-            style: TextStyle(fontWeight: FontWeight.bold, fontSize: 21),
+            style: TextStyle(
+                fontWeight: FontWeight.bold,
+                fontSize: 21,
+                fontFamily: Font.openSans),
             textAlign: TextAlign.center,
           ),
         ),
@@ -28,6 +35,7 @@ class OnBoardingScreen extends StatelessWidget {
           child: Text(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
             textAlign: TextAlign.center,
+            style: TextStyle(fontFamily: Font.openSans),
           ),
         ),
         Padding(
@@ -37,7 +45,9 @@ class OnBoardingScreen extends StatelessWidget {
               OnBoardingButton(
                 backgroundColor: const Color.fromARGB(255, 144, 0, 255),
                 color: Colors.black,
-                onTap: () {},
+                onTap: () {
+                  Get.to(() => const SignUp());
+                },
                 text: 'Join Now',
               ),
               const SizedBox(
@@ -46,7 +56,9 @@ class OnBoardingScreen extends StatelessWidget {
               OnBoardingButton(
                 backgroundColor: Colors.transparent,
                 color: const Color.fromARGB(255, 144, 0, 255),
-                onTap: () {},
+                onTap: () {
+                  Get.to(const SignIn());
+                },
                 text: 'Log In',
               ),
             ],
