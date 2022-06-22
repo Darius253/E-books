@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+import '../shared.dart/exports.dart';
+
 class OnBoardingButton extends StatelessWidget {
   final Color color;
   final Color backgroundColor;
@@ -18,19 +20,20 @@ class OnBoardingButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: MediaQuery.of(context).size.width/2.5,
+        width: MediaQuery.of(context).size.width / 2.5,
         height: 50,
         decoration: BoxDecoration(
             color: backgroundColor,
-            border: Border.all(
-              color: color
-            ),
+            border: Border.all(color: color),
             borderRadius: BorderRadius.circular(10),
             shape: BoxShape.rectangle),
         child: Center(
           child: Text(
             text,
-            style: const TextStyle(color: Colors.black, fontWeight: FontWeight.w700, ),
+            style: const TextStyle(
+                color: Colors.black,
+                fontWeight: FontWeight.bold,
+                fontFamily: Font.openSans),
           ),
         ),
       ),
