@@ -11,17 +11,13 @@ class MyApp extends StatelessWidget {
   // This widget is the root of your application.
   @override
   Widget build(BuildContext context) {
-    return MaterialApp(
-      debugShowCheckedModeBanner:false,
+    return GetMaterialApp(
+      debugShowCheckedModeBanner: false,
       title: 'ReaderApp',
       theme: ThemeData(
-        
-        primarySwatch:   Colors.deepPurple,
+        primarySwatch: Colors.deepPurple,
       ),
       home: const App(),
     );
   }
 }
-
-
-
