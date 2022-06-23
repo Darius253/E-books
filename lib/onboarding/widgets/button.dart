@@ -1,13 +1,12 @@
 import 'package:flutter/material.dart';
 
-import '../../shared.dart/exports.dart';
-
 class Button extends StatelessWidget {
   final String text;
   final String word;
   final GestureTapCallback onTap;
+  final VoidCallback onPressed;
   const Button(
-      {Key? key, required this.text, required this.word, required this.onTap})
+      {Key? key, required this.text, required this.word, required this.onTap, required this.onPressed})
       : super(key: key);
 
   @override
@@ -19,21 +18,20 @@ class Button extends StatelessWidget {
             Text(
               text,
               style: const TextStyle(
-                  fontFamily: Font.openSans,
                   fontSize: 21,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(183, 144, 0, 255)),
+                  color: Color.fromARGB(242, 237, 112, 23)),
             ),
             const Expanded(child: SizedBox()),
             Container(
               decoration: const BoxDecoration(
                   shape: BoxShape.circle,
-                  color: Color.fromARGB(183, 144, 0, 255)),
+                  color: Color.fromARGB(242, 237, 112, 23)),
               width: 70,
               height: 70,
               child: IconButton(
                 icon: const Icon(Icons.arrow_forward),
-                onPressed: () {},
+                onPressed: onPressed,
                 color: Colors.white,
               ),
             )
@@ -47,10 +45,7 @@ class Button extends StatelessWidget {
           child: Text(
             word,
             style: const TextStyle(
-                decoration: TextDecoration.underline,
-                fontFamily: Font.openSans,
-                color: Color.fromARGB(195, 144, 0, 255),
-                fontSize: 15),
+                decoration: TextDecoration.underline, fontSize: 15),
           ),
         )
       ],
