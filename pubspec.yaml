@@ -41,6 +41,9 @@ dependencies:
   #G
   get: ^4.6.5
 
+  #I
+  intl_phone_number_input: ^0.7.0+2
+
 dev_dependencies:
   flutter_test:
     sdk: flutter
@@ -80,17 +83,16 @@ flutter:
   # list giving the asset and other descriptors for the font. For
   # example:
   fonts:
-    - family: OpenSans
+    - family: San Francisco
       fonts:
-        - asset: assets/fonts/OpenSans-Bold.ttf
-        - asset: assets/fonts/OpenSans-Light.ttf
-        - asset: assets/fonts/OpenSans-Regular.ttf
+        - asset: assets/fonts/sanfrancisco.otf
+        - asset: assets/fonts/sanfrancisco-ultralight.otf
           weight: 700
-  #   - family: Trajan Pro
-  #     fonts:
-  #       - asset: fonts/TrajanPro.ttf
-  #       - asset: fonts/TrajanPro_Bold.ttf
-  #         weight: 700
+    - family: Proxi Nova
+      fonts:
+        - asset: assets/fonts/proxinova.otf
+        - asset: assets/fonts/proxinova-light.otf
+          weight: 700
   #
   # For details regarding fonts from package dependencies,
   # see https://flutter.dev/custom-fonts/#from-packages
