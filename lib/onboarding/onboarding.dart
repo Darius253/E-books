@@ -22,11 +22,10 @@ class OnBoardingScreen extends StatelessWidget {
         const Padding(
           padding: EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
-            "Reader APP",
+            "AwStore",
             style: TextStyle(
                 fontWeight: FontWeight.bold,
-                fontSize: 21,
-                fontFamily: Font.openSans),
+                fontSize: 21,),
             textAlign: TextAlign.center,
           ),
         ),
@@ -35,7 +34,7 @@ class OnBoardingScreen extends StatelessWidget {
           child: Text(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
             textAlign: TextAlign.center,
-            style: TextStyle(fontFamily: Font.openSans),
+           
           ),
         ),
         Padding(
@@ -43,7 +42,7 @@ class OnBoardingScreen extends StatelessWidget {
           child: Row(
             children: [
               OnBoardingButton(
-                backgroundColor: const Color.fromARGB(255, 144, 0, 255),
+                backgroundColor: const Color.fromARGB(242, 237, 112, 23),
                 color: Colors.black,
                 onTap: () {
                   Get.to(() => const SignUp());
@@ -55,7 +54,7 @@ class OnBoardingScreen extends StatelessWidget {
               ),
               OnBoardingButton(
                 backgroundColor: Colors.transparent,
-                color: const Color.fromARGB(255, 144, 0, 255),
+                color: const Color.fromARGB(242, 237, 112, 23),
                 onTap: () {
                   Get.to(const SignIn());
                 },
