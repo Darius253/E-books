@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared.dart/exports.dart';
+import 'dart:io' show Platform;
 
 void main() {
   runApp(const MyApp());
@@ -13,9 +14,11 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return GetMaterialApp(
       debugShowCheckedModeBanner: false,
-      title: 'ReaderApp',
+      title: 'AwStore',
       theme: ThemeData(
-        primarySwatch: Colors.deepPurple,
+        fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+        primaryColor: const Color.fromARGB(242, 237, 112, 23),
+        primarySwatch: Colors.orange,
       ),
       home: const App(),
     );
