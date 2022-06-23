@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../shared.dart/exports.dart';
+
 
 class OnBoardingButton extends StatelessWidget {
   final Color color;
@@ -32,8 +32,7 @@ class OnBoardingButton extends StatelessWidget {
             text,
             style: const TextStyle(
                 color: Colors.black,
-                fontWeight: FontWeight.bold,
-                fontFamily: Font.openSans),
+                fontWeight: FontWeight.bold,),
           ),
         ),
       ),
