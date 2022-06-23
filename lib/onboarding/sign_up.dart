@@ -10,12 +10,14 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final TextEditingController phoneNumberController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String accountType = 'creator';
+  bool selected = false;
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(113, 144, 0, 255),
+      backgroundColor: const Color.fromARGB(242, 237, 112, 23),
       body: SingleChildScrollView(
         physics: const BouncingScrollPhysics(),
         child: Stack(
@@ -24,6 +26,14 @@ class _SignUpState extends State<SignUp> {
               child: SvgPicture.asset(
                 'assets/images/sign_up.svg',
                 height: MediaQuery.of(context).size.height / 2,
+              ),
+            ),
+            const Back(),
+            Padding(
+              padding: const EdgeInsets.only(top: 380.0),
+              child: Container(
+                color: Colors.white,
+                height: MediaQuery.of(context).size.height,
               ),
             ),
             Padding(
@@ -43,9 +53,14 @@ class _SignUpState extends State<SignUp> {
                       ),
                       creatorOrSubscriber(),
                       const SizedBox(
+                        height: 15,
+                      ),
+                      termsAndConditions(),
+                      const SizedBox(
                         height: 60,
                       ),
                       Button(
+                        onPressed: () => _showMyDialog(),
                         text: 'Sign Up',
                         word: 'Already Have an Account? Sign In',
                         onTap: () {
@@ -66,6 +81,89 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
+  Row termsAndConditions() {
+    return Row(children: [
+      GestureDetector(
+          onTap: () {
+            setState(() {
+              selected = !selected;
+            });
+          },
+          child: Container(
+            width: 18,
+            height: 18,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.black),
+                color: selected
+                    ? const Color.fromARGB(255, 237, 145, 33)
+                    : Colors.white),
+          )),
+      const SizedBox(
+        width: 3,
+      ),
+      const Text('I agree to the Terms of Services and Privacy Policy'),
+    ]);
+  }
+
+  Future<void> _showMyDialog() async {
+    return showDialog<void>(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: accountType == 'creator'
+              ? const Text('Sign Up as a Creator')
+              : const Text('Sign Up as a Subscriber'),
+          content: SingleChildScrollView(
+            child: accountType == 'creator'
+                ? ListBody(
+                    children: const <Widget>[
+                      Text('A Creator account allows you to: '),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          '1. Upload your works on AwStore\n2. Purchase contents on AwStore\n3. Read and Download(optonal) contents on AwStore.'),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                          'Do you wish to proceed with creating an account type via this profile?'),
+                    ],
+                  )
+                : ListBody(
+                    children: const <Widget>[
+                      Text('A Subscriber account allows you to: '),
+                      SizedBox(
+                        height: 10,
+                      ),
+                      Text(
+                          '1. Purchase contents on AwStore.\n2. Read and Download(optional) contents on AwStore.'),
+                      SizedBox(
+                        height: 20,
+                      ),
+                      Text(
+                          'Do you wish to proceed with creating an account type via this profile?'),
+                    ],
+                  ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Proceed',
+                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
+              ),
+              onPressed: () {
+                formKey.currentState?.save();
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
+  }
+
   Widget creatorOrSubscriber() {
     if (accountType == 'creator') {
       return const CreatorSignUp();
@@ -80,11 +178,11 @@ class _SignUpState extends State<SignUp> {
       children: [
         OnBoardingButton(
           backgroundColor: accountType == 'creator'
-              ? const Color.fromARGB(255, 144, 0, 255)
+              ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.transparent,
           color: accountType == 'creator'
-              ? Colors.black
-              : const Color.fromARGB(255, 144, 0, 255),
+              ? const Color.fromARGB(242, 237, 112, 23)
+              : Colors.black,
           onTap: () {
             setState(() {
               accountType = 'creator';
@@ -94,10 +192,10 @@ class _SignUpState extends State<SignUp> {
         ),
         OnBoardingButton(
           backgroundColor: accountType == 'subscriber'
-              ? const Color.fromARGB(255, 144, 0, 255)
+              ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.transparent,
           color: accountType == 'subscriber'
-              ? const Color.fromARGB(255, 144, 0, 255)
+              ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.black,
           onTap: () {
             setState(() {
