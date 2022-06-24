@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reader_app/shared.dart/exports.dart';
 
 class Button extends StatelessWidget {
   final String text;
@@ -6,7 +7,11 @@ class Button extends StatelessWidget {
   final GestureTapCallback onTap;
   final VoidCallback onPressed;
   const Button(
-      {Key? key, required this.text, required this.word, required this.onTap, required this.onPressed})
+      {Key? key,
+      required this.text,
+      required this.word,
+      required this.onTap,
+      required this.onPressed})
       : super(key: key);
 
   @override
@@ -17,10 +22,12 @@ class Button extends StatelessWidget {
           children: [
             Text(
               text,
-              style: const TextStyle(
+              style: TextStyle(
+                  fontFamily:
+                      Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
                   fontSize: 21,
                   fontWeight: FontWeight.bold,
-                  color: Color.fromARGB(242, 237, 112, 23)),
+                  color: const Color.fromARGB(242, 237, 112, 23)),
             ),
             const Expanded(child: SizedBox()),
             Container(
@@ -44,8 +51,10 @@ class Button extends StatelessWidget {
           onTap: onTap,
           child: Text(
             word,
-            style: const TextStyle(
-                decoration: TextDecoration.underline, fontSize: 15),
+            style: TextStyle(
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+                decoration: TextDecoration.underline,
+                fontSize: 15),
           ),
         )
       ],
