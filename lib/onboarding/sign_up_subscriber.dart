@@ -34,13 +34,17 @@ class _SubscriberSignUpState extends State<SubscriberSignUp> {
           controller: _usernameController,
           keyboardType: TextInputType.name,
           validator: (value) =>
-              value!.isEmpty ? 'Please Provide a Username' : null,
+              value!.length < 5 ? 'Username should be 5 to 10 characters' : '',
           onChanged: (value) {
             setState(() => username = value);
           },
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Username',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
         const SizedBox(
           height: 15,
@@ -50,14 +54,19 @@ class _SubscriberSignUpState extends State<SubscriberSignUp> {
         TextFormField(
           controller: _fullnameController,
           keyboardType: TextInputType.name,
-          validator: (value) =>
-              value!.isEmpty ? 'Kindly Provide your Fullname' : null,
+          validator: (value) => value!.isEmpty
+              ? 'Kindly Provide your Fullname or Pseudonym'
+              : null,
           onChanged: (value) {
             setState(() => fullname = value);
           },
-          decoration: const InputDecoration(
-              hintText: 'Fullname',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+          decoration: InputDecoration(
+              hintText: 'Fullname/Pseudonym',
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
         const SizedBox(
           height: 15,
@@ -98,13 +107,17 @@ class _SubscriberSignUpState extends State<SubscriberSignUp> {
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           validator: (value) =>
-              value!.isEmpty ? 'Please Enter a valid email' : null,
+              value!.isEmpty ? 'Please Enter a valid email' : '',
           onChanged: (value) {
             setState(() => email = value);
           },
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Email',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
         const SizedBox(
           height: 15,
@@ -113,15 +126,20 @@ class _SubscriberSignUpState extends State<SubscriberSignUp> {
         // Password Field
         TextFormField(
           obscureText: true,
-          validator: (value) =>
-              value?.length != null ? 'Provide Password' : null,
+          validator: (value) => value!.length > 6
+              ? 'Password should be more than 5 characters'
+              : '',
           onChanged: (value) {
             setState(() => password = value);
           },
           controller: _passwordController,
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Password',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
         const SizedBox(
           height: 15,
@@ -134,15 +152,18 @@ class _SubscriberSignUpState extends State<SubscriberSignUp> {
           keyboardType: TextInputType.visiblePassword,
           validator: (value) => value != password
               ? ' Characters should match Password characters'
-              : null,
+              : '',
           onChanged: (value) {
             setState(() => confirmpassword = value);
           },
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Confirm Password',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
-        
       ],
     );
   }
