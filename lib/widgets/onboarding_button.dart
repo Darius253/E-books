@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 
-
-
 class OnBoardingButton extends StatelessWidget {
   final Color color;
   final Color backgroundColor;
   final String text;
+  final double? width;
   final GestureTapCallback onTap;
   const OnBoardingButton(
       {Key? key,
+      this.width,
       required this.color,
       required this.text,
       required this.onTap,
@@ -20,7 +20,7 @@ class OnBoardingButton extends StatelessWidget {
     return GestureDetector(
       onTap: onTap,
       child: Container(
-        width: MediaQuery.of(context).size.width / 2.5,
+        width: width ?? MediaQuery.of(context).size.width / 2.5,
         height: 50,
         decoration: BoxDecoration(
             color: backgroundColor,
@@ -31,8 +31,9 @@ class OnBoardingButton extends StatelessWidget {
           child: Text(
             text,
             style: const TextStyle(
-                color: Colors.black,
-                fontWeight: FontWeight.bold,),
+              color: Colors.black,
+              fontWeight: FontWeight.bold,
+            ),
           ),
         ),
       ),
