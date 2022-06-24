@@ -132,7 +132,7 @@ class _SignInState extends State<SignIn> {
                           Button(
                             onPressed: () {},
                             text: 'Sign In',
-                            word: "Don't have an Account? Sign In",
+                            word: "Don't have an Account? Sign Up",
                             onTap: () {
                               Get.to(() => const SignUp());
                             },
