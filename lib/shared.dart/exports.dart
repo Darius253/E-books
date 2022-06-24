@@ -15,3 +15,6 @@ export 'package:reader_app/onboarding/sign_up_creator.dart';
 export 'package:reader_app/onboarding/sign_up_subscriber.dart';
 export 'package:reader_app/onboarding/widgets/button.dart';
 export 'package:reader_app/widgets/back_button.dart';
+export 'dart:io' show Platform;
+
+export 'package:reader_app/onboarding/forgot_password.dart';
