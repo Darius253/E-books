@@ -19,22 +19,26 @@ class OnBoardingScreen extends StatelessWidget {
             ),
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
             "AwStore",
             style: TextStyle(
-                fontWeight: FontWeight.bold,
-                fontSize: 21,),
+              fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              fontWeight: FontWeight.bold,
+              fontSize: 21,
+            ),
             textAlign: TextAlign.center,
           ),
         ),
-        const Padding(
-          padding: EdgeInsets.symmetric(horizontal: 30.0),
+        Padding(
+          padding: const EdgeInsets.symmetric(horizontal: 30.0),
           child: Text(
             "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.",
+            style: TextStyle(
+              fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+            ),
             textAlign: TextAlign.center,
-           
           ),
         ),
         Padding(
@@ -43,7 +47,7 @@ class OnBoardingScreen extends StatelessWidget {
             children: [
               OnBoardingButton(
                 backgroundColor: const Color.fromARGB(242, 237, 112, 23),
-                color: Colors.black,
+                color: const Color.fromARGB(242, 237, 112, 23),
                 onTap: () {
                   Get.to(() => const SignUp());
                 },
