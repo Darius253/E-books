@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared.dart/exports.dart';
 
@@ -15,9 +17,13 @@ class _CreatorSignUpState extends State<CreatorSignUp> {
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final TextEditingController _locationController = TextEditingController();
+  final TextEditingController _publishingHouseController =
+      TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
+  bool value = false;
 
   String username = '';
   String fullname = '';
@@ -26,7 +32,9 @@ class _CreatorSignUpState extends State<CreatorSignUp> {
   String email = '';
   String phonenumber = '';
   String location = '';
-  String publishingHouse = '';
+  String publishingHouseName = '';
+
+  bool publishing_house = false;
 
   @override
   Widget build(BuildContext context) {
@@ -35,15 +43,20 @@ class _CreatorSignUpState extends State<CreatorSignUp> {
         // Username Field
         TextFormField(
           controller: _usernameController,
+          maxLength: 10,
           keyboardType: TextInputType.name,
           validator: (value) =>
-              value!.isEmpty ? 'Please Provide a Username' : null,
+              value!.length < 5 ? 'Username should be 5 to 10 characters' : '',
           onChanged: (value) {
             setState(() => username = value);
           },
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Username',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
         const SizedBox(
           height: 15,
@@ -54,13 +67,17 @@ class _CreatorSignUpState extends State<CreatorSignUp> {
           controller: _fullnameController,
           keyboardType: TextInputType.name,
           validator: (value) =>
-              value!.isEmpty ? 'Kindly Provide your Fullname' : null,
+              value!.isEmpty ? 'Kindly Provide your Fullname' : '',
           onChanged: (value) {
             setState(() => fullname = value);
           },
-          decoration: const InputDecoration(
-              hintText: 'Fullname',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+          decoration: InputDecoration(
+              hintText: 'Fullname/Pseudonym',
+              hintStyle: TextStyle(
+                  fontFamily:
+                      Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400)),
         ),
         const SizedBox(
           height: 15,
@@ -99,13 +116,17 @@ class _CreatorSignUpState extends State<CreatorSignUp> {
           controller: _emailController,
           keyboardType: TextInputType.emailAddress,
           validator: (value) =>
-              value!.isEmpty ? 'Please Enter a valid email' : null,
+              value!.isEmpty ? 'Please Enter a valid email' : '',
           onChanged: (value) {
             setState(() => email = value);
           },
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Email',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
         const SizedBox(
           height: 15,
@@ -115,14 +136,18 @@ class _CreatorSignUpState extends State<CreatorSignUp> {
         TextFormField(
           obscureText: true,
           validator: (value) =>
-              value?.length != null ? 'Provide Password' : null,
+              value!.length < 6 ? 'Password should more than 5 characters' : '',
           onChanged: (value) {
             setState(() => password = value);
           },
           controller: _passwordController,
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Password',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
         const SizedBox(
           height: 15,
@@ -135,15 +160,93 @@ class _CreatorSignUpState extends State<CreatorSignUp> {
           keyboardType: TextInputType.visiblePassword,
           validator: (value) => value != password
               ? ' Characters should match Password characters'
-              : null,
+              : '',
           onChanged: (value) {
             setState(() => confirmpassword = value);
           },
-          decoration: const InputDecoration(
+          decoration: InputDecoration(
               hintText: 'Confirm Password',
-              hintStyle: TextStyle(fontSize: 12, fontWeight: FontWeight.w400)),
+              hintStyle: TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w400,
+                fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+              )),
         ),
+        const SizedBox(
+          height: 15,
+        ),
+        // Publishing House
+        publishingHouse()
       ],
     );
+  }
+
+  Widget publishingHouse() {
+    return Column(children: [
+      GestureDetector(
+        onTap: () {
+          setState(() {
+            publishing_house = !publishing_house;
+          });
+        },
+        child: Row(children: [
+          Container(
+            width: 18,
+            height: 18,
+            decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                border: Border.all(color: Colors.black),
+                color: publishing_house
+                    ? const Color.fromARGB(255, 237, 145, 33)
+                    : Colors.white),
+          ),
+          const SizedBox(
+            width: 10,
+          ),
+          const Text('Publishing House', style: TextStyle(fontSize: 18)),
+        ]),
+      ),
+      publishing_house == true
+          ? Column(
+              children: [
+                TextFormField(
+                  controller: _publishingHouseController,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) => value!.isEmpty
+                      ? 'Please Provide Publishing house name'
+                      : '',
+                  onChanged: (value) {
+                    setState(() => publishingHouseName = value);
+                  },
+                  decoration: InputDecoration(
+                      hintText: 'Name of Publishing House',
+                      hintStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        fontFamily:
+                            Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+                      )),
+                ),
+                TextFormField(
+                  controller: _locationController,
+                  keyboardType: TextInputType.emailAddress,
+                  validator: (value) =>
+                      value!.isEmpty ? 'Please Provide Location' : '',
+                  onChanged: (value) {
+                    setState(() => location = value);
+                  },
+                  decoration: InputDecoration(
+                      hintText: 'Location of Publishing House',
+                      hintStyle: TextStyle(
+                        fontSize: 12,
+                        fontWeight: FontWeight.w400,
+                        fontFamily:
+                            Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
+                      )),
+                ),
+              ],
+            )
+          : const SizedBox()
+    ]);
   }
 }
