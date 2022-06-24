@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-
 import '../shared.dart/exports.dart';
 
 class SignIn extends StatefulWidget {
@@ -54,11 +53,14 @@ class _SignInState extends State<SignIn> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      const Text(
+                      Text(
                         'Welcome Back',
                         style: TextStyle(
+                            fontFamily: Platform.isIOS
+                                ? Font.sanfrancisco
+                                : Font.proxinova,
                             fontWeight: FontWeight.bold,
-                            color: Color.fromARGB(255, 238, 140, 19),
+                            color: const Color.fromARGB(255, 238, 140, 19),
                             fontSize: 30),
                       ),
                       const SizedBox(
@@ -89,9 +91,8 @@ class _SignInState extends State<SignIn> {
                           // Password Field
                           TextFormField(
                             obscureText: true,
-                            validator: (value) => value?.length != null
-                                ? 'Provide Password'
-                                : null,
+                            validator: (value) =>
+                                value!.length < 6 ? 'Provide Password' : '',
                             onChanged: (value) {
                               setState(() => password = value);
                             },
@@ -105,16 +106,24 @@ class _SignInState extends State<SignIn> {
                             height: 15,
                           ),
                           Row(
-                            children: const [
-                              Expanded(
+                            children: [
+                              const Expanded(
                                 child: SizedBox(),
                               ),
-                              Text(
-                                'Forgotten Password?',
-                                style: TextStyle(
-                                    color: Color.fromARGB(255, 238, 140, 19),
-                                    fontWeight: FontWeight.w700),
-                              )
+                              TextButton(
+                                  onPressed: () {
+                                    Get.to(() => const ForgotPassword());
+                                  },
+                                  child: Text(
+                                    'Forgotten Password?',
+                                    style: TextStyle(
+                                        fontFamily: Platform.isIOS
+                                            ? Font.sanfrancisco
+                                            : Font.proxinova,
+                                        color: const Color.fromARGB(
+                                            255, 238, 140, 19),
+                                        fontWeight: FontWeight.w700),
+                                  ))
                             ],
                           ),
                           const SizedBox(
