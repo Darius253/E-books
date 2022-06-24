@@ -48,8 +48,8 @@ class _SignUpState extends State<SignUp> {
                   color: Colors.white,
                   height: MediaQuery.of(context).size.height,
                   child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 50.0, horizontal: 20),
+                    padding: const EdgeInsets.only(
+                        top: 50.0, left: 20, right: 20, bottom: 10),
                     child: SingleChildScrollView(
                       child: Column(children: [
                         creatorOrSubscriberButtons(),
