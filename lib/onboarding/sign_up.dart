@@ -1,3 +1,5 @@
+// ignore_for_file: non_constant_identifier_names
+
 import 'package:flutter/material.dart';
 import '../shared.dart/exports.dart';
 
@@ -10,8 +12,10 @@ class SignUp extends StatefulWidget {
 
 class _SignUpState extends State<SignUp> {
   final TextEditingController phoneNumberController = TextEditingController();
+
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-  String accountType = 'creator';
+
+  String account_type = 'creator';
   bool selected = false;
 
   @override
@@ -46,31 +50,33 @@ class _SignUpState extends State<SignUp> {
                   child: Padding(
                     padding: const EdgeInsets.symmetric(
                         vertical: 50.0, horizontal: 20),
-                    child: Column(children: [
-                      creatorOrSubscriberButtons(),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      creatorOrSubscriber(),
-                      const SizedBox(
-                        height: 15,
-                      ),
-                      termsAndConditions(),
-                      const SizedBox(
-                        height: 60,
-                      ),
-                      Button(
-                        onPressed: () => _showMyDialog(),
-                        text: 'Sign Up',
-                        word: 'Already Have an Account? Sign In',
-                        onTap: () {
-                          Get.to(() => const SignIn());
-                        },
-                      ),
-                      const SizedBox(
-                        height: 20,
-                      ),
-                    ]),
+                    child: SingleChildScrollView(
+                      child: Column(children: [
+                        creatorOrSubscriberButtons(),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        creatorOrSubscriber(),
+                        const SizedBox(
+                          height: 30,
+                        ),
+                        termsAndConditions(),
+                        const SizedBox(
+                          height: 60,
+                        ),
+                        Button(
+                          onPressed: () => _showMyDialog(),
+                          text: 'Sign Up',
+                          word: 'Already Have an Account? Sign In',
+                          onTap: () {
+                            Get.to(() => const SignIn());
+                          },
+                        ),
+                        const SizedBox(
+                          height: 20,
+                        ),
+                      ]),
+                    ),
                   ),
                 ),
               ),
@@ -81,29 +87,30 @@ class _SignUpState extends State<SignUp> {
     );
   }
 
-  Row termsAndConditions() {
-    return Row(children: [
-      GestureDetector(
-          onTap: () {
-            setState(() {
-              selected = !selected;
-            });
-          },
-          child: Container(
-            width: 18,
-            height: 18,
-            decoration: BoxDecoration(
-                shape: BoxShape.circle,
-                border: Border.all(color: Colors.black),
-                color: selected
-                    ? const Color.fromARGB(255, 237, 145, 33)
-                    : Colors.white),
-          )),
-      const SizedBox(
-        width: 3,
-      ),
-      const Text('I agree to the Terms of Services and Privacy Policy'),
-    ]);
+  Widget termsAndConditions() {
+    return GestureDetector(
+      onTap: () {
+        setState(() {
+          selected = !selected;
+        });
+      },
+      child: Row(children: [
+        Container(
+          width: 18,
+          height: 18,
+          decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              border: Border.all(color: Colors.black),
+              color: selected
+                  ? const Color.fromARGB(255, 237, 145, 33)
+                  : Colors.white),
+        ),
+        const SizedBox(
+          width: 3,
+        ),
+        const Text('I agree to the Terms of Services and Privacy Policy'),
+      ]),
+    );
   }
 
   Future<void> _showMyDialog() async {
@@ -111,11 +118,11 @@ class _SignUpState extends State<SignUp> {
       context: context,
       builder: (BuildContext context) {
         return AlertDialog(
-          title: accountType == 'creator'
+          title: account_type == 'creator'
               ? const Text('Sign Up as a Creator')
               : const Text('Sign Up as a Subscriber'),
           content: SingleChildScrollView(
-            child: accountType == 'creator'
+            child: account_type == 'creator'
                 ? ListBody(
                     children: const <Widget>[
                       Text('A Creator account allows you to: '),
@@ -165,7 +172,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget creatorOrSubscriber() {
-    if (accountType == 'creator') {
+    if (account_type == 'creator') {
       return const CreatorSignUp();
     } else {
       return const SubscriberSignUp();
@@ -177,29 +184,29 @@ class _SignUpState extends State<SignUp> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         OnBoardingButton(
-          backgroundColor: accountType == 'creator'
+          backgroundColor: account_type == 'creator'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.transparent,
-          color: accountType == 'creator'
+          color: account_type == 'creator'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.black,
           onTap: () {
             setState(() {
-              accountType = 'creator';
+              account_type = 'creator';
             });
           },
           text: 'Creator',
         ),
         OnBoardingButton(
-          backgroundColor: accountType == 'subscriber'
+          backgroundColor: account_type == 'subscriber'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.transparent,
-          color: accountType == 'subscriber'
+          color: account_type == 'subscriber'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.black,
           onTap: () {
             setState(() {
-              accountType = 'subscriber';
+              account_type = 'subscriber';
             });
           },
           text: 'Subscriber',
