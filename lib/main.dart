@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared.dart/exports.dart';
-import 'dart:io' show Platform;
 
 void main() {
   runApp(const MyApp());
