@@ -11,12 +11,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  final TextEditingController phoneNumberController = TextEditingController();
-
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
   String account_type = 'creator';
-  bool selected = false;
 
   @override
   Widget build(BuildContext context) {
@@ -51,27 +46,13 @@ class _SignUpState extends State<SignUp> {
                     padding: const EdgeInsets.only(
                         top: 50.0, left: 20, right: 20, bottom: 10),
                     child: SingleChildScrollView(
+                      physics: const BouncingScrollPhysics(),
                       child: Column(children: [
                         creatorOrSubscriberButtons(),
                         const SizedBox(
                           height: 30,
                         ),
                         creatorOrSubscriber(),
-                        const SizedBox(
-                          height: 30,
-                        ),
-                        termsAndConditions(),
-                        const SizedBox(
-                          height: 60,
-                        ),
-                        Button(
-                          onPressed: () => _showMyDialog(),
-                          text: 'Sign Up',
-                          word: 'Already Have an Account? Sign In',
-                          onTap: () {
-                            Get.to(() => const SignIn());
-                          },
-                        ),
                         const SizedBox(
                           height: 20,
                         ),
@@ -84,90 +65,6 @@ class _SignUpState extends State<SignUp> {
           ],
         ),
       ),
-    );
-  }
-
-  Widget termsAndConditions() {
-    return GestureDetector(
-      onTap: () {
-        setState(() {
-          selected = !selected;
-        });
-      },
-      child: Row(children: [
-        Container(
-          width: 18,
-          height: 18,
-          decoration: BoxDecoration(
-              shape: BoxShape.circle,
-              border: Border.all(color: Colors.black),
-              color: selected
-                  ? const Color.fromARGB(255, 237, 145, 33)
-                  : Colors.white),
-        ),
-        const SizedBox(
-          width: 3,
-        ),
-        const Text('I agree to the Terms of Services and Privacy Policy'),
-      ]),
-    );
-  }
-
-  Future<void> _showMyDialog() async {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          title: account_type == 'creator'
-              ? const Text('Sign Up as a Creator')
-              : const Text('Sign Up as a Subscriber'),
-          content: SingleChildScrollView(
-            child: account_type == 'creator'
-                ? ListBody(
-                    children: const <Widget>[
-                      Text('A Creator account allows you to: '),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                          '1. Upload your works on AwStore\n2. Purchase contents on AwStore\n3. Read and Download(optonal) contents on AwStore.'),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                          'Do you wish to proceed with creating an account type via this profile?'),
-                    ],
-                  )
-                : ListBody(
-                    children: const <Widget>[
-                      Text('A Subscriber account allows you to: '),
-                      SizedBox(
-                        height: 10,
-                      ),
-                      Text(
-                          '1. Purchase contents on AwStore.\n2. Read and Download(optional) contents on AwStore.'),
-                      SizedBox(
-                        height: 20,
-                      ),
-                      Text(
-                          'Do you wish to proceed with creating an account type via this profile?'),
-                    ],
-                  ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text(
-                'Proceed',
-                style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
-              ),
-              onPressed: () {
-                formKey.currentState?.save();
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
-        );
-      },
     );
   }
 
