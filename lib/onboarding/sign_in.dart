@@ -11,6 +11,7 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final TextEditingController _controller = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
   String username = '';
   String email = '';
@@ -67,78 +68,91 @@ class _SignInState extends State<SignIn> {
                         height: 30,
                       ),
                       Form(
+                          key: formKey,
                           child: Column(
-                        children: [
-                          // Email Field
-                          TextFormField(
-                            controller: _controller,
-                            keyboardType: TextInputType.emailAddress,
-                            validator: (value) => value!.isEmpty
-                                ? 'Please Enter a valid email or Username'
-                                : null,
-                            onChanged: (value) {
-                              setState(() => email = value);
-                            },
-                            decoration: const InputDecoration(
-                                hintText: 'Email or Username',
-                                hintStyle: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w400)),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-
-                          // Password Field
-                          TextFormField(
-                            obscureText: true,
-                            validator: (value) =>
-                                value!.length < 6 ? 'Provide Password' : '',
-                            onChanged: (value) {
-                              setState(() => password = value);
-                            },
-                            controller: _passwordController,
-                            decoration: const InputDecoration(
-                                hintText: 'Password',
-                                hintStyle: TextStyle(
-                                    fontSize: 12, fontWeight: FontWeight.w400)),
-                          ),
-                          const SizedBox(
-                            height: 15,
-                          ),
-                          Row(
                             children: [
-                              const Expanded(
-                                child: SizedBox(),
+                              // Email Field
+                              TextFormField(
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                controller: _controller,
+                                keyboardType: TextInputType.emailAddress,
+                                validator: (value) => value!.isEmpty
+                                    ? 'Please Enter a valid email or Username'
+                                    : null,
+                                onChanged: (value) {
+                                  setState(() => email = value);
+                                },
+                                decoration: const InputDecoration(
+                                    hintText: 'Email or Username',
+                                    hintStyle: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400)),
                               ),
-                              TextButton(
-                                  onPressed: () {
-                                    Get.to(() => const ForgotPassword());
-                                  },
-                                  child: Text(
-                                    'Forgotten Password?',
-                                    style: TextStyle(
-                                        fontFamily: Platform.isIOS
-                                            ? Font.sanfrancisco
-                                            : Font.proxinova,
-                                        color: const Color.fromARGB(
-                                            255, 238, 140, 19),
-                                        fontWeight: FontWeight.w700),
-                                  ))
+                              const SizedBox(
+                                height: 15,
+                              ),
+
+                              // Password Field
+                              TextFormField(
+                                autovalidateMode:
+                                    AutovalidateMode.onUserInteraction,
+                                obscureText: true,
+                                validator: (value) =>
+                                    value!.length < 6 ? 'Provide Password' : '',
+                                onChanged: (value) {
+                                  setState(() => password = value);
+                                },
+                                controller: _passwordController,
+                                decoration: const InputDecoration(
+                                    hintText: 'Password',
+                                    hintStyle: TextStyle(
+                                        fontSize: 12,
+                                        fontWeight: FontWeight.w400)),
+                              ),
+                              const SizedBox(
+                                height: 15,
+                              ),
+                              Row(
+                                children: [
+                                  const Expanded(
+                                    child: SizedBox(),
+                                  ),
+                                  TextButton(
+                                      onPressed: () {
+                                        Get.to(() => const ForgotPassword());
+                                      },
+                                      child: Text(
+                                        'Forgotten Password?',
+                                        style: TextStyle(
+                                            fontFamily: Platform.isIOS
+                                                ? Font.sanfrancisco
+                                                : Font.proxinova,
+                                            color: const Color.fromARGB(
+                                                255, 238, 140, 19),
+                                            fontWeight: FontWeight.w700),
+                                      ))
+                                ],
+                              ),
+                              const SizedBox(
+                                height: 60,
+                              ),
+                              Button(
+                                onPressed: () {
+                                  if (formKey.currentState?.validate() !=
+                                      null) {
+                                    formKey.currentState?.save();
+                                    // loading();
+                                  }
+                                },
+                                text: 'Sign In',
+                                word: "Don't have an Account? Sign Up",
+                                onTap: () {
+                                  Get.to(() => const SignUp());
+                                },
+                              ),
                             ],
-                          ),
-                          const SizedBox(
-                            height: 60,
-                          ),
-                          Button(
-                            onPressed: () {},
-                            text: 'Sign In',
-                            word: "Don't have an Account? Sign Up",
-                            onTap: () {
-                              Get.to(() => const SignUp());
-                            },
-                          ),
-                        ],
-                      )),
+                          )),
                     ],
                   ),
                 ),
@@ -147,6 +161,22 @@ class _SignInState extends State<SignIn> {
           ],
         ),
       ),
+    );
+  }
+
+  Future<void> loading() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: true, // user must tap button!
+      builder: (BuildContext context) {
+        return const AlertDialog(
+          title: Text('Please Wait...'),
+          content: SizedBox(
+              width: 150,
+              height: 100,
+              child: Center(child: CircularProgressIndicator.adaptive())),
+        );
+      },
     );
   }
 }
