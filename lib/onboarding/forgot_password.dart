@@ -10,6 +10,7 @@ class ForgotPassword extends StatefulWidget {
 
 class _ForgotPasswordState extends State<ForgotPassword> {
   final TextEditingController _emailController = TextEditingController();
+  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
   String email = '';
 
   @override
@@ -42,19 +43,22 @@ class _ForgotPasswordState extends State<ForgotPassword> {
               height: 20,
             ),
             const Text(
-              "Don't Worry. We've got you\nPlease Enter the email address associated with your account",
+              "Don't Worry. We've got you!\nPlease Enter the email address associated with your account",
               style: TextStyle(fontSize: 15, fontWeight: FontWeight.w400),
             ),
             const SizedBox(height: 30),
             TextFormField(
+              autovalidateMode: AutovalidateMode.always,
+              key: formKey,
               controller: _emailController,
               keyboardType: TextInputType.emailAddress,
-              validator: (value) => value!.isEmpty ? '@ Email' : null,
+              validator: (value) =>
+                  value!.isEmail ? '' : 'Provide a valid Email address',
               onChanged: (value) {
                 setState(() => email = value);
               },
               decoration: InputDecoration(
-                hintText: '@ Email',
+                hintText: '@ / Email',
                 hintStyle: TextStyle(
                   fontSize: 15,
                   fontWeight: FontWeight.w400,
@@ -70,7 +74,10 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                 width: MediaQuery.of(context).size.width,
                 color: const Color.fromARGB(255, 237, 145, 33),
                 text: 'Submit',
-                onTap: () {},
+                onTap: () {
+                  formKey.currentState?.validate();
+                  formKey.currentState?.save();
+                },
                 backgroundColor: const Color.fromARGB(255, 237, 145, 33))
           ]),
         ),
