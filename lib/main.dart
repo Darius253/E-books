@@ -1,9 +1,4 @@
 import 'package:flutter/material.dart';
-<<<<<<< HEAD
-import 'package:reader_app/shared/exports.dart';
-
-void main() => runApp(const App());
-=======
 import 'package:reader_app/shared.dart/exports.dart';
 
 void main() {
@@ -28,4 +23,3 @@ class MyApp extends StatelessWidget {
     );
   }
 }
->>>>>>> master
