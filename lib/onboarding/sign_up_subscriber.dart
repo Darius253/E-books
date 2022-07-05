@@ -1,8 +1,5 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
-
-import '../shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class SubscriberSignUp extends StatefulWidget {
   const SubscriberSignUp({Key? key}) : super(key: key);
@@ -29,7 +26,7 @@ class _SubscriberSignUpState extends State<SubscriberSignUp> {
   String confirmpassword = '';
   String phonenumber = '';
 
-  String account_type = 'creator';
+  String accountType = 'creator';
   bool selected = false;
 
   @override
@@ -234,11 +231,11 @@ class _SubscriberSignUpState extends State<SubscriberSignUp> {
         context: context,
         builder: (BuildContext context) {
           return AlertDialog(
-            title: account_type == 'creator'
+            title: accountType == 'creator'
                 ? const Text('Sign Up as a Creator')
                 : const Text('Sign Up as a Subscriber'),
             content: SingleChildScrollView(
-              child: account_type == 'creator'
+              child: accountType == 'creator'
                   ? ListBody(
                       children: const <Widget>[
                         Text('A Creator account allows you to: '),
