@@ -1,7 +1,5 @@
-// ignore_for_file: non_constant_identifier_names
-
 import 'package:flutter/material.dart';
-import '../shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class SignUp extends StatefulWidget {
   const SignUp({Key? key}) : super(key: key);
@@ -11,7 +9,7 @@ class SignUp extends StatefulWidget {
 }
 
 class _SignUpState extends State<SignUp> {
-  String account_type = 'creator';
+  String accountType = 'creator';
 
   @override
   Widget build(BuildContext context) {
@@ -69,7 +67,7 @@ class _SignUpState extends State<SignUp> {
   }
 
   Widget creatorOrSubscriber() {
-    if (account_type == 'creator') {
+    if (accountType == 'creator') {
       return const CreatorSignUp();
     } else {
       return const SubscriberSignUp();
@@ -81,29 +79,29 @@ class _SignUpState extends State<SignUp> {
       mainAxisAlignment: MainAxisAlignment.spaceEvenly,
       children: [
         OnBoardingButton(
-          backgroundColor: account_type == 'creator'
+          backgroundColor: accountType == 'creator'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.transparent,
-          color: account_type == 'creator'
+          color: accountType == 'creator'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.black,
           onTap: () {
             setState(() {
-              account_type = 'creator';
+              accountType = 'creator';
             });
           },
           text: 'Creator',
         ),
         OnBoardingButton(
-          backgroundColor: account_type == 'subscriber'
+          backgroundColor: accountType == 'subscriber'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.transparent,
-          color: account_type == 'subscriber'
+          color: accountType == 'subscriber'
               ? const Color.fromARGB(242, 237, 112, 23)
               : Colors.black,
           onTap: () {
             setState(() {
-              account_type = 'subscriber';
+              accountType = 'subscriber';
             });
           },
           text: 'Subscriber',
