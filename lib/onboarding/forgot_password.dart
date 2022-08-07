@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class ForgotPassword extends StatefulWidget {
   const ForgotPassword({Key? key}) : super(key: key);

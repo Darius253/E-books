@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -143,6 +143,7 @@ class _SignInState extends State<SignIn> {
                                       null) {
                                     formKey.currentState?.save();
                                     // loading();
+                                    Get.to(() => const NavBar());
                                   }
                                 },
                                 text: 'Sign In',

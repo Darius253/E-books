@@ -1,4 +1,4 @@
-import 'package:reader_app/shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 import 'package:flutter/material.dart';
 
 class OnBoardingScreen extends StatelessWidget {
