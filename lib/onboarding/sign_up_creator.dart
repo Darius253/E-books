@@ -1,7 +1,7 @@
 // ignore_for_file: non_constant_identifier_names
 
 import 'package:flutter/material.dart';
-import 'package:reader_app/shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class CreatorSignUp extends StatefulWidget {
   const CreatorSignUp({

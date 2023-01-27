@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class Button extends StatelessWidget {
   final String text;

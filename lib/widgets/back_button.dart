@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../shared.dart/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class Back extends StatelessWidget {
   const Back({Key? key}) : super(key: key);
