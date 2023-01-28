@@ -23,7 +23,7 @@ class App extends StatelessWidget {
       //   primarySwatch: Colors.orange,
       // ),
       // home: const OnBoardingScreen(),
-      home: NavBar(),
+      home: CreaterPage(),
     );
   }
 }

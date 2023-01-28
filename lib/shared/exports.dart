@@ -33,3 +33,5 @@ export 'package:reader_app/onboarding/sign_up_subscriber.dart';
 export 'package:reader_app/screens/store/widgets/book_info_item.dart';
 export 'package:reader_app/screens/store/widgets/book_store_item.dart';
 export 'package:reader_app/screens/store/widgets/store_book_detail.dart';
+export 'package:reader_app/widgets/creater_button.dart';
+export 'package:reader_app/screens/signup/creator_page.dart';
