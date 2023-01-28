@@ -35,3 +35,4 @@ export 'package:reader_app/screens/store/widgets/book_store_item.dart';
 export 'package:reader_app/screens/store/widgets/store_book_detail.dart';
 export 'package:reader_app/widgets/creater_button.dart';
 export 'package:reader_app/screens/signup/creator_page.dart';
+export  'package:reader_app/screens/signup/welcome_page.dart';

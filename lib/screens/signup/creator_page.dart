@@ -1,5 +1,4 @@
-import 'package:flutter/material.dart';
-import 'package:reader_app/screens/signup/welcome_page.dart';
+import 'package:flutter/material.dart'; 
 import '../../shared/exports.dart';
 
 class CreaterPage extends StatelessWidget {
