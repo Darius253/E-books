@@ -1,34 +1,42 @@
-import 'package:flutter/cupertino.dart';
-import 'package:reader_app/shared/constants.dart';
+import 'package:flutter/material.dart';
 
 class TextButtons extends StatelessWidget {
-  final VoidCallback bonTap;
+  final GestureTapCallback onTap;
+  final Color bcolor;
+  final Color textcolor;
   final String btext;
 
-  const TextButtons({super.key, required this.btext, required this.bonTap});
+  const TextButtons({
+    super.key,
+    required this.btext,
+    required this.onTap,
+    required this.bcolor,
+    required this.textcolor,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onTap: bonTap,
-      child: Container(
-        width: 115,
-        decoration: const BoxDecoration(
-          border: Border(
-            bottom: BorderSide(color: Palette.primary, width: 1),
-          ),
-        ),
+    return Padding(
+      padding: const EdgeInsets.symmetric(horizontal: 12),
+      child: GestureDetector(
+        onTap: onTap,
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [
             Text(
               btext,
-              style: const TextStyle(
-                color: Palette.grey,
+              style: TextStyle(
+                color: textcolor,
                 fontSize: 20,
-                fontWeight: FontWeight.w500,
+                fontWeight: FontWeight.w400,
               ),
+            ),
+            Container(
+              margin: const EdgeInsets.only(top: 8.0),
+              height: 1.0,
+              width:  70,
+              color: bcolor,
             ),
           ],
         ),

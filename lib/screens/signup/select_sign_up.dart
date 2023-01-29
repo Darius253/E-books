@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart'; 
 import '../../shared/exports.dart';
 
-class CreaterPage extends StatelessWidget {
-  const CreaterPage({super.key});
+class SelectSignUp extends StatelessWidget {
+  const SelectSignUp({super.key});
 
   @override
   Widget build(BuildContext context) {
@@ -30,7 +30,7 @@ class CreaterPage extends StatelessWidget {
                 const SizedBox(height: 20),
                 CreaterButton(
                   onPressed: () {
-                    Get.to(WelcomePage());
+                    Get.to(const SignUpPage());
                   },
                   backgroundColor: Palette.primary,
                   text: "Creator",
@@ -39,7 +39,7 @@ class CreaterPage extends StatelessWidget {
                 const SizedBox(height: 16),
                 CreaterButton(
                   onPressed: () {
-                    Get.to(WelcomePage());
+                    Get.to(const SignUpPage());
                   },
                   backgroundColor: Colors.white,
                   text: "Customer",
