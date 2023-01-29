@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
@@ -9,175 +10,84 @@ class SignIn extends StatefulWidget {
 }
 
 class _SignInState extends State<SignIn> {
-  final TextEditingController _controller = TextEditingController();
+  final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  String username = '';
   String email = '';
   String password = '';
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color.fromARGB(242, 237, 112, 23),
-      body: SingleChildScrollView(
-        physics: const BouncingScrollPhysics(),
-        child: Stack(
-          children: [
-            const Back(),
-            ClipRRect(
-              borderRadius: BorderRadius.circular(40),
-              child: SvgPicture.asset(
-                'assets/images/sign_in.svg',
-                height: MediaQuery.of(context).size.height / 2,
-              ),
+      body: SafeArea(
+          child: Padding(
+        padding: EdgeInsets.symmetric(
+            horizontal: MediaQuery.of(context).size.width * 0.05, vertical: 24),
+        child: SingleChildScrollView(
+          child: Column(children: [
+            const Center(
+              child: Text('LOGO'),
             ),
-            Padding(
-              padding: const EdgeInsets.only(top: 350.0),
-              child: ClipRRect(
-                borderRadius: BorderRadius.circular(40),
-                child: Container(
-                  color: Colors.white,
-                  height: MediaQuery.of(context).size.height,
-                ),
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 380.0),
-              child: Container(
-                color: Colors.white,
-                height: MediaQuery.of(context).size.height,
-                child: Padding(
-                  padding: const EdgeInsets.symmetric(
-                      vertical: 50.0, horizontal: 20),
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(
-                        'Welcome Back',
-                        style: TextStyle(
-                            fontFamily: Platform.isIOS
-                                ? Font.sanfrancisco
-                                : Font.proxinova,
-                            fontWeight: FontWeight.bold,
-                            color: const Color.fromARGB(255, 238, 140, 19),
-                            fontSize: 30),
-                      ),
-                      const SizedBox(
-                        height: 30,
-                      ),
-                      Form(
-                          key: formKey,
-                          child: Column(
-                            children: [
-                              // Email Field
-                              TextFormField(
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                controller: _controller,
-                                keyboardType: TextInputType.emailAddress,
-                                validator: (value) => value!.isEmpty
-                                    ? 'Please Enter a valid email or Username'
-                                    : null,
-                                onChanged: (value) {
-                                  setState(() => email = value);
-                                },
-                                decoration: const InputDecoration(
-                                    hintText: 'Email or Username',
-                                    hintStyle: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400)),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-
-                              // Password Field
-                              TextFormField(
-                                autovalidateMode:
-                                    AutovalidateMode.onUserInteraction,
-                                obscureText: true,
-                                validator: (value) =>
-                                    value!.length < 6 ? 'Provide Password' : '',
-                                onChanged: (value) {
-                                  setState(() => password = value);
-                                },
-                                controller: _passwordController,
-                                decoration: const InputDecoration(
-                                    hintText: 'Password',
-                                    hintStyle: TextStyle(
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w400)),
-                              ),
-                              const SizedBox(
-                                height: 15,
-                              ),
-                              Row(
-                                children: [
-                                  const Expanded(
-                                    child: SizedBox(),
-                                  ),
-                                  TextButton(
-                                      onPressed: () {
-                                        Get.to(() => const ForgotPassword());
-                                      },
-                                      child: Text(
-                                        'Forgotten Password?',
-                                        style: TextStyle(
-                                            fontFamily: Platform.isIOS
-                                                ? Font.sanfrancisco
-                                                : Font.proxinova,
-                                            color: const Color.fromARGB(
-                                                255, 238, 140, 19),
-                                            fontWeight: FontWeight.w700),
-                                      ))
-                                ],
-                              ),
-                              const SizedBox(
-                                height: 60,
-                              ),
-                              Button(
-                                onPressed: () {
-                                  if (formKey.currentState?.validate() !=
-                                      null) {
-                                    formKey.currentState?.save();
-                                    // loading();
-                                    Get.to(() => const NavBar());
-                                  }
-                                },
-                                text: 'Sign In',
-                                word: "Don't have an Account? Sign Up",
-                                onTap: () {
-                                  Get.to(() => const SignUp());
-                                },
-                              ),
-                            ],
-                          )),
-                    ],
-                  ),
-                ),
-              ),
-            ),
-          ],
+            const SizedBox(height: 15),
+            const Text('Welcome back, Darius!',
+                style: TextStyle(
+                  fontWeight: FontWeight.w600,
+                  color: Color.fromARGB(209, 5, 17, 36),
+                  fontSize: 18,
+                )),
+            const SizedBox(height: 5),
+            const Text('Enter your credentials to sign in to your account',
+                style: TextStyle(
+                    fontWeight: FontWeight.w400,
+                    color: Color.fromARGB(214, 165, 165, 165))),
+            const SizedBox(height: 20),
+            Form(
+                key: formKey,
+                
+                child:  Column(
+                  children: [
+                    //Email TextField
+                    TextFormField(
+                      decoration: InputDecoration(
+                          suffixIcon:
+                              const Icon(CupertinoIcons.mail, color: Colors.grey),
+                          labelText: 'Email',
+                          labelStyle: const TextStyle(
+                            color: Color.fromARGB(214, 165, 165, 165),
+                            fontWeight: FontWeight.w400,
+                          ),
+                          focusColor: const Color.fromARGB(216, 237, 112, 23),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(216, 237, 112, 23)),
+                              borderRadius: BorderRadius.circular(8)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8))),
+                    ),
+                    //Password Field
+                    TextFormField(
+                      decoration: InputDecoration(
+                          suffixIcon:
+                              const Icon(CupertinoIcons.eye, color: Colors.grey),
+                          labelText: 'Enter Password',
+                          labelStyle: const TextStyle(
+                            color: Color.fromARGB(214, 165, 165, 165),
+                            fontWeight: FontWeight.w400,
+                          ),
+                          focusColor: const Color.fromARGB(216, 237, 112, 23),
+                          focusedBorder: OutlineInputBorder(
+                              borderSide: const BorderSide(
+                                  color: Color.fromARGB(216, 237, 112, 23)),
+                              borderRadius: BorderRadius.circular(8)),
+                          border: OutlineInputBorder(
+                              borderRadius: BorderRadius.circular(8))),
+                    ),
+                  ],
+                ),),
+          ]),
         ),
-      ),
-    );
-  }
-
-  Future<void> loading() async {
-    return showDialog<void>(
-      context: context,
-      barrierDismissible: true, // user must tap button!
-      builder: (BuildContext context) {
-        return const AlertDialog(
-          title: Text('Please Wait...'),
-          content: SizedBox(
-              width: 150,
-              height: 100,
-              child: Center(child: CircularProgressIndicator.adaptive())),
-        );
-      },
+      )),
     );
   }
 }
