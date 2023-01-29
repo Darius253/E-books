@@ -70,15 +70,6 @@ class _ForgotPasswordState extends State<ForgotPassword> {
             const SizedBox(
               height: 30,
             ),
-            OnBoardingButton(
-                width: MediaQuery.of(context).size.width,
-                color: const Color.fromARGB(255, 237, 145, 33),
-                text: 'Submit',
-                onTap: () {
-                  formKey.currentState?.validate();
-                  formKey.currentState?.save();
-                },
-                backgroundColor: const Color.fromARGB(255, 237, 145, 33))
           ]),
         ),
       ]),
