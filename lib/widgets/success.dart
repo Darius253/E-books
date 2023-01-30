@@ -22,7 +22,7 @@ class Success extends StatelessWidget {
                 height: MediaQuery.of(context).size.height * 0.27,
               ),
               SvgPicture.asset(
-                'assets/images/Completed task _Outline.svg',
+                'assets/images/Completed_task _Outline.svg',
                 height: MediaQuery.of(context).size.height * 0.15,
               ),
               SizedBox(
