@@ -38,7 +38,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                   ),
                 ]),
                 SvgPicture.asset(
-                    'assets/images/Sending emails_Monochromatic.svg'),
+                    'assets/images/Sending_emails_Monochromatic.svg'),
                 Center(
                   child: Column(
                     children: [
