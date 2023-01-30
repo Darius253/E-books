@@ -138,6 +138,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 setState(() => email = value);
               },
             ),
+
             //Phone Number
             SizedBox(height: height * 0.03),
             Container(
@@ -168,8 +169,8 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               ),
             ),
 
-            SizedBox(height: height * 0.03),
             //Password
+            SizedBox(height: height * 0.03),
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               obscureText: _obscureText,
@@ -277,6 +278,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 }
               },
             ),
+
             SizedBox(height: height * 0.01),
             TermsAndConditions(
                 label:
@@ -287,6 +289,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                     isChecked = value;
                   });
                 }),
+                
             SizedBox(height: height * 0.01),
             //isChecked ?
             ConfirmButton(
