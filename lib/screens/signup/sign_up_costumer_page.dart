@@ -2,8 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
-
-
+import 'package:reader_app/widgets/confirm_button.dart';
 
 class CustomerSignUpPage extends StatefulWidget {
   const CustomerSignUpPage({Key? key}) : super(key: key);
@@ -34,7 +33,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
-    
     final double height = MediaQuery.of(context).size.height;
     return Form(
       child: Padding(
@@ -63,16 +61,14 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _fullnameController,
               keyboardType: TextInputType.name,
-              validator: (value) => value!.length < 5
-                  ? 'This field cannot be empty'
-                  : null,
+              validator: (value) =>
+                  value!.length < 5 ? 'This field cannot be empty' : null,
               onChanged: (value) {
                 setState(() => fullname = value);
               },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(width: 3, color: Palette.primary),
+                  borderSide: BorderSide(width: 3, color: Palette.primary),
                 ),
                 labelText: "Name",
                 hintText: "Blemano Emmanuel Tetteh",
@@ -91,8 +87,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               controller: _emailController,
               decoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(width: 3, color: Palette.primary),
+                  borderSide: BorderSide(width: 3, color: Palette.primary),
                 ),
                 labelText: "Email",
                 hintText: "e.g.. name@email.com",
@@ -125,8 +120,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
               inputDecoration: const InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(width: 3, color: Palette.primary),
+                  borderSide: BorderSide(width: 3, color: Palette.primary),
                 ),
                 hintText: '123xxxxxxxx',
                 hintStyle: TextStyle(fontSize: 18),
@@ -141,8 +135,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               controller: _passwordController,
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(width: 3, color: Palette.primary),
+                  borderSide: BorderSide(width: 3, color: Palette.primary),
                 ),
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -186,15 +179,15 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               },
               decoration: InputDecoration(
                 border: OutlineInputBorder(
-                  borderSide:
-                      BorderSide(width: 3, color: Palette.primary),
+                  borderSide: BorderSide(width: 3, color: Palette.primary),
                 ),
-                suffixIcon: IconButton(onPressed: (){
-                  setState(() {
+                suffixIcon: IconButton(
+                  onPressed: () {
+                    setState(() {
                       _obscureText = !_obscureText;
                     });
-                }, 
-                icon: Icon(
+                  },
+                  icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
                 labelText: "Password",
@@ -216,11 +209,18 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               },
             ),
             SizedBox(height: height * 0.01),
-            TermsAndConditions(label: "I agree to the Terms and Conditions of Services and Privacy Policy", value: isChecked, onChanged: (value){
-              setState(() {
-                isChecked = value ;
-              });
-            })
+            TermsAndConditions(
+                label:
+                    "I agree to the Terms and Conditions of Services and Privacy Policy",
+                value: isChecked,
+                onChanged: (value) {
+                  setState(() {
+                    isChecked = value;
+                  });
+                }),
+              SizedBox(height: height * 0.01),
+              // isChecked ?
+              ConfirmButton(bbcolor: Palette.primary, bonPressed: () {  }, btext: 'Confirm', ),
           ],
         ),
       ),
@@ -300,5 +300,4 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   //       );
   //     },
   //   );
-  }
-
+}

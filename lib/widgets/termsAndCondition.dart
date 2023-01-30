@@ -15,18 +15,20 @@ class TermsAndConditions extends StatelessWidget {
     return Row(
       children: [
         Checkbox(
-          activeColor: Colors.green,
+            activeColor: Colors.green,
             value: value,
             onChanged: (bool? newValue) {
               onChanged(newValue);
             }),
         SizedBox(
           width: 270,
-          child: Text(label,
-          style: const TextStyle(
-                fontSize: 12,
-              ),
-          )),
+          child: Text(
+            label,
+            style: const TextStyle(
+              fontSize: 12,
+            ),
+          ),
+        ),
       ],
     );
   }
