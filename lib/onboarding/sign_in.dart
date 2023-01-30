@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/onboarding/widgets/button.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class SignIn extends StatefulWidget {
   const SignIn({Key? key}) : super(key: key);
@@ -12,12 +12,8 @@ class SignIn extends StatefulWidget {
 class _SignInState extends State<SignIn> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool obscurePassword = false;
-  Text terms = const Text(
-    'Terms and Conditions',
-    style: TextStyle(color: Color.fromARGB(216, 237, 112, 23)),
-  );
 
   String email = '';
   String password = '';
@@ -28,7 +24,8 @@ class _SignInState extends State<SignIn> {
       body: SafeArea(
           child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.05, vertical: 24),
+            horizontal: MediaQuery.of(context).size.width * 0.05,
+            vertical: MediaQuery.of(context).size.height * 0.03),
         child: SingleChildScrollView(
           child: Column(children: [
             Center(
@@ -37,6 +34,7 @@ class _SignInState extends State<SignIn> {
                   const Text('LOGO'),
                   const SizedBox(height: 30),
                   const Text('Welcome back, Darius!',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
                         color: Color.fromARGB(209, 5, 17, 36),
@@ -45,6 +43,7 @@ class _SignInState extends State<SignIn> {
                   const SizedBox(height: 5),
                   const Text(
                       'Enter your credentials to sign in to your account',
+                      textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
                           color: Color.fromARGB(214, 165, 165, 165))),
@@ -53,12 +52,28 @@ class _SignInState extends State<SignIn> {
               ),
             ),
             Form(
-              key: formKey,
+              key: _formKey,
               child: Column(
                 children: [
                   //Email TextField
                   TextFormField(
                     controller: _emailController,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter your email';
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        email = value;
+                      });
+                    },
+                    onFieldSubmitted: (value) {
+                      setState(() {
+                        email = value;
+                      });
+                    },
                     decoration: InputDecoration(
                         suffixIcon:
                             const Icon(CupertinoIcons.mail, color: Colors.grey),
@@ -82,6 +97,22 @@ class _SignInState extends State<SignIn> {
                   TextFormField(
                     controller: _passwordController,
                     obscureText: !obscurePassword,
+                    validator: (value) {
+                      if (value == null || value.isEmpty) {
+                        return 'Please enter password';
+                      }
+                      return null;
+                    },
+                    onChanged: (value) {
+                      setState(() {
+                        password = value;
+                      });
+                    },
+                    onFieldSubmitted: (value) {
+                      setState(() {
+                        password = value;
+                      });
+                    },
                     decoration: InputDecoration(
                         suffixIcon: IconButton(
                           icon: obscurePassword == true
@@ -116,7 +147,7 @@ class _SignInState extends State<SignIn> {
               children: [
                 const Expanded(child: SizedBox()),
                 TextButton(
-                  onPressed: () {},
+                  onPressed: (() => Get.to(() => const ForgotPassword())),
                   child: const Text('Forgot Password?',
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -127,7 +158,14 @@ class _SignInState extends State<SignIn> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
-            Button(text: 'Login', onTap: () {}),
+            Button(
+                text: 'Login',
+                onTap: () {
+                  if (_formKey.currentState!.validate()) {
+                    print(email);
+                    print(password);
+                  }
+                }),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
