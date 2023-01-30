@@ -93,7 +93,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
             ),
 
@@ -131,7 +131,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
             ),
 
@@ -164,7 +164,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
               validator: (value) {
                 if (value!.isEmpty ||
@@ -248,7 +248,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
               validator: (value) {
                 if (value!.isEmpty ||
@@ -306,7 +306,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
               validator: (value) {
                 if (value!.isEmpty ||

@@ -90,7 +90,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
             ),
 
@@ -123,7 +123,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
               validator: (value) {
                 if (value!.isEmpty ||
@@ -165,6 +165,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
+                  
                 ),
               ),
             ),
@@ -208,7 +209,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
               validator: (value) {
                 if (value!.isEmpty ||
@@ -266,7 +267,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
-                    fontWeight: FontWeight.w600),
+                    fontWeight: FontWeight.w400),
               ),
               validator: (value) {
                 if (value!.isEmpty ||
@@ -289,7 +290,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                     isChecked = value;
                   });
                 }),
-                
+
             SizedBox(height: height * 0.01),
             //isChecked ?
             ConfirmButton(
