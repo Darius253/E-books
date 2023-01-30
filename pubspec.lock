@@ -69,10 +69,14 @@ packages:
     dependency: "direct main"
     description:
       name: flextras
+
       sha256: f72cd27b8030097072a2ee68c3017be569715ab19eaa4ea25c7fa7b32558e7a1
+
+      sha256: e73b5c86dd9419569d2a48db470059b41b496012513e4e1bdc56ba2c661048d9
+
       url: "https://pub.dev"
     source: hosted
-    version: "0.0.2"
+    version: "1.0.0"
   flutter:
     dependency: "direct main"
     description: flutter

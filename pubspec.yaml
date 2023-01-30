@@ -19,12 +19,15 @@ dependencies:
   flutter_svg: ^1.1.1+1
   flextras: ^0.0.2
   flutter_password_strength: ^0.1.6
+  flutter_svg: ^1.1.6
+  flextras: ^1.0.0
+
 
   # g
   get: ^4.6.5
 
   # i
-  intl_phone_number_input: ^0.7.0+2
+  intl_phone_number_input: ^0.7.2
 
   #p
   pin_code_fields: ^7.4.0
