@@ -3,6 +3,8 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
+
+
 class CustomerSignUpPage extends StatefulWidget {
   const CustomerSignUpPage({Key? key}) : super(key: key);
 
@@ -29,7 +31,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   String accountType = 'customer';
   bool selected = false;
   bool _obscureText = true;
-
+  bool isChecked = false;
   @override
   Widget build(BuildContext context) {
     
@@ -213,206 +215,17 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 }
               },
             ),
+            SizedBox(height: height * 0.01),
+            TermsAndConditions(label: "I agree to the Terms and Conditions of Services and Privacy Policy", value: isChecked, onChanged: (value){
+              setState(() {
+                isChecked = value ;
+              });
+            })
           ],
         ),
       ),
     );
-    
-  //   Form(
-  //     key: formKey,
-  //     child: Column(
-  //       children: [
-  //         // Username Field
-  //         TextFormField(
-  //           autovalidateMode: AutovalidateMode.onUserInteraction,
-  //           controller: _usernameController,
-  //           keyboardType: TextInputType.name,
-  //           validator: (value) => value!.length < 5
-  //               ? 'Username should be 5 to 10 characters'
-  //               : '',
-  //           onChanged: (value) {
-  //             setState(() => username = value);
-  //           },
-  //           decoration: InputDecoration(
-  //               hintText: 'Username',
-  //               hintStyle: TextStyle(
-  //                 fontSize: 12,
-  //                 fontWeight: FontWeight.w400,
-  //                 fontFamily:
-  //                     Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
-  //               )),
-  //         ),
-  //         const SizedBox(
-  //           height: 15,
-  //         ),
-
-  //         // Fullname field
-  //         TextFormField(
-  //           autovalidateMode: AutovalidateMode.onUserInteraction,
-  //           controller: _fullnameController,
-  //           keyboardType: TextInputType.name,
-  //           validator: (value) => value!.isEmpty
-  //               ? 'Kindly Provide your Fullname or Pseudonym'
-  //               : null,
-  //           onChanged: (value) {
-  //             setState(() => fullname = value);
-  //           },
-  //           decoration: InputDecoration(
-  //               hintText: 'Fullname/Pseudonym',
-  //               hintStyle: TextStyle(
-  //                 fontSize: 12,
-  //                 fontWeight: FontWeight.w400,
-  //                 fontFamily:
-  //                     Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
-  //               )),
-  //         ),
-  //         const SizedBox(
-  //           height: 15,
-  //         ),
-
-  //         //PhoneNumber
-  //         InternationalPhoneNumberInput(
-  //           onInputChanged: (PhoneNumber number) {
-  //             // print(number.phoneNumber);
-  //           },
-  //           onInputValidated: (bool value) {
-  //             // print(value);
-  //           },
-  //           selectorConfig: const SelectorConfig(
-  //             selectorType: PhoneInputSelectorType.DROPDOWN,
-  //           ),
-  //           ignoreBlank: false,
-  //           hintText: 'Phone Number',
-  //           selectorTextStyle: const TextStyle(color: Colors.black),
-  //           textFieldController: phoneNumberController,
-  //           formatInput: false,
-  //           validator: (value) => value == null ? 'Enter Phone Number' : '',
-  //           onFieldSubmitted: (value) {
-  //             setState(() => phonenumber = value);
-  //           },
-  //           keyboardType: const TextInputType.numberWithOptions(
-  //               signed: true, decimal: true),
-  //           onSaved: (PhoneNumber number) {
-  //             setState(() => phonenumber = number as String);
-  //           },
-  //         ),
-  //         const SizedBox(
-  //           height: 15,
-  //         ),
-
-  //         // Email Field
-  //         TextFormField(
-  //           autovalidateMode: AutovalidateMode.onUserInteraction,
-  //           controller: _emailController,
-  //           keyboardType: TextInputType.emailAddress,
-  //           validator: (value) =>
-  //               value!.isEmail ? '' : 'Provide a valid Email address',
-  //           onChanged: (value) {
-  //             setState(() => email = value);
-  //           },
-  //           decoration: InputDecoration(
-  //               hintText: 'Email',
-  //               hintStyle: TextStyle(
-  //                 fontSize: 12,
-  //                 fontWeight: FontWeight.w400,
-  //                 fontFamily:
-  //                     Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
-  //               )),
-  //         ),
-  //         const SizedBox(
-  //           height: 15,
-  //         ),
-
-  //         // Password Field
-  //         TextFormField(
-  //           autovalidateMode: AutovalidateMode.onUserInteraction,
-  //           obscureText: true,
-  //           validator: (value) => value!.length < 6
-  //               ? 'Password should be more than 5 characters'
-  //               : '',
-  //           onChanged: (value) {
-  //             setState(() => password = value);
-  //           },
-  //           controller: _passwordController,
-  //           decoration: InputDecoration(
-  //               hintText: 'Password',
-  //               hintStyle: TextStyle(
-  //                 fontSize: 12,
-  //                 fontWeight: FontWeight.w400,
-  //                 fontFamily:
-  //                     Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
-  //               )),
-  //         ),
-  //         const SizedBox(
-  //           height: 15,
-  //         ),
-
-  //         // Confirm Password Field
-  //         TextFormField(
-  //           autovalidateMode: AutovalidateMode.onUserInteraction,
-  //           obscureText: true,
-  //           controller: _confirmPasswordController,
-  //           keyboardType: TextInputType.visiblePassword,
-  //           validator: (value) => value != password
-  //               ? ' Characters should match Password characters'
-  //               : '',
-  //           onChanged: (value) {
-  //             setState(() => confirmpassword = value);
-  //           },
-  //           decoration: InputDecoration(
-  //               hintText: 'Confirm Password',
-  //               hintStyle: TextStyle(
-  //                 fontSize: 12,
-  //                 fontWeight: FontWeight.w400,
-  //                 fontFamily:
-  //                     Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
-  //               )),
-  //         ),
-  //         const SizedBox(
-  //           height: 30,
-  //         ),
-  //         termsAndConditions(),
-  //         const SizedBox(
-  //           height: 60,
-  //         ),
-  //         Button(
-  //           onPressed: () => _showMyDialog(),
-  //           text: 'Sign Up',
-  //           word: 'Already Have an Account? Sign In',
-  //           onTap: () {
-  //             Get.to(() => const SignIn());
-  //           },
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
-
-  // Widget termsAndConditions() {
-  //   return GestureDetector(
-  //     onTap: () {
-  //       setState(() {
-  //         selected = !selected;
-  //       });
-  //     },
-  //     child: Row(children: [
-  //       Container(
-  //         width: 18,
-  //         height: 18,
-  //         decoration: BoxDecoration(
-  //             shape: BoxShape.circle,
-  //             border: Border.all(color: Colors.black),
-  //             color: selected
-  //                 ? const Color.fromARGB(255, 237, 145, 33)
-  //                 : Colors.white),
-  //       ),
-  //       const SizedBox(
-  //         width: 3,
-  //       ),
-  //       const Text('I agree to the Terms of Services and Privacy Policy'),
-  //     ]),
-  //   );
-  // }
+  }
 
   // Future<void> _showMyDialog() async => showDialog<void>(
   //       context: context,
@@ -488,4 +301,4 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   //     },
   //   );
   }
-}
+

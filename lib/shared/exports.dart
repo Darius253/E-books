@@ -37,3 +37,4 @@ export 'package:reader_app/widgets/creater_button.dart';
 export 'package:reader_app/screens/signup/select_sign_up.dart';
 export  'package:reader_app/screens/signup/sign_up_page.dart';
 export 'package:reader_app/screens/signup/sign_up_costumer_page.dart';
+export 'package:reader_app/widgets/termsAndCondition.dart';

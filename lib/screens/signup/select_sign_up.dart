@@ -49,7 +49,7 @@ class SelectSignUp extends StatelessWidget {
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 90,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
