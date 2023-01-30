@@ -38,3 +38,7 @@ export 'package:reader_app/screens/signup/select_sign_up.dart';
 export  'package:reader_app/screens/signup/sign_up_page.dart';
 export 'package:reader_app/screens/signup/sign_up_costumer_page.dart';
 export 'package:reader_app/widgets/termsAndCondition.dart';
+export 'package:reader_app/widgets/confirm_button.dart';
+export 'package:reader_app/widgets/or_line.dart';
+export 'package:reader_app/widgets/ex_signup_button.dart';
+export 'package:reader_app/widgets/rich_text.dart';

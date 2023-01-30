@@ -36,6 +36,8 @@ class Images {
   static const String storeO = '${imagesPath}store_o.svg';
   static const String cart = '${imagesPath}cart.svg';
   static const String cartO = '${imagesPath}cart_o.svg';
+  static const String google= '${imagesPath}google.png';
+  static const String facebook = '${imagesPath}facebook.png';
 }
 
 const lorem =

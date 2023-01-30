@@ -3,16 +3,16 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
-class CreatorSignUpPage extends StatefulWidget {
-  const CreatorSignUpPage({
+class SellerSignUpPage extends StatefulWidget {
+  const SellerSignUpPage({
     Key? key,
   }) : super(key: key);
 
   @override
-  State<CreatorSignUpPage> createState() => _CreatorSignUpPageState();
+  State<SellerSignUpPage> createState() => _SellerSignUpPageState();
 }
 
-class _CreatorSignUpPageState extends State<CreatorSignUpPage> {
+class _SellerSignUpPageState extends State<SellerSignUpPage> {
   final TextEditingController _emailController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _fullnameController = TextEditingController();

@@ -1,8 +1,8 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:reader_app/shared/exports.dart';
-import 'package:reader_app/widgets/confirm_button.dart';
 
 class CustomerSignUpPage extends StatefulWidget {
   const CustomerSignUpPage({Key? key}) : super(key: key);
@@ -56,6 +56,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             ),
             //Name
             SizedBox(height: height * 0.03),
+
             //name
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
@@ -67,8 +68,22 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 setState(() => fullname = value);
               },
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Palette.grey,
+                  ),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Palette.primary),
+                    borderRadius: BorderRadius.circular(10.0)),
+                floatingLabelStyle: TextStyle(
+                  fontSize: 14,
+                  color: Palette.primary,
+                  fontWeight: FontWeight.w400,
                 ),
                 labelText: "Name",
                 hintText: "Blemano Emmanuel Tetteh",
@@ -85,9 +100,23 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _emailController,
-              decoration: const InputDecoration(
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Palette.grey,
+                  ),
+                ),
+                contentPadding:
+                    EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Palette.primary),
+                    borderRadius: BorderRadius.circular(10.0)),
+                floatingLabelStyle: TextStyle(
+                  fontSize: 14,
+                  color: Palette.primary,
+                  fontWeight: FontWeight.w400,
                 ),
                 labelText: "Email",
                 hintText: "e.g.. name@email.com",
@@ -112,18 +141,52 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             ),
             //Phone Number
             SizedBox(height: height * 0.03),
+            IntlPhoneField(
+              keyboardType: TextInputType.number,
+              dropdownDecoration: BoxDecoration(
+
+              ),
+            
+              showDropdownIcon: false,
+    decoration: InputDecoration(
+        border: OutlineInputBorder(
+            borderSide: BorderSide(),
+        ),
+        
+      labelText: 'Phone Number',
+    ),
+    initialCountryCode: 'GH',
+    onChanged: (phone) {
+        print(phone.completeNumber);
+    },
+),
+
             InternationalPhoneNumberInput(
               onInputChanged: ((value) {}),
               cursorColor: Colors.black,
               formatInput: false,
               selectorConfig: const SelectorConfig(
                   selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
-              inputDecoration: const InputDecoration(
-                border: OutlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Palette.primary),
+              inputDecoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
                 ),
-                hintText: '123xxxxxxxx',
-                hintStyle: TextStyle(fontSize: 18),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Palette.grey,
+                  ),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                floatingLabelStyle: TextStyle(
+                  fontSize: 14,
+                  color: Palette.primary,
+                  fontWeight: FontWeight.w400,
+                ),
+                // hintText: '123xxxxxxxx',
+                // hintStyle: TextStyle(fontSize: 18),
               ),
             ),
 
@@ -134,8 +197,22 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               obscureText: _obscureText,
               controller: _passwordController,
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Palette.grey,
+                  ),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Palette.primary),
+                    borderRadius: BorderRadius.circular(10.0)),
+                floatingLabelStyle: TextStyle(
+                  fontSize: 14,
+                  color: Palette.primary,
+                  fontWeight: FontWeight.w400,
                 ),
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -178,8 +255,22 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 setState(() => confirmpassword = value);
               },
               decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Palette.grey,
+                  ),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
                 border: OutlineInputBorder(
-                  borderSide: BorderSide(width: 3, color: Palette.primary),
+                    borderRadius: BorderRadius.circular(10.0)),
+                floatingLabelStyle: TextStyle(
+                  fontSize: 14,
+                  color: Palette.primary,
+                  fontWeight: FontWeight.w400,
                 ),
                 suffixIcon: IconButton(
                   onPressed: () {
@@ -218,9 +309,29 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                     isChecked = value;
                   });
                 }),
-              SizedBox(height: height * 0.01),
-              // isChecked ?
-              ConfirmButton(bbcolor: Palette.primary, bonPressed: () {  }, btext: 'Confirm', ),
+            SizedBox(height: height * 0.01),
+            //isChecked ?
+            ConfirmButton(
+              bbcolor: Palette.primary,
+              bonPressed: () {},
+              btext: 'Confirm',
+            ),
+            SizedBox(height: height * 0.03),
+            OrLine(),
+            SizedBox(height: height * 0.03),
+            ExSignUpButton(
+              image: Images.google,
+              onTap: () {},
+              text: 'Google',
+            ),
+            SizedBox(height: height * 0.02),
+            ExSignUpButton(
+              image: Images.facebook,
+              onTap: () {},
+              text: 'Facebook',
+            ),
+            SizedBox(height: height * 0.02),
+            RichTextWidget(),
           ],
         ),
       ),
