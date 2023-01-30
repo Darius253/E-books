@@ -1,7 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
 import 'package:flutter/material.dart';
-import 'package:intl_phone_field/intl_phone_field.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class CustomerSignUpPage extends StatefulWidget {
@@ -141,52 +140,31 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             ),
             //Phone Number
             SizedBox(height: height * 0.03),
-            IntlPhoneField(
-              keyboardType: TextInputType.number,
-              dropdownDecoration: BoxDecoration(
-
+            Container(
+              height: 55,
+              decoration: BoxDecoration(
+                shape: BoxShape.rectangle,
+                border: Border.all(width: 1.0, color: Palette.grey),
+                borderRadius: BorderRadius.circular(5.0)
               ),
-            
-              showDropdownIcon: false,
-    decoration: InputDecoration(
-        border: OutlineInputBorder(
-            borderSide: BorderSide(),
-        ),
-        
-      labelText: 'Phone Number',
-    ),
-    initialCountryCode: 'GH',
-    onChanged: (phone) {
-        print(phone.completeNumber);
-    },
-),
-
-            InternationalPhoneNumberInput(
-              onInputChanged: ((value) {}),
-              cursorColor: Colors.black,
-              formatInput: false,
-              selectorConfig: const SelectorConfig(
-                  selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
-              inputDecoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Palette.grey,
+              child: Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 8.0),
+                child: InternationalPhoneNumberInput(
+                  onInputChanged: ((value) {}),
+                  cursorColor: Palette.primary,
+                  formatInput: false,
+                  selectorConfig: const SelectorConfig(
+                      selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
+                  inputDecoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(bottom: 15, left: 0),
+                    border: InputBorder.none,
+                    floatingLabelStyle: TextStyle(
+                      fontSize: 14,
+                      color: Palette.primary,
+                      fontWeight: FontWeight.w400,
+                    ),
                   ),
                 ),
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                floatingLabelStyle: TextStyle(
-                  fontSize: 14,
-                  color: Palette.primary,
-                  fontWeight: FontWeight.w400,
-                ),
-                // hintText: '123xxxxxxxx',
-                // hintStyle: TextStyle(fontSize: 18),
               ),
             ),
 

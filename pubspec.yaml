@@ -24,7 +24,6 @@ dependencies:
 
   # i
   intl_phone_number_input: ^0.7.2
-  intl_phone_field: ^3.1.0
 
   # r
   readmore: ^2.2.0
