@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/signup/sign_up_creator_page.dart';
+import 'package:reader_app/screens/signup/sign_up_seller_page.dart';
 import 'package:reader_app/widgets/text_buttons.dart';
 
 import '../../shared/exports.dart';
@@ -41,7 +41,7 @@ class _SignUpPageState extends State<SignUpPage> {
     if (accountType == 'customer') {
       return const CustomerSignUpPage();
     } else {
-      return const CreatorSignUpPage();
+      return const SellerSignUpPage();
     }
   }
 

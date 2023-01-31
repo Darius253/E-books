@@ -1,17 +1,20 @@
-// ignore_for_file: prefer_const_constructors
+// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
 
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
-class CustomerSignUpPage extends StatefulWidget {
-  const CustomerSignUpPage({Key? key}) : super(key: key);
+class SellerSignUpPage extends StatefulWidget {
+  const SellerSignUpPage({
+    Key? key,
+  }) : super(key: key);
 
   @override
-  State<CustomerSignUpPage> createState() => _CustomerSignUpPageState();
+  State<SellerSignUpPage> createState() => _SellerSignUpPageState();
 }
 
-class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
-  final TextEditingController _fullnameController = TextEditingController();
+class _SellerSignUpPageState extends State<SellerSignUpPage> {
+  final TextEditingController _artistnameController = TextEditingController();
+  final TextEditingController _shopnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
@@ -20,51 +23,51 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
 
-  String fullname = '';
+  String artistname = '';
+  String shopname = '';
   String email = '';
   String password = '';
   String confirmpassword = '';
   String phonenumber = '';
 
-  String accountType = 'customer';
+  String accountType = 'creator';
   bool selected = false;
   bool _obscureText = true;
   bool isChecked = false;
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     return Form(
       child: Padding(
-        padding: const EdgeInsets.all(20.0),
+        padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
             // SizedBox(height: height * 0.04),
             const Text(
               "Create an account",
               style: TextStyle(
-                  fontSize: 18,
+                  fontSize: 17,
                   color: Colors.black,
-                  fontWeight: FontWeight.w500),
+                  fontWeight: FontWeight.w400),
             ),
             const Text(
               "Enter your password and setup account",
               style: TextStyle(
-                  fontSize: 15,
+                  fontSize: 14,
                   color: Palette.grey,
                   fontWeight: FontWeight.normal),
             ),
             //Name
             SizedBox(height: height * 0.03),
-
-            //name
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
-              controller: _fullnameController,
+              controller: _artistnameController,
               keyboardType: TextInputType.name,
               validator: (value) =>
                   value!.length < 5 ? 'This field cannot be empty' : null,
               onChanged: (value) {
-                setState(() => fullname = value);
+                setState(() => artistname = value);
               },
               decoration: InputDecoration(
                 focusedBorder: OutlineInputBorder(
@@ -84,8 +87,43 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   color: Palette.primary,
                   fontWeight: FontWeight.w400,
                 ),
-                labelText: "Name",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Artist Name", //hint text style
+                labelStyle: TextStyle(
+                    fontSize: 16,
+                    color: Colors.black,
+                    fontWeight: FontWeight.w400),
+              ),
+            ),
+
+            SizedBox(height: height * 0.03),
+            TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              controller: _shopnameController,
+              keyboardType: TextInputType.name,
+              validator: (value) =>
+                  value!.length < 5 ? 'This field cannot be empty' : null,
+              onChanged: (value) {
+                setState(() => shopname = value);
+              },
+              decoration: InputDecoration(
+                focusedBorder: OutlineInputBorder(
+                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
+                ),
+                enabledBorder: OutlineInputBorder(
+                  borderSide: BorderSide(
+                    color: Palette.grey,
+                  ),
+                ),
+                contentPadding:
+                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
+                border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0)),
+                floatingLabelStyle: TextStyle(
+                  fontSize: 14,
+                  color: Palette.primary,
+                  fontWeight: FontWeight.w400,
+                ),
+                labelText: "Shop", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -141,10 +179,9 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             Container(
               height: 55,
               decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                border: Border.all(width: 1.0, color: Palette.grey),
-                borderRadius: BorderRadius.circular(5.0)
-              ),
+                  shape: BoxShape.rectangle,
+                  border: Border.all(width: 1.0, color: Palette.grey),
+                  borderRadius: BorderRadius.circular(5.0)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: InternationalPhoneNumberInput(
@@ -162,7 +199,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  
                 ),
               ),
             ),
@@ -200,7 +236,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
-                labelText: "Password",//hint text style
+                labelText: "Password", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -256,7 +292,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
-                labelText: "Password",//hint text style
+                labelText: "Password", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -290,8 +326,10 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               onTap: () {},
               text: 'Confirm',
             ),
+
             SizedBox(height: height * 0.03),
             OrLine(),
+
             SizedBox(height: height * 0.03),
             ExSignUpButton(
               image: Images.google,
@@ -311,78 +349,4 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
       ),
     );
   }
-
-  // Future<void> _showMyDialog() async => showDialog<void>(
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //           title: accountType == 'creator'
-  //               ? const Text('Sign Up as a Creator')
-  //               : const Text('Sign Up as a Subscriber'),
-  //           content: SingleChildScrollView(
-  //             child: accountType == 'creator'
-  //                 ? ListBody(
-  //                     children: const <Widget>[
-  //                       Text('A Creator account allows you to: '),
-  //                       SizedBox(
-  //                         height: 10,
-  //                       ),
-  //                       Text(
-  //                           '1. Upload your works on AwStore\n2. Purchase contents on AwStore\n3. Read and Download(optonal) contents on AwStore.'),
-  //                       SizedBox(
-  //                         height: 20,
-  //                       ),
-  //                       Text(
-  //                           'Do you wish to proceed with creating an account type via this profile?'),
-  //                     ],
-  //                   )
-  //                 : ListBody(
-  //                     children: const <Widget>[
-  //                       Text('A Subscriber account allows you to: '),
-  //                       SizedBox(
-  //                         height: 10,
-  //                       ),
-  //                       Text(
-  //                           '1. Purchase contents on AwStore.\n2. Read and Download(optional) contents on AwStore.'),
-  //                       SizedBox(
-  //                         height: 20,
-  //                       ),
-  //                       Text(
-  //                           'Do you wish to proceed with creating an account type via this profile?'),
-  //                     ],
-  //                   ),
-  //           ),
-  //           actions: <Widget>[
-  //             TextButton(
-  //                 child: const Text(
-  //                   'Proceed',
-  //                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
-  //                 ),
-  //                 onPressed: () {
-  //                   if (formKey.currentState!.validate()) {
-  //                     formKey.currentState?.save();
-
-  //                     // loading();
-  //                   }
-  //                   Navigator.of(context).pop();
-  //                 }),
-  //           ],
-  //         );
-  //       },
-  //     );
-
-  // Future<void> loading() async {
-  //   return showDialog<void>(
-  //     context: context,
-  //     barrierDismissible: true, // user must tap button!
-  //     builder: (BuildContext context) {
-  //       return const AlertDialog(
-  //         title: Text('Please Wait...'),
-  //         content: SizedBox(
-  //             width: 150,
-  //             height: 100,
-  //             child: Center(child: CircularProgressIndicator.adaptive())),
-  //       );
-  //     },
-  //   );
 }

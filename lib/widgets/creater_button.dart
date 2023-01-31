@@ -6,6 +6,7 @@ class CreaterButton extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
   final String text;
+  final double width;
   final VoidCallback onPressed;
 
   const CreaterButton({
@@ -13,14 +14,14 @@ class CreaterButton extends StatelessWidget {
     required this.backgroundColor,
     required this.textColor,
     required this.onPressed,
-    required this.text,
+    required this.text, required this.width,
   });
 
   @override
   Widget build(BuildContext context) {
     return Container(
       height: 52,
-      width: 150,
+      width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
         color: backgroundColor,
@@ -38,7 +39,7 @@ class CreaterButton extends StatelessWidget {
               child: Text(
                 text,
                 style: TextStyle(
-                    color: textColor, fontWeight: FontWeight.w500, fontSize: 22),
+                    color: textColor, fontWeight: FontWeight.w400, fontSize: 22),
               ),
             ),
           ),
