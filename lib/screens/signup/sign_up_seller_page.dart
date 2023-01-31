@@ -87,9 +87,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                   color: Palette.primary,
                   fontWeight: FontWeight.w400,
                 ),
-                labelText: "Artist Name",
-                hintText: "Blemano Emmanuel Tetteh",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Artist Name", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -125,9 +123,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                   color: Palette.primary,
                   fontWeight: FontWeight.w400,
                 ),
-                labelText: "Shop",
-                hintText: "Enter Shop Name",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Shop", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -158,9 +154,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                   color: Palette.primary,
                   fontWeight: FontWeight.w400,
                 ),
-                labelText: "Email",
-                hintText: "e.g.. name@email.com",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Email", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -242,9 +236,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
-                labelText: "Password",
-                hintText: "Password",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Password", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -300,9 +292,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
-                labelText: "Password",
-                hintText: "Confirm Password",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Password", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -330,18 +320,17 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                   });
                 }),
 
-             SizedBox(height: height * 0.01),
+            SizedBox(height: height * 0.01),
             //isChecked ?
-            ConfirmButton(
-              bbcolor: Palette.primary,
-              bonPressed: () {},
-              btext: 'Confirm',
+            Button(
+              onTap: () {},
+              text: 'Confirm',
             ),
 
-             SizedBox(height: height * 0.03),
+            SizedBox(height: height * 0.03),
             OrLine(),
 
-              SizedBox(height: height * 0.03),
+            SizedBox(height: height * 0.03),
             ExSignUpButton(
               image: Images.google,
               onTap: () {},

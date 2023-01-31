@@ -9,34 +9,33 @@ class ExSignUpButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
 
-    return SizedBox(
-      //width: 310,
-      height: 45,
-      child: InkWell(
-        onTap: onTap,
-        child: Ink(
-          color: Palette.grey,
-          child: Padding(
-            padding: const EdgeInsets.only(left: 20, right: 20),
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.start,
-              children: [
-                Container(
-                  height: 30.0,
-                  width: 30.0,
-                  decoration: BoxDecoration(
-                    image: DecorationImage(
-                        image: AssetImage(image),
-                        fit: BoxFit.cover),
-                    shape: BoxShape.circle,
-                  ),
-                ),
-                const SizedBox(width: 40),
-                Text("Continue with $text"),
-              ],
+    return GestureDetector(
+      onTap: onTap,
+      child: Container(
+        height: height * 0.06,
+        decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 209, 206, 206),
+            borderRadius: BorderRadius.circular(6)),
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
+          children: [
+            const SizedBox(width: 20),
+            Container(
+              height: 30.0,
+              width: 30.0,
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                    image: AssetImage(image),
+                    fit: BoxFit.cover),
+                shape: BoxShape.circle,
+              ),
             ),
-          ),
+            const SizedBox(width: 50),
+            Text("Continue with $text"),
+          ],
         ),
       ),
     );

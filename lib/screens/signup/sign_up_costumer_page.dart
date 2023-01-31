@@ -85,7 +85,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   fontWeight: FontWeight.w400,
                 ),
                 labelText: "Name",
-                hintText: "Blemano Emmanuel Tetteh",
                 hintStyle: TextStyle(fontSize: 18), //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
@@ -117,9 +116,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   color: Palette.primary,
                   fontWeight: FontWeight.w400,
                 ),
-                labelText: "Email",
-                hintText: "e.g.. name@email.com",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Email", //hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -203,9 +200,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
-                labelText: "Password",
-                hintText: "Password",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Password",//hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -261,9 +256,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   icon: Icon(
                       _obscureText ? Icons.visibility : Icons.visibility_off),
                 ),
-                labelText: "Password",
-                hintText: "Confirm Password",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
+                labelText: "Password",//hint text style
                 labelStyle: TextStyle(
                     fontSize: 16,
                     color: Colors.black,
@@ -293,10 +286,9 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
 
             SizedBox(height: height * 0.01),
             //isChecked ?
-            ConfirmButton(
-              bbcolor: Palette.primary,
-              bonPressed: () {},
-              btext: 'Confirm',
+            Button(
+              onTap: () {},
+              text: 'Confirm',
             ),
             SizedBox(height: height * 0.03),
             OrLine(),
