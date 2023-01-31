@@ -45,7 +45,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
           children: [
             // SizedBox(height: height * 0.04),
             const Text(
-              "Do you want to sell",
+              "Create an account",
               style: TextStyle(
                   fontSize: 17,
                   color: Colors.black,

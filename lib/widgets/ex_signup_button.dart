@@ -11,7 +11,7 @@ class ExSignUpButton extends StatelessWidget {
   Widget build(BuildContext context) {
 
     return SizedBox(
-      width: 310,
+      //width: 310,
       height: 45,
       child: InkWell(
         onTap: onTap,
