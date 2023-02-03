@@ -18,14 +18,7 @@ class App extends StatelessWidget {
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      // theme: ThemeData(
-      //   fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
-      //   primaryColor: const Color.fromARGB(242, 237, 112, 23),
-      //   primarySwatch: Colors.orange,
-      // ),
-      // home: const OnBoardingScreen(),
       home: OnboardingScreen(),
-
     );
   }
 }

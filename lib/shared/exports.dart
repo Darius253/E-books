@@ -10,6 +10,7 @@ export 'package:flutter_password_strength/flutter_password_strength.dart';
 // controllers
 
 // models
+export 'package:reader_app/on_boarding/data.dart';
 
 // screens
 export 'package:reader_app/app.dart';

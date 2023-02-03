@@ -1,4 +1,8 @@
+// ignore_for_file: prefer_const_constructors
+
 import 'package:flutter/material.dart';
+import 'package:reader_app/shared/exports.dart';
+import 'package:reader_app/widgets/onboard_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
@@ -6,106 +10,105 @@ class OnboardingScreen extends StatefulWidget {
 }
 
 class _OnboardingScreenState extends State<OnboardingScreen> {
-  int _currentPage = 0;
-  final List<Map<String, String>> _pages = [
-    {
-      'image': 'assets/images/onboarding_1.png',
-      'text': 'Welcome to our app!',
-    },
-    {
-      'image': 'assets/images/onboarding_2.png',
-      'text': 'Easily manage your payments and transactions',
-    },
-    {
-      'image': 'assets/images/onboarding_3.png',
-      'text': 'Enjoy a seamless experience',
-    },
-  ];
+  int currentIndex = 0;
+  late PageController _controller;
+
+  @override
+  void initState() {
+    _controller = PageController(initialPage: 0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controller.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
+    Size size = MediaQuery.of(context).size;
     return Scaffold(
-      body: Container(
-        color: Colors.white,
-        child:
-            Column(crossAxisAlignment: CrossAxisAlignment.stretch, children: [
-          Container(
-            height: 60.0,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+        body: Container(
+      height: size.height,
+      width: size.width,
+      color: Palette.primary,
+      child: PageView.builder(
+          controller: _controller,
+          physics: const BouncingScrollPhysics(),
+          itemCount: 4,
+          onPageChanged: (int index) {
+            setState(() {
+              currentIndex = index;
+            });
+          },
+          itemBuilder: (ctx, index) {
+            return Column(
               children: [
-                TextButton(
-                  onPressed: () => Navigator.of(context).pop(),
-                  child: const Text(
-                    'Skip',
-                    style: TextStyle(
-                      fontSize: 18.0,
-                      color: Colors.black,
-                      fontWeight: FontWeight.bold,
+                Container(
+                  decoration: BoxDecoration(
+                    color: Palette.white,
+                    borderRadius: BorderRadius.only(
+                      bottomLeft: Radius.circular(32),
+                      bottomRight: Radius.circular(32),
+                    ),
+                  ),
+                  child: Padding(
+                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    child: SvgPicture.asset(
+                      ondata[index].svgimg,
+                      height: 400,
                     ),
                   ),
                 ),
-              ],
-            ),
-          ),
-          Expanded(
-            child: PageView.builder(
-              onPageChanged: (int index) {
-                setState(() {
-                  _currentPage = index;
-                });
-              },
-              itemCount: _pages.length,
-              itemBuilder: (BuildContext context, int index) {
-                return Padding(
-                  padding: const EdgeInsets.all(30.0),
-                  child: Column(
-                    children: [
-                      Image.asset(
-                        _pages[index]['image']!,
-                        height: 200.0,
-                      ),
-                      const SizedBox(height: 20.0),
-                      Text(
-                        _pages[index]['text']!,
-                        textAlign: TextAlign.center,
-                        style: const TextStyle(
-                          fontSize: 18.0,
-                          color: Colors.black,
-                          fontWeight: FontWeight.bold,
+                Container(
+                  color: Palette.primary,
+                  child: Padding(
+                    padding: const EdgeInsets.symmetric(
+                        vertical: 30, horizontal: 30),
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      children: [
+                        Text(
+                          ondata[index].title,
+                          style: TextStyle(
+                              fontWeight: FontWeight.w500,
+                              color: Palette.white,
+                              fontSize: 26),
                         ),
-                      ),
-                    ],
+                        const SizedBox(
+                          height: 10,
+                        ),
+                        SizedBox(
+                          width: 200,
+                          child: Center(
+                            child: Text(ondata[index].desc,
+                                //softWrap: true,
+                                style: TextStyle(
+                                    color: Palette.white,
+                                    fontSize: 14)),
+                          ),
+                        ),
+                        SizedBox(height: 15,),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                                         OnBoardButton(
+                                        obonpressed: () {},
+                                        obtext: 'Skip', textcolor: Palette.white,
+                                      ),
+                                      SizedBox(width: 10,),
+                                 OnBoardButton(obonpressed: () {  }, obtext: 'Next', textcolor: Palette.black,)
+                          ],
+                          
+                        )
+                      ],
+                    ),
                   ),
-                );
-              },
-            ),
-          ),
-          Container(
-            height: 60.0,
-            child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                children: [
-                  _currentPage == 0
-                      ? Container()
-                      : TextButton(
-                          onPressed: () {
-                            setState(() {
-                              _currentPage--;
-                            });
-                          },
-                          child: const Text(
-                            'Back',
-                            style: TextStyle(
-                              fontSize: 18.0,
-                              color: Colors.black,
-                              fontWeight: FontWeight.bold,
-                            ),
-                          ))
-                ]),
-          ),
-        ]),
-      ),
-    );
+                )
+              ],
+            );
+          }),
+    ));
   }
 }

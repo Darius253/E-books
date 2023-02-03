@@ -26,18 +26,12 @@ class Font {
 
 class Images {
   static const String imagesPath = 'assets/images/';
-  static const String search = '${imagesPath}search.svg';
-  static const String searchO = '${imagesPath}search_o.svg';
-  static const String profile = '${imagesPath}profile.svg';
-  static const String profileO = '${imagesPath}profile_o.svg';
-  static const String library = '${imagesPath}library.svg';
-  static const String libraryO = '${imagesPath}library_o.svg';
-  static const String store = '${imagesPath}store.svg';
-  static const String storeO = '${imagesPath}store_o.svg';
-  static const String cart = '${imagesPath}cart.svg';
-  static const String cartO = '${imagesPath}cart_o.svg';
   static const String google= '${imagesPath}google.png';
   static const String facebook = '${imagesPath}facebook.png';
+  static const String welcome = '${imagesPath}welcome.svg';
+  static const String thing = '${imagesPath}thing.svg';
+  static const String interface = '${imagesPath}interface.svg';
+  static const String profit = '${imagesPath}profit.svg';
 }
 
 const lorem =
