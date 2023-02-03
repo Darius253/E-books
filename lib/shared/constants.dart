@@ -32,6 +32,8 @@ class Images {
   static const String thing = '${imagesPath}thing.svg';
   static const String interface = '${imagesPath}interface.svg';
   static const String profit = '${imagesPath}profit.svg';
+  static const String splashlogo = '${imagesPath}splash_logo.png';
+  static const String splashbg = '${imagesPath}splash_bg.png';
 }
 
 const lorem =

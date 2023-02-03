@@ -7,6 +7,8 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
+export 'package:animated_splash_screen/animated_splash_screen.dart';
+
 // controllers
 
 // models
@@ -16,6 +18,8 @@ export 'package:reader_app/on_boarding/data.dart';
 export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 export 'package:reader_app/onboarding/sign_in.dart';
+
+export 'package:reader_app/screens/splash_screen.dart';
 // export 'package:reader_app/onboarding/sign_up.dart';
 // export 'package:reader_app/screens/store/store.dart';
 // export 'package:reader_app/onboarding/onboarding.dart';
@@ -34,6 +38,8 @@ export 'package:reader_app/onboarding/reset_password.dart';
 export 'package:reader_app/screens/signup/select_sign_up.dart';
 export  'package:reader_app/screens/signup/sign_up_page.dart';
 export 'package:reader_app/screens/signup/sign_up_costumer_page.dart';
+
+export 'package:reader_app/on_boarding/onborading.dart';
 
 
 //Widgets

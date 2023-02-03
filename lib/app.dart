@@ -11,14 +11,14 @@ class App extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    return  GetCupertinoApp(
+    return  const GetCupertinoApp(
       title: 'AwStore',
       debugShowCheckedModeBanner: false,
       localizationsDelegates: <LocalizationsDelegate>[
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      home: OnboardingScreen(),
+      home: SplashScreen(),
     );
   }
 }
