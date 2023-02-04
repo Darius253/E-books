@@ -7,7 +7,7 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
-export 'package:animated_splash_screen/animated_splash_screen.dart';
+export 'package:flutter_native_splash/flutter_native_splash.dart';
 
 // controllers
 

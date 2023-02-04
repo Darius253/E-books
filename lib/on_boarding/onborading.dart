@@ -2,6 +2,7 @@
 
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
+import 'package:reader_app/widgets/getstarted_button.dart';
 import 'package:reader_app/widgets/onboard_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
@@ -12,6 +13,8 @@ class OnboardingScreen extends StatefulWidget {
 class _OnboardingScreenState extends State<OnboardingScreen> {
   int currentIndex = 0;
   late PageController _controller;
+
+  bool onLastPage = false;
 
   @override
   void initState() {
@@ -40,6 +43,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           onPageChanged: (int index) {
             setState(() {
               currentIndex = index;
+              onLastPage = (index == 3);
             });
           },
           itemBuilder: (ctx, index) {
@@ -85,23 +89,44 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                             child: Text(ondata[index].desc,
                                 //softWrap: true,
                                 style: TextStyle(
-                                    color: Palette.white,
-                                    fontSize: 14)),
+                                    color: Palette.white, fontSize: 14)),
                           ),
                         ),
-                        SizedBox(height: 15,),
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                                         OnBoardButton(
-                                        obonpressed: () {},
-                                        obtext: 'Skip', textcolor: Palette.white,
-                                      ),
-                                      SizedBox(width: 10,),
-                                 OnBoardButton(obonpressed: () {  }, obtext: 'Next', textcolor: Palette.black,)
-                          ],
-                          
-                        )
+                        SizedBox(
+                          height: 25,
+                        ),
+                        onLastPage
+                            ? GetStartedButton(
+                                onPressed: () {
+                                  Get.to(() => SelectSignUp());
+                                },
+                              )
+                            : Row(
+                                mainAxisAlignment: MainAxisAlignment.center,
+                                children: [
+                                  OnBoardButton(
+                                    textColor: Palette.white,
+                                    backgroundColor: Colors.transparent,
+                                    onPressed: () {
+                                      _controller.jumpToPage(3);
+                                    },
+                                    text: 'Skip',
+                                  ),
+                                  SizedBox(
+                                    width: 8,
+                                  ),
+                                  OnBoardButton(
+                                    textColor: Palette.black,
+                                    backgroundColor: Palette.white,
+                                    onPressed: () {
+                                      _controller.nextPage(
+                                          duration: Duration(milliseconds: 400),
+                                          curve: Curves.easeIn);
+                                    },
+                                    text: 'Next',
+                                  ),
+                                ],
+                              )
                       ],
                     ),
                   ),
