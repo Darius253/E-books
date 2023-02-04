@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:reader_app/on_boarding/onborading.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class App extends StatelessWidget {
@@ -11,14 +10,14 @@ class App extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    return  const GetCupertinoApp(
+    return GetCupertinoApp(
       title: 'AwStore',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: <LocalizationsDelegate>[
+      localizationsDelegates: const <LocalizationsDelegate>[
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      home: SplashScreen(),
+      home: OnboardingScreen(),
     );
   }
 }

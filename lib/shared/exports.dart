@@ -19,7 +19,7 @@ export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 export 'package:reader_app/onboarding/sign_in.dart';
 
-export 'package:reader_app/screens/splash_screen.dart';
+export 'package:reader_app/on_boarding/onborading.dart';
 // export 'package:reader_app/onboarding/sign_up.dart';
 // export 'package:reader_app/screens/store/store.dart';
 // export 'package:reader_app/onboarding/onboarding.dart';
