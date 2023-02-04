@@ -58,10 +58,10 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     ),
                   ),
                   child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 20),
+                    padding: EdgeInsets.symmetric(horizontal: 30),
                     child: SvgPicture.asset(
                       ondata[index].svgimg,
-                      height: 400,
+                      height: 350,
                     ),
                   ),
                 ),
@@ -71,27 +71,23 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     padding: const EdgeInsets.symmetric(
                         vertical: 30, horizontal: 30),
                     child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.stretch,
+                      crossAxisAlignment: CrossAxisAlignment.center,
                       children: [
                         Text(
                           ondata[index].title,
                           style: TextStyle(
                               fontWeight: FontWeight.w500,
                               color: Palette.white,
-                              fontSize: 26),
+                              fontSize: 23),
                         ),
                         const SizedBox(
                           height: 10,
                         ),
-                        SizedBox(
-                          width: 200,
-                          child: Center(
-                            child: Text(ondata[index].desc,
-                                //softWrap: true,
-                                style: TextStyle(
-                                    color: Palette.white, fontSize: 14)),
-                          ),
-                        ),
+                        Text(ondata[index].desc,
+                            softWrap: true,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                                color: Palette.white, fontSize: 14)),
                         SizedBox(
                           height: 25,
                         ),
