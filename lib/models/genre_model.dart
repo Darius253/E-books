@@ -8,8 +8,10 @@ class Genre {
     required this.text,
     required this.image,
   });
+}
 
- final List<Genre> genres = [
+
+ List<Genre> genres = [
     Genre(image: Images.horror, text: 'Horro'),
     Genre(image: Images.adventure, text: 'Adventure'),
     Genre(image: Images.history, text: 'History'),
@@ -23,4 +25,3 @@ class Genre {
     Genre(image: Images.crime, text: 'Crime'),
     Genre(image: Images.sports, text: 'Sports'),
   ];
-}

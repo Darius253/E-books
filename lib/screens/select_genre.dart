@@ -40,15 +40,22 @@ class SelectGenre extends StatelessWidget {
               const SizedBox(
                 height: 14,
               ),
-              GridView.builder(
-                  itemCount: genres.length,
-                  gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                      crossAxisCount: 2),
-                  itemBuilder: (BuildContext context, int index) {
-                    return GenreCard(
-                      genre: genres[index],
-                    );
-                  })
+              Expanded(
+                child: GridView.builder(
+                    itemCount: genres.length,
+                    gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+                        crossAxisCount: 2,),
+                    itemBuilder: (BuildContext context, int index) {
+                      Genre genre = genres[index];
+                      return GenreCard(
+                        genre: genres[index],
+                      );
+                    }),
+              ),
+              const SizedBox(
+                height: 14,
+              ),
+              GetStartedButton(onPressed: () {})
             ],
           ),
         ),

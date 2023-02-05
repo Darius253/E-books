@@ -2,31 +2,41 @@ import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class GenreCard extends StatelessWidget {
-  
   final Genre genre;
-  GenreCard({super.key, required this.genre,});
+  GenreCard({
+    super.key,
+    required this.genre,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return Card(
-      color: Palette.genrecolor,
-      child: Padding(
-        padding: EdgeInsets.all(16.0),
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
+      child: Container(
+        height: 200,
+        width: 10,
+        color: Palette.genrecolor,
         child: Row(
-          children: <Widget>[
-            Expanded(
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: <Widget>[
-                  Text(genre.text,
-                      style: const TextStyle(fontWeight: FontWeight.bold)),
-                ],
-              ),
+          children: [
+            const SizedBox(
+              width: 5,
             ),
             Container(
-              height: 100.0,
-              width: 100.0,
+              color: Colors.red,
+              child: Text(
+                genre.text,
+                style: const TextStyle(fontWeight: FontWeight.bold),
+              ),
+            ),
+            const SizedBox(width: 8,),
+            Container(
+              height: 40,
+              width: 70,
               decoration: BoxDecoration(
+                color: Colors.amber,
                 image: DecorationImage(
                   image: AssetImage(genre.image),
                   fit: BoxFit.cover,
