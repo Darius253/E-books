@@ -15,7 +15,8 @@ class Palette {
   static const Color grey = Color(0xFFA5A5A5);
   static const Color white = Color(0xFFFEFAF6);
   static const Color black = Color(0xFF200E32);
-  static Color black40 = const Color(0xFF200E32).withOpacity(.4);
+  static const Color genrecolor = Color(0xFF8C3E04);
+static Color black40 = const Color(0xFF200E32).withOpacity(.4);
   static Color black80 = const Color(0xFF200E32).withOpacity(.8);
 }
 
@@ -34,6 +35,18 @@ class Images {
   static const String profit = '${imagesPath}profit.svg';
   static const String splashlogo = '${imagesPath}splash_logo.png';
   static const String splashbg = '${imagesPath}splash_bg.png';
+  static const String horror = '${imagesPath}horror.png';
+  static const String adventure = '${imagesPath}adventure.png';
+  static const String history = '${imagesPath}history.png';
+  static const String mystery = '${imagesPath}mystery.png';
+  static const String science = '${imagesPath}science.png';
+  static const String romance = '${imagesPath}romance.png';
+  static const String comedy = '${imagesPath}comedy.png';
+  static const String fiction = '${imagesPath}fiction.png';
+  static const String poetry = '${imagesPath}poetry.png';
+  static const String arts = '${imagesPath}arts.png';
+  static const String crime = '${imagesPath}crime.png';
+  static const String sports = '${imagesPath}sports.png';
 }
 
 const lorem =

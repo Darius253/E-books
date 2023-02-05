@@ -2,8 +2,6 @@
 
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
-import 'package:reader_app/widgets/getstarted_button.dart';
-import 'package:reader_app/widgets/onboard_button.dart';
 
 class OnboardingScreen extends StatefulWidget {
   @override
