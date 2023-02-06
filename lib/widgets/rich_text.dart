@@ -1,9 +1,11 @@
 import 'package:flutter/gestures.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/shared/constants.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class RichTextWidget extends StatelessWidget {
-  const RichTextWidget({super.key,});
+  const RichTextWidget({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
@@ -17,7 +19,7 @@ class RichTextWidget extends StatelessWidget {
             style: const TextStyle(color: Palette.primary),
             recognizer: TapGestureRecognizer()
               ..onTap = () {
-                
+                Get.to(() => const SignIn());
               },
           ),
         ],
