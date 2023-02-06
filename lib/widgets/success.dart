@@ -46,7 +46,7 @@ class Success extends StatelessWidget {
               ),
               Button(
                   text: 'Go back to login',
-                  onTap: () => Get.to(() => const SignIn()))
+                  onTap: () => Get.off(() => const SignIn()))
             ],
           ),
         ),
