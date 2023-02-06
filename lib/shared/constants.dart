@@ -26,6 +26,7 @@ class Font {
 
 class Images {
   static const String imagesPath = 'assets/images/';
+  
   static const String search = '${imagesPath}search.svg';
   static const String searchO = '${imagesPath}search_o.svg';
   static const String profile = '${imagesPath}profile.svg';
