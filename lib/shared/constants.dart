@@ -47,6 +47,14 @@ class Images {
   static const String arts = '${imagesPath}arts.png';
   static const String crime = '${imagesPath}crime.png';
   static const String sports = '${imagesPath}sports.png';
+  static const String tbook1 = '${imagesPath}tbook1.png';
+  static const String tbook2 = '${imagesPath}tbook2.png';
+  static const String book1 = '${imagesPath}book1.png';
+  static const String book6 = '${imagesPath}book6.png';
+  static const String book2 = '${imagesPath}book2.png';
+  static const String book3 = '${imagesPath}book3.png';
+  static const String book4 = '${imagesPath}book4.png';
+  static const String book5 = '${imagesPath}tbook5.png';
 }
 
 const lorem =
