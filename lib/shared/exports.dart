@@ -21,7 +21,9 @@ export 'package:reader_app/onboarding/forgot_password.dart';
 export 'package:reader_app/onboarding/widgets/button.dart';
 export 'package:reader_app/onboarding/verify_email.dart';
 export 'package:reader_app/widgets/creater_button.dart';
-export 'package:reader_app/screens/signup/select_sign_up.dart';
-export  'package:reader_app/screens/signup/sign_up_page.dart';
+export  'package:reader_app/screens/new_user/signup/sign_up_page.dart';
 export 'package:reader_app/screens/signup/sign_up_costumer_page.dart';
+export 'package:reader_app/screens/signup/sign_up_creator_page.dart';
+export 'package:reader_app/widgets/text_buttons.dart';
+
 
