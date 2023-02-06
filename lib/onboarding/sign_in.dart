@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/new_user/genre.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SignIn extends StatefulWidget {
@@ -164,6 +165,7 @@ class _SignInState extends State<SignIn> {
                   if (_formKey.currentState!.validate()) {
                     print(email);
                     print(password);
+                    Get.offAll(() => const SlectGenre());
                   }
                 }),
             SizedBox(
@@ -173,7 +175,7 @@ class _SignInState extends State<SignIn> {
               mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.3,
                   height: 2,
                   color: const Color.fromARGB(255, 131, 130, 130),
                 ),
@@ -184,7 +186,7 @@ class _SignInState extends State<SignIn> {
                   ),
                 ),
                 Container(
-                  width: MediaQuery.of(context).size.width * 0.25,
+                  width: MediaQuery.of(context).size.width * 0.3,
                   height: 2,
                   color: const Color.fromARGB(255, 131, 130, 130),
                 ),
@@ -205,10 +207,7 @@ class _SignInState extends State<SignIn> {
                     )),
                 IconButton(
                     onPressed: () {},
-                    icon: const Icon(
-                      CupertinoIcons.arrow_counterclockwise_circle,
-                      color: Color.fromARGB(255, 11, 132, 238),
-                    )),
+                    icon: SvgPicture.asset('assets/images/icons8-google.svg')),
               ],
             ),
             SizedBox(
