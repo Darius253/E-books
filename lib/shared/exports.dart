@@ -7,16 +7,24 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
+
+export 'package:flutter_native_splash/flutter_native_splash.dart';
+
 export 'package:intl_phone_number_input/intl_phone_number_input.dart';
+
 
 // controllers
 
 // models
+export 'package:reader_app/on_boarding/data.dart';
+export 'package:reader_app/models/genre_model.dart';
 
 // screens
 export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 export 'package:reader_app/onboarding/sign_in.dart';
+
+export 'package:reader_app/on_boarding/onborading.dart';
 // export 'package:reader_app/onboarding/sign_up.dart';
 // export 'package:reader_app/screens/store/store.dart';
 // export 'package:reader_app/onboarding/onboarding.dart';
@@ -40,6 +48,9 @@ export 'package:reader_app/screens/signup/select_sign_up.dart';
 export  'package:reader_app/screens/signup/sign_up_page.dart';
 export 'package:reader_app/screens/signup/sign_up_costumer_page.dart';
 
+export 'package:reader_app/screens/select_genre.dart';
+export 'package:reader_app/on_boarding/onborading.dart';
+
 
 //Widgets
 export 'package:reader_app/widgets/creater_button.dart';
@@ -50,3 +61,6 @@ export 'package:reader_app/widgets/back_button.dart';
 export 'package:reader_app/onboarding/widgets/button.dart';
 export 'package:reader_app/widgets/ex_signup_button.dart';
 export 'package:reader_app/widgets/rich_text.dart';
+export 'package:reader_app/widgets/getstarted_button.dart';
+export 'package:reader_app/widgets/onboard_button.dart';
+export 'package:reader_app/widgets/genre_card.dart';

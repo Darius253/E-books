@@ -10,21 +10,14 @@ class App extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    return const GetCupertinoApp(
+    return GetCupertinoApp(
       title: 'AwStore',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: <LocalizationsDelegate>[
+      localizationsDelegates: const <LocalizationsDelegate>[
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      // theme: ThemeData(
-      //   fontFamily: Platform.isIOS ? Font.sanfrancisco : Font.proxinova,
-      //   primaryColor: const Color.fromARGB(242, 237, 112, 23),
-      //   primarySwatch: Colors.orange,
-      // ),
-      // home: const OnBoardingScreen(),
-      home: SelectSignUp(),
-
+      home:OnboardingScreen(),
     );
   }
 }
