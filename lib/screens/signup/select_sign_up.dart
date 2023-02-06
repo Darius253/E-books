@@ -33,22 +33,23 @@ class SelectSignUp extends StatelessWidget {
                     Get.to(const SignUpPage());
                   },
                   backgroundColor: Palette.primary,
-                  text: "Creator",
-                  textColor: Colors.white,
+                  text: "Customer",
+                  textColor: Colors.white, width: 150,
                 ),
+                
                 const SizedBox(height: 16),
                 CreaterButton(
                   onPressed: () {
                     Get.to(const SignUpPage());
                   },
                   backgroundColor: Colors.white,
-                  text: "Customer",
-                  textColor: Palette.primary,
+                  text: "Seller",
+                  textColor: Palette.primary, width: 100,
                 ),
               ],
             ),
           ),
-          Container(
+          SizedBox(
             height: 90,
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
