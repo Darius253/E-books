@@ -14,19 +14,20 @@ class _SlectGenreState extends State<SlectGenre> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
 
-    List genres = [
-      genreCard(width, height, 'Horro', 'horro.svg'),
-      genreCard(width, height, 'Adventure', 'adventure.svg'),
-      genreCard(width, height, 'Hisstory', 'history.svg'),
-      genreCard(width, height, 'Mystery', 'mystery.svg'),
-      genreCard(width, height, 'Science', 'science.svg'),
-      genreCard(width, height, 'Romance', 'romance.svg'),
-      genreCard(width, height, 'Comedy', 'comedy.svg'),
-      genreCard(width, height, 'Fiction', 'fiction.svg'),
-      genreCard(width, height, 'Poetry', 'poetry.svg'),
-      genreCard(width, height, 'Arts', 'arts.svg'),
-      genreCard(width, height, 'Crime', 'crime.svg'),
-      genreCard(width, height, 'Sports', 'sports.svg'),
+    List genres = <ListTile>[
+      
+      // genreCard(width, height, 'Horro', 'horro.svg'),
+      // genreCard(width, height, 'Adventure', 'adventure.svg'),
+      // genreCard(width, height, 'Hisstory', 'history.svg'),
+      // genreCard(width, height, 'Mystery', 'mystery.svg'),
+      // genreCard(width, height, 'Science', 'science.svg'),
+      // genreCard(width, height, 'Romance', 'romance.svg'),
+      // genreCard(width, height, 'Comedy', 'comedy.svg'),
+      // genreCard(width, height, 'Fiction', 'fiction.svg'),
+      // genreCard(width, height, 'Poetry', 'poetry.svg'),
+      // genreCard(width, height, 'Arts', 'arts.svg'),
+      // genreCard(width, height, 'Crime', 'crime.svg'),
+      // genreCard(width, height, 'Sports', 'sports.svg'),
     ];
     return Scaffold(
       body: SafeArea(
@@ -61,18 +62,17 @@ class _SlectGenreState extends State<SlectGenre> {
                         ],
                       ),
                     ),
-                    genreCard(width, height, 'Horro', 'horro.svg'),
-                    //         GridView.count(
-                    //     crossAxisCount: 3,
-                    //     crossAxisSpacing: 4.0,
-                    //     mainAxisSpacing: 8.0,
-                    //     children: List.generate(genres.length, (index) {
-                    //       return Center(
-                    //         child: genreCard(width, height),
-                    //       );
-                    //     }
-                    //     )
-                    // )
+                    genreCard(width, height, 'Horro', 'romance.svg'),
+            //               GridView.count(  
+            //     crossAxisCount: 3,  
+            //     crossAxisSpacing: 4.0,  
+            //     mainAxisSpacing: 8.0,  
+            //     children: List.generate(genres.length, (index) {  
+            //       return genreCard(width, height, genre, image);  
+                    
+            //     }  
+            //     )  
+            // ) 
                   ],
                 ),
               ))),
