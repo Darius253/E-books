@@ -7,9 +7,7 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
-
 export 'package:flutter_native_splash/flutter_native_splash.dart';
-
 export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 
 
@@ -18,11 +16,14 @@ export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 // models
 export 'package:reader_app/on_boarding/data.dart';
 export 'package:reader_app/models/genre_model.dart';
+export 'package:reader_app/screens/bookstore/book_data.dart';
 
 // screens
 export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 export 'package:reader_app/onboarding/sign_in.dart';
+
+export 'package:reader_app/screens/bookstore/bookstore.dart';
 
 export 'package:reader_app/on_boarding/onborading.dart';
 // export 'package:reader_app/onboarding/sign_up.dart';
