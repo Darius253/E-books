@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart'; 
-import '../../shared/exports.dart';
+import '../../../../shared/exports.dart';
 
 class SelectSignUp extends StatelessWidget {
   const SelectSignUp({super.key});

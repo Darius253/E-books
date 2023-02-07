@@ -1,8 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/signup/sign_up_seller_page.dart';
-import 'package:reader_app/widgets/text_buttons.dart';
+import 'package:reader_app/screens/new_user/signup/sign_up_seller_page.dart';
+import '../../../../shared/exports.dart';
 
-import '../../shared/exports.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);

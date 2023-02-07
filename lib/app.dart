@@ -18,6 +18,7 @@ class App extends StatelessWidget {
         DefaultWidgetsLocalizations.delegate,
       ],
       home:OnboardingScreen(),
+
     );
   }
 }

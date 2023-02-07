@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/onboarding/reset_password.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class VerifyEmail extends StatefulWidget {
@@ -105,7 +104,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         print(otp);
-                        Get.to(() => const ResetPassword());
+                        Get.off(() => const ResetPassword());
                       }
                     })
               ]),
