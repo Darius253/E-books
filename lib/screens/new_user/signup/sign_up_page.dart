@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/signup/sign_up_creator_page.dart';
-import '../../../shared/exports.dart';
+import 'package:reader_app/screens/new_user/signup/sign_up_seller_page.dart';
+import '../../../../shared/exports.dart';
+
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
@@ -39,7 +40,7 @@ class _SignUpPageState extends State<SignUpPage> {
     if (accountType == 'customer') {
       return const CustomerSignUpPage();
     } else {
-      return const CreatorSignUpPage();
+      return const SellerSignUpPage();
     }
   }
 
@@ -78,7 +79,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 accountType = 'customer';
               });
             },
-            textcolor: accountType == 'creator' ? Colors.grey : Palette.primary,
+            textcolor: accountType == 'creator' ? Colors.grey : Palette.primary  ,
           ),
         ],
       ),
