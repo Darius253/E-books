@@ -17,16 +17,4 @@ List<BookData> books = [
       image: Images.tbook1, name: 'The BookStore Sisters', price: 'GHS 120'),
   BookData(
       image: Images.tbook2, name: 'If You Tell', price: 'GHS 120'),
-  BookData(
-      image: Images.book1, name: 'Remainders of Him', price: 'GHS 120'),
-  BookData(
-      image: Images.book2, name: 'The BookStore Sisters', price: 'GHS 120'),
-  BookData(
-      image: Images.book3, name: 'The BookStore Sisters', price: 'GHS 120'),
-  BookData(
-      image: Images.book4, name: 'The BookStore Sisters', price: 'GHS 120'),
-  BookData(
-      image: Images.book5, name: 'The BookStore Sisters', price: 'GHS 120'),
-  BookData(
-      image: Images.book6, name: 'The BookStore Sisters', price: 'GHS 120'),
 ];

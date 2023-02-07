@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:reader_app/screens/bookstore/work.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class App extends StatelessWidget {
@@ -10,14 +11,14 @@ class App extends StatelessWidget {
     SystemChrome.setPreferredOrientations(
         [DeviceOrientation.portraitUp, DeviceOrientation.portraitDown]);
 
-    return GetCupertinoApp(
+    return const GetCupertinoApp(
       title: 'AwStore',
       debugShowCheckedModeBanner: false,
-      localizationsDelegates: const <LocalizationsDelegate>[
+      localizationsDelegates: <LocalizationsDelegate>[
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      home:HomePage(),
+      home: WorkBookStore(),
     );
   }
 }

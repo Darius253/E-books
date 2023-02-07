@@ -8,14 +8,14 @@ import 'package:reader_app/screens/bookstore/book_cover.dart';
 import 'package:reader_app/screens/bookstore/genre_chips.dart';
 import 'package:reader_app/shared/exports.dart';
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class BookStore extends StatefulWidget {
+  const BookStore({Key? key}) : super(key: key);
 
   @override
-  _HomePageState createState() => _HomePageState();
+  _BookStoreState createState() => _BookStoreState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _BookStoreState extends State<BookStore> {
   @override
   Widget build(BuildContext context) {
     return SafeArea(
@@ -109,12 +109,14 @@ class _HomePageState extends State<HomePage> {
   }
 
   getPopularBooks() {
-    return SingleChildScrollView(
-      padding: EdgeInsets.only(bottom: 5, left: 15),
-      scrollDirection: Axis.horizontal,
-      child: Row(
-        children: List.generate(books.length,
-            (index) => BookCover(bookData: books[index], height: 210, onTap: () {  }, width: 130,)),
+    return Expanded(
+      child: SingleChildScrollView(
+        padding: EdgeInsets.only(bottom: 5, left: 15),
+        scrollDirection: Axis.horizontal,
+        child: Row(
+          children: List.generate(books.length,
+              (index) => BookCover(bookData: books[index], height: 210, onTap: () {  }, width: 130,)),
+        ),
       ),
     );
   }

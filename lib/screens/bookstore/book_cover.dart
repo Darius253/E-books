@@ -18,19 +18,25 @@ class BookCover extends StatelessWidget {
       onTap: onTap,
       child: Container(
         color: Colors.transparent,
-        padding: const EdgeInsets.all(8.0),
         child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Image.asset(
               bookData.image,
               height: height,
               width: width,
             ),
-            Text(bookData.name!),
+            Text(bookData.name!, style: TextStyle(
+              fontSize: 11,
+            ),),
             const SizedBox(
               height: 6,
             ),
-            Text(bookData.price!),
+            Text(bookData.price!,
+              style: TextStyle(
+                fontSize: 13,
+              ), ),
           ],
         ),
       ),

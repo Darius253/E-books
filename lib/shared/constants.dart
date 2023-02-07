@@ -54,7 +54,7 @@ class Images {
   static const String book2 = '${imagesPath}book2.png';
   static const String book3 = '${imagesPath}book3.png';
   static const String book4 = '${imagesPath}book4.png';
-  static const String book5 = '${imagesPath}tbook5.png';
+  static const String book5 = '${imagesPath}book5.png';
 }
 
 const lorem =
