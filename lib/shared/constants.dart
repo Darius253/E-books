@@ -15,7 +15,8 @@ class Palette {
   static const Color grey = Color(0xFFA5A5A5);
   static const Color white = Color(0xFFFEFAF6);
   static const Color black = Color(0xFF200E32);
-  static Color black40 = const Color(0xFF200E32).withOpacity(.4);
+  static const Color genrecolor = Color(0xFF8C3E04);
+static Color black40 = const Color(0xFF200E32).withOpacity(.4);
   static Color black80 = const Color(0xFF200E32).withOpacity(.8);
 }
 
@@ -26,19 +27,26 @@ class Font {
 
 class Images {
   static const String imagesPath = 'assets/images/';
-  
-  static const String search = '${imagesPath}search.svg';
-  static const String searchO = '${imagesPath}search_o.svg';
-  static const String profile = '${imagesPath}profile.svg';
-  static const String profileO = '${imagesPath}profile_o.svg';
-  static const String library = '${imagesPath}library.svg';
-  static const String libraryO = '${imagesPath}library_o.svg';
-  static const String store = '${imagesPath}store.svg';
-  static const String storeO = '${imagesPath}store_o.svg';
-  static const String cart = '${imagesPath}cart.svg';
-  static const String cartO = '${imagesPath}cart_o.svg';
   static const String google= '${imagesPath}google.png';
   static const String facebook = '${imagesPath}facebook.png';
+  static const String welcome = '${imagesPath}welcome.svg';
+  static const String thing = '${imagesPath}thing.svg';
+  static const String interface = '${imagesPath}interface.svg';
+  static const String profit = '${imagesPath}profit.svg';
+  static const String splashlogo = '${imagesPath}splash_logo.png';
+  static const String splashbg = '${imagesPath}splash_bg.png';
+  static const String horror = '${imagesPath}horror.png';
+  static const String adventure = '${imagesPath}adventure.png';
+  static const String history = '${imagesPath}history.png';
+  static const String mystery = '${imagesPath}mystery.png';
+  static const String science = '${imagesPath}science.png';
+  static const String romance = '${imagesPath}romance.png';
+  static const String comedy = '${imagesPath}comedy.png';
+  static const String fiction = '${imagesPath}fiction.png';
+  static const String poetry = '${imagesPath}poetry.png';
+  static const String arts = '${imagesPath}arts.png';
+  static const String crime = '${imagesPath}crime.png';
+  static const String sports = '${imagesPath}sports.png';
 }
 
 const lorem =

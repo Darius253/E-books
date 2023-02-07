@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
-
 Widget genreCard(double width, height, String genre, image) {
   return Container(
     width: width * 0.4,
@@ -20,4 +19,5 @@ Widget genreCard(double width, height, String genre, image) {
       ],
     ),
   );
+
 }
