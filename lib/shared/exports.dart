@@ -9,11 +9,6 @@ export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
 
 
-export 'package:flutter_native_splash/flutter_native_splash.dart';
-
-export 'package:intl_phone_number_input/intl_phone_number_input.dart';
-
-
 
 // controllers
 
@@ -50,9 +45,6 @@ export 'package:reader_app/screens/new_user/signup/select_sign_up.dart';
 export 'package:reader_app/screens/new_user/signup/sign_up_costumer_page.dart';
 export 'package:reader_app/widgets/text_buttons.dart';
 
-
-export 'package:reader_app/screens/select_genre.dart';
-export 'package:reader_app/on_boarding/onborading.dart';
 
 
 //Widgets
