@@ -3,7 +3,7 @@ import 'package:reader_app/shared/exports.dart';
 
 class GenreCard extends StatelessWidget {
   final Genre genre;
-  GenreCard({
+  const GenreCard({
     super.key,
     required this.genre,
   });
@@ -53,7 +53,7 @@ class GenreCard extends StatelessWidget {
   }
 }
 
-Column grid() {
+Column grid(double width, height) {
   return Column(children: [
     Row(
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -61,88 +61,88 @@ Column grid() {
         GenreCard(
           genre: genres[0],
         ),
-        const SizedBox(
-          width: 17,
+        SizedBox(
+          width: width * 0.05,
         ),
         GenreCard(
           genre: genres[1],
         ),
       ],
     ),
-    const SizedBox(
-      width: 25,
+    SizedBox(
+      height: height * 0.03,
     ),
     Row(
       children: [
         GenreCard(
           genre: genres[2],
         ),
-        const SizedBox(
-          width: 17,
+        SizedBox(
+          width: width * 0.05,
         ),
         GenreCard(
           genre: genres[3],
         ),
       ],
     ),
-    const SizedBox(
-      width: 25,
+    SizedBox(
+      height: height * 0.03,
     ),
     Row(
       children: [
         GenreCard(
           genre: genres[4],
         ),
-        const SizedBox(
-          width: 17,
+        SizedBox(
+          width: width * 0.05,
         ),
         GenreCard(
           genre: genres[5],
         ),
       ],
     ),
-    const SizedBox(
-      width: 25,
+    SizedBox(
+      height: height * 0.03,
     ),
     Row(
       children: [
         GenreCard(
           genre: genres[6],
         ),
-        const SizedBox(
-          width: 17,
+        SizedBox(
+          width: width * 0.05,
         ),
         GenreCard(
           genre: genres[7],
         ),
       ],
     ),
-    const SizedBox(
-      width: 25,
+    SizedBox(
+      height: height * 0.03,
     ),
     Row(
       children: [
         GenreCard(
           genre: genres[8],
         ),
-        const SizedBox(
-          width: 17,
+        SizedBox(
+          width: width * 0.05,
         ),
         GenreCard(
           genre: genres[9],
         ),
       ],
     ),
-    const SizedBox(
-      width: 25,
+    SizedBox(
+      height: height * 0.03,
     ),
     Row(
       children: [
         GenreCard(
           genre: genres[10],
         ),
-        const SizedBox(
-          width: 17,
+        SizedBox(
+          width: width * 0.05,
         ),
         GenreCard(
           genre: genres[11],
