@@ -1,16 +1,8 @@
-// import 'package:book_shop/data/json.dart';
-// import 'package:book_shop/theme/colors.dart';
-// import 'package:book_shop/widgets/avatar_image.dart';
-// import 'package:book_shop/widgets/book_card.dart';
-// import 'package:book_shop/widgets/book_cover.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/bookstore/book_cover.dart';
-import 'package:reader_app/screens/bookstore/genre_chips.dart';
 import 'package:reader_app/shared/exports.dart';
 
-class BookStore extends StatefulWidget {
-  const BookStore({Key? key}) : super(key: key);
 
+class BookStore extends StatefulWidget {
   @override
   _BookStoreState createState() => _BookStoreState();
 }
@@ -18,118 +10,262 @@ class BookStore extends StatefulWidget {
 class _BookStoreState extends State<BookStore> {
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        backgroundColor: Palette.white,
-        body: getStackBody(),
-      ),
-    );
-  }
-
-//Create title and chips
-  getTopBlock() {
-    return Container(
-      width: double.infinity,
-      height: MediaQuery.of(context).size.height * 0.12,
-      color: Colors.transparent,
-      child: Padding(
-        padding:  const EdgeInsets.symmetric(horizontal: 10),
+    return Scaffold(
+      body: SingleChildScrollView(
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
-          children: const[
-            Text(
-              "BookStore",
-              style: TextStyle(
-                  color: Palette.black,
-                  fontSize: 19,
-                  fontWeight: FontWeight.w600),
+          children: [
+            SizedBox(
+              height: 115,
+              child: Stack(
+                children: [
+                  Padding(
+                    padding: const EdgeInsets.only(top: 20.0),
+                    child: Column(
+                      children: [
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: const [
+                            Text(
+                              'BookStore',
+                              style:
+                                  TextStyle(color: Colors.black, fontSize: 22),
+                            ),
+                            SizedBox(
+                              height: 8,
+                            ),
+                            GenreChips(),
+                          ],
+                        ),
+                      ],
+                    ),
+                  )
+                ],
+              ),
             ),
-             SizedBox(
+
+            //Trending books
+            const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Text(
+                'Trending Books',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(
               height: 8,
             ),
-            Expanded(child: GenreChips()),
-             SizedBox(
-              height: 5,
+            CarouselSlider.builder(
+              options: CarouselOptions(
+                  height: 250,
+                  viewportFraction: .40,
+                  enableInfiniteScroll: true),
+              itemCount: book.length,
+              itemBuilder:
+                  (BuildContext context, int index, int pageViewIndex) {
+                Book books = book[index];
+                return SizedBox(
+                  width: 155,
+                  child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Container(
+                        height: 200,
+                        width: 150,
+                        child: Image.asset(
+                          books.imageUrl,
+                          fit: BoxFit.fitWidth,
+                        ),
+                      ),
+                      const SizedBox(
+                        height: 4,
+                      ),
+                      Text(books.title),
+                      const SizedBox(
+                        height: 2,
+                      ),
+                      Text(books.price)
+                    ],
+                  ),
+                );
+              },
+            ),
+
+            // Popular Books
+            const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Text(
+                'Popular Books',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            SizedBox(
+              height: 130,
+              child: ListView.builder(
+                  padding: const EdgeInsets.only(left: 12),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: 6,
+                  itemBuilder: (BuildContext context, int index) {
+                    Book books = book[index];
+                    return SizedBox(
+                      width: 150,
+                      height: 210,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 130,
+                            width: 100,
+                            child: Image.asset(
+                              books.imageUrl,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+            const SizedBox(
+              height: 10,
+            ),
+
+            // Most Read this week
+            const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Text(
+                'Most Read this week',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            SizedBox(
+              height: 130,
+              child: ListView.builder(
+                  padding: const EdgeInsets.only(left: 12),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: book.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Book books = book[index];
+                    return Container(
+                      width: 150,
+                      height: 210,
+                      //  color: Colors.blue,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Container(
+                            height: 130,
+                            width: 100,
+                            child: Image.asset(
+                              books.imageUrl,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+
+const SizedBox(
+              height: 8,
+            ),
+
+            // Bestsellers Books
+            const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Text(
+                'Bestsellers Books',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            SizedBox(
+              height: 130,
+              child: ListView.builder(
+                  padding: const EdgeInsets.only(left: 12),
+                  shrinkWrap: true,
+                  scrollDirection: Axis.horizontal,
+                  itemCount: book.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Book books = book[index];
+                    return SizedBox(
+                      width: 150,
+                      height: 210,
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 130,
+                            width: 100,
+                            child: Image.asset(
+                              books.imageUrl,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
+            ),
+
+const SizedBox(
+              height: 8,
+            ),
+            // Newly Added Books
+            const Padding(
+              padding: EdgeInsets.only(left: 12.0),
+              child: Text(
+                'Newly Added Books',
+                style: TextStyle(fontSize: 16, fontWeight: FontWeight.w500),
+              ),
+            ),
+            const SizedBox(
+              height: 8,
+            ),
+            SizedBox(
+              height: 130,
+              child: ListView.builder(
+                  padding: const EdgeInsets.only(left: 12),
+                  scrollDirection: Axis.horizontal,
+                  itemCount: book.length,
+                  itemBuilder: (BuildContext context, int index) {
+                    Book books = book[index];
+                    return SizedBox(
+                      width: 150,
+                      height: 210,
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            height: 130,
+                            width: 100,
+                            child: Image.asset(
+                              books.imageUrl,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
+                    );
+                  }),
             ),
           ],
         ),
       ),
     );
   }
-
-  getStackBody() {
-    return SingleChildScrollView(
-      child: Column(
-        children: [
-          Container(
-            child: Stack(
-              clipBehavior: Clip.none,
-              children: [
-                Container(
-                  child: getTopBlock(),
-                ),
-                Positioned(
-                    top: 140,
-                    left: 0,
-                    right: 0,
-                    child: Container(
-                      height: 260,
-                      child: getPopularBooks(),
-                    )),
-              ],
-            ),
-          ),
-          const SizedBox(
-            height: 15,
-          ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Container(
-                  padding: const EdgeInsets.only(left: 15, right: 15, top: 10),
-                  child: const Text(
-                    "Trending Books",
-                    style: TextStyle(fontSize: 18, fontWeight: FontWeight.w600),
-                  )),
-              const SizedBox(
-                height: 15,
-              ),
-              // Container(
-              //   margin: EdgeInsets.only(left: 15),
-              //   child: getLatestBooks(),
-              // ),
-              const SizedBox(
-                height: 25,
-              ),
-            ],
-          ),
-        ],
-      ),
-    );
-  }
-
-  getPopularBooks() {
-    return Expanded(
-      child: SingleChildScrollView(
-        padding: EdgeInsets.only(bottom: 5, left: 15),
-        scrollDirection: Axis.horizontal,
-        child: Row(
-          children: List.generate(books.length,
-              (index) => BookCover(bookData: books[index], height: 210, onTap: () {  }, width: 130,)),
-        ),
-      ),
-    );
-  }
-
-  // getLatestBooks() {
-  //   return SingleChildScrollView(
-  //     padding: EdgeInsets.only(bottom: 5),
-  //     scrollDirection: Axis.horizontal,
-  //     child: Row(
-  //       children: List.generate(
-  //           latestBooks.length, (index) => BookCover(book: latestBooks[index]),
-  //           ),
-  //     ),
-  //   );
-  // }
 }
