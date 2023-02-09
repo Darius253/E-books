@@ -69,7 +69,7 @@ class _BookStoreState extends State<BookStore> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      Container(
+                      SizedBox(
                         height: 200,
                         width: 150,
                         child: Image.asset(
@@ -118,7 +118,7 @@ class _BookStoreState extends State<BookStore> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             height: 130,
                             width: 100,
                             child: Image.asset(
@@ -155,15 +155,14 @@ class _BookStoreState extends State<BookStore> {
                   itemCount: book.length,
                   itemBuilder: (BuildContext context, int index) {
                     Book books = book[index];
-                    return Container(
+                    return SizedBox(
                       width: 150,
                       height: 210,
-                      //  color: Colors.blue,
                       child: Column(
                         mainAxisAlignment: MainAxisAlignment.start,
                         crossAxisAlignment: CrossAxisAlignment.start,
                         children: [
-                          Container(
+                          SizedBox(
                             height: 130,
                             width: 100,
                             child: Image.asset(

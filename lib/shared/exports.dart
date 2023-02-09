@@ -54,6 +54,19 @@ export 'package:reader_app/screens/select_genre.dart';
 export 'package:reader_app/on_boarding/onborading.dart';
 
 
+export 'package:reader_app/screens/bookstore/pages/acts_page.dart';
+export 'package:reader_app/screens/bookstore/pages/adventure_page.dart';
+export 'package:reader_app/screens/bookstore/pages/comedy_page.dart';
+export 'package:reader_app/screens/bookstore/pages/crime_page.dart';
+export 'package:reader_app/screens/bookstore/pages/fiction_page.dart';
+export 'package:reader_app/screens/bookstore/pages/mystery_page.dart';
+export 'package:reader_app/screens/bookstore/pages/non_fiction_page.dart';
+export 'package:reader_app/screens/bookstore/pages/poetry_page.dart';
+export 'package:reader_app/screens/bookstore/pages/romance_page.dart';
+export 'package:reader_app/screens/bookstore/pages/science_page.dart';
+export 'package:reader_app/screens/bookstore/pages/sports_page.dart';
+
+
 //Widgets
 export 'package:reader_app/widgets/creater_button.dart';
 export 'package:reader_app/widgets/termsAndCondition.dart';
