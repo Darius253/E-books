@@ -79,4 +79,3 @@ export 'package:reader_app/widgets/rich_text.dart';
 export 'package:reader_app/widgets/getstarted_button.dart';
 export 'package:reader_app/widgets/onboard_button.dart';
 export 'package:reader_app/widgets/genre_card.dart';
-export 'package:reader_app/screens/bookstore/genre_chips.dart';
