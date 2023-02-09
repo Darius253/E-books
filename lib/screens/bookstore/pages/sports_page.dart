@@ -1,9 +1,15 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class SportsPage extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class SportsPage extends StatefulWidget {
   const SportsPage({super.key});
 
+  @override
+  State<SportsPage> createState() => _SportsPageState();
+}
+
+class _SportsPageState extends State<SportsPage> {
+  String genrePage = 'sports';
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

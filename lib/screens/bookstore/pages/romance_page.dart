@@ -1,9 +1,15 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class RomancePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class RomancePage extends StatefulWidget {
   const RomancePage({super.key});
 
+  @override
+  State<RomancePage> createState() => _RomancePageState();
+}
+
+class _RomancePageState extends State<RomancePage> {
+  String genrePage = 'romance';
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

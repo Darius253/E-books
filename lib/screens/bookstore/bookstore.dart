@@ -8,6 +8,7 @@ class BookStore extends StatefulWidget {
 }
 
 class _BookStoreState extends State<BookStore> {
+  String genrePage = 'all';
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -15,34 +16,34 @@ class _BookStoreState extends State<BookStore> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            SizedBox(
-              height: 115,
-              child: Stack(
-                children: [
-                  Padding(
-                    padding: const EdgeInsets.only(top: 20.0),
-                    child: Column(
-                      children: [
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: const [
-                            Text(
-                              'BookStore',
-                              style:
-                                  TextStyle(color: Colors.black, fontSize: 22),
-                            ),
-                            SizedBox(
-                              height: 8,
-                            ),
-                            GenreChips(),
-                          ],
-                        ),
-                      ],
-                    ),
-                  )
-                ],
-              ),
-            ),
+            // SizedBox(
+            //   height: 115,
+            //   child: Stack(
+            //     children: [
+            //       Padding(
+            //         padding: const EdgeInsets.only(top: 20.0),
+            //         child: Column(
+            //           children: [
+            //             Column(
+            //               crossAxisAlignment: CrossAxisAlignment.start,
+            //               children: const [
+            //                 Text(
+            //                   'BookStore',
+            //                   style:
+            //                       TextStyle(color: Colors.black, fontSize: 22),
+            //                 ),
+            //                 SizedBox(
+            //                   height: 8,
+            //                 ),
+            //                 GenreChips(),
+            //               ],
+            //             ),
+            //           ],
+            //         ),
+            //       )
+            //     ],
+            //   ),
+            // ),
 
             //Trending books
             const Padding(

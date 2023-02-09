@@ -9,9 +9,11 @@ class GenreChips extends StatefulWidget {
 }
 
 class _GenreChipsState extends State<GenreChips> {
+  int selectedIndex = 1;
+  String genrePage = 'all';
+
   @override
   Widget build(BuildContext context) {
-    int? selectedIndex;
     return SizedBox(
       height: 50,
       child: ListView(
@@ -22,6 +24,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 1;
+                genrePage = 'all';
               });
               Get.off(() => BookStore());
             },
@@ -40,6 +43,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 2;
+                 genrePage = 'comedy';
               });
               Get.off(() => const ComedyPage());
             },
@@ -57,6 +61,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 3;
+                 genrePage = 'fiction';
               });
               Get.off(const FictionPage());
             },
@@ -74,6 +79,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 4;
+                 genrePage = 'nonfiction';
               });
               Get.off(const NonFictionPage());
             },
@@ -91,6 +97,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 5;
+                 genrePage = 'mystery';
               });
               Get.off(const MysteryPage());
             },
@@ -108,6 +115,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 6;
+                 genrePage = 'adventure';
               });
               Get.off(const AdventurePage());
             },
@@ -125,6 +133,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 7;
+                 genrePage = 'romance';
               });
               Get.off(const RomancePage());
             },
@@ -142,6 +151,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 8;
+                 genrePage = 'poetry';
               });
               Get.off(const PoetryPage());
             },
@@ -159,6 +169,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 9;
+                 genrePage = 'acts';
               });
               Get.off(const ActsPage());
             },
@@ -176,6 +187,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 10;
+                 genrePage = 'science';
               });
               Get.off(const SciencePage());
             },
@@ -193,6 +205,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 11;
+                 genrePage = 'sports';
               });
               Get.off(const SportsPage());
             },
@@ -210,6 +223,7 @@ class _GenreChipsState extends State<GenreChips> {
             onSelected: (selected) {
               setState(() {
                 selectedIndex = 12;
+                 genrePage = 'crime';
               });
               Get.off(const CrimePage());
             },

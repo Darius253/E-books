@@ -1,9 +1,15 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class NonFictionPage extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class NonFictionPage extends StatefulWidget {
   const NonFictionPage({super.key});
 
+  @override
+  State<NonFictionPage> createState() => _NonFictionPageState();
+}
+
+class _NonFictionPageState extends State<NonFictionPage> {
+  String genrePage = 'nonfiction';
   @override
   Widget build(BuildContext context) {
     return const Placeholder();

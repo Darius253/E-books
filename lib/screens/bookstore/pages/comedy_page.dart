@@ -1,11 +1,19 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class ComedyPage extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class ComedyPage extends StatefulWidget {
   const ComedyPage({super.key});
 
   @override
+  State<ComedyPage> createState() => _ComedyPageState();
+}
+
+class _ComedyPageState extends State<ComedyPage> {
+  String genrePage = 'comedy';
+  @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return Container(
+      color: Colors.amber,
+    );
   }
 }

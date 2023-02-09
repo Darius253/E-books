@@ -1,9 +1,15 @@
-import 'package:flutter/src/widgets/framework.dart';
-import 'package:flutter/src/widgets/placeholder.dart';
 
-class CrimePage extends StatelessWidget {
+import 'package:flutter/material.dart';
+
+class CrimePage extends StatefulWidget {
   const CrimePage({super.key});
 
+  @override
+  State<CrimePage> createState() => _CrimePageState();
+}
+
+class _CrimePageState extends State<CrimePage> {
+  String genrePage = 'crime';
   @override
   Widget build(BuildContext context) {
     return const Placeholder();
