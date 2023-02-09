@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/new_user/genre.dart';
+import 'package:reader_app/screens/authenticate/new_user/genre.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SignIn extends StatefulWidget {
@@ -165,7 +165,7 @@ class _SignInState extends State<SignIn> {
                   if (_formKey.currentState!.validate()) {
                     print(email);
                     print(password);
-                    Get.offAll(() => const SlectGenre());
+                    Get.offAll(() => const SelectGenre());
                   }
                 }),
             SizedBox(

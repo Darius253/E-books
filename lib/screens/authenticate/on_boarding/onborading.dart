@@ -4,6 +4,8 @@ import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class OnboardingScreen extends StatefulWidget {
+  const OnboardingScreen({super.key});
+
   @override
   _OnboardingScreenState createState() => _OnboardingScreenState();
 }

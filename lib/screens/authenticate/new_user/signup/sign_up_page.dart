@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/new_user/signup/sign_up_seller_page.dart';
-import '../../../../shared/exports.dart';
+import 'package:reader_app/screens/authenticate/new_user/signup/sign_up_seller_page.dart';
+import '../../../../../../shared/exports.dart';
 
 
 class SignUpPage extends StatefulWidget {
