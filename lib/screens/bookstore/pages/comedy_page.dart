@@ -24,24 +24,27 @@ class _ComedyPageState extends State<ComedyPage> {
           ),
           ),
           SizedBox(height: 10,),
-          ListView.builder(
-              itemCount: infodata.length,
-              itemBuilder: (context, index) {
-                return Container(
-                  height: 200,
-                  child: Column(
-                            children: [
-                              BookInfo(bookInfoData: infodata[index],),
-                              if (index != infodata.length - 1)
-                                Divider(
-                  height: 1.0,
-                  color: Colors.grey[300],
-                                ),
-                            ],
-                  ),
-                );
-              },
-            ),
+          SizedBox(
+            height: 600,
+            child: ListView.builder(
+                itemCount: infodata.length,
+                itemBuilder: (context, index) {
+                  return SizedBox(
+                    height: 200,
+                    child: Column(
+                              children: [
+                                BookInfo(bookInfoData: infodata[index],),
+                                if (index != infodata.length - 1)
+                                  Divider(
+                    height: 1.0,
+                    color: Colors.grey[300],
+                                  ),
+                              ],
+                    ),
+                  );
+                },
+              ),
+          ),
         ],
       ),
     );
