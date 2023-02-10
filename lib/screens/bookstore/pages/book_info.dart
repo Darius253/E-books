@@ -3,7 +3,7 @@ import 'package:reader_app/shared/exports.dart';
 
 class BookInfo extends StatelessWidget {
   final BookInfoData bookInfoData;
-  BookInfo({super.key, required this.bookInfoData});
+  const BookInfo({super.key, required this.bookInfoData});
 
   @override
   Widget build(BuildContext context) {
@@ -15,26 +15,26 @@ class BookInfo extends StatelessWidget {
           height: 130,
           width: 80,
           ),
-          SizedBox(width: 10,),
+          const SizedBox(width: 10,),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(bookInfoData.title, style: TextStyle(
+              Text(bookInfoData.title, style: const TextStyle(
                 color: Colors.black,
                 fontSize: 15,
                 fontWeight: FontWeight.w500
               ),),
               Text('by ${bookInfoData.author}'),
-              SizedBox(
+              const SizedBox(
                 height: 5,
               ),
               SizedBox(
                 width: 220,
-                child: Text(bookInfoData.desc, style: TextStyle(
+                child: Text(bookInfoData.desc, style: const TextStyle(
                   fontSize: 11,
     
                 ),)),
-              Text(bookInfoData.price, style: TextStyle(
+              Text(bookInfoData.price, style: const TextStyle(
                     color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.w500),

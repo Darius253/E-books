@@ -3,15 +3,15 @@ import 'package:reader_app/shared/exports.dart';
 
 class GenreCard extends StatelessWidget {
   final Genre genre;
-  GenreCard({
+  const GenreCard({
     super.key,
     required this.genre,
   });
 
   @override
   Widget build(BuildContext context) {
-    final double height = MediaQuery.of(context).size.height;
-    final double width = MediaQuery.of(context).size.width;
+    //final double height = MediaQuery.of(context).size.height;
+    //final double width = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
@@ -45,7 +45,7 @@ class GenreCard extends StatelessWidget {
               child: Align(
                 alignment: Alignment.topRight,
                 child: Padding(
-                  padding: EdgeInsets.all(8.0),
+                  padding: const EdgeInsets.all(8.0),
                   child: CircleAvatar(
                     radius: 10.0,
                     backgroundColor: Colors.white,
@@ -61,6 +61,5 @@ class GenreCard extends StatelessWidget {
         ),
       ),
     );
-    ;
   }
 }

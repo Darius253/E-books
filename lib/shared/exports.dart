@@ -8,7 +8,6 @@ export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
 export 'package:flutter_native_splash/flutter_native_splash.dart';
-export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 
 
@@ -18,6 +17,7 @@ export 'package:carousel_slider/carousel_slider.dart';
 export 'package:reader_app/on_boarding/data.dart';
 export 'package:reader_app/models/genre_model.dart';
 export 'package:reader_app/screens/bookstore/bookmodel.dart';
+export  'package:reader_app/screens/bookstore/pages/book_info.dart';
 
 // screens
 export 'package:reader_app/app.dart';
@@ -51,7 +51,6 @@ export  'package:reader_app/screens/signup/sign_up_page.dart';
 export 'package:reader_app/screens/signup/sign_up_costumer_page.dart';
 
 export 'package:reader_app/screens/select_genre.dart';
-export 'package:reader_app/on_boarding/onborading.dart';
 
 
 export 'package:reader_app/screens/bookstore/pages/acts_page.dart';
@@ -68,8 +67,8 @@ export 'package:reader_app/screens/bookstore/pages/sports_page.dart';
 
 
 //Widgets
-export 'package:reader_app/widgets/creater_button.dart';
-export 'package:reader_app/widgets/termsAndCondition.dart';
+
+export 'package:reader_app/widgets/terms_and_condition.dart';
 export 'package:reader_app/widgets/or_line.dart';
 export 'package:reader_app/widgets/confirm_button.dart';
 export 'package:reader_app/widgets/back_button.dart';

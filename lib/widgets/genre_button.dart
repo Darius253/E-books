@@ -7,12 +7,12 @@ class GenreButton extends StatelessWidget {
   final Color textcolor;
   final Color brcolor;
 
-  GenreButton({required this.text, required this.onTap, required this.bcolor, required this.textcolor, required this.brcolor,});
+  const GenreButton({super.key, required this.text, required this.onTap, required this.bcolor, required this.textcolor, required this.brcolor,});
 
   @override
   Widget build(BuildContext context) {
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.all(6.0),
       child: GestureDetector(
         onTap: onTap,
         child: Container(
@@ -23,17 +23,17 @@ class GenreButton extends StatelessWidget {
               width: 1.0,
             ),
             borderRadius: const BorderRadius.all(
-              Radius.circular(12.0),
+              Radius.circular(15.0),
             ),
           ),
           constraints: const BoxConstraints(
-            minWidth: 50.0,
+            minWidth: 45.0,
           ),
           child: Center(
             child: Text(
               text,
               style: TextStyle(
-                fontSize: 10.0,
+                fontSize: 11.0,
                 color: textcolor,
               ),
             ),

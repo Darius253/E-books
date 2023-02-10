@@ -3,7 +3,7 @@ import 'package:reader_app/shared/exports.dart';
 
 
 class SelectGenre extends StatelessWidget {
-   SelectGenre({super.key});
+   const SelectGenre({super.key});
    
 
   @override

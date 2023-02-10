@@ -3,6 +3,8 @@ import 'package:reader_app/shared/exports.dart';
 
 
 class BookStore extends StatefulWidget {
+  const BookStore({super.key});
+
   @override
   _BookStoreState createState() => _BookStoreState();
 }
