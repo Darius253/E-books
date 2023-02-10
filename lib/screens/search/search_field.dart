@@ -1,4 +1,6 @@
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/material.dart';
+import 'package:reader_app/screens/search/filter_page.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SearchField extends StatefulWidget {
