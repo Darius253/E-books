@@ -17,6 +17,7 @@ class GenreButton extends StatelessWidget {
         onTap: onTap,
         child: Container(
           decoration: BoxDecoration(
+            shape: BoxShape.rectangle,
             color: bcolor,
             border: Border.all(
               color: brcolor,
@@ -30,11 +31,15 @@ class GenreButton extends StatelessWidget {
             minWidth: 45.0,
           ),
           child: Center(
-            child: Text(
-              text,
-              style: TextStyle(
-                fontSize: 11.0,
-                color: textcolor,
+            child: Padding(
+              padding: const EdgeInsets.all(6.0),
+              child: Text(
+                text,
+                style: TextStyle(
+                  fontSize: 12.0,
+                  fontWeight: FontWeight.w400,
+                  color: textcolor,
+                ),
               ),
             ),
           ),
