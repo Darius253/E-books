@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:reader_app/screens/search/filter_page.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class App extends StatelessWidget {
@@ -17,7 +18,7 @@ class App extends StatelessWidget {
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      home: SearchPage(),
+      home: FilterPage(),
     );
   }
 }

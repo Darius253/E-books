@@ -62,7 +62,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 accountType = 'creator';
               });
             },
-            textcolor: accountType == 'creator' ? Palette.primary : Colors.grey,
+            textcolor: accountType == 'creator' ? Palette.primary : Colors.grey, fsize: 20,
           ),
           Container(
             width: 1,
@@ -80,7 +80,7 @@ class _SignUpPageState extends State<SignUpPage> {
                 accountType = 'customer';
               });
             },
-            textcolor: accountType == 'creator' ? Colors.grey : Palette.primary  ,
+            textcolor: accountType == 'creator' ? Colors.grey : Palette.primary, fsize: 20  ,
           ),
         ],
       ),

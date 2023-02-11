@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/screens/search/search_tags.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class FilterBookStore extends StatefulWidget {
   final String searchword;
@@ -10,14 +11,15 @@ class FilterBookStore extends StatefulWidget {
 }
 
 class _FilterBookStoreState extends State<FilterBookStore> {
-  List<TagData> filteredResults = [];
+  List<BookInfoData> filteredResults = [];
 
   @override
   void initState() {
     super.initState();
-    filteredResults = texts
+    filteredResults = infodata
         .where((result) =>
-            result.text.toLowerCase().contains(widget.searchword.toLowerCase()))
+            result.title
+            .toLowerCase().contains(widget.searchword.toLowerCase()))
         .toList();
   }
 
@@ -28,8 +30,15 @@ class _FilterBookStoreState extends State<FilterBookStore> {
       body: ListView.builder(
         itemCount: filteredResults.length,
         itemBuilder: (context, index) {
-          return ListTile(
-            title: Text(filteredResults[index].text),
+          return Padding(
+            padding: const EdgeInsets.all(9),
+            child: ListTile(
+              leading: Image.asset(filteredResults[index].image),
+              title: Text('${filteredResults[index].title}\n by ${filteredResults[index].author}' , style: const TextStyle(
+                fontSize: 12,
+                fontWeight: FontWeight.w500,
+              ),),
+            ),
           );
         },
       ),
