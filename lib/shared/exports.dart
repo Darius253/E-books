@@ -67,6 +67,9 @@ export 'package:reader_app/screens/bookstore/pages/sports_page.dart';
 export 'package:reader_app/screens/bookstore/header_part.dart';
 export 'package:reader_app/screens/search/search_page.dart';
 
+export 'package:reader_app/screens/search/filter/filter_artstore.dart';
+export 'package:reader_app/screens/search/filter/filter_bookstore.dart';
+
 
 //Widgets
 
@@ -81,3 +84,7 @@ export 'package:reader_app/widgets/getstarted_button.dart';
 export 'package:reader_app/widgets/onboard_button.dart';
 export 'package:reader_app/widgets/genre_card.dart';
 export 'package:reader_app/screens/search/search_field.dart';
+
+export 'package:reader_app/widgets/genre_button.dart';
+export 'package:reader_app/widgets/text_buttons.dart';
+export 'package:reader_app/screens/search/search_tags.dart';

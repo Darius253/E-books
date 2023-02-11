@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/search/search_tags.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class FilterArtStore extends StatefulWidget {

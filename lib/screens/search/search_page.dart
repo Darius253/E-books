@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/search/search_tags.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SearchPage extends StatelessWidget {
@@ -8,7 +7,7 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-    final double width = MediaQuery.of(context).size.width;
+    //final double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         appBar: const PreferredSize(

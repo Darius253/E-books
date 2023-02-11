@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
-import 'package:reader_app/widgets/genre_button.dart';
 
 class HeaderPart extends StatefulWidget {
   const HeaderPart({super.key});

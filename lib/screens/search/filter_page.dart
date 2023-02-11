@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/search/filter/filter_artstore.dart';
-import 'package:reader_app/screens/search/filter/filter_bookstore.dart';
 import 'package:reader_app/shared/exports.dart';
-import 'package:reader_app/widgets/text_buttons.dart';
 
 class FilterPage extends StatefulWidget {
   const FilterPage({super.key,});
