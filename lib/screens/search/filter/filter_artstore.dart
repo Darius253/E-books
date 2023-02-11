@@ -28,7 +28,7 @@ class _FilterArtStoreState extends State<FilterArtStore> {
     final double height = MediaQuery.of(context).size.height;
     //final double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: Container(
+      body: SizedBox(
          height: height,
         child: GridView.builder(
           itemCount: filteredResults.length,
@@ -38,17 +38,15 @@ class _FilterArtStoreState extends State<FilterArtStore> {
             return Padding(
               padding: const EdgeInsets.all(8.0),
               child: Container(
-                height: height,
-                color: Colors.amber,
-                width: double.infinity,
+                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Image.asset(
                       filteredResults[index].image,
-                      height: 130,
+                      height: 100,
                       width: double.infinity,
-                      fit: BoxFit.contain,
+                      fit: BoxFit.cover,
                     ),
                     Text(
                       filteredResults[index].author,

@@ -19,6 +19,13 @@ class _FilterPageState extends State<FilterPage> {
   Widget build(BuildContext context) {
     return SafeArea(
       child: Scaffold(
+        appBar: const PreferredSize(
+          preferredSize: Size.fromHeight(80.0),
+          child: SizedBox(
+            height: 70,
+            child: SearchField(),
+          ),
+        ),
         body: Column(
           crossAxisAlignment: CrossAxisAlignment.center,
           children: [

@@ -8,34 +8,38 @@ class SearchTags extends StatelessWidget {
   
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: texts.length,
-      shrinkWrap: true,
-        gridDelegate:  const SliverGridDelegateWithFixedCrossAxisCount(
+    return MediaQuery.removePadding(
+      context: context,
+      removeTop: true,
+      child: GridView.builder(
+        itemCount: texts.length,
+        shrinkWrap: true,
+          gridDelegate:   const SliverGridDelegateWithFixedCrossAxisCount(
             crossAxisCount: 2,
-        ),
-        padding: const EdgeInsets.all(8),
-        itemBuilder: (context, index) {
-          return Align(
-            child: GestureDetector(
-              onTap: () {},
-              child: Container(
+          ),
+          padding: const EdgeInsets.all(8),
+          itemBuilder: (context, index) {
+            return Align(
+              child: SizedBox(
                 height: 50,
                 width: 120,
-                decoration: const BoxDecoration(
-                  shape: BoxShape.rectangle,
+                child: Card(
+                  semanticContainer: true,
                   color: Palette.color4,
-                ),
-                child: Center(
-                  child: Text(texts[index].text, style: const TextStyle(
-                    fontSize: 15,
-                    color: Palette.black,
-                  ),),
+                  child: Center(
+                    child: Text(
+                      texts[index].text,
+                      style: const TextStyle(
+                        fontSize: 15,
+                        color: Palette.black,
+                      ),
+                    ),
+                  ),
                 ),
               ),
-            ),
-          );
-        });
+            );
+          }),
+    );
   }
 }
 

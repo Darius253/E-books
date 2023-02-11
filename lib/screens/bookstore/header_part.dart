@@ -40,11 +40,11 @@ class _HeaderPartState extends State<HeaderPart> {
     );
   }
 
-  Widget chipSwitch(String genrePage) {
+Widget chipSwitch(String genrePage) {
     Widget result;
     switch (genrePage) {
       case 'all':
-        result = BookStore();
+        result = const BookStore();
         break;
       case 'comedy':
         result = const ComedyPage();
@@ -80,7 +80,7 @@ class _HeaderPartState extends State<HeaderPart> {
         result = const CrimePage();
         break;
       default:
-        result = BookStore();
+        result = const BookStore();
         break;
     }
     return result;
