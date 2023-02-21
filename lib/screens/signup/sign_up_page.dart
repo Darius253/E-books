@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/screens/signup/sign_up_seller_page.dart';
-import 'package:reader_app/widgets/text_buttons.dart';
 
 import '../../shared/exports.dart';
 

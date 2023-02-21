@@ -6,7 +6,7 @@ class BookStore extends StatefulWidget {
   const BookStore({super.key});
 
   @override
-  _BookStoreState createState() => _BookStoreState();
+  State<BookStore> createState() => _BookStoreState();
 }
 
 class _BookStoreState extends State<BookStore> {
@@ -53,14 +53,14 @@ class _BookStoreState extends State<BookStore> {
                             fit: BoxFit.fitWidth,
                           ),
                         ),
-                        Text(books.title, style: TextStyle(
+                        Text(books.title, style: const TextStyle(
                             fontSize: 12, fontWeight: FontWeight.w400,
                           ),
                         ),
                         const SizedBox(
                           height: 1,
                         ),
-                        Text(books.price, style: TextStyle(
+                        Text(books.price, style: const TextStyle(
                           fontSize: 11, fontWeight: FontWeight.w400,
                         ),)
                       ],
