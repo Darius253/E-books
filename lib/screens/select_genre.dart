@@ -46,7 +46,7 @@ class SelectGenre extends StatelessWidget {
                     gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                         crossAxisCount: 2,),
                     itemBuilder: (BuildContext context, int index) {
-                      Genre genre = genres[index];
+                      //Genre genre = genres[index];
                       return GenreCard(
                         genre: genres[index],
                       );
