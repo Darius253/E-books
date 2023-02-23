@@ -11,30 +11,39 @@ class BookInfo extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 12),
       child: Row(
         children: [
-          Image.asset(bookInfoData.image,
-          height: 130,
-          width: 80,
+          Image.asset(
+            bookInfoData.image,
+            height: 130,
+            width: 80,
           ),
-          const SizedBox(width: 10,),
+          const SizedBox(
+            width: 10,
+          ),
           Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text(bookInfoData.title, style: const TextStyle(
-                color: Colors.black,
-                fontSize: 15,
-                fontWeight: FontWeight.w500
-              ),),
+              Text(
+                bookInfoData.title,
+                style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 15,
+                    fontWeight: FontWeight.w500),
+              ),
               Text('by ${bookInfoData.author}'),
               const SizedBox(
                 height: 5,
               ),
               SizedBox(
-                width: 220,
-                child: Text(bookInfoData.desc, style: const TextStyle(
-                  fontSize: 11,
-    
-                ),)),
-              Text(bookInfoData.price, style: const TextStyle(
+                  width: 220,
+                  child: Text(
+                    bookInfoData.desc,
+                    style: const TextStyle(
+                      fontSize: 11,
+                    ),
+                  )),
+              Text(
+                bookInfoData.price,
+                style: const TextStyle(
                     color: Colors.black,
                     fontSize: 15,
                     fontWeight: FontWeight.w500),
@@ -47,7 +56,6 @@ class BookInfo extends StatelessWidget {
   }
 }
 
-
 class BookInfoData {
   final String image;
   final String title;
@@ -59,14 +67,24 @@ class BookInfoData {
 }
 
 List<BookInfoData> infodata = [
-    BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-     BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom', 'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Don Rickles: Merchant of Venom',
+      'Michael Seth Starr', lorem, 'GHS 89'),
 ];
