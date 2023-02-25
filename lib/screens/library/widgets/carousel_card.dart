@@ -59,7 +59,7 @@ class _CarouselCardState extends State<CarouselCard>
             ),
             Image.asset(
               widget.infodata.image,
-              height: height * 0.22,
+              height: height * 0.20,
             ),
             SizedBox(
               width: width * 0.020,

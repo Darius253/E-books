@@ -38,6 +38,7 @@ dependencies:
   
   # s
   stretchy_header: ^2.0.0
+  flutter_staggered_grid_view: 
 
 dev_dependencies:
   flutter_test:

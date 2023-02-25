@@ -15,21 +15,23 @@ class _BooksLibraryState extends State<BooksLibrary> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    return Container(
+    return SizedBox(
       height: height * 0.5,
       child: Column(
         children: [
           wishlistORpurchaseButtons(),
-          Expanded(child: wishlistORpurchase())
+          SizedBox(
+            height: height * 0.46,
+            child: wishlistORpurchase(),
+          ),
         ],
       ),
     );
   }
-  
 
   Widget wishlistORpurchase() {
     if (typePart == 'wishlist') {
-      return const WishlistPart();
+      return  WishlistPart();
     } else {
       return const PurchasePart();
     }
@@ -52,8 +54,8 @@ class _BooksLibraryState extends State<BooksLibrary> {
                 typePart = 'wishlist';
               });
             },
-            textcolor: typePart == 'wishlist' ? Palette.primary : Colors.grey,
-            fsize: 12,
+            textcolor: typePart == 'wishlist' ? Palette.white : Colors.grey,
+            fsize: 15,
           ),
           OvalButtons(
             btext: 'Purchases',
@@ -65,8 +67,8 @@ class _BooksLibraryState extends State<BooksLibrary> {
                 typePart = 'purchase';
               });
             },
-            textcolor: typePart == 'purchase' ? Palette.primary : Colors.grey,
-            fsize: 12,
+            textcolor: typePart == 'purchase' ? Palette.white : Colors.grey,
+            fsize: 15,
           ),
         ],
       ),

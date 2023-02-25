@@ -37,7 +37,7 @@ class _LibraryPageState extends State<LibraryPage> {
                 height: height * 0.025,
               ),
               SizedBox(
-                height: height * 0.28,
+                height: height * 0.26,
                 width: width * 0.85,
                 child: ListView.builder(
                   itemCount: infodata.length,
@@ -89,7 +89,7 @@ class _LibraryPageState extends State<LibraryPage> {
               });
             },
             textcolor: libraryPart == 'books' ? Palette.primary : Colors.grey,
-            fsize: 16,
+            fsize: 18,
           ),
           Container(
             width: 1,
@@ -107,56 +107,10 @@ class _LibraryPageState extends State<LibraryPage> {
               });
             },
             textcolor: libraryPart == 'arts' ? Palette.primary : Colors.grey,
-            fsize: 16,
+            fsize: 18,
           ),
         ],
       ),
     );
   }
-
-  //  Widget wishlistORpurchase() {
-  //   if (typePart == 'wishlist') {
-  //     return const WishlistPart();
-  //   } else {
-  //     return const PurchasePart();
-  //   }
-  // }
-
-  //  Widget wishlistORpurchaseButtons() {
-  //   return SizedBox(
-  //     height: 42,
-  //     child: Row(
-  //       mainAxisAlignment: MainAxisAlignment.center,
-  //       children: [
-  //         OvalButtons(
-  //           btext: 'Wishlist',
-  //           // bbackgroundColor:
-  //           //     accountType == 'creator' ? Palette.primary : Colors.transparent,
-  //           bcolor:
-  //               typePart == 'wishlist' ? Palette.primary : Colors.transparent,
-  //           onTap: () {
-  //             setState(() {
-  //               typePart = 'wishlist';
-  //             });
-  //           },
-  //           textcolor: typePart == 'wishlist' ? Palette.primary : Colors.grey,
-  //           fsize: 12,
-  //         ),
-  //         OvalButtons(
-  //           btext: 'Purchases',
-  //           //bbackgroundColor: libraryPart == 'customer' ? Palette.primary : Colors.transparent,
-  //           bcolor:
-  //               typePart == 'purchase' ? Palette.primary : Colors.transparent,
-  //           onTap: () {
-  //             setState(() {
-  //               typePart = 'purchase';
-  //             });
-  //           },
-  //           textcolor: typePart == 'purchase' ? Palette.primary : Colors.grey,
-  //           fsize: 12,
-  //         ),
-  //       ],
-  //     ),
-  //   );
-  // }
 }

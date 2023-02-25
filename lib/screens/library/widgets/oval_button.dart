@@ -19,8 +19,8 @@ class OvalButtons extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return SizedBox(
-      height: 30,
-      width: 70,
+      height: 32,
+      width: 80,
       child: TextButton(
         onPressed: onTap,
         style: TextButton.styleFrom(
@@ -35,6 +35,7 @@ class OvalButtons extends StatelessWidget {
           ), 
         child: Text(
           btext,
+          textAlign: TextAlign.center,
           style: TextStyle(
             fontSize: fsize,
             color: textcolor,
