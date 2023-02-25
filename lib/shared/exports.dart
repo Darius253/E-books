@@ -81,6 +81,10 @@ export 'package:reader_app/screens/library/books_library.dart';
 export 'package:reader_app/screens/library/bookpart/purchase_part.dart';
 export 'package:reader_app/screens/library/bookpart/wishlist_part.dart';
 
+export 'package:reader_app/screens/library/artstorepart/purchase_art_part.dart';
+export 'package:reader_app/screens/library/artstorepart/wishlist_art_part.dart';
+export 'package:reader_app/screens/library/bookpart/book_preview.dart';
+
 
 //Widgets
 
@@ -96,3 +100,6 @@ export 'package:reader_app/widgets/onboard_button.dart';
 export 'package:reader_app/widgets/genre_card.dart';
 export 'package:reader_app/widgets/genre_button.dart';
 export 'package:reader_app/widgets/text_buttons.dart';
+
+
+export 'package:reader_app/screens/library/bookpart/widget/purchase_card.dart';

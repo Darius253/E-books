@@ -16,6 +16,9 @@ dependencies:
   # c
   cupertino_icons: ^1.0.2
   carousel_slider: ^4.2.1
+
+  # e
+  expandable_text: ^2.3.0
   
   # f
   flutter_password_strength: ^0.1.6

@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/library/artstorepart/purchase_art_part.dart';
-import 'package:reader_app/screens/library/artstorepart/wishlist_art_part.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class ArtStoreLibrary extends StatefulWidget {
@@ -53,8 +51,8 @@ class _ArtStoreLibraryState extends State<ArtStoreLibrary> {
                 wtypePart = 'wishlist';
               });
             },
-            textcolor: wtypePart == 'wishlist' ? Palette.primary : Colors.grey,
-            fsize: 12,
+            textcolor: wtypePart == 'wishlist' ? Palette.white : Colors.grey,
+            fsize: 15,
           ),
           OvalButtons(
             btext: 'Purchases',
@@ -66,8 +64,8 @@ class _ArtStoreLibraryState extends State<ArtStoreLibrary> {
                 wtypePart = 'purchase';
               });
             },
-            textcolor: wtypePart == 'purchase' ? Palette.primary : Colors.grey,
-            fsize: 12,
+            textcolor: wtypePart == 'purchase' ? Palette.white : Colors.grey,
+            fsize: 15,
           ),
         ],
       ),

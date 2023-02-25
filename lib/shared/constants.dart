@@ -60,7 +60,7 @@ class Images {
 }
 
 const lorem =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at pulvinar leo, quis gravida sapien. Ut ornare, dolor id pulvinar bibendum, arcu ex elementum augue, at venenatis tortor risus ac ex. Proin commodo consectetur ligula, eu vestibulum odio. Donec nec eros sit amet est consequat bibendum at a sapien. Quisque gravida, libero eu tincidunt semper, quam mauris mollis orci, vitae bibendum ipsum purus quis tellus. Sed in neque fringilla, ullamcorper elit eu, tincidunt justo. Phasellus fermentum, lacus at tempor blandit, felis enim hendrerit tortor, ac auctor sapien augue vel ipsum. Integer ullamcorper augue vel malesuada dapibus. Fusce lobortis fringilla eros, sit amet tincidunt velit iaculis vel. Donec suscipit malesuada diam eu rutrum. Sed in libero mi. Integer ac commodo orci. Sed in neque fringilla, ullamcorper elit eu, tincidunt justo. Phasellus fermentum, lacus at tempor blandit, felis enim hendrerit tortor, ac auctor sapien augue vel ipsum. Integer ullamcorper augue vel malesuada dapibus. Fusce lobortis fringilla eros, sit amet tincidunt velit iaculis vel. Donec suscipit malesuada diam eu rutrum. Sed in libero mi. Integer ac commodo orci. ';
 
 const String tipMessage =
     'Creator: A person who brings something into existence, such as a writer creating a novel.';

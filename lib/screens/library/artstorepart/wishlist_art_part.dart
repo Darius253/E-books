@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class WishlistArtPart extends StatefulWidget {
   const WishlistArtPart({super.key});
@@ -11,8 +12,6 @@ class _WishlistArtPartState extends State<WishlistArtPart> {
   String wtypePart = 'wishlist';
   @override
   Widget build(BuildContext context) {
-    return Container(
-      color: Colors.blue,
-    );
+    return const PurchaseCard();
   }
 }

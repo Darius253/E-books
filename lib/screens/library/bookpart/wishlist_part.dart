@@ -21,6 +21,9 @@ class _WishlistPartState extends State<WishlistPart> {
         return Padding(
           padding: const EdgeInsets.all(9),
           child: ListTile(
+            onTap: (){
+              Get.to(const BookPreview());
+            },
             leading: Image.asset(infodata[index].image),
             title: Text(
               '${infodata[index].title}\nby ${infodata[index].author}',
