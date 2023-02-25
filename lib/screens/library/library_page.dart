@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/library/widgets/carousel_card.dart';
 
 import '../../shared/exports.dart';
 
@@ -31,15 +30,15 @@ class _LibraryPageState extends State<LibraryPage> {
                 alignment: Alignment.centerLeft,
                 child: Text(
                   "CURRENTLY READING:",
-                  style: TextStyle(fontSize: 12, fontWeight: FontWeight.w500),
+                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
                 ),
               ),
                SizedBox(
                 height: height * 0.025,
               ),
               SizedBox(
-                height: height * 0.3,
-                width: width * 0.75,
+                height: height * 0.28,
+                width: width * 0.85,
                 child: ListView.builder(
                   itemCount: infodata.length,
                   scrollDirection: Axis.horizontal,
@@ -48,6 +47,13 @@ class _LibraryPageState extends State<LibraryPage> {
                     infodata: infodata[index],
                   );
                 }),
+              ),
+              SizedBox(
+                height: height * 0.008,
+              ),
+              //wishlistORpurchaseButtons(),
+              SizedBox(
+                height: height * 0.009,
               ),
               Expanded(child: booksORartsLibrary()),
             ],
@@ -67,7 +73,7 @@ class _LibraryPageState extends State<LibraryPage> {
 
   Widget booksORartsLibraryButtons() {
     return SizedBox(
-      height: 45,
+      height: 46,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -83,7 +89,7 @@ class _LibraryPageState extends State<LibraryPage> {
               });
             },
             textcolor: libraryPart == 'books' ? Palette.primary : Colors.grey,
-            fsize: 15,
+            fsize: 16,
           ),
           Container(
             width: 1,
@@ -101,10 +107,56 @@ class _LibraryPageState extends State<LibraryPage> {
               });
             },
             textcolor: libraryPart == 'arts' ? Palette.primary : Colors.grey,
-            fsize: 15,
+            fsize: 16,
           ),
         ],
       ),
     );
   }
+
+  //  Widget wishlistORpurchase() {
+  //   if (typePart == 'wishlist') {
+  //     return const WishlistPart();
+  //   } else {
+  //     return const PurchasePart();
+  //   }
+  // }
+
+  //  Widget wishlistORpurchaseButtons() {
+  //   return SizedBox(
+  //     height: 42,
+  //     child: Row(
+  //       mainAxisAlignment: MainAxisAlignment.center,
+  //       children: [
+  //         OvalButtons(
+  //           btext: 'Wishlist',
+  //           // bbackgroundColor:
+  //           //     accountType == 'creator' ? Palette.primary : Colors.transparent,
+  //           bcolor:
+  //               typePart == 'wishlist' ? Palette.primary : Colors.transparent,
+  //           onTap: () {
+  //             setState(() {
+  //               typePart = 'wishlist';
+  //             });
+  //           },
+  //           textcolor: typePart == 'wishlist' ? Palette.primary : Colors.grey,
+  //           fsize: 12,
+  //         ),
+  //         OvalButtons(
+  //           btext: 'Purchases',
+  //           //bbackgroundColor: libraryPart == 'customer' ? Palette.primary : Colors.transparent,
+  //           bcolor:
+  //               typePart == 'purchase' ? Palette.primary : Colors.transparent,
+  //           onTap: () {
+  //             setState(() {
+  //               typePart = 'purchase';
+  //             });
+  //           },
+  //           textcolor: typePart == 'purchase' ? Palette.primary : Colors.grey,
+  //           fsize: 12,
+  //         ),
+  //       ],
+  //     ),
+  //   );
+  // }
 }

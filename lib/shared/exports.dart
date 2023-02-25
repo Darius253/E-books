@@ -64,6 +64,9 @@ export 'package:reader_app/screens/bookstore/pages/science_page.dart';
 export 'package:reader_app/screens/bookstore/pages/sports_page.dart';
 export 'package:reader_app/screens/bookstore/header_part.dart';
 
+export 'package:reader_app/screens/library/widgets/carousel_card.dart';
+export 'package:reader_app/screens/library/widgets/oval_button.dart';
+
 export 'package:reader_app/screens/search/search_page.dart';
 export 'package:reader_app/screens/search/filter/filter_artstore.dart';
 export 'package:reader_app/screens/search/filter/filter_bookstore.dart';
@@ -74,6 +77,9 @@ export 'package:reader_app/screens/search/search_tags.dart';
 export 'package:reader_app/screens/library/library_page.dart';
 export 'package:reader_app/screens/library/artstore_library.dart';
 export 'package:reader_app/screens/library/books_library.dart';
+
+export 'package:reader_app/screens/library/bookpart/purchase_part.dart';
+export 'package:reader_app/screens/library/bookpart/wishlist_part.dart';
 
 
 //Widgets
