@@ -48,7 +48,10 @@ class _SelectGenreState extends State<SelectGenre> {
                   SizedBox(
                     height: height * 0.075,
                   ),
-                  Button(text: 'Next', onTap: () {})
+                  Button(
+                    text: 'Next',
+                    onTap: () => Get.to(const HomePage()),
+                  )
                 ],
               ))),
     );
