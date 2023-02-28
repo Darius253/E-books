@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/shared/constants.dart';
 
 class ExSignUpButton extends StatelessWidget {
   final String text;
