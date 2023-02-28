@@ -10,7 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  int? currentpageIndex;
+  int currentpageIndex = 0;
   final pageController = PageController(initialPage: 0);
 
   @override
