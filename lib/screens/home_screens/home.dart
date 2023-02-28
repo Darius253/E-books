@@ -8,6 +8,7 @@ class Home extends StatefulWidget {
 }
 
 class _HomeState extends State<Home> {
+  bool bookshelf = true;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -17,25 +18,56 @@ class _HomeState extends State<Home> {
           horizontal: width * 0.05, vertical: height * 0.03),
       child: Column(
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              const Expanded(child: SizedBox()),
-              const Text('Bookshelf'),
-              VerticalDivider(
-                width: width * 0.05,
-                thickness: width * 0.05,
-                color: Colors.grey,
-              ),
-              const Text('Art Gallery'),
-              const Expanded(child: SizedBox()),
-              IconButton(
-                  onPressed: () {},
-                  icon: const Icon(
-                    Icons.menu,
-                    color: Color.fromARGB(255, 41, 45, 50),
-                  ))
-            ],
+          SizedBox(
+            height: height * 0.045,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                const Expanded(child: SizedBox()),
+                TextButton(
+                  onPressed: () {
+                    print('Bookshelf');
+                    setState(() {
+                      bookshelf = true;
+                    });
+                  },
+                  child: Text(
+                    'Bookshelf',
+                    style: TextStyle(
+                        fontWeight: FontWeight.w500,
+                        color: bookshelf
+                            ? const Color.fromARGB(255, 237, 112, 23)
+                            : Colors.grey),
+                  ),
+                ),
+                 VerticalDivider(
+                  color: Colors.grey,
+                  width: width*0.05,
+                ),
+                TextButton(
+                    onPressed: () {
+                      print('Art Gallery');
+                      setState(() {
+                        bookshelf = false;
+                      });
+                    },
+                    child: Text(
+                      'Art Gallery',
+                      style: TextStyle(
+                          fontWeight: FontWeight.w500,
+                          color: !bookshelf
+                              ? const Color.fromARGB(255, 237, 112, 23)
+                              : Colors.grey),
+                    )),
+                const Expanded(child: SizedBox()),
+                IconButton(
+                    onPressed: () {},
+                    icon: const Icon(
+                      Icons.menu,
+                      color: Color.fromARGB(255, 41, 45, 50),
+                    ))
+              ],
+            ),
           ),
         ],
       ),
