@@ -67,3 +67,5 @@ const String tipMessage =
 
 const String question =
     "Are you looking to sell your products or buy on Awstore?";
+
+const String lorem2 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at pulvinar leo, quis gravida sapien. Ut ornare, dolor id pulvinar bibendum, arcu ex elementum augue, at venenatis tortor ri ';

@@ -1,18 +1,19 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
-
-class BookStore extends StatefulWidget {
-  const BookStore({super.key});
+class AllPage extends StatefulWidget {
+  const AllPage({super.key});
 
   @override
-  State<BookStore> createState() => _BookStoreState();
+  State<AllPage> createState() => _AllPageState();
 }
 
-class _BookStoreState extends State<BookStore> {
+class _AllPageState extends State<AllPage> {
   String genrePage = 'all';
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: SingleChildScrollView(
         child: Padding(
@@ -20,73 +21,79 @@ class _BookStoreState extends State<BookStore> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-                const SizedBox(
-                height: 8,
+              SizedBox(
+                height: height * 0.01,
               ),
               //Trending books
               const Text(
                 'Trending Books',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
               ),
-              const SizedBox(
-                height: 6,
+              SizedBox(
+                height: height * 0.01,
               ),
               CarouselSlider.builder(
                 options: CarouselOptions(
-                    height: 250,
-                    viewportFraction: .40,
+                    height: height * 0.35,
+                    viewportFraction: .45,
                     enableInfiniteScroll: true),
                 itemCount: book.length,
                 itemBuilder:
                     (BuildContext context, int index, int pageViewIndex) {
                   Book books = book[index];
                   return SizedBox(
-                    width: 160,
+                    width: width * 0.85,
                     child: Column(
                       crossAxisAlignment: CrossAxisAlignment.start,
                       children: [
-                        SizedBox(
-                          height: 195,
-                          width: 150,
-                          child: Image.asset(
-                            books.imageUrl,
-                            fit: BoxFit.fitWidth,
-                          ),
+                        Image.asset(
+                          books.imageUrl,
+                          fit: BoxFit.fitWidth,
+                          height: height * 0.3,
+                          width: width * 0.9,
                         ),
-                        Text(books.title, style: const TextStyle(
-                            fontSize: 12, fontWeight: FontWeight.w400,
+                        Text(
+                          books.title,
+                          style: const TextStyle(
+                            fontSize: 12,
+                            fontWeight: FontWeight.w400,
                           ),
                         ),
                         const SizedBox(
                           height: 1,
                         ),
-                        Text(books.price, style: const TextStyle(
-                          fontSize: 11, fontWeight: FontWeight.w400,
-                        ),)
+                        Text(
+                          books.price,
+                          style: const TextStyle(
+                            fontSize: 11,
+                            fontWeight: FontWeight.w400,
+                          ),
+                        )
                       ],
                     ),
                   );
                 },
               ),
-        
+
               // Popular Books
-              const SizedBox(
-                height: 8,
+              SizedBox(
+                height: height * 0.013,
               ),
               const Text(
                 'Popular Books',
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
               ),
-              const SizedBox(
-                height: 6,
+              SizedBox(
+                height: height * 0.01,
               ),
               CarouselSlider.builder(
-                options: CarouselOptions(
+                  options: CarouselOptions(
                       height: 130,
                       viewportFraction: .30,
                       enableInfiniteScroll: true),
                   itemCount: book.length,
-                  itemBuilder: (BuildContext context, int index, int pageViewIndex) {
+                  itemBuilder:
+                      (BuildContext context, int index, int pageViewIndex) {
                     Book books = book[index];
                     return SizedBox(
                       width: 150,
@@ -110,7 +117,7 @@ class _BookStoreState extends State<BookStore> {
               const SizedBox(
                 height: 10,
               ),
-        
+
               // Most Read this week
               const Text(
                 'Most Read this week',
@@ -147,11 +154,11 @@ class _BookStoreState extends State<BookStore> {
                       ),
                     );
                   }),
-        
-        const SizedBox(
+
+              const SizedBox(
                 height: 8,
               ),
-        
+
               // Bestsellers Books
               const Text(
                 'Bestsellers Books',
@@ -188,11 +195,11 @@ class _BookStoreState extends State<BookStore> {
                       ),
                     );
                   }),
-        
-        const SizedBox(
+
+              const SizedBox(
                 height: 8,
               ),
-              
+
               // Newly Added Books
               const Text(
                 'Newly Added Books',

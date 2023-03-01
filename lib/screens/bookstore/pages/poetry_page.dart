@@ -32,8 +32,8 @@ class _PoetryPageState extends State<PoetryPage> {
                 fontWeight: FontWeight.w500,
               ),
             ),
-            const SizedBox(
-              height: 8,
+            SizedBox(
+              height: height * 0.01,
             ),
             SizedBox(
               width: width * 0.90,
@@ -48,14 +48,14 @@ class _PoetryPageState extends State<PoetryPage> {
                 itemCount: infodata.length,
                 itemBuilder: (context, index) {
                   return SizedBox(
-                    height: 150,
+                    height: height * 0.221,
                     child: Column(
                       children: [
                         BookInfo(
                           bookInfoData: infodata[index],
                         ),
-                        const SizedBox(
-                          height: 8,
+                        SizedBox(
+                          height: height * 0.018,
                         ),
                         if (index != infodata.length - 1)
                           SizedBox(

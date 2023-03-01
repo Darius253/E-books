@@ -7,14 +7,16 @@ class BookInfo extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.symmetric(horizontal: 12),
+      padding: const EdgeInsets.symmetric(horizontal: 10),
       child: Row(
         children: [
           Image.asset(
             bookInfoData.image,
-            height: 130,
-            width: 80,
+            height: height * 0.18,
+            width: width * 0.23,
           ),
           const SizedBox(
             width: 10,
@@ -68,23 +70,23 @@ class BookInfoData {
 
 List<BookInfoData> infodata = [
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
   BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem, 'GHS 89'),
+      'Michael Seth Starr', lorem2, 'GHS 89'),
 ];

@@ -24,7 +24,7 @@ export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 export 'package:reader_app/onboarding/sign_in.dart';
 
-export 'package:reader_app/screens/bookstore/bookstore.dart';
+export 'package:reader_app/screens/bookstore/pages/all_page.dart';
 
 export 'package:reader_app/on_boarding/onborading.dart';
 // export 'package:reader_app/onboarding/sign_up.dart';
@@ -62,7 +62,7 @@ export 'package:reader_app/screens/bookstore/pages/poetry_page.dart';
 export 'package:reader_app/screens/bookstore/pages/romance_page.dart';
 export 'package:reader_app/screens/bookstore/pages/science_page.dart';
 export 'package:reader_app/screens/bookstore/pages/sports_page.dart';
-export 'package:reader_app/screens/bookstore/header_part.dart';
+export 'package:reader_app/screens/bookstore/book_store.dart';
 
 export 'package:reader_app/screens/library/widgets/carousel_card.dart';
 export 'package:reader_app/screens/library/widgets/oval_button.dart';

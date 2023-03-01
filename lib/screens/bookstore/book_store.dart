@@ -1,14 +1,14 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
-class HeaderPart extends StatefulWidget {
-  const HeaderPart({super.key});
+class BookStore extends StatefulWidget {
+  const BookStore({super.key});
 
   @override
-  State<HeaderPart> createState() => _HeaderPartState();
+  State<BookStore> createState() => _BookStoreState();
 }
 
-class _HeaderPartState extends State<HeaderPart> {
+class _BookStoreState extends State<BookStore> {
   String genrePage = 'all';
   @override
   Widget build(BuildContext context) {
@@ -43,7 +43,7 @@ Widget chipSwitch(String genrePage) {
     Widget result;
     switch (genrePage) {
       case 'all':
-        result = const BookStore();
+        result = const AllPage();
         break;
       case 'comedy':
         result = const ComedyPage();
@@ -79,7 +79,7 @@ Widget chipSwitch(String genrePage) {
         result = const CrimePage();
         break;
       default:
-        result = const BookStore();
+        result = const AllPage();
         break;
     }
     return result;
