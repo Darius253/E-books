@@ -1,4 +1,4 @@
-import 'package:flutter/material.dart'; 
+import 'package:flutter/material.dart';
 import '../../shared/exports.dart';
 
 class SelectSignUp extends StatelessWidget {
@@ -6,6 +6,8 @@ class SelectSignUp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
     return Scaffold(
       body: Column(
         children: [
@@ -19,9 +21,10 @@ class SelectSignUp extends StatelessWidget {
               children: [
                 const SizedBox(
                   width: 280,
-                  child: Text(question,
-                  textAlign: TextAlign.center,
-                   style: TextStyle(
+                  child: Text(
+                    question,
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
                       fontSize: 18,
                       fontWeight: FontWeight.w400,
                     ),
@@ -34,9 +37,9 @@ class SelectSignUp extends StatelessWidget {
                   },
                   backgroundColor: Palette.primary,
                   text: "Customer",
-                  textColor: Colors.white, width: 150,
+                  textColor: Colors.white,
+                  width: 150,
                 ),
-                
                 const SizedBox(height: 16),
                 CreaterButton(
                   onPressed: () {
@@ -44,7 +47,8 @@ class SelectSignUp extends StatelessWidget {
                   },
                   backgroundColor: Colors.white,
                   text: "Seller",
-                  textColor: Palette.primary, width: 100,
+                  textColor: Palette.primary,
+                  width: 100,
                 ),
               ],
             ),
