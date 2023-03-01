@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/signup/sign_up_seller_page.dart';
 
 import '../../shared/exports.dart';
 
@@ -27,10 +26,9 @@ class _SignUpPageState extends State<SignUpPage> {
           ),
           const SizedBox(height: 16),
           creatorORcustomerButtons(),
-          // const SizedBox(
-          //   height: 16,
-          // ),
-          Expanded(child: SingleChildScrollView(child: creatorORcustomer())),
+          Expanded(
+            child: SingleChildScrollView(child: creatorORcustomer()),
+          ),
         ],
       ),
     );
@@ -61,7 +59,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 accountType = 'creator';
               });
             },
-            textcolor: accountType == 'creator' ? Palette.primary : Colors.grey, fsize: 20,
+            textcolor: accountType == 'creator' ? Palette.primary : Colors.grey,
+            fsize: 20,
           ),
           Container(
             width: 1,
@@ -79,7 +78,8 @@ class _SignUpPageState extends State<SignUpPage> {
                 accountType = 'customer';
               });
             },
-            textcolor: accountType == 'creator' ? Colors.grey : Palette.primary, fsize: 20  ,
+            textcolor: accountType == 'creator' ? Colors.grey : Palette.primary,
+            fsize: 20,
           ),
         ],
       ),

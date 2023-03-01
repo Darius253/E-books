@@ -66,4 +66,4 @@ const String tipMessage =
     'Creator: A person who brings something into existence, such as a writer creating a novel.';
 
 const String question =
-    "Are you looking to sell a product on Awstore or you buybooks and arts?";
+    "Are you looking to sell your products or buy on Awstore?";

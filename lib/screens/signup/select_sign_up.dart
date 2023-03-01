@@ -19,18 +19,18 @@ class SelectSignUp extends StatelessWidget {
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const SizedBox(
-                  width: 280,
-                  child: Text(
+                 SizedBox(
+                  width: width * 0.92,
+                  child: const Text(
                     question,
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 18,
+                      fontSize: 17,
                       fontWeight: FontWeight.w400,
                     ),
                   ),
                 ),
-                const SizedBox(height: 20),
+                SizedBox(height: height * 0.04),
                 CreaterButton(
                   onPressed: () {
                     Get.to(const SignUpPage());
@@ -38,7 +38,7 @@ class SelectSignUp extends StatelessWidget {
                   backgroundColor: Palette.primary,
                   text: "Customer",
                   textColor: Colors.white,
-                  width: 150,
+                  width: width * 0.42,
                 ),
                 const SizedBox(height: 16),
                 CreaterButton(
@@ -48,7 +48,7 @@ class SelectSignUp extends StatelessWidget {
                   backgroundColor: Colors.white,
                   text: "Seller",
                   textColor: Palette.primary,
-                  width: 100,
+                  width: width * 0.28,
                 ),
               ],
             ),

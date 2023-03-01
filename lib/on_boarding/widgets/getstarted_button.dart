@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import '../shared/exports.dart';
+import '../../shared/exports.dart';
 
 class GetStartedButton extends StatelessWidget {
   final VoidCallback onPressed;

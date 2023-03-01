@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-
-import '../shared/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class CreaterButton extends StatelessWidget {
   final Color backgroundColor;
@@ -20,7 +19,7 @@ class CreaterButton extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      height: 52,
+      height: 50,
       width: width,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(50),
