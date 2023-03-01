@@ -5,6 +5,7 @@ import '../shared/exports.dart';
 class OnBoardButton extends StatelessWidget {
   final Color backgroundColor;
   final Color textColor;
+  final Color bordercolor;
   final String text;
   final VoidCallback onPressed;
 
@@ -13,7 +14,7 @@ class OnBoardButton extends StatelessWidget {
     required this.backgroundColor,
     required this.textColor,
     required this.onPressed,
-    required this.text,
+    required this.text, required this.bordercolor,
   });
 
   @override
@@ -24,7 +25,7 @@ class OnBoardButton extends StatelessWidget {
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(10),
         color: backgroundColor,
-        border: Border.all(color: Palette.white),
+        border: Border.all(color: bordercolor),
       ),
       child: Material(
         color: Colors.transparent,

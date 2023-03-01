@@ -13,14 +13,8 @@ class _BookDescState extends State<BookDesc> {
 
   @override
   Widget build(BuildContext context) {
-    return Column(
-      children: const [
-        ExpandableText(
-          lorem,
-          expandText: 'read more',
-          maxLines: 2,
-        ),
-      ],
+    return Card(
+      
     );
   }
 }
