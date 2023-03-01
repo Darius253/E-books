@@ -30,6 +30,7 @@ export 'package:reader_app/screens/authenticate/on_boarding/onborading.dart';
 // export 'package:reader_app/widgets/onboarding_button.dart';
 // export 'package:reader_app/onboarding/sign_up_creator.dart';
 export 'package:reader_app/screens/authenticate/signin/forgot_password.dart';
+export 'package:reader_app/screens/home_screens/widgets/book_shelf.dart';
 export 'package:reader_app/screens/authenticate/signin/verify_email.dart';
 export '../../widgets/bottom_nav_bar.dart';
 export 'package:reader_app/screens/home_screens/home.dart';
