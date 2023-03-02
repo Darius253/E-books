@@ -1,3 +1,4 @@
+
 import 'package:flutter/material.dart';
 
 class Button extends StatelessWidget {
@@ -16,7 +17,7 @@ class Button extends StatelessWidget {
       child: Container(
         height: MediaQuery.of(context).size.height * 0.08,
         decoration: BoxDecoration(
-            color: const Color.fromARGB(213, 237, 112, 23),
+            color: const Color.fromARGB(255, 237, 112, 23),
             borderRadius: BorderRadius.circular(8)),
         child: Center(
             child: Text(

@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:reader_app/shared/exports.dart';
 
-import '../../shared/exports.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);

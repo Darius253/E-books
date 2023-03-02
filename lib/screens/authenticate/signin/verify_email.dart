@@ -105,7 +105,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         print(otp);
-                        Get.to(() => const ResetPassword());
+                        Get.off(() => const ResetPassword());
                       }
                     })
               ]),

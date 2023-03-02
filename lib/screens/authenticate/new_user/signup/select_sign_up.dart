@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import '../../shared/exports.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class SelectSignUp extends StatelessWidget {
   const SelectSignUp({super.key});
@@ -21,7 +21,7 @@ class SelectSignUp extends StatelessWidget {
               children: [
                  SizedBox(
                   width: width * 0.92,
-                  child: const Text(
+                  child:  const Text(
                     question,
                     textAlign: TextAlign.center,
                     style: TextStyle(

@@ -10,56 +10,146 @@ class GenreCard extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    //final double height = MediaQuery.of(context).size.height;
-    //final double width = MediaQuery.of(context).size.width;
+    final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
 
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: Container(
-        height: 200,
-        width: 10,
-        color: Palette.genrecolor,
+        height: height * 0.1,
+        decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(6),
+            color: const Color.fromARGB(232, 140, 63, 4)),
         child: Row(
+          mainAxisAlignment: MainAxisAlignment.start,
           children: [
-            const SizedBox(
-              width: 5,
-            ),
-            Container(
-              color: Colors.red,
-              child: Text(
-                genre.text,
-                style: const TextStyle(fontWeight: FontWeight.bold),
-              ),
-            ),
-            const SizedBox(width: 8,),
-            Container(
-              height: 40,
-              width: 70,
-              decoration: BoxDecoration(
-                color: Colors.amber,
-                image: DecorationImage(
-                  image: AssetImage(genre.image),
-                  fit: BoxFit.cover,
-                ),
-              ),
-              child: Align(
-                alignment: Alignment.topRight,
-                child: Padding(
-                  padding: const EdgeInsets.all(8.0),
-                  child: CircleAvatar(
-                    radius: 10.0,
-                    backgroundColor: Colors.white,
-                    child: Checkbox(
-                      value: true,
-                      onChanged: (value) {},
-                    ),
-                  ),
+            Padding(
+              padding: const EdgeInsets.only(left: 10.0),
+              child: Center(
+                child: Text(
+                  genre.text,
+                  style: const TextStyle(
+                      fontSize: 14,
+                      fontWeight: FontWeight.w400,
+                      color: Colors.white),
                 ),
               ),
             ),
+            const Expanded(
+              child: SizedBox(),
+            ),
+            ClipPath(
+              clipper: genre.clipper,
+              child: Image.asset(
+                genre.image,
+                filterQuality: FilterQuality.high,
+                width: width * 0.2,
+                height: height * 0.1,
+                fit: BoxFit.fill,
+              ),
+            )
           ],
         ),
       ),
     );
   }
+}
+
+Column grid(double width, height) {
+  return Column(children: [
+    Row(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        GenreCard(
+          genre: genres[0],
+        ),
+        SizedBox(
+          width: width * 0.05,
+        ),
+        GenreCard(
+          genre: genres[1],
+        ),
+      ],
+    ),
+    SizedBox(
+      height: height * 0.03,
+    ),
+    Row(
+      children: [
+        GenreCard(
+          genre: genres[2],
+        ),
+        SizedBox(
+          width: width * 0.05,
+        ),
+        GenreCard(
+          genre: genres[3],
+        ),
+      ],
+    ),
+    SizedBox(
+      height: height * 0.03,
+    ),
+    Row(
+      children: [
+        GenreCard(
+          genre: genres[4],
+        ),
+        SizedBox(
+          width: width * 0.05,
+        ),
+        GenreCard(
+          genre: genres[5],
+        ),
+      ],
+    ),
+    SizedBox(
+      height: height * 0.03,
+    ),
+    Row(
+      children: [
+        GenreCard(
+          genre: genres[6],
+        ),
+        SizedBox(
+          width: width * 0.05,
+        ),
+        GenreCard(
+          genre: genres[7],
+        ),
+      ],
+    ),
+    SizedBox(
+      height: height * 0.03,
+    ),
+    Row(
+      children: [
+        GenreCard(
+          genre: genres[8],
+        ),
+        SizedBox(
+          width: width * 0.05,
+        ),
+        GenreCard(
+          genre: genres[9],
+        ),
+      ],
+    ),
+    SizedBox(
+      height: height * 0.03,
+    ),
+    Row(
+      children: [
+        GenreCard(
+          genre: genres[10],
+        ),
+        SizedBox(
+          width: width * 0.05,
+        ),
+        GenreCard(
+          genre: genres[11],
+        ),
+      ],
+    )
+  ]);
 }

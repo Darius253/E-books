@@ -56,7 +56,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                       )),
                   const SizedBox(height: 5),
                   const Text(
-                      "Set the new passwordfor your account so you can have access to Awstore and all it's features",
+                      "Set the new password for your account so you can have access to Awstore and all it's features",
                       textAlign: TextAlign.center,
                       style: TextStyle(
                           fontWeight: FontWeight.w400,
@@ -218,7 +218,7 @@ class _ResetPasswordState extends State<ResetPassword> {
                   if (_formKey.currentState!.validate()) {
                     print(newPassword);
                     print(confirmPassword);
-                    Get.to(() => const Success(
+                    Get.off(() => const Success(
                         title: 'Password Reset Successfully',
                         about: 'You can now login'));
                   }
