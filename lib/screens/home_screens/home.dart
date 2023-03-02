@@ -15,18 +15,15 @@ class _HomeState extends State<Home> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.only(left: width * 0.07, top: height * 0.03, bottom: height*0.095),
+      padding: EdgeInsets.only(
+          left: width * 0.07, top: height * 0.01, bottom: height * 0.095),
       child: Stack(
         children: [
           appBar(height, width),
           Padding(
             padding: EdgeInsets.only(top: height * 0.1),
             child: SingleChildScrollView(
-              child: Column(
-                children: [
-                  bookshelf ? const BookShelf() : const SizedBox(),
-                ],
-              ),
+              child: bookshelf ? const BookShelf() : const SizedBox(),
             ),
           )
         ],
@@ -73,9 +70,10 @@ class _HomeState extends State<Home> {
                     : const SizedBox.shrink()
               ],
             ),
-            VerticalDivider(
+            Container(
               color: Colors.grey,
-              width: width * 0.05,
+              width: width * 0.003,
+              height: height*0.03,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
