@@ -17,7 +17,7 @@ class App extends StatelessWidget {
         DefaultMaterialLocalizations.delegate,
         DefaultWidgetsLocalizations.delegate,
       ],
-      home: BookStore(),
+      home: LibraryPage(),
     );
   }
 }

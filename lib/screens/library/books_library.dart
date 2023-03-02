@@ -31,7 +31,7 @@ class _BooksLibraryState extends State<BooksLibrary> {
 
   Widget wishlistORpurchase() {
     if (typePart == 'wishlist') {
-      return  WishlistPart();
+      return  const WishlistPart();
     } else {
       return const PurchasePart();
     }

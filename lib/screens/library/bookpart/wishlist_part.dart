@@ -22,7 +22,7 @@ class _WishlistPartState extends State<WishlistPart> {
           padding: const EdgeInsets.all(9),
           child: ListTile(
             onTap: (){
-              Get.to(const BookPreview());
+              Get.to(const BookPeview(bookAuthor: 'Eric Atsu', bookDescription: lorem, bookImageUrl: Images.book1, bookTitle: 'The Boys',));
             },
             leading: Image.asset(infodata[index].image),
             title: Text(
