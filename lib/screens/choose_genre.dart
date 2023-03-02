@@ -2,8 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
 
-class SelectGenre extends StatelessWidget {
-   const SelectGenre({super.key});
+class ChooseGenre extends StatelessWidget {
+   const ChooseGenre({super.key});
    
 
   @override
