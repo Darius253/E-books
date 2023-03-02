@@ -12,6 +12,6 @@ class _PurchasePartState extends State<PurchasePart> {
   String typePart = 'purchase';
   @override
   Widget build(BuildContext context) {
-    return PurchaseCard();
+    return const PurchaseCard();
   }
 }

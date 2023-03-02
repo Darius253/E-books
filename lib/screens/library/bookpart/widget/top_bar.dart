@@ -20,7 +20,7 @@ class _TopBarState extends State<TopBar> {
         backgroundColor: const Color.fromARGB(255, 248, 248, 248),
         title:  Text(
           widget.bookTitle,
-          style: TextStyle(fontSize: 16, color: Palette.black),
+          style: const TextStyle(fontSize: 16, color: Palette.black),
         ),
         centerTitle: true,
         leading: IconButton(

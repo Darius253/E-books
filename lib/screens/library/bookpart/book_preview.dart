@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/library/bookpart/widget/genre_chips.dart';
-import 'package:reader_app/screens/library/bookpart/widget/top_bar.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class BookPeview extends StatefulWidget {
@@ -39,7 +37,7 @@ class _BookPeviewState extends State<BookPeview> {
         body: SizedBox(
           height: height,
           child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               const SizedBox(
                 height: 10,
@@ -52,7 +50,7 @@ class _BookPeviewState extends State<BookPeview> {
               ),
               if (_showFullDescription == false)
                 Container(
-                  width: width * 0.9,
+                  width: width * 0.95,
                   padding: const EdgeInsets.symmetric(
                     vertical: 8,
                     horizontal: 16,
@@ -85,6 +83,7 @@ class _BookPeviewState extends State<BookPeview> {
                           'Book Description',
                           style: TextStyle(
                             fontSize: 13,
+                            fontWeight: FontWeight.w600,
                             color: Palette.black,
                           ),
                         ),
@@ -107,7 +106,7 @@ class _BookPeviewState extends State<BookPeview> {
                                       : 200,
                                 )}..',
                                 style: const TextStyle(
-                                  fontSize: 12,
+                                  fontSize: 11,
                                   color: Palette.black,
                                 ),
                               ),
@@ -128,7 +127,8 @@ class _BookPeviewState extends State<BookPeview> {
                       ),
                       SizedBox(height: height * 0.009),
                       SizedBox(
-                        height: height * 0.1,
+                        height: height * 0.072,
+                        width: width * 0.6,
                         child: ListView.builder(
                           itemCount: bookgenres.length,
                           scrollDirection: Axis.horizontal,
@@ -173,26 +173,35 @@ class _BookPeviewState extends State<BookPeview> {
                       width: double.infinity,
                       padding: const EdgeInsets.all(16),
                       child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Text(
                             widget.bookTitle,
                             style: const TextStyle(
-                              fontSize: 24,
+                              fontSize: 20,
                               fontWeight: FontWeight.bold,
+                              color: Palette.black,
                             ),
                           ),
+                          SizedBox(height: height * 0.02),
                           Text(
-                            'by ${widget.bookAuthor}',
+                            'By ${widget.bookAuthor}',
                             style: const TextStyle(
-                              fontSize: 16,
+                              fontSize: 14,
+                              color: Palette.black,
                             ),
                           ),
-                          const SizedBox(height: 16),
-                          Text(
-                            widget.bookDescription,
-                            style: const TextStyle(
-                              fontSize: 16,
+                          SizedBox(height: height * 0.025),
+                          SizedBox(
+                            width: width * 0.87,
+                            child: Text(
+                              widget.bookDescription,
+                              textAlign: TextAlign.center,
+                              style:  const TextStyle(
+                                fontSize: 15,
+                                fontFamily: 'Baskervville',
+                                color: Color.fromARGB(255, 71, 71, 71)
+                              ),
                             ),
                           ),
                         ],

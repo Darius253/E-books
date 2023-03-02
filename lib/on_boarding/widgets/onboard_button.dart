@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-import '../../shared/exports.dart';
 
 class OnBoardButton extends StatelessWidget {
   final Color backgroundColor;

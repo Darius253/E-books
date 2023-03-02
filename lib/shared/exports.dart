@@ -100,6 +100,8 @@ export 'package:reader_app/on_boarding/widgets/onboard_button.dart';
 export 'package:reader_app/widgets/genre_card.dart';
 export 'package:reader_app/widgets/genre_button.dart';
 export 'package:reader_app/widgets/text_buttons.dart';
+export 'package:reader_app/screens/library/bookpart/widget/genre_chips.dart';
+export 'package:reader_app/screens/library/bookpart/widget/top_bar.dart';
 
 
 export 'package:reader_app/screens/library/bookpart/widget/purchase_card.dart';

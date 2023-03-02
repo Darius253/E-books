@@ -5,24 +5,24 @@ class GenreChips extends StatelessWidget {
   final GenreData bookgenres;
 
   const GenreChips({
-    super.key, required this.bookgenres,
+    super.key,
+    required this.bookgenres,
   });
 
   @override
   Widget build(BuildContext context) {
     return Chip(
-      padding: const EdgeInsets.all(1),
-  label: Text(
-    bookgenres.bookgenre,
-    style: const TextStyle(
-      color: Palette.black,
-      fontSize: 10.0,
-    ),
-  ),
-  backgroundColor: Colors.transparent,
-  shape: const StadiumBorder(side: BorderSide(color: Colors.grey)),
-);
-    
+      padding: const EdgeInsets.all(0),
+      label: Text(
+        bookgenres.bookgenre,
+        style: const TextStyle(
+          color: Palette.black,
+          fontSize: 10.0,
+        ),
+      ),
+      backgroundColor: Colors.transparent,
+      shape: const StadiumBorder(side: BorderSide(color: Colors.grey)),
+    );
   }
 }
 
