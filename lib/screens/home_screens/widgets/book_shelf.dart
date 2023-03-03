@@ -17,27 +17,25 @@ class BookShelf extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      SingleChildScrollView(
-        child: SizedBox(
-          width: width * 0.9,
-          height: height * 0.435,
-          child: ListView.separated(
-              shrinkWrap: true,
-              separatorBuilder: (BuildContext context, int index) {
-                return SizedBox(
-                  width: width * 0.07,
-                );
-              },
-              scrollDirection: Axis.horizontal,
-              itemCount: 3,
-              itemBuilder: (BuildContext context, int index) {
-                return container(width, height, 'New Release', context);
-              }),
-        ),
+      SizedBox(
+        width: width * 0.9,
+        height: height * 0.435,
+        child: ListView.separated(
+            shrinkWrap: true,
+            separatorBuilder: (BuildContext context, int index) {
+              return SizedBox(
+                width: width * 0.07,
+              );
+            },
+            scrollDirection: Axis.horizontal,
+            itemCount: 3,
+            itemBuilder: (BuildContext context, int index) {
+              return container(width, height, 'New Release', context);
+            }),
       ),
       SizedBox(
         width: width * 0.9,
-        height: height * 0.4,
+        height: height * 0.435,
         child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) {
               return SizedBox(
@@ -129,8 +127,12 @@ class BookShelf extends StatelessWidget {
   Widget genreBook(
       double height, width, title, author, price, BuildContext context) {
     return GestureDetector(
-      onTap: () => Navigator.push(context,
-          MaterialPageRoute(builder: ((context) => const BookPreview()))),
+      onTap: () => Navigator.push(
+          context,
+          MaterialPageRoute(
+              builder: ((context) => BookPreview(
+                    bookTitle: title,
+                  )))),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
