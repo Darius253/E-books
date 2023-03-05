@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class Home extends StatefulWidget {
   const Home({super.key});
@@ -14,16 +15,37 @@ class _HomeState extends State<Home> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.symmetric(
-          horizontal: width * 0.05, vertical: height * 0.03),
-      child: Column(
+      padding: EdgeInsets.only(
+          left: width * 0.07, top: height * 0.01, bottom: height * 0.095),
+      child: Stack(
         children: [
-          SizedBox(
-            height: height * 0.045,
-            child: Row(
+          appBar(height, width),
+          Padding(
+            padding: EdgeInsets.only(top: height * 0.1),
+            child: SingleChildScrollView(
+              child: bookshelf ? const BookShelf() : const SizedBox(),
+            ),
+          )
+        ],
+      ),
+    );
+  }
+
+  //APPBar
+  Widget appBar(double height, width) {
+    return Padding(
+      padding: EdgeInsets.only(
+        right: width * 0.07,
+      ),
+      child: SizedBox(
+        height: height * 0.065,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            const Expanded(child: SizedBox()),
+            Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                const Expanded(child: SizedBox()),
                 TextButton(
                   onPressed: () {
                     print('Bookshelf');
@@ -40,10 +62,22 @@ class _HomeState extends State<Home> {
                             : Colors.grey),
                   ),
                 ),
-                 VerticalDivider(
-                  color: Colors.grey,
-                  width: width*0.05,
-                ),
+                bookshelf
+                    ? Container(
+                        width: width * 0.15,
+                        height: height * 0.002,
+                        color: const Color.fromARGB(255, 237, 112, 23))
+                    : const SizedBox.shrink()
+              ],
+            ),
+            Container(
+              color: Colors.grey,
+              width: width * 0.003,
+              height: height*0.03,
+            ),
+            Column(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
                 TextButton(
                     onPressed: () {
                       print('Art Gallery');
@@ -59,17 +93,23 @@ class _HomeState extends State<Home> {
                               ? const Color.fromARGB(255, 237, 112, 23)
                               : Colors.grey),
                     )),
-                const Expanded(child: SizedBox()),
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.menu,
-                      color: Color.fromARGB(255, 41, 45, 50),
-                    ))
+                !bookshelf
+                    ? Container(
+                        width: width * 0.15,
+                        height: height * 0.002,
+                        color: const Color.fromARGB(255, 237, 112, 23))
+                    : const SizedBox.shrink()
               ],
             ),
-          ),
-        ],
+            const Expanded(child: SizedBox()),
+            IconButton(
+                onPressed: () {},
+                icon: const Icon(
+                  Icons.menu,
+                  color: Color.fromARGB(255, 41, 45, 50),
+                ))
+          ],
+        ),
       ),
     );
   }
