@@ -21,7 +21,7 @@ class _AuthorPreviewState extends State<AuthorPreview> {
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
-            authorDetails(width, height, 'Writer/Author', '20', '250000', () {
+            authorDetails(width, height, 'Writer/Author', '50', '250', () {
               print('Followed');
             }),
             aboutProfile(width, height,
@@ -37,7 +37,8 @@ class _AuthorPreviewState extends State<AuthorPreview> {
   Widget booksbyAuthor(double width, height) {
     return Padding(
         padding: EdgeInsets.only(
-          left: width * 0.04,
+          left: width * 0.05,
+          right: width * 0.05,
         ),
         child: SingleChildScrollView(
           child: Column(
@@ -47,8 +48,11 @@ class _AuthorPreviewState extends State<AuthorPreview> {
                 'Books by Author',
                 style: TextStyle(
                   fontWeight: FontWeight.w600,
-                  fontSize: 20,
+                  fontSize: 18,
                 ),
+              ),
+              SizedBox(
+                height: height * 0.015,
               ),
               SizedBox(
                 height: height * 0.65,
@@ -91,7 +95,7 @@ class _AuthorPreviewState extends State<AuthorPreview> {
   Widget aboutProfile(double width, height, String bio) {
     return Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: width * 0.04, vertical: height * 0.025),
+            horizontal: width * 0.05, vertical: height * 0.025),
         child: Text(
           bio,
           style: const TextStyle(fontSize: 14, fontWeight: FontWeight.w400),
@@ -146,19 +150,16 @@ class _AuthorPreviewState extends State<AuthorPreview> {
   ) {
     return Container(
       width: width,
-      height: height * 0.5,
+      height: height * 0.45,
       decoration:
           const BoxDecoration(color: Color.fromARGB(255, 250, 217, 194)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.center,
         children: [
           appBar(width, height, "Author's Profile"),
-          SizedBox(
-            height: height * 0.01,
-          ),
           Center(
             child: Container(
-              height: height * 0.18,
+              height: height * 0.15,
               width: width * 0.35,
               decoration: const BoxDecoration(
                   shape: BoxShape.circle, color: Colors.grey),
@@ -175,25 +176,28 @@ class _AuthorPreviewState extends State<AuthorPreview> {
           SizedBox(
             height: height * 0.01,
           ),
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-            children: [
-              Text(
-                authorOrArtist,
-                style:
-                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-              ),
-              Text(
-                'No.of books: $numberOfBooks',
-                style:
-                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-              ),
-              Text(
-                '$followers followers',
-                style:
-                    const TextStyle(fontWeight: FontWeight.w400, fontSize: 14),
-              ),
-            ],
+          Padding(
+            padding: EdgeInsets.symmetric(horizontal: width * 0.04),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+              children: [
+                Text(
+                  authorOrArtist,
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w400, fontSize: 14),
+                ),
+                Text(
+                  'No.of books: $numberOfBooks',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w400, fontSize: 14),
+                ),
+                Text(
+                  '$followers followers',
+                  style: const TextStyle(
+                      fontWeight: FontWeight.w400, fontSize: 14),
+                ),
+              ],
+            ),
           ),
           SizedBox(
             height: height * 0.03,
