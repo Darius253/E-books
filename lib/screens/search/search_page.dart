@@ -35,7 +35,7 @@ class SearchPage extends StatelessWidget {
               SizedBox(
                 height: height * 0.02,
               ),
-              Expanded(child: SearchTags(texts: texts)),
+              SizedBox(height: height * 0.75, child: SearchTags(texts: texts)),
             ],
           ),
         ),

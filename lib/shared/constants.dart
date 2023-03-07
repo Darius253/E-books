@@ -36,7 +36,7 @@ class Images {
   static const String splashlogo = '${imagesPath}splash_logo.png';
   static const String splashbg = '${imagesPath}splash_bg.png';
   static const String horror = '${imagesPath}horror.png';
-  static const String adventure = '${imagesPath}adventure.png';
+  static const String adventure = '${imagesPath}adventure.jpg';
   static const String history = '${imagesPath}history.png';
   static const String mystery = '${imagesPath}mystery.png';
   static const String science = '${imagesPath}science.png';

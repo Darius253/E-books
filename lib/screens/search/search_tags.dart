@@ -4,44 +4,36 @@ import 'package:reader_app/shared/exports.dart';
 class SearchTags extends StatelessWidget {
   final List<TagData> texts;
   const SearchTags({super.key, required this.texts});
-  
+
   @override
   Widget build(BuildContext context) {
-    return MediaQuery.removePadding(
-      context: context,
-      removeTop: true,
-      child: GridView.builder(
-        itemCount: texts.length,
-        shrinkWrap: true,
-          gridDelegate:   const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2,
+    return GridView.builder(
+      itemCount: texts.length,
+      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+          crossAxisCount: 2, mainAxisExtent: 70, mainAxisSpacing: 8
+          // childAspectRatio: MediaQuery.of(context).size.width /
+          //     (MediaQuery.of(context).size.height / 4),
           ),
-          padding: const EdgeInsets.all(8),
-          itemBuilder: (context, index) {
-            return Align(
-              child: SizedBox(
-                height: 50,
-                width: 120,
-                child: Card(
-                  semanticContainer: true,
-                  color: Palette.color4,
-                  child: Center(
-                    child: Text(
-                      texts[index].text,
-                      style: const TextStyle(
-                        fontSize: 15,
-                        color: Palette.black,
-                      ),
-                    ),
-                  ),
+      itemBuilder: (context, index) {
+        return Padding(
+          padding: const EdgeInsets.all(12.0),
+          child: Container(
+            color: Palette.color4,
+            child: Center(
+              child: Text(
+                texts[index].text,
+                style: const TextStyle(
+                  fontSize: 12,
+                  color: Palette.black,
                 ),
               ),
-            );
-          }),
+            ),
+          ),
+        );
+      },
     );
   }
 }
-
 
 class TagData {
   final String text;
