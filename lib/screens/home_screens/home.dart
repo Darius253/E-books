@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/home_screens/widgets/art_gallery.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class Home extends StatefulWidget {
@@ -15,15 +16,14 @@ class _HomeState extends State<Home> {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Padding(
-      padding: EdgeInsets.only(
-          left: width * 0.07, top: height * 0.01, bottom: height * 0.095),
+      padding: EdgeInsets.only(top: height * 0.01, bottom: height * 0.095),
       child: Stack(
         children: [
           appBar(height, width),
           Padding(
             padding: EdgeInsets.only(top: height * 0.1),
             child: SingleChildScrollView(
-              child: bookshelf ? const BookShelf() : const SizedBox(),
+              child: bookshelf ? const BookShelf() : const ArtGallery(),
             ),
           )
         ],
@@ -56,7 +56,8 @@ class _HomeState extends State<Home> {
                   child: Text(
                     'Bookshelf',
                     style: TextStyle(
-                        fontWeight: FontWeight.w500,
+                        fontWeight: FontWeight.w600,
+                        fontSize: 12,
                         color: bookshelf
                             ? const Color.fromARGB(255, 237, 112, 23)
                             : Colors.grey),
@@ -73,7 +74,7 @@ class _HomeState extends State<Home> {
             Container(
               color: Colors.grey,
               width: width * 0.003,
-              height: height*0.03,
+              height: height * 0.03,
             ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -88,7 +89,8 @@ class _HomeState extends State<Home> {
                     child: Text(
                       'Art Gallery',
                       style: TextStyle(
-                          fontWeight: FontWeight.w500,
+                          fontWeight: FontWeight.w600,
+                          fontSize: 12,
                           color: !bookshelf
                               ? const Color.fromARGB(255, 237, 112, 23)
                               : Colors.grey),
