@@ -5,12 +5,13 @@ import 'package:reader_app/shared/exports.dart';
 Widget bookCover(double width, height) {
   return Padding(
     padding: EdgeInsets.only(
-      left: width * 0.07,
+      left: width * 0.04,
     ),
     child: Container(
       width: width * 0.3,
       height: height * 0.2,
       decoration: BoxDecoration(
+          color: Colors.black,
           boxShadow: const [
             BoxShadow(
               color: Color.fromRGBO(0, 123, 64, 0.35),
@@ -33,7 +34,7 @@ Widget booksType(double width, String type) {
         type,
         style: const TextStyle(
           fontWeight: FontWeight.w600,
-          fontSize: 16,
+          fontSize: 17,
         ),
       ));
 }
@@ -111,7 +112,7 @@ Widget relatedGenres(double width, height, String genre) {
 Widget commentsCard(double width, height) {
   return Padding(
     padding: EdgeInsets.only(
-      left: width * 0.07,
+      left: width * 0.04,
     ),
     child: Container(
       width: width * 0.75,
@@ -243,3 +244,64 @@ Widget button(double height, String text) {
     ),
   );
 }
+
+
+Widget art(double width, height, String artist, String name, String gallery,
+      String price, double fontSize) {
+    return Padding(
+      padding: EdgeInsets.only(
+        left: width * 0.07,
+      ),
+      child: InkWell(
+        onTap: () => Get.to(ArtDetails(
+          artName: name,
+          artistName: artist,
+          price: price,
+        )),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadiusDirectional.circular(8),
+                  color: Colors.black),
+            ),
+            SizedBox(
+              height: height * 0.03,
+            ),
+            Text(
+              artist,
+              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+            ),
+            SizedBox(
+              height: height * 0.03,
+            ),
+            Text(
+              name,
+              style: TextStyle(
+                  color: Colors.black.withOpacity(0.6),
+                  fontSize: 15,
+                  fontWeight: FontWeight.w400,
+                  fontStyle: FontStyle.italic),
+            ),
+            SizedBox(
+              height: height * 0.03,
+            ),
+            Text(gallery,
+                style:
+                    const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+            SizedBox(
+              height: height * 0.03,
+            ),
+            Text('GHS $price',
+                style: TextStyle(
+                    fontSize: fontSize,
+                    fontWeight: FontWeight.w700,
+                    color: const Color.fromARGB(255, 237, 112, 23))),
+          ],
+        ),
+      ),
+    );
+  }
