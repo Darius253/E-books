@@ -35,25 +35,37 @@ class Images {
   static const String profit = '${imagesPath}profit.svg';
   static const String splashlogo = '${imagesPath}splash_logo.png';
   static const String splashbg = '${imagesPath}splash_bg.png';
-  static const String horror = '${imagesPath}horror.jpg';
+  static const String horror = '${imagesPath}horror.png';
   static const String adventure = '${imagesPath}adventure.jpg';
-  static const String history = '${imagesPath}history.jpg';
-  static const String mystery = '${imagesPath}mystery.jpg';
-  static const String science = '${imagesPath}science.jpg';
-  static const String romance = '${imagesPath}romance.jpg';
-  static const String comedy = '${imagesPath}comedy.jpg';
-  static const String fiction = '${imagesPath}fiction.jpg';
-  static const String poetry = '${imagesPath}poetry.jpg';
-  static const String arts = '${imagesPath}art.jpg';
-  static const String crime = '${imagesPath}crime.jpg';
-  static const String sports = '${imagesPath}sports.jpg';
+  static const String history = '${imagesPath}history.png';
+  static const String mystery = '${imagesPath}mystery.png';
+  static const String science = '${imagesPath}science.png';
+  static const String romance = '${imagesPath}romance.png';
+  static const String comedy = '${imagesPath}comedy.png';
+  static const String fiction = '${imagesPath}fiction.png';
+  static const String poetry = '${imagesPath}poetry.png';
+  static const String arts = '${imagesPath}arts.png';
+  static const String crime = '${imagesPath}crime.png';
+  static const String sports = '${imagesPath}sports.png';
+  static const String tbook1 = '${imagesPath}tbook1.png';
+  static const String tbook2 = '${imagesPath}tbook2.png';
+  static const String book1 = '${imagesPath}book1.png';
+  static const String book6 = '${imagesPath}book6.png';
+  static const String book2 = '${imagesPath}book2.png';
+  static const String book3 = '${imagesPath}book3.png';
+  static const String book4 = '${imagesPath}book4.png';
+  static const String book5 = '${imagesPath}book5.png';
+  static const String bth = '${imagesPath}bth.png';
+  static const String background = '${imagesPath}background.png'; 
 }
 
 const lorem =
-    "Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book.";
+          'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at pulvinar leo, quis gravida sapien. Ut ornare, dolor id pulvinar bibendum, arcu ex elementum augue, at venenatis tortor risus ac ex. Proin commodo consectetur ligula, eu vestibulum odio. Donec nec eros sit amet est consequat bibendum at a sapien. Quisque gravida, libero eu tincidunt semper, quam mauris mollis orci, vitae bibendum ipsum purus quis tellus. Sed in neque fringilla, ullamcorper elit eu, tincidunt justo. Phasellus fermentum, lacus at tempor blandit, felis enim hendrerit tortor, ac auctor sapien augue vel ipsum. Integer ullamcorper augue vel malesuada dapibus. Fusce lobortis fringilla eros, sit amet tincidunt velit iaculis vel. Donec suscipit malesuada diam eu rutrum. Sed in libero mi. Integer ac commodo orci. Sed in neque fringilla, ullamcorper elit eu, tincidunt justo. Phasellus fermentum, lacus at tempor blandit, felis enim hendrerit tortor, ac auctor sapien augue vel ipsum. Integer ullamcorper augue vel malesuada dapibus. Fusce lobortis fringilla eros, sit amet tincidunt velit iaculis vel. Donec suscipit malesuada diam eu rutrum. Sed in libero mi. Integer ac commodo orci. ';
 
 const String tipMessage =
     'Creator: A person who brings something into existence, such as a writer creating a novel.';
 
 const String question =
-    "Are you looking to sell a product on Awstore or you buybooks and arts?";
+    "Are you looking to sell your products or buy on Awstore?";
+
+const String lorem2 = 'Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed at pulvinar leo, quis gravida sapien. Ut ornare, dolor id pulvinar bibendum, arcu ex elementum augue, at venenatis tortor ri ';

@@ -12,7 +12,9 @@ class GenreCard extends StatelessWidget {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
-    return Expanded(
+
+    return Padding(
+      padding: const EdgeInsets.all(8.0),
       child: Container(
         height: height * 0.1,
         decoration: BoxDecoration(

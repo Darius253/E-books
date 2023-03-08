@@ -18,8 +18,11 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     List<Widget> pages = [
       const Home(),
-      const Library(),
+      const BookStore(),
+      const SearchPage(),
       const ArtGallery(),
+      const LibraryPage(),
+
     ];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;

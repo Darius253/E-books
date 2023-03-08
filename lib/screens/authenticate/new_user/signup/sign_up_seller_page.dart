@@ -324,7 +324,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             //isChecked ?
             Button(
               onTap: () {},
-              text: 'Confirm',
+              text: 'Sign Up',
             ),
 
             SizedBox(height: height * 0.03),

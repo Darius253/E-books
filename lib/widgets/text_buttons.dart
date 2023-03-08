@@ -5,13 +5,14 @@ class TextButtons extends StatelessWidget {
   final Color bcolor;
   final Color textcolor;
   final String btext;
+  final double fsize;
 
   const TextButtons({
     super.key,
     required this.btext,
     required this.onTap,
     required this.bcolor,
-    required this.textcolor,
+    required this.textcolor, required this.fsize,
   });
 
   @override
@@ -28,7 +29,7 @@ class TextButtons extends StatelessWidget {
               btext,
               style: TextStyle(
                 color: textcolor,
-                fontSize: 20,
+                fontSize: fsize,
                 fontWeight: FontWeight.w400,
               ),
             ),

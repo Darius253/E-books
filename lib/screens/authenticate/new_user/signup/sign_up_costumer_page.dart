@@ -288,7 +288,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             //isChecked ?
             Button(
               onTap: () {},
-              text: 'Confirm',
+              text: 'Sign Up',
             ),
             SizedBox(height: height * 0.03),
             OrLine(),
@@ -311,78 +311,4 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
       ),
     );
   }
-
-  // Future<void> _showMyDialog() async => showDialog<void>(
-  //       context: context,
-  //       builder: (BuildContext context) {
-  //         return AlertDialog(
-  //           title: accountType == 'creator'
-  //               ? const Text('Sign Up as a Creator')
-  //               : const Text('Sign Up as a Subscriber'),
-  //           content: SingleChildScrollView(
-  //             child: accountType == 'creator'
-  //                 ? ListBody(
-  //                     children: const <Widget>[
-  //                       Text('A Creator account allows you to: '),
-  //                       SizedBox(
-  //                         height: 10,
-  //                       ),
-  //                       Text(
-  //                           '1. Upload your works on AwStore\n2. Purchase contents on AwStore\n3. Read and Download(optonal) contents on AwStore.'),
-  //                       SizedBox(
-  //                         height: 20,
-  //                       ),
-  //                       Text(
-  //                           'Do you wish to proceed with creating an account type via this profile?'),
-  //                     ],
-  //                   )
-  //                 : ListBody(
-  //                     children: const <Widget>[
-  //                       Text('A Subscriber account allows you to: '),
-  //                       SizedBox(
-  //                         height: 10,
-  //                       ),
-  //                       Text(
-  //                           '1. Purchase contents on AwStore.\n2. Read and Download(optional) contents on AwStore.'),
-  //                       SizedBox(
-  //                         height: 20,
-  //                       ),
-  //                       Text(
-  //                           'Do you wish to proceed with creating an account type via this profile?'),
-  //                     ],
-  //                   ),
-  //           ),
-  //           actions: <Widget>[
-  //             TextButton(
-  //                 child: const Text(
-  //                   'Proceed',
-  //                   style: TextStyle(fontWeight: FontWeight.w700, fontSize: 15),
-  //                 ),
-  //                 onPressed: () {
-  //                   if (formKey.currentState!.validate()) {
-  //                     formKey.currentState?.save();
-
-  //                     // loading();
-  //                   }
-  //                   Navigator.of(context).pop();
-  //                 }),
-  //           ],
-  //         );
-  //       },
-  //     );
-
-  // Future<void> loading() async {
-  //   return showDialog<void>(
-  //     context: context,
-  //     barrierDismissible: true, // user must tap button!
-  //     builder: (BuildContext context) {
-  //       return const AlertDialog(
-  //         title: Text('Please Wait...'),
-  //         content: SizedBox(
-  //             width: 150,
-  //             height: 100,
-  //             child: Center(child: CircularProgressIndicator.adaptive())),
-  //       );
-  //     },
-  //   );
 }
