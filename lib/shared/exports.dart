@@ -21,6 +21,7 @@ export 'package:reader_app/shared/constants.dart';
 export 'package:reader_app/screens/home_screens/home_page.dart';
 export 'package:reader_app/screens/authenticate/signin/sign_in.dart';
 export 'package:reader_app/screens/authenticate/on_boarding/onborading.dart';
+export 'package:reader_app/screens/home_screens/widgets/art_details.dart';
 // export 'package:reader_app/onboarding/sign_up.dart';
 // export 'package:reader_app/screens/store/store.dart';
 // export 'package:reader_app/onboarding/onboarding.dart';
