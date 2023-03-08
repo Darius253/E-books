@@ -17,24 +17,35 @@ class BookShelf extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+      Padding(
+        padding: EdgeInsets.only(
+          left: width * 0.07,
+        ),
+        child: const Text(
+          'New Release',
+          style: TextStyle(
+              wordSpacing: 3,
+              color: Colors.black,
+              fontWeight: FontWeight.w600,
+              fontSize: 18),
+        ),
+      ),
       SizedBox(
-        width: width * 0.9,
-        height: height * 0.435,
+        height: height * 0.4,
         child: ListView.separated(
             shrinkWrap: true,
             separatorBuilder: (BuildContext context, int index) {
               return SizedBox(
-                width: width * 0.07,
+                width: width * 0,
               );
             },
             scrollDirection: Axis.horizontal,
             itemCount: 3,
             itemBuilder: (BuildContext context, int index) {
-              return container(width, height, 'New Release', context);
+              return container(width, height, context);
             }),
       ),
       SizedBox(
-        width: width * 0.9,
         height: height * 0.435,
         child: ListView.separated(
             separatorBuilder: (BuildContext context, int index) {
@@ -51,32 +62,29 @@ class BookShelf extends StatelessWidget {
     ]);
   }
 
-  Widget container(double width, height, String text, BuildContext context) {
+  Widget container(double width, height, BuildContext context) {
     return SizedBox(
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            text,
-            style: const TextStyle(
-                wordSpacing: 3,
-                color: Colors.black,
-                fontWeight: FontWeight.w600,
-                fontSize: 18),
-          ),
           SizedBox(
             height: height * 0.02,
           ),
-          Container(
-            padding: EdgeInsets.symmetric(
-                horizontal: width * 0.07, vertical: height * 0.025),
-            width: width * 0.7,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(8),
-                border:
-                    Border.all(color: const Color.fromARGB(255, 140, 63, 4))),
-            child: genreBook(
-                height, width, 'My Life', 'Darius', 'GHS 89.99', context),
+          Padding(
+            padding: EdgeInsets.only(
+              left: width * 0.07,
+            ),
+            child: Container(
+              padding: EdgeInsets.symmetric(
+                   vertical: height * 0.01),
+              width: width * 0.7,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(8),
+                  border:
+                      Border.all(color: const Color.fromARGB(255, 140, 63, 4))),
+              child: genreBook(
+                  height, width, 'My Life', 'Darius', 'GHS 89.99', context),
+            ),
           ),
         ],
       ),
@@ -88,18 +96,28 @@ class BookShelf extends StatelessWidget {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        Text(
-          'Because you like $genre ',
-          style: const TextStyle(
-              color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+        Padding(
+          padding: EdgeInsets.only(
+            left: width * 0.07,
+          ),
+          child: Text(
+            'Because you like $genre ',
+            style: const TextStyle(
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+          ),
         ),
-        const Text(
-          'Based your selected genres',
-          style: TextStyle(
-              height: 2,
-              color: Colors.black,
-              fontSize: 12,
-              fontWeight: FontWeight.w400),
+        Padding(
+          padding: EdgeInsets.only(
+            left: width * 0.07,
+          ),
+          child: const Text(
+            'Based your selected genres',
+            style: TextStyle(
+                height: 2,
+                color: Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.w400),
+          ),
         ),
         SizedBox(
           height: height * 0.005,
@@ -110,13 +128,9 @@ class BookShelf extends StatelessWidget {
             mainAxisAlignment: MainAxisAlignment.spaceAround,
             children: [
               genreBook(height, width, title, author, price, context),
-              SizedBox(width: width * 0.07),
               genreBook(height, width, title, author, price, context),
-              SizedBox(width: width * 0.07),
               genreBook(height, width, title, author, price, context),
-              SizedBox(width: width * 0.07),
               genreBook(height, width, title, author, price, context),
-              SizedBox(width: width * 0.07),
             ],
           ),
         )
@@ -133,45 +147,50 @@ class BookShelf extends StatelessWidget {
               builder: ((context) => BookPreview(
                     bookTitle: title,
                   )))),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            width: width * 0.4,
-            height: height * 0.2,
-            decoration: BoxDecoration(
-                border:
-                    Border.all(color: const Color.fromARGB(255, 140, 63, 4)),
-                borderRadius: BorderRadius.circular(8)),
-          ),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          Text(
-            title,
-            style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
-          ),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          Text(
-            'By $author',
-            style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
-          ),
-          SizedBox(
-            height: height * 0.01,
-          ),
-          Text(
-            price,
-            style: const TextStyle(
-                fontWeight: FontWeight.w700,
-                fontSize: 16,
-                color: Color.fromARGB(255, 140, 63, 4)),
-          ),
-          SizedBox(
-            height: height * 0.01,
-          ),
-        ],
+      child: Padding(
+        padding: EdgeInsets.only(
+          left: width * 0.07,
+        ),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              width: width * 0.4,
+              height: height * 0.22,
+              decoration: BoxDecoration(
+                  border:
+                      Border.all(color: const Color.fromARGB(255, 140, 63, 4)),
+                  borderRadius: BorderRadius.circular(8)),
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            Text(
+              title,
+              style: const TextStyle(fontWeight: FontWeight.w700, fontSize: 16),
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            Text(
+              'By $author',
+              style: const TextStyle(fontWeight: FontWeight.w400, fontSize: 12),
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+            Text(
+              price,
+              style: const TextStyle(
+                  fontWeight: FontWeight.w700,
+                  fontSize: 16,
+                  color: Color.fromARGB(255, 140, 63, 4)),
+            ),
+            SizedBox(
+              height: height * 0.01,
+            ),
+          ],
+        ),
       ),
     );
   }

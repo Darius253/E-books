@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/home_screens/widgets/art_gallery.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class HomePage extends StatefulWidget {
@@ -19,7 +20,9 @@ class _HomePageState extends State<HomePage> {
       const Home(),
       const BookStore(),
       const SearchPage(),
+      const ArtGallery(),
       const LibraryPage(),
+
     ];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;

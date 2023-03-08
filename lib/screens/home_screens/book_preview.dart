@@ -113,16 +113,10 @@ class BookPreview extends StatelessWidget {
                       ),
                       SizedBox(
                         height: height * 0.2,
-                        child: ListView.separated(
+                        child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext context, int index) {
                               return commentsCard(width, height);
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(
-                                width: width * 0.00,
-                              );
                             },
                             itemCount: genre.length),
                       ),
@@ -135,16 +129,10 @@ class BookPreview extends StatelessWidget {
                       ),
                       SizedBox(
                         height: height * 0.2,
-                        child: ListView.separated(
+                        child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext context, int index) {
                               return bookCover(width, height);
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(
-                                width: width * 0,
-                              );
                             },
                             itemCount: genre.length),
                       ),
@@ -157,16 +145,10 @@ class BookPreview extends StatelessWidget {
                       ),
                       SizedBox(
                         height: height * 0.2,
-                        child: ListView.separated(
+                        child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext context, int index) {
                               return bookCover(width, height);
-                            },
-                            separatorBuilder:
-                                (BuildContext context, int index) {
-                              return SizedBox(
-                                width: width * 0.000,
-                              );
                             },
                             itemCount: genre.length),
                       ),
@@ -181,6 +163,7 @@ class BookPreview extends StatelessWidget {
           ],
         ),
       ),
+   
     );
   }
 }

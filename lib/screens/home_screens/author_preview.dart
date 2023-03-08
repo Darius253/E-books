@@ -117,7 +117,7 @@ class _AuthorPreviewState extends State<AuthorPreview> {
             child: Icon(
               Icons.arrow_back,
               color: const Color.fromARGB(249, 41, 45, 50),
-              size: width * 0.075,
+              size: width * 0.06,
             ),
           ),
           const Expanded(
