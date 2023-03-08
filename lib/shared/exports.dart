@@ -16,15 +16,15 @@ export 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 // models
 export 'package:reader_app/screens/authenticate/on_boarding/data.dart';
 export 'package:reader_app/models/genre_model.dart';
-export 'package:reader_app/screens/bookstore/bookmodel.dart';
-export  'package:reader_app/screens/bookstore/pages/book_info.dart';
+export 'package:reader_app/screens/home_screens/bookstore/bookmodel.dart';
+export  'package:reader_app/screens/home_screens/bookstore/pages/book_info.dart';
 
 // screens
 export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 //export 'package:reader_app/onboarding/sign_in.dart';
 
-export 'package:reader_app/screens/bookstore/pages/all_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/all_page.dart';
 
 //export 'package:reader_app/on_boarding/onborading.dart';
 export 'package:reader_app/screens/home_screens/home_page.dart';
@@ -42,7 +42,7 @@ export 'package:reader_app/screens/home_screens/widgets/art_details.dart';
 //export 'package:reader_app/onboarding/forgot_password.dart';
 //export 'package:reader_app/onboarding/verify_email.dart';
 
-export 'package:reader_app/screens/signup/widgets/creater_button.dart';
+export 'package:reader_app/screens/authenticate/new_user/signup/widgets/creater_button.dart';
 
 //export 'package:reader_app/onboarding/reset_password.dart';
 export 'package:reader_app/screens/authenticate/signin/forgot_password.dart';
@@ -65,28 +65,28 @@ export 'package:reader_app/screens/authenticate/signin/reset_password.dart';
 // export  'package:reader_app/screens/signup/sign_up_page.dart';
 // export 'package:reader_app/screens/signup/sign_up_costumer_page.dart';
 
-export 'package:reader_app/screens/choose_genre.dart';
-export 'package:reader_app/screens/bookstore/pages/acts_page.dart';
-export 'package:reader_app/screens/bookstore/pages/adventure_page.dart';
-export 'package:reader_app/screens/bookstore/pages/comedy_page.dart';
-export 'package:reader_app/screens/bookstore/pages/crime_page.dart';
-export 'package:reader_app/screens/bookstore/pages/fiction_page.dart';
-export 'package:reader_app/screens/bookstore/pages/mystery_page.dart';
-export 'package:reader_app/screens/bookstore/pages/non_fiction_page.dart';
-export 'package:reader_app/screens/bookstore/pages/poetry_page.dart';
-export 'package:reader_app/screens/bookstore/pages/romance_page.dart';
-export 'package:reader_app/screens/bookstore/pages/science_page.dart';
-export 'package:reader_app/screens/bookstore/pages/sports_page.dart';
-export 'package:reader_app/screens/bookstore/book_store.dart';
 
-export 'package:reader_app/screens/library/widgets/carousel_card.dart';
-export 'package:reader_app/screens/library/widgets/oval_button.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/acts_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/adventure_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/comedy_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/crime_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/fiction_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/mystery_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/non_fiction_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/poetry_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/romance_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/science_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/pages/sports_page.dart';
+export 'package:reader_app/screens/home_screens/bookstore/book_store.dart';
 
-export 'package:reader_app/screens/search/search_page.dart';
-export 'package:reader_app/screens/search/filter/filter_artstore.dart';
-export 'package:reader_app/screens/search/filter/filter_bookstore.dart';
-export 'package:reader_app/screens/search/search_field.dart';
-export 'package:reader_app/screens/search/search_tags.dart';
+export 'package:reader_app/screens/home_screens/library/widgets/carousel_card.dart';
+export 'package:reader_app/screens/home_screens/library/widgets/oval_button.dart';
+
+export 'package:reader_app/screens/home_screens/search/search_page.dart';
+export 'package:reader_app/screens/home_screens/search/filter/filter_artstore.dart';
+export 'package:reader_app/screens/home_screens/search/filter/filter_bookstore.dart';
+export 'package:reader_app/screens/home_screens/search/search_field.dart';
+export 'package:reader_app/screens/home_screens/search/search_tags.dart';
 
 export 'package:reader_app/screens/authenticate/new_user/signup/sign_up_seller_page.dart';
 
@@ -94,26 +94,26 @@ export 'package:reader_app/screens/authenticate/new_user/signup/select_sign_up.d
 export 'package:reader_app/screens/authenticate/new_user/signup/sign_up_costumer_page.dart';
 export 'package:reader_app/widgets/text_buttons.dart';
 
-export 'package:reader_app/screens/library/library_page.dart';
-export 'package:reader_app/screens/library/artstore_library.dart';
-export 'package:reader_app/screens/library/books_library.dart';
+export 'package:reader_app/screens/home_screens/library/library_page.dart';
+export 'package:reader_app/screens/home_screens/library/artstore_library.dart';
+export 'package:reader_app/screens/home_screens/library/books_library.dart';
 
-export 'package:reader_app/screens/library/bookpart/purchase_part.dart';
-export 'package:reader_app/screens/library/bookpart/wishlist_part.dart';
+export 'package:reader_app/screens/home_screens/library/bookpart/purchase_part.dart';
+export 'package:reader_app/screens/home_screens/library/bookpart/wishlist_part.dart';
 
-export 'package:reader_app/screens/library/artstorepart/purchase_art_part.dart';
-export 'package:reader_app/screens/library/artstorepart/wishlist_art_part.dart';
-export 'package:reader_app/screens/library/bookpart/book_preview.dart';
+export 'package:reader_app/screens/home_screens/library/artstorepart/purchase_art_part.dart';
+export 'package:reader_app/screens/home_screens/library/artstorepart/wishlist_art_part.dart';
+export 'package:reader_app/screens/home_screens/library/bookpart/book_preview.dart';
 //export 'package:reader_app/screens/signup/sign_up_seller_page.dart';
 
 //Widgets
 
-export 'package:reader_app/screens/signup/widgets/terms_and_condition.dart';
-export 'package:reader_app/screens/signup/widgets/or_line.dart';
+export 'package:reader_app/screens/authenticate/new_user/signup/widgets/terms_and_condition.dart';
+export 'package:reader_app/screens/authenticate/new_user/signup/widgets/or_line.dart';
 export 'package:reader_app/widgets/confirm_button.dart';
 export 'package:reader_app/widgets/back_button.dart';
 //export 'package:reader_app/onboarding/widgets/button.dart';
-export 'package:reader_app/screens/signup/widgets/ex_signup_button.dart';
+export 'package:reader_app/screens/authenticate/new_user/signup/widgets/ex_signup_button.dart';
 // export 'package:reader_app/widgets/termsAndCondition.dart';
 // export 'package:reader_app/widgets/or_line.dart';
 
@@ -125,8 +125,8 @@ export 'package:reader_app/on_boarding/widgets/onboard_button.dart';
 export 'package:reader_app/widgets/genre_card.dart';
 export 'package:reader_app/widgets/genre_button.dart';
 
-export 'package:reader_app/screens/library/bookpart/widget/genre_chips.dart';
-export 'package:reader_app/screens/library/bookpart/widget/top_bar.dart';
+export 'package:reader_app/screens/home_screens/library/bookpart/widget/genre_chips.dart';
+export 'package:reader_app/screens/home_screens/library/bookpart/widget/top_bar.dart';
 
 
-export 'package:reader_app/screens/library/bookpart/widget/purchase_card.dart';
+export 'package:reader_app/screens/home_screens/library/bookpart/widget/purchase_card.dart';

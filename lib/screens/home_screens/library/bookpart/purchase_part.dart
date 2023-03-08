@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/library/bookpart/widget/purchase_card.dart';
+import 'package:reader_app/screens/home_screens/library/bookpart/widget/purchase_card.dart';
 
 class PurchasePart extends StatefulWidget {
   const PurchasePart({super.key});

@@ -19,7 +19,7 @@ class _SelectGenreState extends State<SelectGenre> {
           child: Padding(
               padding: EdgeInsets.symmetric(
                   horizontal: MediaQuery.of(context).size.width * 0.05,
-                  vertical: MediaQuery.of(context).size.height * 0.03),
+                  vertical: MediaQuery.of(context).size.height * 0.01),
               child: ListView(
                 children: [
                   Center(
@@ -45,9 +45,7 @@ class _SelectGenreState extends State<SelectGenre> {
                     ),
                   ),
                   grid(width, height),
-                  SizedBox(
-                    height: height * 0.075,
-                  ),
+                  
                   Button(
                     text: 'Next',
                     onTap: () => Get.to(const HomePage()),
