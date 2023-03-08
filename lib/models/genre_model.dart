@@ -36,7 +36,7 @@ List<Genre> genres = [
       text: 'Fiction',
       clipper: WaveClipperOne(reverse: true, flip: true)),
   Genre(image: Images.poetry, text: 'Poetry', clipper: OvalTopBorderClipper()),
-  Genre(image: Images.arts, text: 'Arts', clipper: OctagonalClipper()),
+  Genre(image: Images.art, text: 'Arts', clipper: OctagonalClipper()),
   Genre(
       image: Images.crime,
       text: 'Crime',
