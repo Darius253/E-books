@@ -109,7 +109,7 @@ class ArtGallery extends StatelessWidget {
           category,
           style: const TextStyle(
             fontWeight: FontWeight.w600,
-            fontSize: 17,
+            fontSize: 16,
           ),
         ));
   }
