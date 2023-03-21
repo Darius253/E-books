@@ -75,8 +75,7 @@ class BookShelf extends StatelessWidget {
               left: width * 0.07,
             ),
             child: Container(
-              padding: EdgeInsets.symmetric(
-                   vertical: height * 0.01),
+              padding: EdgeInsets.symmetric(vertical: height * 0.01),
               width: width * 0.7,
               decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(8),
