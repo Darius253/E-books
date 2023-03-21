@@ -45,7 +45,6 @@ class _SelectGenreState extends State<SelectGenre> {
                     ),
                   ),
                   grid(width, height),
-                  
                   Button(
                     text: 'Next',
                     onTap: () => Get.to(const HomePage()),

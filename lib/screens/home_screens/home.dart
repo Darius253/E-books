@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/home_screens/widgets/art_gallery.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class Home extends StatefulWidget {
@@ -21,7 +20,7 @@ class _HomeState extends State<Home> {
         children: [
           appBar(height, width),
           Padding(
-            padding: EdgeInsets.only(top: height * 0.1),
+            padding: EdgeInsets.only(top: height * 0.07),
             child: SingleChildScrollView(
               child: bookshelf ? const BookShelf() : const ArtGallery(),
             ),
@@ -46,8 +45,8 @@ class _HomeState extends State<Home> {
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                  onPressed: () {
+                InkWell(
+                  onTap: () {
                     print('Bookshelf');
                     setState(() {
                       bookshelf = true;
@@ -71,16 +70,18 @@ class _HomeState extends State<Home> {
                     : const SizedBox.shrink()
               ],
             ),
+            SizedBox(width: width*0.02,),
             Container(
               color: Colors.grey,
               width: width * 0.003,
               height: height * 0.03,
             ),
+            SizedBox(width: width*0.02,),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                TextButton(
-                    onPressed: () {
+                InkWell(
+                    onTap: () {
                       print('Art Gallery');
                       setState(() {
                         bookshelf = false;
@@ -105,7 +106,9 @@ class _HomeState extends State<Home> {
             ),
             const Expanded(child: SizedBox()),
             IconButton(
-                onPressed: () {},
+                onPressed: () {
+                  Get.to(const ProfilePage());
+                },
                 icon: const Icon(
                   Icons.menu,
                   color: Color.fromARGB(255, 41, 45, 50),

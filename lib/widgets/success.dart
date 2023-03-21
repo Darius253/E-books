@@ -23,7 +23,7 @@ class Success extends StatelessWidget {
               ),
               SvgPicture.asset(
                 'assets/images/Completed_task _Outline.svg',
-                height: MediaQuery.of(context).size.height * 0.15,
+                width: MediaQuery.of(context).size.width * 0.75,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
@@ -42,7 +42,7 @@ class Success extends StatelessWidget {
                     color: Colors.grey),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.35,
+                height: MediaQuery.of(context).size.height * 0.25,
               ),
               Button(
                   text: 'Go back to login',
