@@ -63,77 +63,77 @@ class BookShelf extends StatelessWidget {
   }
 
   Widget container(double width, height, BuildContext context) {
-    return SizedBox(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          SizedBox(
-            height: height * 0.02,
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        SizedBox(
+          height: height * 0.02,
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+            left: width * 0.07,
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: width * 0.07,
-            ),
-            child: Container(
-              padding: EdgeInsets.symmetric(vertical: height * 0.01),
-              width: width * 0.7,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(8),
-                  border:
-                      Border.all(color: const Color.fromARGB(255, 140, 63, 4))),
-              child: genreBook(
-                  height, width, 'My Life', 'Darius', 'GHS 89.99', context),
-            ),
+          child: Container(
+            padding: EdgeInsets.symmetric(vertical: height * 0.01),
+            width: width * 0.7,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(8),
+                border:
+                    Border.all(color: const Color.fromARGB(255, 140, 63, 4))),
+            child: genreBook(
+                height, width, 'My Life', 'Darius', 'GHS 89.99', context),
           ),
-        ],
-      ),
+        ),
+      ],
     );
   }
 
   Widget favouriteGenre(double height, width, String genre, title, author,
       price, BuildContext context) {
-    return Column(
-      crossAxisAlignment: CrossAxisAlignment.start,
-      children: [
-        Padding(
-          padding: EdgeInsets.only(
-            left: width * 0.07,
+    return SingleChildScrollView(
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Padding(
+            padding: EdgeInsets.only(
+              left: width * 0.07,
+            ),
+            child: Text(
+              'Because you like $genre ',
+              style: const TextStyle(
+                  color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+            ),
           ),
-          child: Text(
-            'Because you like $genre ',
-            style: const TextStyle(
-                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
+          Padding(
+            padding: EdgeInsets.only(
+              left: width * 0.07,
+            ),
+            child: const Text(
+              'Based your selected genres',
+              style: TextStyle(
+                  height: 2,
+                  color: Colors.black,
+                  fontSize: 12,
+                  fontWeight: FontWeight.w400),
+            ),
           ),
-        ),
-        Padding(
-          padding: EdgeInsets.only(
-            left: width * 0.07,
+          SizedBox(
+            height: height * 0.005,
           ),
-          child: const Text(
-            'Based your selected genres',
-            style: TextStyle(
-                height: 2,
-                color: Colors.black,
-                fontSize: 12,
-                fontWeight: FontWeight.w400),
-          ),
-        ),
-        SizedBox(
-          height: height * 0.005,
-        ),
-        SingleChildScrollView(
-          scrollDirection: Axis.horizontal,
-          child: Row(
-            mainAxisAlignment: MainAxisAlignment.spaceAround,
-            children: [
-              genreBook(height, width, title, author, price, context),
-              genreBook(height, width, title, author, price, context),
-              genreBook(height, width, title, author, price, context),
-              genreBook(height, width, title, author, price, context),
-            ],
-          ),
-        )
-      ],
+          SingleChildScrollView(
+            scrollDirection: Axis.horizontal,
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceAround,
+              children: [
+                genreBook(height, width, title, author, price, context),
+                genreBook(height, width, title, author, price, context),
+                genreBook(height, width, title, author, price, context),
+                genreBook(height, width, title, author, price, context),
+              ],
+            ),
+          )
+        ],
+      ),
     );
   }
 
