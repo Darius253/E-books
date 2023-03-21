@@ -93,6 +93,7 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     fieldHeight: MediaQuery.of(context).size.height * 0.07,
                     fieldWidth: MediaQuery.of(context).size.width * 0.2,
                     activeFillColor: Colors.white,
+                    activeColor: const Color.fromARGB(255, 158, 151, 143),
                     selectedColor: const Color.fromARGB(255, 237, 145, 33),
                     inactiveColor: const Color.fromARGB(255, 158, 151, 143),
                   ),
