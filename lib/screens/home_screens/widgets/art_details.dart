@@ -293,13 +293,7 @@ class _ArtDetailsState extends State<ArtDetails> {
         height: height * 0.08,
         decoration: BoxDecoration(
             color: const Color.fromARGB(255, 237, 112, 23),
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromRGBO(0, 123, 64, 0.35),
-                spreadRadius: 2,
-                blurRadius: 5,
-              )
-            ],
+            
             borderRadius: BorderRadius.circular(30)),
         child: const Center(
             child: Text(
