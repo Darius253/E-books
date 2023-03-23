@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:reader_app/screens/home_screens/book_preview.dart';
 
 class BookShelf extends StatelessWidget {
-  const BookShelf({super.key});
+  final Key? key;
+  const BookShelf({this.key}) : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -62,7 +63,7 @@ class BookShelf extends StatelessWidget {
     ]);
   }
 
-  Widget container(double width, height, BuildContext context) {
+  Widget container(double width, double height, BuildContext context) {
     return Column(
       crossAxisAlignment: CrossAxisAlignment.start,
       children: [
@@ -88,57 +89,59 @@ class BookShelf extends StatelessWidget {
     );
   }
 
-  Widget favouriteGenre(double height, width, String genre, title, author,
-      price, BuildContext context) {
-    return SingleChildScrollView(
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Padding(
-            padding: EdgeInsets.only(
-              left: width * 0.07,
-            ),
-            child: Text(
-              'Because you like $genre ',
-              style: const TextStyle(
-                  color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
-            ),
+  Widget favouriteGenre(double height, double width, String genre, title,
+      author, price, BuildContext context) {
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Padding(
+          padding: EdgeInsets.only(
+            left: width * 0.07,
           ),
-          Padding(
-            padding: EdgeInsets.only(
-              left: width * 0.07,
-            ),
-            child: const Text(
-              'Based your selected genres',
-              style: TextStyle(
-                  height: 2,
-                  color: Colors.black,
-                  fontSize: 12,
-                  fontWeight: FontWeight.w400),
-            ),
+          child: Text(
+            'Because you like $genre ',
+            style: const TextStyle(
+                color: Colors.black, fontSize: 16, fontWeight: FontWeight.w600),
           ),
-          SizedBox(
-            height: height * 0.005,
+        ),
+        Padding(
+          padding: EdgeInsets.only(
+            left: width * 0.07,
           ),
-          SingleChildScrollView(
-            scrollDirection: Axis.horizontal,
-            child: Row(
-              mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-                genreBook(height, width, title, author, price, context),
-                genreBook(height, width, title, author, price, context),
-                genreBook(height, width, title, author, price, context),
-                genreBook(height, width, title, author, price, context),
-              ],
-            ),
-          )
-        ],
-      ),
+          child: const Text(
+            'Based your selected genres',
+            style: TextStyle(
+                height: 2,
+                color: Colors.black,
+                fontSize: 12,
+                fontWeight: FontWeight.w400),
+          ),
+        ),
+        SizedBox(
+          height: height * 0.005,
+        ),
+        SingleChildScrollView(
+            child: SizedBox(
+          height: height * 0.35,
+          width: width,
+          child: ListView.separated(
+              scrollDirection: Axis.horizontal,
+              separatorBuilder: (BuildContext context, int index) {
+                return SizedBox(
+                  height: height * 0.05,
+                );
+              },
+              itemCount: 2,
+              itemBuilder: (BuildContext context, int index) {
+                return genreBook(height, width, title, author, price, context);
+              }),
+        ))
+      ],
     );
   }
 
-  Widget genreBook(
-      double height, width, title, author, price, BuildContext context) {
+  Widget genreBook(double height, double width, String title, String author,
+      String price, BuildContext context) {
     return GestureDetector(
       onTap: () => Navigator.push(
           context,
@@ -157,6 +160,7 @@ class BookShelf extends StatelessWidget {
               width: width * 0.4,
               height: height * 0.22,
               decoration: BoxDecoration(
+                  color: Colors.black,
                   border:
                       Border.all(color: const Color.fromARGB(255, 140, 63, 4)),
                   borderRadius: BorderRadius.circular(8)),

@@ -79,13 +79,7 @@ class _AuthorPreviewState extends State<AuthorPreview> {
       child: Container(
         height: height * 0.3,
         decoration: BoxDecoration(
-            boxShadow: const [
-              BoxShadow(
-                color: Color.fromRGBO(0, 123, 64, 0.35),
-                spreadRadius: 2,
-                blurRadius: 5,
-              )
-            ],
+            color: Colors.black,
             border: Border.all(color: const Color.fromARGB(255, 140, 63, 4)),
             borderRadius: BorderRadius.circular(8)),
       ),
