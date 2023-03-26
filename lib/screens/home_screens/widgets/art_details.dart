@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/home_screens/checkout_dart.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class ArtDetails extends StatefulWidget {
@@ -191,9 +192,7 @@ class _ArtDetailsState extends State<ArtDetails> {
       SizedBox(
         height: height * 0.04,
       ),
-      button(
-        height,
-      ),
+      button(height, widget.price),
       SizedBox(
         height: height * 0.04,
       ),
@@ -286,14 +285,18 @@ class _ArtDetailsState extends State<ArtDetails> {
 
   Widget button(
     double height,
+    String price,
   ) {
     return GestureDetector(
-      onTap: () {},
+      onTap: () {
+        Get.to(CheckOut(
+          price: price,
+        ));
+      },
       child: Container(
         height: height * 0.08,
         decoration: BoxDecoration(
             color: const Color.fromARGB(255, 237, 112, 23),
-            
             borderRadius: BorderRadius.circular(30)),
         child: const Center(
             child: Text(
