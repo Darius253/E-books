@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:reader_app/screens/home_screens/book_preview.dart';
 
 class BookShelf extends StatelessWidget {
+  @override
   final Key? key;
   const BookShelf({this.key}) : super(key: key);
 
