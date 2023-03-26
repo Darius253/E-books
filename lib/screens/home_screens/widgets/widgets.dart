@@ -1,5 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/home_screens/checkout_dart.dart';
 import 'package:reader_app/shared/exports.dart';
 
 Widget bookCover(double width, height) {
@@ -218,10 +219,12 @@ Widget bookInfo(double width, height, String title, author, Function()? ontap) {
   );
 }
 
-Widget button(double height, String text) {
+Widget button(double height, String text, String price) {
   return GestureDetector(
     onTap: () {
-      print(text);
+      Get.to(CheckOut(
+        price: price,
+      ));
     },
     child: Container(
       height: height * 0.08,
@@ -245,63 +248,62 @@ Widget button(double height, String text) {
   );
 }
 
-
 Widget art(double width, height, String artist, String name, String gallery,
-      String price, double fontSize) {
-    return Padding(
-      padding: EdgeInsets.only(
-        left: width * 0.07,
-      ),
-      child: InkWell(
-        onTap: () => Get.to(ArtDetails(
-          artName: name,
-          artistName: artist,
-          price: price,
-        )),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
-          children: [
-            Container(
-              height: height,
-              width: width,
-              decoration: BoxDecoration(
-                  borderRadius: BorderRadiusDirectional.circular(8),
-                  color: Colors.black),
-            ),
-            SizedBox(
-              height: height * 0.03,
-            ),
-            Text(
-              artist,
-              style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
-            ),
-            SizedBox(
-              height: height * 0.03,
-            ),
-            Text(
-              name,
+    String price, double fontSize) {
+  return Padding(
+    padding: EdgeInsets.only(
+      left: width * 0.07,
+    ),
+    child: InkWell(
+      onTap: () => Get.to(ArtDetails(
+        artName: name,
+        artistName: artist,
+        price: price,
+      )),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: height,
+            width: width,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadiusDirectional.circular(8),
+                color: Colors.black),
+          ),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Text(
+            artist,
+            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
+          ),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Text(
+            name,
+            style: TextStyle(
+                color: Colors.black.withOpacity(0.6),
+                fontSize: 15,
+                fontWeight: FontWeight.w400,
+                fontStyle: FontStyle.italic),
+          ),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Text(gallery,
+              style:
+                  const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Text('GHS $price',
               style: TextStyle(
-                  color: Colors.black.withOpacity(0.6),
-                  fontSize: 15,
-                  fontWeight: FontWeight.w400,
-                  fontStyle: FontStyle.italic),
-            ),
-            SizedBox(
-              height: height * 0.03,
-            ),
-            Text(gallery,
-                style:
-                    const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
-            SizedBox(
-              height: height * 0.03,
-            ),
-            Text('GHS $price',
-                style: TextStyle(
-                    fontSize: fontSize,
-                    fontWeight: FontWeight.w700,
-                    color: const Color.fromARGB(255, 237, 112, 23))),
-          ],
-        ),
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w700,
+                  color: const Color.fromARGB(255, 237, 112, 23))),
+        ],
       ),
-    );
-  }
+    ),
+  );
+}

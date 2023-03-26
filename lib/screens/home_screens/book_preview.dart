@@ -95,10 +95,7 @@ class BookPreview extends StatelessWidget {
                           SizedBox(
                             height: height * 0.02,
                           ),
-                          button(
-                            height,
-                            '89.99',
-                          )
+                          button(height, '89.99', '89.99')
                         ]),
                   ),
                   SizedBox(
@@ -163,7 +160,6 @@ class BookPreview extends StatelessWidget {
           ],
         ),
       ),
-   
     );
   }
 }
