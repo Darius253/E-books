@@ -4,7 +4,13 @@ import '../../shared/exports.dart';
 
 class CheckOut extends StatelessWidget {
   final String price;
-  const CheckOut({super.key, required this.price});
+  final String name;
+  final String artistOrAuthor;
+  const CheckOut(
+      {super.key,
+      required this.price,
+      required this.name,
+      required this.artistOrAuthor});
 
   @override
   Widget build(BuildContext context) {
@@ -14,6 +20,7 @@ class CheckOut extends StatelessWidget {
         body: SafeArea(
             child: SingleChildScrollView(
       child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
           appBar(width, height, 'Checkout'),
           Container(
@@ -61,16 +68,135 @@ class CheckOut extends StatelessWidget {
                   SizedBox(
                     height: height * 0.05,
                   ),
-                   Text(
+                  Text(
                     'No additional fees included yet.',
                     style: TextStyle(
-                      fontSize: 13,
-                      fontWeight: FontWeight.w400,
-                      color: Colors.black.withOpacity(0.6)
-                    ),
+                        fontSize: 13,
+                        fontWeight: FontWeight.w400,
+                        color: Colors.black.withOpacity(0.6)),
                   ),
                 ],
               ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+                horizontal: width * 0.07, vertical: height * 0.03),
+            child: const Text(
+              'Item(s)',
+              style: TextStyle(
+                fontSize: 16,
+                fontWeight: FontWeight.w600,
+              ),
+            ),
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.07,
+            ),
+            child: Card(
+              shape: RoundedRectangleBorder(
+                borderRadius: BorderRadius.circular(8),
+              ),
+              elevation: 2.0,
+              color: const Color.fromARGB(239, 229, 229, 229),
+              child: Padding(
+                padding: EdgeInsets.symmetric(
+                    horizontal: width * 0.05, vertical: height * 0.02),
+                child: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Container(
+                          width: width * 0.3,
+                          height: height * 0.13,
+                          decoration: BoxDecoration(
+                              color: Colors.grey,
+                              borderRadius: BorderRadius.circular(3)),
+                        ),
+                        const Expanded(child: SizedBox()),
+                        Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          children: [
+                            Text(
+                              name,
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w400),
+                            ),
+                            SizedBox(
+                              height: height * 0.015,
+                            ),
+                            Text.rich(
+                              TextSpan(
+                                  text: 'Artist: ',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w400,
+                                      color: Colors.black.withOpacity(0.6)),
+                                  children: <TextSpan>[
+                                    TextSpan(
+                                        text: artistOrAuthor,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.w400,
+                                            fontSize: 14)),
+                                  ]),
+                              textAlign: TextAlign.center,
+                            ),
+                            SizedBox(
+                              height: height * 0.015,
+                            ),
+                            Text(
+                              'GHS $price',
+                              style: const TextStyle(
+                                  fontSize: 14, fontWeight: FontWeight.w700),
+                            ),
+                            SizedBox(
+                              height: height * 0.02,
+                            ),
+                          ],
+                        ),
+                      ],
+                    ),
+                    SizedBox(
+                      height: height * 0.04,
+                    ),
+                    Row(
+                      children: const [
+                        Icon(
+                          Icons.delete_outline,
+                          color: Colors.red,
+                        ),
+                        Text(
+                          'REMOVE',
+                          style: TextStyle(
+                              color: Colors.red,
+                              fontWeight: FontWeight.w400,
+                              fontSize: 12),
+                        ),
+                        Expanded(
+                          child: SizedBox(),
+                        ),
+                        Text('x1'),
+                      ],
+                    )
+                  ],
+                ),
+              ),
+            ),
+          ),
+          SizedBox(
+            height: height * 0.15,
+          ),
+          Padding(
+            padding: EdgeInsets.symmetric(
+              horizontal: width * 0.07,
+            ),
+            child: button(
+              height,
+              price,
             ),
           )
         ],
@@ -111,5 +237,23 @@ class CheckOut extends StatelessWidget {
                 child: SizedBox(),
               ),
             ]));
+  }
+
+  Widget button(double height, String price) {
+    return GestureDetector(
+      onTap: () {},
+      child: Container(
+        height: height * 0.08,
+        decoration: BoxDecoration(
+            color: const Color.fromARGB(255, 237, 112, 23),
+            borderRadius: BorderRadius.circular(30)),
+        child: Center(
+            child: Text(
+          'Pay GHS $price',
+          style: const TextStyle(
+              color: Colors.white, fontSize: 16, fontWeight: FontWeight.w700),
+        )),
+      ),
+    );
   }
 }
