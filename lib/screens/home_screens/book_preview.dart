@@ -3,7 +3,9 @@ import '../../shared/exports.dart';
 
 class BookPreview extends StatelessWidget {
   final String bookTitle;
-  const BookPreview({super.key, required this.bookTitle});
+  final String authorName;
+  const BookPreview(
+      {super.key, required this.bookTitle, required this.authorName});
 
   @override
   Widget build(BuildContext context) {
@@ -43,9 +45,9 @@ class BookPreview extends StatelessWidget {
                             width,
                             height,
                             bookTitle,
-                            'Darius Tron',
-                            () => Get.to(const AuthorPreview(
-                              authorName: 'Darius Tron',
+                            authorName,
+                            () => Get.to(AuthorPreview(
+                              authorName: authorName,
                             )),
                           ),
                           SizedBox(
@@ -95,7 +97,7 @@ class BookPreview extends StatelessWidget {
                           SizedBox(
                             height: height * 0.02,
                           ),
-                          button(height, '89.99', '89.99')
+                          button(height, '89.99', bookTitle, authorName)
                         ]),
                   ),
                   SizedBox(
