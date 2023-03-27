@@ -192,7 +192,7 @@ class _ArtDetailsState extends State<ArtDetails> {
       SizedBox(
         height: height * 0.04,
       ),
-      button(height, widget.price),
+      button(height, widget.price, widget.artName, widget.artistName),
       SizedBox(
         height: height * 0.04,
       ),
@@ -283,14 +283,13 @@ class _ArtDetailsState extends State<ArtDetails> {
     );
   }
 
-  Widget button(
-    double height,
-    String price,
-  ) {
+  Widget button(double height, String price, String artName, String artist) {
     return GestureDetector(
       onTap: () {
         Get.to(CheckOut(
           price: price,
+          name: artName,
+          artistOrAuthor: artist,
         ));
       },
       child: Container(

@@ -149,6 +149,7 @@ class BookShelf extends StatelessWidget {
           MaterialPageRoute(
               builder: ((context) => BookPreview(
                     bookTitle: title,
+                    authorName: author,
                   )))),
       child: Padding(
         padding: EdgeInsets.only(
