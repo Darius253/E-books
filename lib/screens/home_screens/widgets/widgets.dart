@@ -219,12 +219,10 @@ Widget bookInfo(double width, height, String title, author, Function()? ontap) {
   );
 }
 
-Widget button(double height, String text, String price) {
+Widget button(double height, String price, String bookTitle, String author) {
   return GestureDetector(
     onTap: () {
-      Get.to(CheckOut(
-        price: price,
-      ));
+      Get.to(CheckOut(price: price, name: bookTitle, artistOrAuthor: author,));
     },
     child: Container(
       height: height * 0.08,
@@ -240,7 +238,7 @@ Widget button(double height, String text, String price) {
           borderRadius: BorderRadius.circular(4)),
       child: Center(
           child: Text(
-        'Pay GHS $text',
+        'Pay GHS $price',
         style: const TextStyle(
             color: Colors.white, fontSize: 16, fontWeight: FontWeight.w600),
       )),
