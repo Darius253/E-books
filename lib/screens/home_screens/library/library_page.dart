@@ -22,7 +22,7 @@ class _LibraryPageState extends State<LibraryPage> {
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              booksORartsLibraryButtons(),
+              booksORartsLibraryButtons(height),
               const SizedBox(
                 height: 5,
               ),
@@ -33,20 +33,20 @@ class _LibraryPageState extends State<LibraryPage> {
                   style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
                 ),
               ),
-               SizedBox(
+              SizedBox(
                 height: height * 0.025,
               ),
               SizedBox(
                 height: height * 0.26,
                 width: width * 0.85,
                 child: ListView.builder(
-                  itemCount: infodata.length,
-                  scrollDirection: Axis.horizontal,
-                  itemBuilder: (context, index){
-                  return CarouselCard(
-                    infodata: infodata[index],
-                  );
-                }),
+                    itemCount: infodata.length,
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return CarouselCard(
+                        infodata: infodata[index],
+                      );
+                    }),
               ),
               SizedBox(
                 height: height * 0.008,
@@ -71,9 +71,9 @@ class _LibraryPageState extends State<LibraryPage> {
     }
   }
 
-  Widget booksORartsLibraryButtons() {
+  Widget booksORartsLibraryButtons(double height) {
     return SizedBox(
-      height: 46,
+      height: height * 0.065,
       child: Row(
         mainAxisAlignment: MainAxisAlignment.center,
         children: [
@@ -89,7 +89,7 @@ class _LibraryPageState extends State<LibraryPage> {
               });
             },
             textcolor: libraryPart == 'books' ? Palette.primary : Colors.grey,
-            fsize: 18,
+            fsize: 14,
           ),
           Container(
             width: 1,
@@ -107,7 +107,7 @@ class _LibraryPageState extends State<LibraryPage> {
               });
             },
             textcolor: libraryPart == 'arts' ? Palette.primary : Colors.grey,
-            fsize: 18,
+            fsize: 14,
           ),
         ],
       ),
