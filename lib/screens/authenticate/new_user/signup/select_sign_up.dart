@@ -13,15 +13,19 @@ class SelectSignUp extends StatelessWidget {
         children: [
           Padding(
             padding: const EdgeInsets.all(16),
-            child: Image.asset('assets/images/logo_small.png'),
+            child: Image.asset(
+              'assets/images/aws_logo.png',
+              width: width * 0.3,
+              height: MediaQuery.of(context).size.height * 0.1,
+            ),
           ),
           Expanded(
             child: Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                 SizedBox(
+                SizedBox(
                   width: width * 0.92,
-                  child:  const Text(
+                  child: const Text(
                     question,
                     textAlign: TextAlign.center,
                     style: TextStyle(

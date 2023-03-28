@@ -31,7 +31,7 @@ class _HomeState extends State<Home> {
   }
 
   //APPBar
-  Widget appBar(double height, width) {
+  Widget appBar(double height, double width) {
     return Padding(
       padding: EdgeInsets.only(
         right: width * 0.07,
@@ -56,27 +56,32 @@ class _HomeState extends State<Home> {
                     'Bookshelf',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 12,
+                        fontSize: 14,
                         color: bookshelf
                             ? const Color.fromARGB(255, 237, 112, 23)
                             : Colors.grey),
                   ),
                 ),
-                bookshelf
-                    ? Container(
-                        width: width * 0.15,
-                        height: height * 0.002,
-                        color: const Color.fromARGB(255, 237, 112, 23))
-                    : const SizedBox.shrink()
+                Container(
+                    margin: const EdgeInsets.only(top: 8.0),
+                    width: width * 0.15,
+                    height: height * 0.002,
+                    color: bookshelf
+                        ? const Color.fromARGB(255, 237, 112, 23)
+                        : Colors.transparent)
               ],
             ),
-            SizedBox(width: width*0.02,),
+            SizedBox(
+              width: width * 0.02,
+            ),
             Container(
               color: Colors.grey,
               width: width * 0.003,
               height: height * 0.03,
             ),
-            SizedBox(width: width*0.02,),
+            SizedBox(
+              width: width * 0.02,
+            ),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -91,17 +96,18 @@ class _HomeState extends State<Home> {
                       'Art Gallery',
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 12,
+                          fontSize: 14,
                           color: !bookshelf
                               ? const Color.fromARGB(255, 237, 112, 23)
                               : Colors.grey),
                     )),
-                !bookshelf
-                    ? Container(
-                        width: width * 0.15,
-                        height: height * 0.002,
-                        color: const Color.fromARGB(255, 237, 112, 23))
-                    : const SizedBox.shrink()
+                Container(
+                    margin: const EdgeInsets.only(top: 8.0),
+                    width: width * 0.15,
+                    height: height * 0.002,
+                    color: !bookshelf
+                        ? const Color.fromARGB(255, 237, 112, 23)
+                        : Colors.transparent)
               ],
             ),
             const Expanded(child: SizedBox()),

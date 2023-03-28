@@ -27,13 +27,18 @@ class _SignInState extends State<SignIn> {
           child: Padding(
         padding: EdgeInsets.symmetric(
             horizontal: MediaQuery.of(context).size.width * 0.05,
-            vertical: MediaQuery.of(context).size.height * 0.03),
+           ),
         child: SingleChildScrollView(
           child: Column(children: [
             Center(
               child: Column(
                 children: [
-                  const Text('LOGO'),
+                  Image.asset(
+                    'assets/images/aws_logo.png',
+                    width: MediaQuery.of(context).size.width * 0.2,
+                    height: MediaQuery.of(context).size.height*0.1,
+                    filterQuality: FilterQuality.high,
+                  ),
                   const SizedBox(height: 30),
                   const Text('Welcome back, Darius!',
                       textAlign: TextAlign.center,
