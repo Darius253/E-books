@@ -54,7 +54,6 @@ export '../../widgets/bottom_nav_bar.dart';
 export 'package:reader_app/screens/home_screens/author_preview.dart';
 export 'package:reader_app/screens/home_screens/widgets/widgets.dart';
 export 'package:reader_app/screens/home_screens/home.dart';
-export 'package:reader_app/screens/home_screens/library.dart';
 //export 'package:reader_app/widgets/creater_button.dart';
 export 'package:reader_app/screens/authenticate/new_user/signup/sign_up_page.dart';
 export 'package:reader_app/screens/authenticate/signin/reset_password.dart';
