@@ -1,3 +1,5 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 
 import '../../shared/exports.dart';
@@ -90,103 +92,7 @@ class CheckOut extends StatelessWidget {
               ),
             ),
           ),
-          Padding(
-            padding: EdgeInsets.symmetric(
-              horizontal: width * 0.07,
-            ),
-            child: Card(
-              shape: RoundedRectangleBorder(
-                borderRadius: BorderRadius.circular(8),
-              ),
-              elevation: 2.0,
-              color: const Color.fromARGB(239, 229, 229, 229),
-              child: Padding(
-                padding: EdgeInsets.symmetric(
-                    horizontal: width * 0.05, vertical: height * 0.02),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        Container(
-                          width: width * 0.3,
-                          height: height * 0.13,
-                          decoration: BoxDecoration(
-                              color: Colors.grey,
-                              borderRadius: BorderRadius.circular(3)),
-                        ),
-                        const Expanded(child: SizedBox()),
-                        Column(
-                          crossAxisAlignment: CrossAxisAlignment.start,
-                          children: [
-                            Text(
-                              name,
-                              style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w400),
-                            ),
-                            SizedBox(
-                              height: height * 0.015,
-                            ),
-                            Text.rich(
-                              TextSpan(
-                                  text: 'Artist: ',
-                                  style: TextStyle(
-                                      fontSize: 14,
-                                      fontWeight: FontWeight.w400,
-                                      color: Colors.black.withOpacity(0.6)),
-                                  children: <TextSpan>[
-                                    TextSpan(
-                                        text: artistOrAuthor,
-                                        style: const TextStyle(
-                                            color: Colors.black,
-                                            fontWeight: FontWeight.w400,
-                                            fontSize: 14)),
-                                  ]),
-                              textAlign: TextAlign.center,
-                            ),
-                            SizedBox(
-                              height: height * 0.015,
-                            ),
-                            Text(
-                              'GHS $price',
-                              style: const TextStyle(
-                                  fontSize: 14, fontWeight: FontWeight.w700),
-                            ),
-                            SizedBox(
-                              height: height * 0.02,
-                            ),
-                          ],
-                        ),
-                      ],
-                    ),
-                    SizedBox(
-                      height: height * 0.04,
-                    ),
-                    Row(
-                      children: const [
-                        Icon(
-                          Icons.delete_outline,
-                          color: Colors.red,
-                        ),
-                        Text(
-                          'REMOVE',
-                          style: TextStyle(
-                              color: Colors.red,
-                              fontWeight: FontWeight.w400,
-                              fontSize: 12),
-                        ),
-                        Expanded(
-                          child: SizedBox(),
-                        ),
-                        Text('x1'),
-                      ],
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
+          itemContainer(width, height),
           SizedBox(
             height: height * 0.15,
           ),
@@ -195,9 +101,7 @@ class CheckOut extends StatelessWidget {
               horizontal: width * 0.07,
             ),
             child: button(
-              height,
-              price,
-            ),
+                height, price, () => paymentMethod(context, width, height)),
           )
         ],
       ),
@@ -239,9 +143,9 @@ class CheckOut extends StatelessWidget {
             ]));
   }
 
-  Widget button(double height, String price) {
+  Widget button(double height, String price, Function()? onTap) {
     return GestureDetector(
-      onTap: () {},
+      onTap: onTap,
       child: Container(
         height: height * 0.08,
         decoration: BoxDecoration(
@@ -255,5 +159,194 @@ class CheckOut extends StatelessWidget {
         )),
       ),
     );
+  }
+
+  Widget itemContainer(double width, double height) {
+    return Padding(
+      padding: EdgeInsets.symmetric(
+        horizontal: width * 0.07,
+      ),
+      child: Card(
+        shape: RoundedRectangleBorder(
+          borderRadius: BorderRadius.circular(8),
+        ),
+        elevation: 2.0,
+        color: const Color.fromARGB(239, 229, 229, 229),
+        child: Padding(
+          padding: EdgeInsets.symmetric(
+              horizontal: width * 0.05, vertical: height * 0.02),
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            children: [
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                    width: width * 0.3,
+                    height: height * 0.13,
+                    decoration: BoxDecoration(
+                        color: Colors.grey,
+                        borderRadius: BorderRadius.circular(3)),
+                  ),
+                  const Expanded(child: SizedBox()),
+                  Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(
+                        name,
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w400),
+                      ),
+                      SizedBox(
+                        height: height * 0.015,
+                      ),
+                      Text.rich(
+                        TextSpan(
+                            text: 'Artist: ',
+                            style: TextStyle(
+                                fontSize: 14,
+                                fontWeight: FontWeight.w400,
+                                color: Colors.black.withOpacity(0.6)),
+                            children: <TextSpan>[
+                              TextSpan(
+                                  text: artistOrAuthor,
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.w400,
+                                      fontSize: 14)),
+                            ]),
+                        textAlign: TextAlign.center,
+                      ),
+                      SizedBox(
+                        height: height * 0.015,
+                      ),
+                      Text(
+                        'GHS $price',
+                        style: const TextStyle(
+                            fontSize: 14, fontWeight: FontWeight.w700),
+                      ),
+                      SizedBox(
+                        height: height * 0.02,
+                      ),
+                    ],
+                  ),
+                ],
+              ),
+              SizedBox(
+                height: height * 0.04,
+              ),
+              Row(
+                children: const [
+                  Icon(
+                    Icons.delete_outline,
+                    color: Colors.red,
+                  ),
+                  Text(
+                    'REMOVE',
+                    style: TextStyle(
+                        color: Colors.red,
+                        fontWeight: FontWeight.w400,
+                        fontSize: 12),
+                  ),
+                  Expanded(
+                    child: SizedBox(),
+                  ),
+                  Text('x1'),
+                ],
+              )
+            ],
+          ),
+        ),
+      ),
+    );
+  }
+
+  Future paymentMethod(BuildContext context, double width, double height) {
+    return showModalBottomSheet(
+        context: context,
+        builder: (contex) => BackdropFilter(
+              filter: ImageFilter.blur(
+                  sigmaX: 3.0, sigmaY: 3.0, tileMode: TileMode.mirror),
+              child: Container(
+                padding: EdgeInsets.symmetric(
+                    horizontal: width * 0.07, vertical: height * 0.03),
+                width: width,
+                height: height * 0.4,
+                color: Colors.white,
+                child: Column(
+                  children: [
+                    Row(
+                      children: [
+                        Text(
+                          'Total GHS $price',
+                          style: const TextStyle(
+                              fontSize: 16, fontWeight: FontWeight.w400),
+                        ),
+                        const Expanded(child: SizedBox()),
+                        InkWell(
+                            onTap: () {
+                              Get.back();
+                            },
+                            child: const Icon(
+                              Icons.close,
+                              color: Colors.black,
+                            ))
+                      ],
+                    ),
+                    SizedBox(
+                      height: height * 0.07,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        print('Card');
+                      },
+                      child: Row(
+                        children: [
+                          InkWell(
+                            onTap: () {},
+                            child: const Icon(
+                              Icons.payment,
+                              color: Color.fromARGB(255, 140, 63, 4),
+                            ),
+                          ),
+                          SizedBox(
+                            width: width * 0.05,
+                          ),
+                          const Text(
+                            'Pay with Card',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                    ),
+                    SizedBox(
+                      height: width * 0.1,
+                    ),
+                    InkWell(
+                      onTap: () {
+                        print('mobile');
+                      },
+                      child: Row(
+                        children: [
+                          const Icon(
+                            Icons.phone_android_sharp,
+                            color: Color.fromARGB(255, 140, 63, 4),
+                          ),
+                          SizedBox(
+                            width: width * 0.05,
+                          ),
+                          const Text(
+                            'Pay via Mobile Money',
+                            style: TextStyle(
+                                fontSize: 18, fontWeight: FontWeight.w600),
+                          ),
+                        ],
+                      ),
+                    )
+                  ],
+                ),
+              ),
+            ));
   }
 }
