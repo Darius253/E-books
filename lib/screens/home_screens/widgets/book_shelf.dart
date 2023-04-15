@@ -15,53 +15,54 @@ class BookShelf extends StatelessWidget {
       'We Broke Up',
       'Dream Big'
     ];
-
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-      Padding(
-        padding: EdgeInsets.only(
-          left: width * 0.07,
-        ),
-        child: const Text(
-          'New Release',
-          style: TextStyle(
-              wordSpacing: 3,
-              color: Colors.black,
-              fontWeight: FontWeight.w600,
-              fontSize: 18),
-        ),
+    return SafeArea(
+      child: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(
+            height: height * 0.4,
+            child: ListView(
+              scrollDirection: Axis.horizontal,
+              children: [
+                Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Padding(
+                      padding: EdgeInsets.only(left: width * 0.07),
+                      child: const Text(
+                        'Currently Reading',
+                        style: TextStyle(
+                            fontSize: 16, fontWeight: FontWeight.w600),
+                      ),
+                    ),
+                    container(width, height, context),
+                  ],
+                ),
+               
+              ],
+            ),
+          ),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          SizedBox(
+            height: height * 0.8,
+            child: ListView.separated(
+                separatorBuilder: (BuildContext context, int index) {
+                  return SizedBox(
+                    height: height * 0.05,
+                  );
+                },
+                itemCount: genre.length,
+                itemBuilder: (BuildContext context, int index) {
+                  return favouriteGenre(height, width, genre[index],
+                      book[index], 'Darius Tron', 'GHS 89.99', context);
+                }),
+          )
+        ]),
       ),
-      SizedBox(
-        height: height * 0.4,
-        child: ListView.separated(
-            shrinkWrap: true,
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(
-                width: width * 0,
-              );
-            },
-            scrollDirection: Axis.horizontal,
-            itemCount: 3,
-            itemBuilder: (BuildContext context, int index) {
-              return container(width, height, context);
-            }),
-      ),
-      SizedBox(
-        height: height * 0.435,
-        child: ListView.separated(
-            separatorBuilder: (BuildContext context, int index) {
-              return SizedBox(
-                height: height * 0.05,
-              );
-            },
-            itemCount: genre.length,
-            itemBuilder: (BuildContext context, int index) {
-              return favouriteGenre(height, width, genre[index], book[index],
-                  'Darius Tron', 'GHS 89.99', context);
-            }),
-      )
-    ]);
+    );
   }
 
   Widget container(double width, double height, BuildContext context) {
@@ -121,8 +122,7 @@ class BookShelf extends StatelessWidget {
         SizedBox(
           height: height * 0.005,
         ),
-        SingleChildScrollView(
-            child: SizedBox(
+        SizedBox(
           height: height * 0.35,
           width: width,
           child: ListView.separated(
@@ -136,7 +136,7 @@ class BookShelf extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return genreBook(height, width, title, author, price, context);
               }),
-        ))
+        )
       ],
     );
   }
