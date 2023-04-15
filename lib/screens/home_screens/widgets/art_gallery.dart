@@ -93,7 +93,7 @@ class ArtGallery extends StatelessWidget {
                             17);
                       })),
                        SizedBox(
-                height: height * 0.075,
+                height: height * 0.02,
               ),
             ],
           ),
