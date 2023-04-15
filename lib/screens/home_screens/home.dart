@@ -21,9 +21,7 @@ class _HomeState extends State<Home> {
           appBar(height, width),
           Padding(
             padding: EdgeInsets.only(top: height * 0.07),
-            child: SingleChildScrollView(
-              child: bookshelf ? const BookShelf() : const ArtGallery(),
-            ),
+            child: bookshelf ? const BookShelf() : const ArtGallery(),
           )
         ],
       ),
