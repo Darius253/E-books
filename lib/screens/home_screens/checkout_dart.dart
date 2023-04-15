@@ -1,6 +1,7 @@
 import 'dart:ui';
 
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/home_screens/widgets/payment_details.dart';
 
 import '../../shared/exports.dart';
 
@@ -114,7 +115,7 @@ class CheckOut extends StatelessWidget {
             horizontal: width * 0.065, vertical: height * 0.025),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
                 onTap: () {
@@ -325,7 +326,8 @@ class CheckOut extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        print('mobile');
+                        Get.to(const Payment());
+                        print('mobile money');
                       },
                       child: Row(
                         children: [
