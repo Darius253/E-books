@@ -101,8 +101,8 @@ class CheckOut extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: width * 0.07,
             ),
-            child: button(
-                height, price, () => paymentMethod(context, width, height)),
+            child: button(height, price,
+                () => paymentMethod(context, width, height, price)),
           )
         ],
       ),
@@ -262,7 +262,8 @@ class CheckOut extends StatelessWidget {
     );
   }
 
-  Future paymentMethod(BuildContext context, double width, double height) {
+  Future paymentMethod(
+      BuildContext context, double width, double height, String price) {
     return showModalBottomSheet(
         context: context,
         builder: (contex) => BackdropFilter(
@@ -326,7 +327,9 @@ class CheckOut extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        Get.to(const Payment());
+                        Get.to(Payment(
+                          price: price,
+                        ));
                         print('mobile money');
                       },
                       child: Row(
