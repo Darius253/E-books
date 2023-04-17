@@ -10,6 +10,8 @@ export 'package:flutter_password_strength/flutter_password_strength.dart';
 export 'package:flutter_native_splash/flutter_native_splash.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
+export 'package:dropdown_button2/dropdown_button2.dart';
+
 
 // controllers
 
@@ -23,6 +25,9 @@ export 'package:reader_app/screens/home_screens/bookstore/pages/book_info.dart';
 export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 //export 'package:reader_app/onboarding/sign_in.dart';
+export 'package:reader_app/screens/home_screens/checkout/confirm_payment.dart';
+export 'package:reader_app/screens/home_screens/checkout/request_payment.dart';
+export 'package:reader_app/screens/home_screens/checkout/payment_details.dart';
 
 export 'package:reader_app/screens/home_screens/profile_page.dart';
 export 'package:reader_app/screens/home_screens/widgets/art_gallery.dart';
