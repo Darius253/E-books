@@ -20,31 +20,39 @@ class BookShelf extends StatelessWidget {
     return SafeArea(
       child: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          SizedBox(
-            height: height * 0.4,
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              children: [
-                Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Padding(
-                      padding: EdgeInsets.only(left: width * 0.07),
-                      child: const Text(
-                        'Currently Reading',
-                        style: TextStyle(
-                            fontSize: 16, fontWeight: FontWeight.w600),
-                      ),
-                    ),
-                    container(width, height, context),
-                  ],
-                ),
-               
-              ],
+          Padding(
+            padding: EdgeInsets.only(left: width * 0.07),
+            child: const Text(
+              'Currently Reading',
+              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
             ),
           ),
+          container(width, height, context),
+          // SizedBox(
+          //   height: height * 0.4,
+          //   child: ListView(
+          //     scrollDirection: Axis.horizontal,
+          //     children: [
+          //       // Column(
+          //       //   crossAxisAlignment: CrossAxisAlignment.start,
+          //       //   children: [
+          //       //     Padding(
+          //       //       padding: EdgeInsets.only(left: width * 0.07),
+          //       //       child: const Text(
+          //       //         'Currently Reading',
+          //       //         style: TextStyle(
+          //       //             fontSize: 16, fontWeight: FontWeight.w600),
+          //       //       ),
+          //       //     ),
+          //       //     container(width, height, context),
+          //       //   ],
+          //       // ),
+
+          //     ],
+          //   ),
+          // ),
           SizedBox(
-            height: height * 0.03,
+            height: height * 0.035,
           ),
           SizedBox(
             height: height * 0.8,
