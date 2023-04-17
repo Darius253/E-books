@@ -13,17 +13,13 @@ class Success extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Padding(
-        padding: const EdgeInsets.symmetric(horizontal: 20.0),
+      body: SafeArea(
         child: SingleChildScrollView(
           child: Column(
             children: [
-              SizedBox(
-                height: MediaQuery.of(context).size.height * 0.27,
-              ),
               SvgPicture.asset(
-                'assets/images/Completed_task _Outline.svg',
-                width: MediaQuery.of(context).size.width * 0.75,
+                'assets/images/ok-not-css.svg',
+                height: MediaQuery.of(context).size.height * 0.55,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
@@ -42,11 +38,14 @@ class Success extends StatelessWidget {
                     color: Colors.grey),
               ),
               SizedBox(
-                height: MediaQuery.of(context).size.height * 0.25,
+                height: MediaQuery.of(context).size.height * 0.05,
               ),
-              Button(
-                  text: 'Go back to login',
-                  onTap: () => Get.off(() => const SignIn()))
+              Padding(
+                padding: const EdgeInsets.symmetric(horizontal: 20),
+                child: Button(
+                    text: 'Go back to login',
+                    onTap: () => Get.off(() => const SignIn())),
+              )
             ],
           ),
         ),
