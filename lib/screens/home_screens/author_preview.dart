@@ -11,6 +11,7 @@ class AuthorPreview extends StatefulWidget {
 }
 
 class _AuthorPreviewState extends State<AuthorPreview> {
+  bool isFollowing = false;
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
@@ -22,7 +23,10 @@ class _AuthorPreviewState extends State<AuthorPreview> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             authorDetails(width, height, 'Writer/Author', '50', '250', () {
-              print('Followed');
+              setState(() {
+                isFollowing = !isFollowing;
+              });
+              print(isFollowing);
             }),
             aboutProfile(width, height,
                 'Lorem ipsum dolor sit amet consectetur. Lectus in diam est libero id viverra magnis amet. Id velit placerat ac cursus massa leo ultrices velit pellentesque. Duis sed placerat et morbi consectetur potenti amet pulvinar vel. Parturient ullamcorper vitae risus risus viverra turpis. Pharetra arcu pharetra lacinia consequat et... more'),
@@ -207,24 +211,43 @@ class _AuthorPreviewState extends State<AuthorPreview> {
                 border:
                     Border.all(color: const Color.fromARGB(255, 140, 63, 4)),
               ),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  Icon(
-                    CupertinoIcons.person_crop_circle_fill_badge_plus,
-                    size: width * 0.075,
-                    color: const Color.fromARGB(255, 140, 63, 4),
-                  ),
-                  const Text(
-                    'Follow',
-                    style: TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Color.fromARGB(255, 140, 63, 4),
+              child: isFollowing == false
+                  ? Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(
+                          CupertinoIcons.person_crop_circle_fill_badge_plus,
+                          size: width * 0.075,
+                          color: const Color.fromARGB(255, 140, 63, 4),
+                        ),
+                        const Text(
+                          'Follow',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Color.fromARGB(255, 140, 63, 4),
+                          ),
+                        ),
+                      ],
+                    )
+                  : Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        Icon(
+                          CupertinoIcons.person_crop_circle_badge_checkmark,
+                          size: width * 0.075,
+                          color: const Color.fromARGB(255, 140, 63, 4),
+                        ),
+                        const Text(
+                          'Following',
+                          style: TextStyle(
+                            fontSize: 14,
+                            fontWeight: FontWeight.w400,
+                            color: Color.fromARGB(255, 140, 63, 4),
+                          ),
+                        ),
+                      ],
                     ),
-                  ),
-                ],
-              ),
             ),
           )
         ],
