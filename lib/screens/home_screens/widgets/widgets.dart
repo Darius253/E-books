@@ -1,6 +1,6 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/home_screens/checkout_dart.dart';
+import 'package:reader_app/screens/home_screens/checkout/checkout_dart.dart';
 import 'package:reader_app/shared/exports.dart';
 
 Widget bookCover(double width, height) {

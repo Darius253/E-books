@@ -1,8 +1,6 @@
 import 'dart:ui';
-
 import 'package:flutter/material.dart';
-
-import '../../shared/exports.dart';
+import '../../../shared/exports.dart';
 
 class CheckOut extends StatelessWidget {
   final String price;
@@ -100,8 +98,8 @@ class CheckOut extends StatelessWidget {
             padding: EdgeInsets.symmetric(
               horizontal: width * 0.07,
             ),
-            child: button(
-                height, price, () => paymentMethod(context, width, height)),
+            child: button(height, price,
+                () => paymentMethod(context, width, height, price)),
           )
         ],
       ),
@@ -114,7 +112,7 @@ class CheckOut extends StatelessWidget {
             horizontal: width * 0.065, vertical: height * 0.025),
         child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
-            crossAxisAlignment: CrossAxisAlignment.start,
+            crossAxisAlignment: CrossAxisAlignment.center,
             children: [
               InkWell(
                 onTap: () {
@@ -261,7 +259,8 @@ class CheckOut extends StatelessWidget {
     );
   }
 
-  Future paymentMethod(BuildContext context, double width, double height) {
+  Future paymentMethod(
+      BuildContext context, double width, double height, String price) {
     return showModalBottomSheet(
         context: context,
         builder: (contex) => BackdropFilter(
@@ -325,7 +324,10 @@ class CheckOut extends StatelessWidget {
                     ),
                     InkWell(
                       onTap: () {
-                        print('mobile');
+                        Get.back();
+                        Get.to(Payment(
+                          price: price,
+                        ));
                       },
                       child: Row(
                         children: [
