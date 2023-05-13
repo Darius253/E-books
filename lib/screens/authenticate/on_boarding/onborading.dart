@@ -62,6 +62,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
                     padding: EdgeInsets.symmetric(horizontal: 30),
                     child: SvgPicture.asset(
                       ondata[index].svgimg,
+                      width: width,
                       height: height * 0.6,
                     ),
                   ),
