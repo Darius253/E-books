@@ -1,5 +1,6 @@
 // ignore_for_file: prefer_const_constructors
 
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
@@ -19,7 +20,8 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   final TextEditingController _emailController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
-
+  bool obscurePassword = false;
+  bool obscureConfirmPassword = false;
   String fullname = '';
   String email = '';
   String password = '';
@@ -28,7 +30,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
 
   String accountType = 'customer';
   bool selected = false;
-  bool _obscureText = true;
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -53,10 +54,10 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   color: Palette.grey,
                   fontWeight: FontWeight.normal),
             ),
-            //Name
+
             SizedBox(height: height * 0.03),
 
-            //name
+            //Username
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _fullnameController,
@@ -67,30 +68,18 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 setState(() => fullname = value);
               },
               decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Palette.grey,
+                  labelText: 'Username',
+                  labelStyle: const TextStyle(
+                    color: Color.fromARGB(214, 165, 165, 165),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
                   ),
-                ),
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                floatingLabelStyle: TextStyle(
-                  fontSize: 14,
-                  color: Palette.primary,
-                  fontWeight: FontWeight.w400,
-                ),
-                labelText: "Name",
-                hintStyle: TextStyle(fontSize: 18), //hint text style
-                labelStyle: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(216, 237, 112, 23)),
+                      borderRadius: BorderRadius.circular(8)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8))),
             ),
 
             //Email
@@ -99,29 +88,18 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _emailController,
               decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Palette.grey,
+                  labelText: 'Enter your Email',
+                  labelStyle: const TextStyle(
+                    color: Color.fromARGB(214, 165, 165, 165),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
                   ),
-                ),
-                contentPadding:
-                    EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                floatingLabelStyle: TextStyle(
-                  fontSize: 14,
-                  color: Palette.primary,
-                  fontWeight: FontWeight.w400,
-                ),
-                labelText: "Email", //hint text style
-                labelStyle: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(216, 237, 112, 23)),
+                      borderRadius: BorderRadius.circular(8)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8))),
               validator: (value) {
                 if (value!.isEmpty ||
                     !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
@@ -141,10 +119,9 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             Container(
               height: 55,
               decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                border: Border.all(width: 1.0, color: Palette.grey),
-                borderRadius: BorderRadius.circular(5.0)
-              ),
+                  shape: BoxShape.rectangle,
+                  border: Border.all(width: 1.0, color: Palette.grey),
+                  borderRadius: BorderRadius.circular(8.0)),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: InternationalPhoneNumberInput(
@@ -154,7 +131,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   selectorConfig: const SelectorConfig(
                       selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
                   inputDecoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(bottom: 15, left: 0),
                     border: InputBorder.none,
                     floatingLabelStyle: TextStyle(
                       fontSize: 14,
@@ -162,7 +138,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                       fontWeight: FontWeight.w400,
                     ),
                   ),
-                  
                 ),
               ),
             ),
@@ -170,113 +145,100 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             //Password
             SizedBox(height: height * 0.03),
             TextFormField(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              obscureText: _obscureText,
               controller: _passwordController,
-              decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Palette.grey,
-                  ),
-                ),
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                floatingLabelStyle: TextStyle(
-                  fontSize: 14,
-                  color: Palette.primary,
-                  fontWeight: FontWeight.w400,
-                ),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _obscureText = !_obscureText;
-                    });
-                  },
-                  icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off),
-                ),
-                labelText: "Password",//hint text style
-                labelStyle: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
+              obscureText: !obscurePassword,
               validator: (value) {
-                if (value!.isEmpty ||
-                    !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        .hasMatch(value)) {
-                  return "Enter a valid email";
-                } else {
-                  return null;
+                if (value == null || value.isEmpty) {
+                  return 'Please enter password';
                 }
+                return null;
               },
               onChanged: (value) {
-                setState(() => password = value);
+                setState(() {
+                  password = value;
+                });
               },
+              onFieldSubmitted: (value) {
+                setState(() {
+                  password = value;
+                });
+              },
+              decoration: InputDecoration(
+                  suffixIcon: IconButton(
+                    icon: obscurePassword == true
+                        ? const Icon(CupertinoIcons.eye, color: Colors.grey)
+                        : const Icon(CupertinoIcons.eye_slash,
+                            color: Colors.grey),
+                    onPressed: () {
+                      setState(() {
+                        obscurePassword = !obscurePassword;
+                      });
+                    },
+                  ),
+                  labelText: 'Enter Password',
+                  labelStyle: const TextStyle(
+                    color: Color.fromARGB(214, 165, 165, 165),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                  ),
+                  focusColor: const Color.fromARGB(216, 237, 112, 23),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(216, 237, 112, 23)),
+                      borderRadius: BorderRadius.circular(8)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8))),
             ),
             SizedBox(height: height * 0.03),
             //Confirm Password
             TextFormField(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              obscureText: _obscureText,
               controller: _confirmPasswordController,
-              keyboardType: TextInputType.visiblePassword,
+              obscureText: !obscureConfirmPassword,
+              validator: (value) {
+                if (value == null || value.isEmpty) {
+                  return 'Please enter password';
+                }
+                return null;
+              },
               onChanged: (value) {
-                setState(() => confirmpassword = value);
+                setState(() {
+                  confirmpassword = value;
+                });
+              },
+              onFieldSubmitted: (value) {
+                setState(() {
+                  confirmpassword = value;
+                });
               },
               decoration: InputDecoration(
-                focusedBorder: OutlineInputBorder(
-                  borderSide: BorderSide(color: Palette.primary, width: 1.5),
-                ),
-                enabledBorder: OutlineInputBorder(
-                  borderSide: BorderSide(
-                    color: Palette.grey,
+                  suffixIcon: IconButton(
+                    icon: obscureConfirmPassword == true
+                        ? const Icon(CupertinoIcons.eye, color: Colors.grey)
+                        : const Icon(CupertinoIcons.eye_slash,
+                            color: Colors.grey),
+                    onPressed: () {
+                      setState(() {
+                        obscureConfirmPassword = !obscureConfirmPassword;
+                      });
+                    },
                   ),
-                ),
-                contentPadding:
-                    const EdgeInsets.symmetric(vertical: 18.0, horizontal: 8.0),
-                border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0)),
-                floatingLabelStyle: TextStyle(
-                  fontSize: 14,
-                  color: Palette.primary,
-                  fontWeight: FontWeight.w400,
-                ),
-                suffixIcon: IconButton(
-                  onPressed: () {
-                    setState(() {
-                      _obscureText = !_obscureText;
-                    });
-                  },
-                  icon: Icon(
-                      _obscureText ? Icons.visibility : Icons.visibility_off),
-                ),
-                labelText: "Password",//hint text style
-                labelStyle: TextStyle(
-                    fontSize: 16,
-                    color: Colors.black,
-                    fontWeight: FontWeight.w400),
-              ),
-              validator: (value) {
-                if (value!.isEmpty ||
-                    !RegExp(r"^[a-zA-Z0-9.a-zA-Z0-9.!#$%&'*+-/=?^_`{|}~]+@[a-zA-Z0-9]+\.[a-zA-Z]+")
-                        .hasMatch(value)) {
-                  return "Enter a valid email";
-                } else {
-                  return null;
-                }
-              },
+                  labelText: 'Confirm Password',
+                  labelStyle: const TextStyle(
+                    color: Color.fromARGB(214, 165, 165, 165),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                  ),
+                  focusColor: const Color.fromARGB(216, 237, 112, 23),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(216, 237, 112, 23)),
+                      borderRadius: BorderRadius.circular(8)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8))),
             ),
 
             SizedBox(height: height * 0.01),
             TermsAndConditions(
-                label:
-                    "I agree to the Terms and Conditions of Services and Privacy Policy",
                 value: isChecked,
                 onChanged: (value) {
                   setState(() {
@@ -284,7 +246,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   });
                 }),
 
-            SizedBox(height: height * 0.01),
+            SizedBox(height: height * 0.05),
             //isChecked ?
             Button(
               onTap: () {},
