@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
-
 class SignUpPage extends StatefulWidget {
   const SignUpPage({Key? key}) : super(key: key);
 
@@ -15,23 +14,42 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        children: [
-          Padding(
-            padding: const EdgeInsets.all(16),
-            child: Align(
-              alignment: Alignment.center,
-              child: Image.asset('assets/images/welcome.png'),
+        body: CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          titleSpacing: MediaQuery.of(context).size.width * 0.22,
+          pinned: true,
+          snap: false,
+          floating: false,
+          backgroundColor: Colors.white,
+          elevation: 0.0,
+          automaticallyImplyLeading: false,
+          centerTitle: true,
+          expandedHeight: MediaQuery.of(context).size.height * 0.55,
+          flexibleSpace: FlexibleSpaceBar(
+            background: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                Image.asset(
+                  'assets/images/aws_logo.png',
+                  width: MediaQuery.of(context).size.width * 0.3,
+                  height: MediaQuery.of(context).size.height * 0.08,
+                ),
+                SvgPicture.asset(
+                  'assets/images/Welcome-amico.svg',
+                  height: MediaQuery.of(context).size.height * 0.5,
+                ),
+              ],
             ),
           ),
-          const SizedBox(height: 16),
-          creatorORcustomerButtons(),
-          Expanded(
-            child: SingleChildScrollView(child: creatorORcustomer()),
-          ),
-        ],
-      ),
-    );
+          title: Align(
+              alignment: Alignment.center, child: creatorORcustomerButtons()),
+        ),
+        SliverToBoxAdapter(
+          child: SingleChildScrollView(child: creatorORcustomer()),
+        ),
+      ],
+    ));
   }
 
   Widget creatorORcustomer() {
@@ -44,44 +62,48 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget creatorORcustomerButtons() {
     return SizedBox(
-      height: 45,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.center,
-        children: [
-          TextButtons(
-            btext: 'Seller',
-            // bbackgroundColor:
-            //     accountType == 'creator' ? Palette.primary : Colors.transparent,
-            bcolor:
-                accountType == 'creator' ? Palette.primary : Colors.transparent,
-            onTap: () {
-              setState(() {
-                accountType = 'creator';
-              });
-            },
-            textcolor: accountType == 'creator' ? Palette.primary : Colors.grey,
-            fsize: 20,
-          ),
-          Container(
-            width: 1,
-            height: 26,
-            color: Palette.grey,
-          ),
-          TextButtons(
-            btext: 'Customer',
-            //bbackgroundColor: accountType == 'customer' ? Palette.primary : Colors.transparent,
-            bcolor: accountType == 'customer'
-                ? Palette.primary
-                : Colors.transparent,
-            onTap: () {
-              setState(() {
-                accountType = 'customer';
-              });
-            },
-            textcolor: accountType == 'creator' ? Colors.grey : Palette.primary,
-            fsize: 20,
-          ),
-        ],
+      child: Align(
+        alignment: Alignment.topCenter,
+        child: Row(
+          children: [
+            TextButtons(
+              btext: 'Seller',
+              // bbackgroundColor:
+              //     accountType == 'creator' ? Palette.primary : Colors.transparent,
+              bcolor: accountType == 'creator'
+                  ? Palette.primary
+                  : Colors.transparent,
+              onTap: () {
+                setState(() {
+                  accountType = 'creator';
+                });
+              },
+              textcolor:
+                  accountType == 'creator' ? Palette.primary : Colors.grey,
+              fsize: 20,
+            ),
+            Container(
+              width: 1,
+              height: 26,
+              color: Palette.grey,
+            ),
+            TextButtons(
+              btext: 'Customer',
+              //bbackgroundColor: accountType == 'customer' ? Palette.primary : Colors.transparent,
+              bcolor: accountType == 'customer'
+                  ? Palette.primary
+                  : Colors.transparent,
+              onTap: () {
+                setState(() {
+                  accountType = 'customer';
+                });
+              },
+              textcolor:
+                  accountType == 'creator' ? Colors.grey : Palette.primary,
+              fsize: 20,
+            ),
+          ],
+        ),
       ),
     );
   }
