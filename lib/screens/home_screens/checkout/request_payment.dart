@@ -34,8 +34,8 @@ class _RequestPaymentState extends State<RequestPayment> {
             child: DropdownButton2(
               isExpanded: true,
               barrierLabel: 'Select Network',
-              hint: Row(
-                children: const [
+              hint: const Row(
+                children: [
                   Expanded(
                     child: Text(
                       'Select Network',
