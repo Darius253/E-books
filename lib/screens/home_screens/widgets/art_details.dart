@@ -51,7 +51,7 @@ class _ArtDetailsState extends State<ArtDetails> {
                               'Golden Palm',
                               'Dreamland Gallery',
                               '1,500',
-                              17);
+                              17, context);
                         })),
                 SizedBox(
                   height: height * 0.03,
