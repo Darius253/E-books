@@ -1,6 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/screens/home_screens/book_preview.dart';
 
+import '../../../shared/exports.dart';
+
 class BookShelf extends StatelessWidget {
   @override
   final Key? key;
@@ -18,59 +20,80 @@ class BookShelf extends StatelessWidget {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
-      child: SingleChildScrollView(
-        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-          Padding(
-            padding: EdgeInsets.only(left: width * 0.07),
-            child: const Text(
-              'Currently Reading',
-              style: TextStyle(fontSize: 16, fontWeight: FontWeight.w600),
+        child: SingleChildScrollView(
+      child: AnimationLimiter(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: AnimationConfiguration.toStaggeredList(
+            duration: const Duration(milliseconds: 400),
+            childAnimationBuilder: (widget) => ScaleAnimation(
+              child: SlideAnimation(
+                horizontalOffset: -100.0,
+                child: widget,
+              ),
             ),
+            children: [
+              SizedBox(
+                height: height * 0.4,
+                child: ListView(
+                  scrollDirection: Axis.horizontal,
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.07),
+                          child: const Text(
+                            'Currently Reading',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        container(width, height, context),
+                      ],
+                    ),
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Padding(
+                          padding: EdgeInsets.only(left: width * 0.07),
+                          child: const Text(
+                            'New Releases',
+                            style: TextStyle(
+                                fontSize: 16, fontWeight: FontWeight.w600),
+                          ),
+                        ),
+                        container(width, height, context),
+                      ],
+                    ),
+                  ],
+                ),
+              ),
+              SizedBox(
+                height: height * 0.035,
+              ),
+              Padding(
+                padding: const EdgeInsets.only(bottom: 20.0),
+                child: SizedBox(
+                  height: height * 0.8,
+                  child: ListView.separated(
+                      separatorBuilder: (BuildContext context, int index) {
+                        return SizedBox(
+                          height: height * 0.05,
+                        );
+                      },
+                      itemCount: genre.length,
+                      itemBuilder: (BuildContext context, int index) {
+                        return favouriteGenre(height, width, genre[index],
+                            book[index], 'Darius Tron', 'GHS 89.99', context);
+                      }),
+                ),
+              ),
+            ],
           ),
-          container(width, height, context),
-          // SizedBox(
-          //   height: height * 0.4,
-          //   child: ListView(
-          //     scrollDirection: Axis.horizontal,
-          //     children: [
-          //       // Column(
-          //       //   crossAxisAlignment: CrossAxisAlignment.start,
-          //       //   children: [
-          //       //     Padding(
-          //       //       padding: EdgeInsets.only(left: width * 0.07),
-          //       //       child: const Text(
-          //       //         'Currently Reading',
-          //       //         style: TextStyle(
-          //       //             fontSize: 16, fontWeight: FontWeight.w600),
-          //       //       ),
-          //       //     ),
-          //       //     container(width, height, context),
-          //       //   ],
-          //       // ),
-
-          //     ],
-          //   ),
-          // ),
-          SizedBox(
-            height: height * 0.035,
-          ),
-          SizedBox(
-            height: height * 0.8,
-            child: ListView.separated(
-                separatorBuilder: (BuildContext context, int index) {
-                  return SizedBox(
-                    height: height * 0.05,
-                  );
-                },
-                itemCount: genre.length,
-                itemBuilder: (BuildContext context, int index) {
-                  return favouriteGenre(height, width, genre[index],
-                      book[index], 'Darius Tron', 'GHS 89.99', context);
-                }),
-          )
-        ]),
+        ),
       ),
-    );
+    ));
   }
 
   Widget container(double width, double height, BuildContext context) {
@@ -144,7 +167,7 @@ class BookShelf extends StatelessWidget {
               itemBuilder: (BuildContext context, int index) {
                 return genreBook(height, width, title, author, price, context);
               }),
-        )
+        ),
       ],
     );
   }
@@ -154,11 +177,12 @@ class BookShelf extends StatelessWidget {
     return GestureDetector(
       onTap: () => Navigator.push(
           context,
-          MaterialPageRoute(
-              builder: ((context) => BookPreview(
-                    bookTitle: title,
-                    authorName: author,
-                  )))),
+          PageTransition(
+              type: PageTransitionType.fade,
+              child: BookPreview(
+                bookTitle: title,
+                authorName: author,
+              ))),
       child: Padding(
         padding: EdgeInsets.only(
           left: width * 0.07,
