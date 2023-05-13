@@ -13,15 +13,15 @@ class CreatorSignUpPage extends StatefulWidget {
 }
 
 class _CreatorSignUpPageState extends State<CreatorSignUpPage> {
-  final TextEditingController _emailController = TextEditingController();
-  final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _fullnameController = TextEditingController();
-  final TextEditingController _passwordController = TextEditingController();
-  final TextEditingController _locationController = TextEditingController();
-  final TextEditingController _publishingHouseController =
-      TextEditingController();
-  final TextEditingController _confirmPasswordController =
-      TextEditingController();
+  // final TextEditingController _emailController = TextEditingController();
+  // final TextEditingController _usernameController = TextEditingController();
+  // final TextEditingController _fullnameController = TextEditingController();
+  // final TextEditingController _passwordController = TextEditingController();
+  // final TextEditingController _locationController = TextEditingController();
+  // final TextEditingController _publishingHouseController =
+  //     TextEditingController();
+  // final TextEditingController _confirmPasswordController =
+  //     TextEditingController();
   final TextEditingController phoneNumberController = TextEditingController();
 
   final GlobalKey<FormState> formKey = GlobalKey<FormState>();
