@@ -59,18 +59,29 @@ class GenreCard extends StatelessWidget {
 }
 
 Widget grid(double width, height) {
-  return SizedBox(
-      height: height*0.75,
-      child: GridView.builder(
-          gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
-              crossAxisCount: 2,
-              crossAxisSpacing: width * 0.025,
-              mainAxisExtent: height*0.1,
-              mainAxisSpacing: height*0.02),
-          itemCount: genres.length,
-          itemBuilder: (BuildContext context, int index) {
-            return GenreCard(
-              genre: genres[index],
-            );
-          }));
+  return AnimationLimiter(
+    child: SizedBox(
+        height: height*0.75,
+        child: GridView.builder(
+            gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
+                crossAxisCount: 2,
+                crossAxisSpacing: width * 0.025,
+                mainAxisExtent: height*0.1,
+                mainAxisSpacing: height*0.02),
+            itemCount: genres.length,
+            itemBuilder: (BuildContext context, int index) {
+              return AnimationConfiguration.staggeredList(
+              position: index,
+              duration: const Duration(milliseconds: 600),
+                child: SlideAnimation(
+                  verticalOffset: 50.0,
+                  child: FadeInAnimation(
+                    child: GenreCard(
+                      genre: genres[index],
+                    ),
+                  ),
+                ),
+              );
+            })),
+  );
 }
