@@ -60,9 +60,7 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           currentpageIndex = 0;
                         });
-                        pageController.animateToPage(0,
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.bounceIn);
+                        pageController.jumpToPage(0);
                         print('home');
                       }),
 
@@ -77,9 +75,9 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           currentpageIndex = 1;
                         });
-                        pageController.animateToPage(1,
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.bounceIn);
+                        pageController.jumpToPage(
+                          1,
+                        );
                         print('BooksStore');
                       }),
 
@@ -94,9 +92,9 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           currentpageIndex = 2;
                         });
-                        pageController.animateToPage(2,
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.bounceIn);
+                        pageController.jumpToPage(
+                          2,
+                        );
                         print('Search');
                       }),
 
@@ -111,9 +109,7 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           currentpageIndex = 3;
                         });
-                        pageController.animateToPage(3,
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.bounceIn);
+                        pageController.jumpToPage(3);
                         print('Art Store');
                       }),
 
@@ -128,9 +124,9 @@ class _HomePageState extends State<HomePage> {
                         setState(() {
                           currentpageIndex = 4;
                         });
-                        pageController.animateToPage(4,
-                            duration: const Duration(milliseconds: 200),
-                            curve: Curves.bounceIn);
+                        pageController.jumpToPage(
+                          4,
+                        );
                         print('Library');
                       }),
                     ],
