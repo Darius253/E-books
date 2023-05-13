@@ -233,8 +233,8 @@ class CheckOut extends StatelessWidget {
               SizedBox(
                 height: height * 0.04,
               ),
-              Row(
-                children: const [
+              const Row(
+                children: [
                   Icon(
                     Icons.delete_outline,
                     color: Colors.red,
@@ -325,9 +325,15 @@ class CheckOut extends StatelessWidget {
                     InkWell(
                       onTap: () {
                         Get.back();
-                        Get.to(Payment(
-                          price: price,
-                        ));
+                        Navigator.push(
+                            context,
+                            PageTransition(
+                                type: PageTransitionType.size,
+                                duration: const Duration(milliseconds: 300),
+                                alignment: Alignment.topCenter,
+                                child: Payment(
+                                  price: price,
+                                )));
                       },
                       child: Row(
                         children: [
