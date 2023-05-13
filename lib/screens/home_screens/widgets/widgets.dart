@@ -122,10 +122,10 @@ Widget commentsCard(double width, height) {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: const Color.fromARGB(255, 140, 63, 4)),
-      child: Column(
+      child: const Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-        children: const [
+        children: [
           Text(
             'Fantastic',
             style: TextStyle(
@@ -222,7 +222,11 @@ Widget bookInfo(double width, height, String title, author, Function()? ontap) {
 Widget button(double height, String price, String bookTitle, String author) {
   return GestureDetector(
     onTap: () {
-      Get.to(CheckOut(price: price, name: bookTitle, artistOrAuthor: author,));
+      Get.to(CheckOut(
+        price: price,
+        name: bookTitle,
+        artistOrAuthor: author,
+      ));
     },
     child: Container(
       height: height * 0.08,
@@ -247,17 +251,25 @@ Widget button(double height, String price, String bookTitle, String author) {
 }
 
 Widget art(double width, height, String artist, String name, String gallery,
-    String price, double fontSize) {
+    String price, double fontSize, BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(
       left: width * 0.07,
     ),
     child: InkWell(
-      onTap: () => Get.to(ArtDetails(
-        artName: name,
-        artistName: artist,
-        price: price,
-      )),
+      onTap: () => Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.size,
+            duration: const Duration(milliseconds: 500),
+            alignment: Alignment.bottomCenter,
+            child: ArtDetails(
+              artName: name,
+              artistName: artist,
+              price: price,
+            ),
+            isIos: true),
+      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
