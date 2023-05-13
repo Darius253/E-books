@@ -14,32 +14,40 @@ class _HomeState extends State<Home> {
   Widget build(BuildContext context) {
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
-    return Padding(
-      padding: EdgeInsets.only(top: height * 0.01, bottom: height * 0.095),
-      child: Stack(
-        children: [
-          appBar(height, width),
-          Padding(
-            padding: EdgeInsets.only(top: height * 0.07),
-            child: bookshelf ? const BookShelf() : const ArtGallery(),
-          )
-        ],
-      ),
-    );
+    return Scaffold(
+        body: CustomScrollView(
+      slivers: [
+        SliverAppBar(
+          automaticallyImplyLeading: false,
+          backgroundColor: Colors.white,
+          pinned: false,
+          snap: false,
+          floating: true,
+          expandedHeight: height * 0.05,
+          flexibleSpace: FlexibleSpaceBar(
+            title: appBar(width, height),
+          ),
+        ),
+        SliverToBoxAdapter(
+            child: Padding(
+              
+              padding:  EdgeInsets.only(bottom:height*0.05),
+              child: bookshelf ? const BookShelf() : const ArtGallery(),
+            )),
+      ],
+    ));
   }
 
   //APPBar
   Widget appBar(double height, double width) {
     return Padding(
       padding: EdgeInsets.only(
-        right: width * 0.07,
+        right: width * 0,
       ),
       child: SizedBox(
-        height: height * 0.065,
+        height: height * 0.1,
         child: Row(
-          mainAxisAlignment: MainAxisAlignment.center,
           children: [
-            const Expanded(child: SizedBox()),
             Column(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
@@ -54,16 +62,15 @@ class _HomeState extends State<Home> {
                     'Bookshelf',
                     style: TextStyle(
                         fontWeight: FontWeight.w600,
-                        fontSize: 14,
+                        fontSize: 16,
                         color: bookshelf
                             ? const Color.fromARGB(255, 237, 112, 23)
                             : Colors.grey),
                   ),
                 ),
                 Container(
-                    margin: const EdgeInsets.only(top: 8.0),
                     width: width * 0.15,
-                    height: height * 0.002,
+                    height: height * 0.005,
                     color: bookshelf
                         ? const Color.fromARGB(255, 237, 112, 23)
                         : Colors.transparent)
@@ -75,7 +82,7 @@ class _HomeState extends State<Home> {
             Container(
               color: Colors.grey,
               width: width * 0.003,
-              height: height * 0.03,
+              height: height * 0.05,
             ),
             SizedBox(
               width: width * 0.02,
@@ -94,15 +101,14 @@ class _HomeState extends State<Home> {
                       'Art Gallery',
                       style: TextStyle(
                           fontWeight: FontWeight.w600,
-                          fontSize: 14,
+                          fontSize: 16,
                           color: !bookshelf
                               ? const Color.fromARGB(255, 237, 112, 23)
                               : Colors.grey),
                     )),
                 Container(
-                    margin: const EdgeInsets.only(top: 8.0),
                     width: width * 0.15,
-                    height: height * 0.002,
+                    height: height * 0.005,
                     color: !bookshelf
                         ? const Color.fromARGB(255, 237, 112, 23)
                         : Colors.transparent)
