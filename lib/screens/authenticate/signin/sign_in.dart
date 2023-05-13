@@ -225,14 +225,16 @@ class _SignInState extends State<SignIn> {
                   style: TextStyle(fontSize: 12),
                   children: <TextSpan>[
                     TextSpan(
-                        text: 'Terms and Condition ',
+                        text: 'Terms and Condition, ',
                         style: TextStyle(
                             color: Color.fromARGB(190, 237, 112, 23),
                             fontWeight: FontWeight.w700,
                             fontSize: 12)),
                     TextSpan(
                         text: 'Use Policy and Privacy Policy',
-                        style: TextStyle(fontSize: 12))
+                        style: TextStyle(color: Color.fromARGB(190, 237, 112, 23),
+                            fontWeight: FontWeight.w700,
+                            fontSize: 12))
                   ]),
               textAlign: TextAlign.center,
             )
