@@ -11,6 +11,8 @@ export 'package:flutter_native_splash/flutter_native_splash.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 export 'package:dropdown_button2/dropdown_button2.dart';
+export  'package:flutter_staggered_animations/flutter_staggered_animations.dart';
+export 'package:page_transition/page_transition.dart';
 
 
 // controllers
