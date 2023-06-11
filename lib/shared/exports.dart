@@ -7,7 +7,6 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:intl_phone_number_input/intl_phone_number_input.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
-export 'package:flutter_native_splash/flutter_native_splash.dart';
 export 'package:carousel_slider/carousel_slider.dart';
 export 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 export 'package:dropdown_button2/dropdown_button2.dart';
