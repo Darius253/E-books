@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
@@ -22,6 +20,18 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
     super.initState();
   }
 
+  void onPageChanged(int value) {
+    _controller.jumpToPage(
+      currentIndex + 1,
+    );
+  }
+
+  void skip() {
+    _controller.jumpToPage(
+      3,
+    );
+  }
+
   @override
   void dispose() {
     _controller.dispose();
@@ -30,127 +40,77 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
 
   @override
   Widget build(BuildContext context) {
+    List<Widget> onBoardingScreens = [
+      onboarding(
+        context,
+        'Welcome to Awstore',
+        'The ultimate destination for buying \nand selling digital arts and books.',
+        Images.welcome,
+        Colors.white,
+        Palette.primary,
+        Colors.white,
+        const Color.fromARGB(255, 140, 63, 4),
+        () {
+          onPageChanged(currentIndex);
+        },
+        () => skip(),
+      ),
+      onboarding(
+        context,
+        'Find your thing',
+        'The app offers a wide selection of digital arts \nand books, including paintings, photographs, ebooks.',
+        Images.thing,
+        Palette.primary,
+        Colors.white,
+        Colors.black,
+        Colors.white,
+        () {
+          onPageChanged(currentIndex);
+        },
+        () => skip(),
+      ),
+      onboarding(
+        context,
+        'Easy-to-use interface',
+        'Awstore has an easy-to-use interface that allows \nusers to search for specific items or browse by \ncategory.',
+        Images.interface,
+        Palette.primary,
+        Colors.white,
+        Colors.black,
+        Colors.white,
+        () {
+          onPageChanged(currentIndex);
+        },
+        () => skip(),
+      ),
+      onboarding(
+          context,
+          'Profit from your work',
+          'This is the perfect platform for artists and authors. \nCreate a profile, upload your artwork, and sell to \nwork to buyers all over the world.',
+          Images.profit,
+          Palette.primary,
+          Colors.white,
+          Colors.black,
+          Colors.white,
+          () {},
+          () {}),
+    ];
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        body: Container(
+        body: SizedBox(
       height: height,
       width: width,
-      color: currentIndex == 0 ? Palette.white : Palette.primary,
-      child: PageView.builder(
-          controller: _controller,
-          physics: const BouncingScrollPhysics(),
-          itemCount: 4,
-          onPageChanged: (int index) {
-            setState(() {
-              currentIndex = index;
-              onLastPage = (index == 3);
-            });
-          },
-          itemBuilder: (ctx, index) {
-            return Column(
-              children: [
-                Container(
-                  decoration: BoxDecoration(
-                    color: Palette.white,
-                    borderRadius: BorderRadius.only(
-                      bottomLeft: Radius.circular(32),
-                      bottomRight: Radius.circular(32),
-                    ),
-                  ),
-                  child: Padding(
-                    padding: EdgeInsets.symmetric(horizontal: 30),
-                    child: SvgPicture.asset(
-                      ondata[index].svgimg,
-                      width: width,
-                      height: height * 0.6,
-                    ),
-                  ),
-                ),
-                Container(
-                  color: currentIndex == 0 ? Palette.white : Palette.primary,
-                  child: Padding(
-                    padding: const EdgeInsets.symmetric(
-                        vertical: 30, horizontal: 30),
-                    child: Column(
-                      crossAxisAlignment: CrossAxisAlignment.center,
-                      children: [
-                        Text(
-                          ondata[index].title,
-                          style: TextStyle(
-                              fontWeight: FontWeight.w500,
-                              color: currentIndex == 0
-                                  ? Palette.primary
-                                  : Palette.white,
-                              fontSize: 23.5),
-                        ),
-                        SizedBox(
-                          height: height * 0.015,
-                        ),
-                        Text(
-                          ondata[index].desc,
-                          softWrap: true,
-                          textAlign: TextAlign.center,
-                          style: TextStyle(
-                              color: currentIndex == 0
-                                  ? Palette.primary
-                                  : Palette.white,
-                              fontSize: 14.5),
-                        ),
-                        SizedBox(
-                          height: height * 0.025,
-                        ),
-                        onLastPage
-                            ? GetStartedButton(
-                                onPressed: () {
-                                  Get.to(() => SelectSignUp());
-                                },
-                              )
-                            : Row(
-                                mainAxisAlignment: MainAxisAlignment.center,
-                                children: [
-                                  OnBoardButton(
-                                    textColor: currentIndex == 0
-                                        ? Palette.primary
-                                        : Palette.white,
-                                    backgroundColor: Colors.transparent,
-                                    onPressed: () {
-                                      _controller.jumpToPage(3);
-                                    },
-                                    text: 'Skip',
-                                    bordercolor: currentIndex == 0
-                                        ? Palette.primary
-                                        : Palette.white,
-                                  ),
-                                  SizedBox(
-                                    width: 9,
-                                  ),
-                                  OnBoardButton(
-                                    textColor: currentIndex == 0
-                                        ? Palette.white
-                                        : Palette.black,
-                                    backgroundColor: currentIndex == 0
-                                        ? Palette.primary
-                                        : Palette.white,
-                                    onPressed: () {
-                                      _controller.nextPage(
-                                          duration: Duration(milliseconds: 400),
-                                          curve: Curves.easeIn);
-                                    },
-                                    text: 'Next',
-                                    bordercolor: currentIndex == 0
-                                        ? Palette.primary
-                                        : Palette.white,
-                                  ),
-                                ],
-                              ),
-                      ],
-                    ),
-                  ),
-                )
-              ],
-            );
-          }),
+      child: PageView(
+        controller: _controller,
+        physics: const NeverScrollableScrollPhysics(),
+        onPageChanged: (value) {
+          setState(() {
+            currentIndex = value;
+          });
+        },
+        children: onBoardingScreens,
+      ),
     ));
   }
 }
