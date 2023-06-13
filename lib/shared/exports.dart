@@ -17,7 +17,7 @@ export 'package:page_transition/page_transition.dart';
 // controllers
 
 // models
-export 'package:reader_app/screens/authenticate/on_boarding/data.dart';
+export 'package:reader_app/screens/authenticate/on_boarding/onborading_widget.dart';
 export 'package:reader_app/models/genre_model.dart';
 export 'package:reader_app/screens/home_screens/bookstore/bookmodel.dart';
 export 'package:reader_app/screens/home_screens/bookstore/pages/book_info.dart';
