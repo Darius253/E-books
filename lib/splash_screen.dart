@@ -13,7 +13,7 @@ class SplashScreenState extends State<Splash> {
   @override
   void initState() {
     super.initState();
-    Timer(const Duration(seconds: 5),
+    Timer(const Duration(seconds: 2),
         () => Get.off(() => const OnboardingScreen()));
   }
 
@@ -23,20 +23,12 @@ class SplashScreenState extends State<Splash> {
       decoration: const BoxDecoration(
         color: Colors.white,
       ),
-      child: Stack(
-        children: [
-          // Image.asset(
-          //   'assets/images/logo_background.png',
-          //   filterQuality: FilterQuality.high,
-          // ),
-          Center(
-            child: Image.asset(
-              'assets/images/awstorelogo.png',
-              height: MediaQuery.of(context).size.height*0.3,
-              filterQuality: FilterQuality.high,
-            ),
-          ),
-        ],
+      child: Center(
+        child: Image.asset(
+          'assets/images/awstorelogo.png',
+          height: MediaQuery.of(context).size.height*0.3,
+          filterQuality: FilterQuality.high,
+        ),
       ),
     );
   }
