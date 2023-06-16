@@ -121,7 +121,7 @@ class _ForgotPasswordState extends State<ForgotPassword> {
                       onTap: () {
                         if (_formKey.currentState!.validate()) {
                           print(email);
-                          Get.to(() => const VerifyEmail());
+                          Get.to(() => const VerifyEmail(signUp:false));
                         }
                       }),
                 ],
