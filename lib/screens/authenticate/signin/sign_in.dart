@@ -1,7 +1,6 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/authenticate/new_user/genre.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SignIn extends StatefulWidget {
@@ -26,8 +25,8 @@ class _SignInState extends State<SignIn> {
       body: SafeArea(
           child: Padding(
         padding: EdgeInsets.symmetric(
-            horizontal: MediaQuery.of(context).size.width * 0.05,
-           ),
+          horizontal: MediaQuery.of(context).size.width * 0.05,
+        ),
         child: SingleChildScrollView(
           child: Column(children: [
             Center(
@@ -36,7 +35,7 @@ class _SignInState extends State<SignIn> {
                   Image.asset(
                     'assets/images/aws_logo.png',
                     width: MediaQuery.of(context).size.width * 0.2,
-                    height: MediaQuery.of(context).size.height*0.1,
+                    height: MediaQuery.of(context).size.height * 0.1,
                     filterQuality: FilterQuality.high,
                   ),
                   const SizedBox(height: 30),
@@ -171,7 +170,7 @@ class _SignInState extends State<SignIn> {
                   if (_formKey.currentState!.validate()) {
                     print(email);
                     print(password);
-                    Get.offAll(() => const SelectGenre());
+                    Get.offAll(() => const HomePage());
                   }
                 }),
             SizedBox(
@@ -232,7 +231,8 @@ class _SignInState extends State<SignIn> {
                             fontSize: 12)),
                     TextSpan(
                         text: 'Use Policy and Privacy Policy',
-                        style: TextStyle(color: Color.fromARGB(190, 237, 112, 23),
+                        style: TextStyle(
+                            color: Color.fromARGB(190, 237, 112, 23),
                             fontWeight: FontWeight.w700,
                             fontSize: 12))
                   ]),
