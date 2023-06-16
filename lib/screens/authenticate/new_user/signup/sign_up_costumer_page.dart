@@ -19,14 +19,14 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
   bool obscurePassword = false;
   bool obscureConfirmPassword = false;
   String fullname = '';
   String email = '';
   String password = '';
   String confirmpassword = '';
-  String phonenumber = '';
+  PhoneNumber? phonenumber;
 
   String accountType = 'customer';
   bool selected = false;
@@ -35,6 +35,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     return Form(
+      key: _formKey,
       child: Padding(
         padding: const EdgeInsets.all(20.0),
         child: Column(
@@ -48,7 +49,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   fontWeight: FontWeight.w500),
             ),
             const Text(
-              "Enter your password and setup account",
+              "Kindly provide your details to setup an account",
               style: TextStyle(
                   fontSize: 15,
                   color: Palette.grey,
@@ -117,26 +118,24 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             //Phone Number
             SizedBox(height: height * 0.03),
             Container(
-              height: 55,
+              height: 74.2, // Adjusted to fit within the height constraint
               decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  border: Border.all(width: 1.0, color: Palette.grey),
-                  borderRadius: BorderRadius.circular(8.0)),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: InternationalPhoneNumberInput(
-                  onInputChanged: ((value) {}),
-                  cursorColor: Palette.primary,
-                  formatInput: false,
-                  selectorConfig: const SelectorConfig(
-                      selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
-                  inputDecoration: InputDecoration(
-                    border: InputBorder.none,
-                    floatingLabelStyle: TextStyle(
-                      fontSize: 14,
-                      color: Palette.primary,
-                      fontWeight: FontWeight.w400,
-                    ),
+                shape: BoxShape.rectangle,
+                border: Border.all(width: 1.0, color: Palette.grey),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
+              child: InternationalPhoneNumberInput(
+                onInputChanged: ((value) {}),
+                cursorColor: Palette.primary,
+                formatInput: false,
+                selectorConfig: const SelectorConfig(
+                    selectorType: PhoneInputSelectorType.DROPDOWN),
+                inputDecoration: InputDecoration(
+                  border: InputBorder.none,
+                  floatingLabelStyle: TextStyle(
+                    fontSize: 14,
+                    color: Palette.primary,
+                    fontWeight: FontWeight.w400,
                   ),
                 ),
               ),
@@ -249,7 +248,11 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             SizedBox(height: height * 0.05),
             //isChecked ?
             Button(
-              onTap: () {},
+              onTap: () {
+                if (_formKey.currentState!.validate()) {
+                  Get.to(() => VerifyEmail(signUp: true,));
+                }
+              },
               text: 'Sign Up',
             ),
             SizedBox(height: height * 0.03),
