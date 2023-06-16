@@ -25,16 +25,11 @@ class _SignUpPageState extends State<SignUpPage> {
           elevation: 0.0,
           automaticallyImplyLeading: false,
           centerTitle: true,
-          expandedHeight: MediaQuery.of(context).size.height * 0.55,
+          expandedHeight: MediaQuery.of(context).size.height * 0.5,
           flexibleSpace: FlexibleSpaceBar(
             background: Column(
               crossAxisAlignment: CrossAxisAlignment.center,
               children: [
-                Image.asset(
-                  'assets/images/aws_logo.png',
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  height: MediaQuery.of(context).size.height * 0.08,
-                ),
                 SvgPicture.asset(
                   'assets/images/Welcome-amico.svg',
                   height: MediaQuery.of(context).size.height * 0.5,
@@ -68,8 +63,6 @@ class _SignUpPageState extends State<SignUpPage> {
           children: [
             TextButtons(
               btext: 'Seller',
-              // bbackgroundColor:
-              //     accountType == 'creator' ? Palette.primary : Colors.transparent,
               bcolor: accountType == 'creator'
                   ? Palette.primary
                   : Colors.transparent,
@@ -89,7 +82,6 @@ class _SignUpPageState extends State<SignUpPage> {
             ),
             TextButtons(
               btext: 'Customer',
-              //bbackgroundColor: accountType == 'customer' ? Palette.primary : Colors.transparent,
               bcolor: accountType == 'customer'
                   ? Palette.primary
                   : Colors.transparent,
