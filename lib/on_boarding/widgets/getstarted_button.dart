@@ -12,11 +12,13 @@ class GetStartedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: 42,
-        width: 220,
+        height: height * 0.08,
+        width: width * 0.7,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),
           color: Colors.white,
@@ -26,7 +28,9 @@ class GetStartedButton extends StatelessWidget {
           child: Text(
             'Get Started',
             style: TextStyle(
-                color: Palette.black, fontWeight: FontWeight.w400, fontSize: 15),
+                color: Palette.black,
+                fontWeight: FontWeight.w400,
+                fontSize: 16),
           ),
         ),
       ),
