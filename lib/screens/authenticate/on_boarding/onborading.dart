@@ -54,6 +54,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           onPageChanged(currentIndex);
         },
         () => skip(),
+        false,
       ),
       onboarding(
         context,
@@ -68,6 +69,7 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           onPageChanged(currentIndex);
         },
         () => skip(),
+        false,
       ),
       onboarding(
         context,
@@ -82,18 +84,21 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
           onPageChanged(currentIndex);
         },
         () => skip(),
+        false,
       ),
       onboarding(
-          context,
-          'Profit from your work',
-          'This is the perfect platform for artists and authors. \nCreate a profile, upload your artwork, and sell to \nwork to buyers all over the world.',
-          Images.profit,
-          Palette.primary,
-          Colors.white,
-          Colors.black,
-          Colors.white,
-          () {},
-          () {}),
+        context,
+        'Profit from your work',
+        'This is the perfect platform for artists and authors. \nCreate a profile, upload your artwork, and sell to \nwork to buyers all over the world.',
+        Images.profit,
+        Palette.primary,
+        Colors.white,
+        Colors.black,
+        Colors.white,
+        () {},
+        () {},
+        true,
+      ),
     ];
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
