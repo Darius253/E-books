@@ -40,19 +40,19 @@ class SelectSignUp extends StatelessWidget {
                     Get.to(const SignUpPage());
                   },
                   backgroundColor: Palette.primary,
-                  text: "Customer",
+                  text: "Sign Up",
                   textColor: Colors.white,
                   width: width * 0.42,
                 ),
                 const SizedBox(height: 16),
                 CreaterButton(
                   onPressed: () {
-                    Get.to(const SignUpPage());
+                    Get.to(const SignIn());
                   },
                   backgroundColor: Colors.white,
-                  text: "Seller",
+                  text: "Sign In",
                   textColor: Palette.primary,
-                  width: width * 0.28,
+                  width: width * 0.42,
                 ),
               ],
             ),
