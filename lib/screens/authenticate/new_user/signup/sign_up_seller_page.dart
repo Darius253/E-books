@@ -23,7 +23,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   final TextEditingController phoneNumberController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
-  final GlobalKey<FormState> formKey = GlobalKey<FormState>();
+  final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
   String artistname = '';
   String shopname = '';
@@ -31,7 +31,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   String username = '';
   String password = '';
   String confirmpassword = '';
-  String phonenumber = '';
+  PhoneNumber? phonenumber;
   bool obscurePassword = false;
   bool obscureConfirmPassword = false;
   String accountType = 'creator';
@@ -42,6 +42,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     return Form(
+      key: _formKey,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
@@ -55,7 +56,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                   fontWeight: FontWeight.w400),
             ),
             const Text(
-              "Enter your password and setup account",
+              "Kindly provide your details to setup an account",
               style: TextStyle(
                   fontSize: 14,
                   color: Palette.grey,
@@ -167,25 +168,30 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 setState(() => email = value);
               },
             ),
+            SizedBox(height: height * 0.03),
 
             //Phone Number
-            SizedBox(height: height * 0.03),
             Container(
-              height: 55,
+              height: 74.2,
               decoration: BoxDecoration(
-                  shape: BoxShape.rectangle,
-                  border: Border.all(width: 1.0, color: Palette.grey),
-                  borderRadius: BorderRadius.circular(8.0)),
+                shape: BoxShape.rectangle,
+                border: Border.all(width: 1.0, color: Palette.grey),
+                borderRadius: BorderRadius.circular(8.0),
+              ),
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 8.0),
                 child: InternationalPhoneNumberInput(
-                  onInputChanged: ((value) {}),
+                  onInputChanged: ((value) {
+                    setState(() {
+                      phonenumber = value;
+                    });
+                  }),
                   cursorColor: Palette.primary,
                   formatInput: false,
                   selectorConfig: const SelectorConfig(
-                      selectorType: PhoneInputSelectorType.BOTTOM_SHEET),
+                      selectorType: PhoneInputSelectorType.DROPDOWN),
                   inputDecoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(bottom: 15, left: 0),
+                    contentPadding: const EdgeInsets.only(bottom: 15, left: 5),
                     border: InputBorder.none,
                     floatingLabelStyle: TextStyle(
                       fontSize: 14,
@@ -304,7 +310,11 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             SizedBox(height: height * 0.01),
             //isChecked ?
             Button(
-              onTap: () {},
+              onTap: () {
+                if (_formKey.currentState!.validate()) {
+                  Get.to(() => VerifyEmail(signUp: true));
+                }
+              },
               text: 'Sign Up',
             ),
 
