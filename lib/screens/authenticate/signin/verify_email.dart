@@ -1,9 +1,11 @@
-// ignore_for_file: avoid_print
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
+import '../new_user/genre.dart';
+
 class VerifyEmail extends StatefulWidget {
-  const VerifyEmail({super.key});
+  final bool? signUp;
+  const VerifyEmail({super.key, this.signUp});
 
   @override
   State<VerifyEmail> createState() => _VerifyEmailState();
@@ -106,7 +108,9 @@ class _VerifyEmailState extends State<VerifyEmail> {
                     onTap: () {
                       if (_formKey.currentState!.validate()) {
                         print(otp);
-                        Get.off(() => const ResetPassword());
+                        widget.signUp == true
+                            ? Get.off(() => const SelectGenre())
+                            : Get.off(() => const ResetPassword());
                       }
                     })
               ]),
