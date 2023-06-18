@@ -194,8 +194,8 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               controller: _confirmPasswordController,
               obscureText: !obscureConfirmPassword,
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter password';
+                if (value != _passwordController.text || value!.isEmpty) {
+                  return 'Please repeat password';
                 }
                 return null;
               },
@@ -246,12 +246,20 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                 }),
 
             SizedBox(height: height * 0.05),
-            //isChecked ?
+
             Button(
               onTap: () {
-                if (_formKey.currentState!.validate()) {
-                  Get.to(() => VerifyEmail(signUp: true,));
-                }
+                // if (_formKey.currentState!.validate() && isChecked == true) {
+                  Get.to(() => VerifyEmail(
+                        signUp: true,
+                      ));
+                // } else {
+                //   Get.showSnackbar(GetSnackBar(
+                //     message:
+                //         'Please make sure you agree to our Terms and Condition.',
+                //     duration: Duration(seconds: 3),
+                //   ));
+                // }
               },
               text: 'Sign Up',
             ),
