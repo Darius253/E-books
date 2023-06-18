@@ -21,7 +21,7 @@ class GenreCard extends StatelessWidget {
             borderRadius: BorderRadius.circular(6),
             color: const Color.fromARGB(232, 140, 63, 4)),
         child: SizedBox(
-          width: width * 0.4,
+          width: width * 0.45,
           child: Row(
             mainAxisAlignment: MainAxisAlignment.start,
             children: [
@@ -37,17 +37,17 @@ class GenreCard extends StatelessWidget {
                   ),
                 ),
               ),
-              const Expanded(
-                child: SizedBox(),
+             const  SizedBox(
+                width: 15,
               ),
-              ClipPath(
-                clipper: genre.clipper,
-                child: Image.asset(
-                  genre.image,
-                  filterQuality: FilterQuality.high,
-                  width: width * 0.2,
-                  height: height * 0.1,
-                  fit: BoxFit.fill,
+              Expanded(
+                child: ClipPath(
+                  clipper: genre.clipper,
+                  child: Image.asset(
+                    genre.image,
+                    filterQuality: FilterQuality.high,
+                    fit: BoxFit.fill,
+                  ),
                 ),
               )
             ],
@@ -61,18 +61,18 @@ class GenreCard extends StatelessWidget {
 Widget grid(double width, height) {
   return AnimationLimiter(
     child: SizedBox(
-        height: height*0.75,
+        height: height * 0.75,
         child: GridView.builder(
             gridDelegate: SliverGridDelegateWithFixedCrossAxisCount(
                 crossAxisCount: 2,
                 crossAxisSpacing: width * 0.025,
-                mainAxisExtent: height*0.1,
-                mainAxisSpacing: height*0.02),
+                mainAxisExtent: height * 0.1,
+                mainAxisSpacing: height * 0.02),
             itemCount: genres.length,
             itemBuilder: (BuildContext context, int index) {
               return AnimationConfiguration.staggeredList(
-              position: index,
-              duration: const Duration(milliseconds: 600),
+                position: index,
+                duration: const Duration(milliseconds: 600),
                 child: SlideAnimation(
                   verticalOffset: 50.0,
                   child: FadeInAnimation(
