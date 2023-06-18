@@ -62,7 +62,21 @@ class SelectSignUp extends StatelessWidget {
             child: Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
-                SvgPicture.asset('assets/images/tips.svg'),
+                Container(
+                  width: MediaQuery.of(context).size.width * 0.042,
+                  height: MediaQuery.of(context).size.height * 0.02,
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(100),
+                    border: Border.all(color: Colors.black),
+                  ),
+                  child: const Center(
+                    child: Icon(
+                      Icons.question_mark_sharp,
+                      color: Colors.black,
+                      size: 12,
+                    ),
+                  ),
+                ),
                 const SizedBox(width: 16),
                 const Text(
                   'Tips',
