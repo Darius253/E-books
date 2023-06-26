@@ -21,36 +21,55 @@ class BookInfo extends StatelessWidget {
           const SizedBox(
             width: 10,
           ),
-          Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Text(
-                bookInfoData.title,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500),
-              ),
-              Text('by ${bookInfoData.author}'),
-              const SizedBox(
-                height: 5,
-              ),
-              SizedBox(
-                  width: 220,
-                  child: Text(
-                    bookInfoData.desc,
+          SizedBox(
+            width: width * 0.6,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(
+                  bookInfoData.title,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 16,
+                      fontWeight: FontWeight.w600),
+                ),
+                Text.rich(TextSpan(children: [
+                  const TextSpan(
+                      text: 'by ',
+                      style: TextStyle(
+                          color: Palette.black,
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400)),
+                  TextSpan(
+                    text: bookInfoData.author,
                     style: const TextStyle(
+                        color: Palette.primary,
+                        fontSize: 14,
+                        fontWeight: FontWeight.w400),
+                  )
+                ])),
+                const SizedBox(
+                  height: 5,
+                ),
+                Text(
+                  bookInfoData.desc,
+                  style: TextStyle(
                       fontSize: 11,
-                    ),
-                  )),
-              Text(
-                bookInfoData.price,
-                style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 15,
-                    fontWeight: FontWeight.w500),
-              ),
-            ],
+                      color: Colors.grey.withOpacity(0.6),
+                      fontWeight: FontWeight.w400),
+                ),
+                const SizedBox(
+                  height: 10,
+                ),
+                Text(
+                  bookInfoData.price,
+                  style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 15,
+                      fontWeight: FontWeight.w500),
+                ),
+              ],
+            ),
           )
         ],
       ),
@@ -69,24 +88,13 @@ class BookInfoData {
 }
 
 List<BookInfoData> infodata = [
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
-  BookInfoData(Images.tbook1, 'Merchant of Venom',
-      'Michael Seth Starr', lorem2, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Merchant of Venom', 'Michael Seth Starr', lorem2,
+      'GHS 89'),
+  BookInfoData(Images.tbook1, 'Merchant of Venom', 'Michael Seth Starr', lorem2,
+      'GHS 89'),
+  BookInfoData(Images.tbook1, 'Venom', 'Michael  Starr', lorem2, 'GHS 89'),
+  BookInfoData(Images.tbook1, 'Merchant of Venom', 'Michael  Starr', lorem2,
+      'GHS 89'),
+  BookInfoData(Images.tbook1, 'Merchant of Venom', 'Michael Seth Starr', lorem2,
+      'GHS 89'),
 ];
