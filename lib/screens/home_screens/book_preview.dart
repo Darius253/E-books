@@ -4,8 +4,11 @@ import '../../shared/exports.dart';
 class BookPreview extends StatelessWidget {
   final String bookTitle;
   final String authorName;
-  const BookPreview(
-      {super.key, required this.bookTitle, required this.authorName});
+  const BookPreview({
+    super.key,
+    required this.bookTitle,
+    required this.authorName,
+  });
 
   @override
   Widget build(BuildContext context) {
