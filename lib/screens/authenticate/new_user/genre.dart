@@ -9,11 +9,9 @@ class SelectGenre extends StatefulWidget {
 }
 
 class _SelectGenreState extends State<SelectGenre> {
+  List<Genre> selectedGenres = [];
   @override
   Widget build(BuildContext context) {
-    double width = MediaQuery.of(context).size.width;
-    double height = MediaQuery.of(context).size.height;
-
     return Scaffold(
       body: AnimationLimiter(
         child: SafeArea(
@@ -35,24 +33,44 @@ class _SelectGenreState extends State<SelectGenre> {
                               )),
                           const SizedBox(height: 8),
                           const Text(
-                              'Please select 3 genres that you like to read. This will help us recommend books  based on your interests',
+                              'Please select at least 3 genres that you like to read. This will help us recommend books  based on your interests',
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                   fontWeight: FontWeight.w400,
                                   color: Color.fromARGB(251, 0, 0, 0))),
                           SizedBox(
-                              height: MediaQuery.of(context).size.height * 0.032),
+                              height:
+                                  MediaQuery.of(context).size.height * 0.032),
                         ],
                       ),
                     ),
-                    grid(width, height),
+                    GenreSelectionGrid(
+                      onGenresSelected: (selectedGenres) {
+                        setState(() {
+                          this.selectedGenres = selectedGenres;
+                        });
+                      },
+                    ),
                     Button(
                       text: 'Next',
-                      onTap: () => Get.to(const HomePage()),
+                      onTap: () {
+                        saveSelectedGenres();
+                        selectedGenres.isNotEmpty
+                            ? Get.to(const HomePage())
+                            : Get.snackbar('Genre', 'Select atleast one genre',
+                            borderRadius: 0.0,
+                            
+                            duration: const Duration(seconds: 5),
+                                snackPosition: SnackPosition.BOTTOM);
+                      },
                     )
                   ],
                 ))),
       ),
     );
+  }
+
+  void saveSelectedGenres() {
+    print(selectedGenres);
   }
 }
