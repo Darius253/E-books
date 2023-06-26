@@ -6,7 +6,7 @@ class CreaterButton extends StatelessWidget {
   final Color textColor;
   final String text;
   final double width;
-  final VoidCallback onPressed;
+  final Function()? onPressed;
 
   const CreaterButton({
     super.key,
