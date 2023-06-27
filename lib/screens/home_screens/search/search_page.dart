@@ -7,36 +7,35 @@ class SearchPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-    //final double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
-          child: SizedBox(
-            height: 70,
-            child: SearchField(),
-          ),
+        appBar: PreferredSize(
+          preferredSize: Size.fromHeight(height * 0.15),
+          child: const SearchField(),
         ),
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 12),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              SizedBox(
-                height: height * 0.02,
-              ),
-              const Text(
-                'Browse Tags',
-                style: TextStyle(
-                  fontSize: 16,
-                  fontWeight: FontWeight.w500,
+        body: SingleChildScrollView(
+          child: Padding(
+            padding: const EdgeInsets.symmetric(horizontal: 20, ),
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                SizedBox(
+                  height: height * 0.02,
                 ),
-              ),
-              SizedBox(
-                height: height * 0.02,
-              ),
-              SizedBox(height: height * 0.75, child: SearchTags(texts: texts)),
-            ],
+                const Text(
+                  'Browse Tags',
+                  style: TextStyle(
+                    fontSize: 16,
+                    fontWeight: FontWeight.w500,
+                  ),
+                ),
+                SizedBox(
+                  height: height * 0.02,
+                ),
+                SizedBox(
+                    height: height * 0.75, child: const SearchTags()),
+              ],
+            ),
           ),
         ),
       ),
