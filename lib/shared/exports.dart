@@ -12,7 +12,7 @@ export 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 export 'package:dropdown_button2/dropdown_button2.dart';
 export  'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 export 'package:page_transition/page_transition.dart';
-
+export 'package:phosphor_flutter/phosphor_flutter.dart';
 
 // controllers
 
@@ -25,7 +25,6 @@ export 'package:reader_app/screens/home_screens/bookstore/pages/book_info.dart';
 // screens
 export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
-//export 'package:reader_app/onboarding/sign_in.dart';
 export 'package:reader_app/screens/home_screens/checkout/confirm_payment.dart';
 export 'package:reader_app/screens/home_screens/checkout/request_payment.dart';
 export 'package:reader_app/screens/home_screens/checkout/payment_details.dart';
@@ -33,26 +32,12 @@ export 'package:reader_app/screens/home_screens/checkout/payment_details.dart';
 export 'package:reader_app/screens/home_screens/profile_page.dart';
 export 'package:reader_app/screens/home_screens/widgets/art_gallery.dart';
 export 'package:reader_app/screens/home_screens/bookstore/pages/all_books.dart';
-
-//export 'package:reader_app/on_boarding/onborading.dart';
 export 'package:reader_app/screens/home_screens/home_page.dart';
 export 'package:reader_app/screens/authenticate/signin/sign_in.dart';
 export 'package:reader_app/screens/authenticate/on_boarding/onborading.dart';
 export 'package:reader_app/screens/home_screens/widgets/art_details.dart';
-// export 'package:reader_app/onboarding/sign_up.dart';
-// export 'package:reader_app/screens/store/store.dart';
-// export 'package:reader_app/onboarding/onboarding.dart';
-// export 'package:reader_app/screens/search/search.dart';
-// export 'package:reader_app/screens/profile/profile.dart';
-// export 'package:reader_app/screens/library/library.dart';
-// export 'package:reader_app/widgets/onboarding_button.dart';
-// export 'package:reader_app/onboarding/sign_up_creator.dart';
-//export 'package:reader_app/onboarding/forgot_password.dart';
-//export 'package:reader_app/onboarding/verify_email.dart';
 
 export 'package:reader_app/screens/authenticate/new_user/signup/widgets/creater_button.dart';
-
-//export 'package:reader_app/onboarding/reset_password.dart';
 export 'package:reader_app/screens/authenticate/signin/forgot_password.dart';
 export 'package:reader_app/screens/home_screens/widgets/book_shelf.dart';
 export 'package:reader_app/screens/authenticate/signin/verify_email.dart';
@@ -101,13 +86,10 @@ export 'package:reader_app/screens/authenticate/new_user/signup/widgets/terms_an
 export 'package:reader_app/screens/authenticate/new_user/signup/widgets/or_line.dart';
 export 'package:reader_app/widgets/confirm_button.dart';
 export 'package:reader_app/widgets/back_button.dart';
-//export 'package:reader_app/onboarding/widgets/button.dart';
 export 'package:reader_app/screens/authenticate/new_user/signup/widgets/ex_signup_button.dart';
-// export 'package:reader_app/widgets/termsAndCondition.dart';
-// export 'package:reader_app/widgets/or_line.dart';
+
 
 export 'package:reader_app/screens/authenticate/signin/widgets/button.dart';
-//export 'package:reader_app/widgets/ex_signup_button.dart';
 export 'package:reader_app/widgets/rich_text.dart';
 export 'package:reader_app/on_boarding/widgets/getstarted_button.dart';
 export 'package:reader_app/on_boarding/widgets/onboard_button.dart';
