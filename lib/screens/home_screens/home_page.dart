@@ -38,100 +38,111 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             Positioned(
-                bottom: 1,
-                left: 0.0,
-                right: 0.0,
-                child: Container(
-                  width: width,
-                  height: height * 0.09,
-                  decoration: const BoxDecoration(
-                      color: Color.fromARGB(255, 237, 112, 23)),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                    children: [
-                      // Home
-                      navBarItem(
-                          'Home',
-                          height,
-                          CupertinoIcons.home,
-                          currentpageIndex == 0
-                              ? Colors.white
-                              : const Color.fromARGB(200, 182, 180, 178), () {
-                        setState(() {
-                          currentpageIndex = 0;
-                        });
-                        pageController.jumpToPage(0);
-                        print('home');
-                      }),
+              bottom: 1,
+              left: 0.0,
+              right: 0.0,
+              child: Container(
+                width: width,
+                height: height * 0.09,
+                decoration: const BoxDecoration(
+                    color: Color.fromARGB(255, 237, 112, 23)),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    // Home
+                    navBarItem(
+                        'Home',
+                        height,
+                        currentpageIndex == 0
+                            ? PhosphorIcons.bold.house
+                            : PhosphorIcons.regular.house,
+                        currentpageIndex == 0
+                            ? Colors.white
+                            : const Color.fromARGB(200, 182, 180, 178), () {
+                      setState(() {
+                        currentpageIndex = 0;
+                      });
+                      pageController.jumpToPage(0);
+                      print('home');
+                    }),
 
-                      //BookSTore
-                      navBarItem(
-                          'Bookstore',
-                          height,
-                          CupertinoIcons.book,
-                          currentpageIndex == 1
-                              ? Colors.white
-                              : const Color.fromARGB(201, 204, 200, 196), () {
-                        setState(() {
-                          currentpageIndex = 1;
-                        });
-                        pageController.jumpToPage(
-                          1,
-                        );
-                        print('BooksStore');
-                      }),
+                    //BookSTore
+                    navBarItem(
+                        'Bookstore',
+                        height,
+                        currentpageIndex == 1
+                            ? PhosphorIcons.bold.books
+                            : PhosphorIcons.regular.bookBookmark,
+                        currentpageIndex == 1
+                            ? Colors.white
+                            : const Color.fromARGB(201, 204, 200, 196), () {
+                      setState(() {
+                        currentpageIndex = 1;
+                      });
+                      pageController.jumpToPage(
+                        1,
+                      );
+                      print('BooksStore');
+                    }),
 
-                      //Search
-                      navBarItem(
-                          'Search',
-                          height,
-                          CupertinoIcons.search_circle,
-                          currentpageIndex == 2
-                              ? Colors.white
-                              : const Color.fromARGB(201, 204, 200, 196), () {
-                        setState(() {
-                          currentpageIndex = 2;
-                        });
-                        pageController.jumpToPage(
-                          2,
-                        );
-                        print('Search');
-                      }),
+                    //Search
+                    navBarItem(
+                        'Search',
+                        height,
+                        currentpageIndex == 2
+                            ? PhosphorIcons.bold.magnifyingGlass
+                            : CupertinoIcons.search_circle,
+                        currentpageIndex == 2
+                            ? Colors.white
+                            : const Color.fromARGB(201, 204, 200, 196), () {
+                      setState(() {
+                        currentpageIndex = 2;
+                      });
+                      pageController.jumpToPage(
+                        2,
+                      );
+                      print('Search');
+                    }),
 
-                      //ArtStore
-                      navBarItem(
-                          'Art Store',
-                          height,
-                          Icons.store_mall_directory_outlined,
-                          currentpageIndex == 3
-                              ? Colors.white
-                              : const Color.fromARGB(201, 204, 200, 196), () {
-                        setState(() {
-                          currentpageIndex = 3;
-                        });
-                        pageController.jumpToPage(3);
-                        print('Art Store');
-                      }),
+                    //ArtStore
+                    navBarItem(
+                        'Art Store',
+                        height,
+                        currentpageIndex == 3
+                            ? PhosphorIcons.bold.storefront
+                            : Icons.store_mall_directory_outlined,
+                        currentpageIndex == 3
+                            ? Colors.white
+                            : const Color.fromARGB(201, 204, 200, 196), () {
+                      setState(() {
+                        currentpageIndex = 3;
+                      });
+                      pageController.jumpToPage(3);
+                      print('Art Store');
+                    }),
 
-                      //Library
-                      navBarItem(
-                          'Library',
-                          height,
-                          Icons.bookmarks_outlined,
-                          currentpageIndex == 4
-                              ? Colors.white
-                              : const Color.fromARGB(201, 204, 200, 196), () {
-                        setState(() {
-                          currentpageIndex = 4;
-                        });
-                        pageController.jumpToPage(
-                          4,
-                        );
-                        print('Library');
-                      }),
-                    ],
-                  ),
-                ))
+                    //Library
+                    navBarItem(
+                        'Library',
+                        height,
+                        currentpageIndex == 4
+                            ? PhosphorIcons.bold.bookmarks
+                            : PhosphorIcons.bold.bookmarksSimple,
+                        currentpageIndex == 4
+                            ? Colors.white
+                            : const Color.fromARGB(201, 204, 200, 196), () {
+                      setState(() {
+                        currentpageIndex = 4;
+                      });
+                      pageController.jumpToPage(
+                        4,
+                      );
+                      print('Library');
+                    }),
+                  ],
+                ),
+              ),
+            ),
           ],
         )));
   }
