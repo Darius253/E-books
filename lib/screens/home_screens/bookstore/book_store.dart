@@ -14,28 +14,33 @@ class _BookStoreState extends State<BookStore> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          const SizedBox(height: 6),
-          const Padding(
-            padding: EdgeInsets.symmetric(horizontal: 12),
-            child: Text(
-              'BookStore',
-              style: TextStyle(
-                color: Colors.black,
-                fontSize: 16,
-                fontWeight: FontWeight.w500,
+      body: SafeArea(
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+           const SizedBox(height: 5),
+            const Padding(
+              padding: EdgeInsets.symmetric(horizontal: 15),
+              child: Text(
+                'BookStore',
+                style: TextStyle(
+                  color: Colors.black,
+                  fontSize: 16,
+                  fontWeight: FontWeight.w500,
+                ),
               ),
             ),
-          ),
-          const SizedBox(height: 3),
-          switchButtons(),
-          Expanded(child: chipSwitch(genrePage)),
-          SizedBox(
-            height: MediaQuery.of(context).size.height * 0.085,
-          ),
-        ],
+            const SizedBox(height: 3),
+            Padding(
+              padding: const EdgeInsets.only(left: 15),
+              child: switchButtons(),
+            ),
+            Expanded(child: chipSwitch(genrePage)),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.085,
+            ),
+          ],
+        ),
       ),
     );
   }
@@ -56,7 +61,7 @@ class _BookStoreState extends State<BookStore> {
         ),
         SizedBox(
           height: 40,
-          width: MediaQuery.of(context).size.width * 0.85,
+          width: MediaQuery.of(context).size.width * 0.8,
           child: ListView.builder(
             scrollDirection: Axis.horizontal,
             itemCount: genres.length,
