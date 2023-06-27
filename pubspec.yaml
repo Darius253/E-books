@@ -41,6 +41,7 @@ dependencies:
   #p
   pin_code_fields: ^7.4.0
   page_transition: "^2.0.9"
+  phosphor_flutter: ^2.0.0
 
   # r
   readmore: ^2.2.0
