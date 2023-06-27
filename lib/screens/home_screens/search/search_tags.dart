@@ -1,57 +1,53 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/shared/exports.dart';
 
 class SearchTags extends StatelessWidget {
-  final List<TagData> texts;
-  const SearchTags({super.key, required this.texts});
+  const SearchTags({
+    super.key,
+  });
 
   @override
   Widget build(BuildContext context) {
-    return GridView.builder(
-      itemCount: texts.length,
-      gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-          crossAxisCount: 2, mainAxisExtent: 70, mainAxisSpacing: 8
-          // childAspectRatio: MediaQuery.of(context).size.width /
-          //     (MediaQuery.of(context).size.height / 4),
-          ),
-      itemBuilder: (context, index) {
-        return Padding(
-          padding: const EdgeInsets.all(12.0),
-          child: Container(
-            color: Palette.color4,
+    List<String> texts = [
+      'Editor’s Pick',
+      'Trending',
+      'Adventure',
+      'Fantasy',
+      'Horror',
+      'FanFiction',
+      'The Wattys',
+      'Romance',
+      'Poetry',
+      'Thriller',
+      'Werewolf',
+      'Science Fiction',
+    ];
+    return Padding(
+      padding: const EdgeInsets.only(bottom:20.0),
+      child: GridView.builder(
+        itemCount: texts.length,
+        gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
+            crossAxisCount: 2, mainAxisExtent: 60, crossAxisSpacing: 40, mainAxisSpacing: 30),
+        itemBuilder: (context, index) {
+          return Container(
+            decoration: ShapeDecoration(
+              color: const Color(0xFFFAD9C2),
+              shape:
+                  RoundedRectangleBorder(borderRadius: BorderRadius.circular(4)),
+            ),
             child: Center(
               child: Text(
-                texts[index].text,
+                texts[index],
                 style: const TextStyle(
-                  fontSize: 12,
-                  color: Palette.black,
+                  color: Colors.black,
+                  fontSize: 14,
+                  fontFamily: 'Open Sans',
+                  fontWeight: FontWeight.w400,
                 ),
               ),
             ),
-          ),
-        );
-      },
+          );
+        },
+      ),
     );
   }
 }
-
-class TagData {
-  final String text;
-
-  TagData(this.text);
-}
-
-List<TagData> texts = [
-  TagData('Editor’s Pick'),
-  TagData('Trending'),
-  TagData('Adventure'),
-  TagData('Fantasy'),
-  TagData('Horror'),
-  TagData('FanFiction'),
-  TagData('The Wattys'),
-  TagData('Romance'),
-  TagData('Poetry'),
-  TagData('Thriller'),
-  TagData('Werewolf'),
-  TagData('Science Fiction'),
-];
