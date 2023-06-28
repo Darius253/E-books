@@ -1,19 +1,18 @@
 import 'package:flutter/material.dart';
-
-import 'package:reader_app/shared/constants.dart';
-
 import '../../../shared/exports.dart';
 
-class SearchField extends StatefulWidget {
-  const SearchField({super.key});
+class SearchField extends StatelessWidget {
+  final Function(String) onSearch;
+  final  TextEditingController controller;
+  const SearchField({
+    super.key,
+    required this.onSearch,
+    required this.controller,
 
-  @override
-  State<SearchField> createState() => _SearchFieldState();
-}
+  });
 
-class _SearchFieldState extends State<SearchField> {
-  final controller = TextEditingController();
-  String? search;
+  
+
   @override
   Widget build(BuildContext context) {
     double width = MediaQuery.sizeOf(context).width;
@@ -53,22 +52,14 @@ class _SearchFieldState extends State<SearchField> {
                       border: InputBorder.none,
                       hintText: 'Title, author or artist',
                       hintStyle: TextStyle(
-                        color:  Colors.grey.withOpacity(0.6),
+                        color: Colors.grey.withOpacity(0.6),
                         fontSize: 14,
                         fontFamily: 'Open Sans',
                         fontWeight: FontWeight.w400,
                       ),
                     ),
-                    onChanged: (value) {
-                      setState(() {
-                        search = value;
-                      });
-                    },
-                    onFieldSubmitted: (value) {
-                      setState(() {
-                        search = value;
-                      });
-                    },
+                    onChanged: onSearch,
+                    onFieldSubmitted: onSearch,
                   ),
                 ),
                 trailing: Padding(
