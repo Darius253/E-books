@@ -16,7 +16,7 @@ class _WishlistPartState extends State<WishlistPart> {
     // final double height = MediaQuery.of(context).size.height;
     // final double width = MediaQuery.of(context).size.width;
     return ListView.builder(
-      itemCount: infodata.length,
+      itemCount: book.length,
       itemBuilder: (context, index) {
         return Padding(
           padding: const EdgeInsets.all(9),
@@ -24,9 +24,9 @@ class _WishlistPartState extends State<WishlistPart> {
             onTap: (){
               Get.to(const BookPeview(bookAuthor: 'Eric Atsu', bookDescription: lorem, bookImageUrl: Images.book1, bookTitle: 'The Boys',));
             },
-            leading: Image.asset(infodata[index].image),
+            leading: Image.asset(book[index].image),
             title: Text(
-              '${infodata[index].title}\nby ${infodata[index].author}',
+              '${book[index].title}\nby ${book[index].author}',
               style: const TextStyle(
                 fontSize: 13,
                 fontWeight: FontWeight.w500,
