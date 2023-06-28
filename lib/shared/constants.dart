@@ -48,13 +48,12 @@ class Images {
   static const String authobiography = '${imagesPath}autobiography.jpg';
   static const String children = '${imagesPath}children.jpg';
   static const String comic = '${imagesPath}comic.jpg';
-   static const String cook = '${imagesPath}cook.jpg';
-   static const String diaries = '${imagesPath}diaries.jpg';
-   static const String math = '${imagesPath}math.jpg';
-    static const String guide = '${imagesPath}guide.jpg';
-     static const String self = '${imagesPath}self.jpg';
-     static const String religion = '${imagesPath}religion.jpg';
-
+  static const String cook = '${imagesPath}cook.jpg';
+  static const String diaries = '${imagesPath}diaries.jpg';
+  static const String math = '${imagesPath}math.jpg';
+  static const String guide = '${imagesPath}guide.jpg';
+  static const String self = '${imagesPath}self.jpg';
+  static const String religion = '${imagesPath}religion.jpg';
 
   static const String sports = '${imagesPath}sports.jpg';
   static const String tbook1 = '${imagesPath}tbook1.png';
