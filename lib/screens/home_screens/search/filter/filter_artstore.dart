@@ -1,4 +1,7 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
+import 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class FilterArtStore extends StatefulWidget {
@@ -10,72 +13,60 @@ class FilterArtStore extends StatefulWidget {
 }
 
 class _FilterArtStoreState extends State<FilterArtStore> {
-  List<BookInfoData> filteredResults = [];
+  List<Art> filteredResults = [];
+
   @override
   void initState() {
     super.initState();
-    filteredResults = infodata
-        .where((result) => result.title
-            .toLowerCase()
-            .contains(widget.searchword.toLowerCase()))
-        .toList();
+    performSearch(widget.searchword);
   }
 
-  String filterType = 'art';
+  void performSearch(String searchWord) {
+    filteredResults = arts.where((result) {
+      final title = result.title.toLowerCase();
+      final artist = result.artist.toLowerCase();
+      final desc = result.gallery!.toLowerCase();
+      final lowercasedSearchWord = searchWord.toLowerCase();
+      return title.contains(lowercasedSearchWord) ||
+          artist.contains(lowercasedSearchWord) ||
+          desc.contains(lowercasedSearchWord);
+    }).toList();
+  }
+
+  @override
+  void didUpdateWidget(FilterArtStore oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.searchword != oldWidget.searchword) {
+      performSearch(widget.searchword);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-    //final double width = MediaQuery.of(context).size.width;
+    final double width = MediaQuery.of(context).size.width;
     return Scaffold(
-      body: SizedBox(
-         height: height,
-        child: GridView.builder(
-          itemCount: filteredResults.length,
-          gridDelegate:
-              const SliverGridDelegateWithFixedCrossAxisCount(crossAxisCount: 2),
-          itemBuilder: (context, index) {
-            return Padding(
-              padding: const EdgeInsets.all(8.0),
-              child: Container(
-                decoration: BoxDecoration(borderRadius: BorderRadius.circular(12)),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    Image.asset(
-                      filteredResults[index].image,
-                      height: 100,
-                      width: double.infinity,
-                      fit: BoxFit.cover,
-                    ),
-                    Text(
-                      filteredResults[index].author,
-                      style: const TextStyle(
-                        fontSize: 14,
-                        color: Palette.black,
-                      ),
-                    ),
-                    SizedBox(
-                      width: 150,
-                      child: Text(
-                        filteredResults[index].title,
-                        style: const TextStyle(
-                          fontSize: 12,
-                          color: Palette.grey,
-                        ),
-                      ),
-                    ),
-                    Text(
-                      filteredResults[index].price,
-                      style: const TextStyle(
-                        fontSize: 14.5,
-                        color: Palette.black,
-                      ),
-                    ),
-                  ],
-                ),
-              ),
-            );
-          },
+      body: Padding(
+        padding:  EdgeInsets.only(bottom:height*0.175),
+        child: SizedBox(
+          height: height,
+          child: MasonryGridView.count(
+            crossAxisCount: 2,
+            mainAxisSpacing: 15,
+            crossAxisSpacing: 10,
+            itemCount: filteredResults.length,
+            itemBuilder: (context, index) {
+              return art(
+                  width,
+                 Random().nextInt(150) + 50.5,
+                  filteredResults[index].artist,
+                  filteredResults[index].title,
+                  filteredResults[index].gallery,
+                  filteredResults[index].price,
+                  14,
+                  context);
+            },
+          ),
         ),
       ),
     );
