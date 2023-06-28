@@ -2,7 +2,11 @@ import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class FilterPage extends StatefulWidget {
-  const FilterPage({super.key,});
+  final String? search;
+  const FilterPage({
+    super.key,
+    this.search,
+  });
 
   @override
   State<FilterPage> createState() => _FilterPageState();
@@ -11,49 +15,49 @@ class FilterPage extends StatefulWidget {
 class _FilterPageState extends State<FilterPage> {
   String filterType = 'book';
   int filteredItemsCount = 10;
-  
+
   @override
   Widget build(BuildContext context) {
-    return SafeArea(
-      child: Scaffold(
-        appBar: const PreferredSize(
-          preferredSize: Size.fromHeight(80.0),
-          child: SizedBox(
-            height: 70,
-            child: SearchField(),
+    double height = MediaQuery.sizeOf(context).height;
+
+    return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        const SizedBox(
+          height: 8,
+        ),
+        header(),
+        Center(
+          child: Text(
+            'Showing result 1 - $filteredItemsCount of $filteredItemsCount',
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 10,
+              fontFamily: 'Inter',
+              fontWeight: FontWeight.w400,
+              letterSpacing: 0.10,
+            ),
           ),
         ),
-        body: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          children: [
-            const SizedBox(height: 8,),
-            bookStoreORartStoreButtons(),
-            Text(
-                "Showing results 1 - $filteredItemsCount of $filteredItemsCount", style: const TextStyle(
-                  fontSize: 11,
-                  fontWeight: FontWeight.w400
-                ),),
-                const SizedBox(
-              height: 10,
-            ),
-            Expanded(child: bookStoreOrArtStore()),
-          ],
+        const SizedBox(
+          height: 10,
         ),
-      ),
+        SizedBox(height: height * 0.8, child: booksOrArts(widget.search)),
+      ],
     );
   }
 
-
-
-Widget bookStoreOrArtStore() {
-  if(filterType == 'book'){
-    return const FilterBookStore(searchword: '');
-  } else {
-    return const FilterArtStore(searchword: '',);
+  Widget booksOrArts(String? search) {
+    if (filterType == 'book') {
+      return FilterBookStore(searchword: search!);
+    } else {
+      return FilterArtStore(
+        searchword: search!,
+      );
+    }
   }
-}
 
-Widget bookStoreORartStoreButtons() {
+  Widget header() {
     return SizedBox(
       height: 45,
       child: Row(
@@ -61,16 +65,14 @@ Widget bookStoreORartStoreButtons() {
         children: [
           TextButtons(
             btext: 'Bookstore',
-            // bbackgroundColor:
-            //     accountType == 'creator' ? Palette.primary : Colors.transparent,
-            bcolor:
-                filterType == 'book' ? Palette.primary : Colors.transparent,
+            bcolor: filterType == 'book' ? Palette.primary : Colors.transparent,
             onTap: () {
               setState(() {
                 filterType = 'book';
               });
             },
-            textcolor: filterType == 'book' ? Palette.primary : Colors.grey, fsize: 15,
+            textcolor: filterType == 'book' ? Palette.primary : Colors.grey,
+            fsize: 15,
           ),
           Container(
             width: 1,
@@ -79,16 +81,14 @@ Widget bookStoreORartStoreButtons() {
           ),
           TextButtons(
             btext: 'Art Store',
-            //bbackgroundColor: filterType == 'customer' ? Palette.primary : Colors.transparent,
-            bcolor: filterType == 'art'
-                ? Palette.primary
-                : Colors.transparent,
+            bcolor: filterType == 'art' ? Palette.primary : Colors.transparent,
             onTap: () {
               setState(() {
                 filterType = 'art';
               });
             },
-            textcolor: filterType == 'art' ?  Palette.primary : Colors.grey, fsize: 15,
+            textcolor: filterType == 'art' ? Palette.primary : Colors.grey,
+            fsize: 15,
           ),
         ],
       ),
