@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+
 import 'package:reader_app/shared/exports.dart';
+
 
 class FilterBookStore extends StatefulWidget {
   final String searchword;
@@ -10,19 +12,34 @@ class FilterBookStore extends StatefulWidget {
 }
 
 class _FilterBookStoreState extends State<FilterBookStore> {
-  List<BookInfoData> filteredResults = [];
+  List<Book> filteredResults = [];
 
   @override
   void initState() {
     super.initState();
-    filteredResults = infodata
-        .where((result) =>
-            result.title
-            .toLowerCase().contains(widget.searchword.toLowerCase()))
-        .toList();
+    performSearch(widget.searchword);
   }
 
-  String filterType = 'book';
+  void performSearch(String searchWord) {
+    filteredResults = book.where((result) {
+      final title = result.title.toLowerCase();
+      final author = result.author.toLowerCase();
+      final genre = result.genre.toLowerCase();
+      final lowercasedSearchWord = searchWord.toLowerCase();
+      return title.contains(lowercasedSearchWord) ||
+          author.contains(lowercasedSearchWord) ||
+          genre.contains(lowercasedSearchWord);
+    }).toList();
+  }
+
+  @override
+  void didUpdateWidget(FilterBookStore oldWidget) {
+    super.didUpdateWidget(oldWidget);
+    if (widget.searchword != oldWidget.searchword) {
+      performSearch(widget.searchword);
+    }
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,13 +47,29 @@ class _FilterBookStoreState extends State<FilterBookStore> {
         itemCount: filteredResults.length,
         itemBuilder: (context, index) {
           return Padding(
-            padding: const EdgeInsets.all(9),
-            child: ListTile(
-              leading: Image.asset(filteredResults[index].image),
-              title: Text('${filteredResults[index].title}\n by ${filteredResults[index].author}' , style: const TextStyle(
-                fontSize: 12,
-                fontWeight: FontWeight.w500,
-              ),),
+            padding: const EdgeInsets.only(bottom: 26.0),
+            child: InkWell(
+              onTap: () => Get.to(
+                () => BookPreview(
+                  bookTitle: filteredResults[index].title,
+                  authorName: filteredResults[index].author,
+                ),
+              ),
+              child: ListTile(
+                leading: Image.asset(
+                  filteredResults[index].image,
+                  width: 60,
+                ),
+                title: Text(
+                  '${filteredResults[index].title}\nby ${filteredResults[index].author}',
+                  style: const TextStyle(
+                    color: Colors.black,
+                    fontSize: 14,
+                    fontFamily: 'Open Sans',
+                    fontWeight: FontWeight.w600,
+                  ),
+                ),
+              ),
             ),
           );
         },
