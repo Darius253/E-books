@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/home_screens/book_preview.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class BookPage extends StatefulWidget {
@@ -47,9 +46,9 @@ class _BookPageState extends State<BookPage> {
               child: SizedBox(
                 height: height * 0.7,
                 child: ListView.builder(
-                  itemCount: infodata.length,
+                  itemCount: book.length,
                   itemBuilder: (context, index) {
-                    if (index >= infodata.length) {
+                    if (index >= book.length) {
                       return Container(); 
                     }
                     return Column(
@@ -57,18 +56,18 @@ class _BookPageState extends State<BookPage> {
                         InkWell(
                           onTap: () => Get.to(
                             () => BookPreview(
-                              bookTitle: infodata[index].title,
-                              authorName: infodata[index].author,
+                              bookTitle: book[index].title,
+                              authorName: book[index].author,
                             ),
                           ),
                           child: BookInfo(
-                            bookInfoData: infodata[index],
+                            book: book[index],
                           ),
                         ),
                         SizedBox(
                           height: height * 0.01,
                         ),
-                        if (index != infodata.length - 1)
+                        if (index != book.length - 1)
                           SizedBox(
                             width: width * 0.90,
                             child: const Divider(
