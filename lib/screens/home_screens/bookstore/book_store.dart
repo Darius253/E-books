@@ -22,7 +22,7 @@ class _BookStoreState extends State<BookStore> {
             const Padding(
               padding: EdgeInsets.symmetric(horizontal: 15),
               child: Text(
-                'BookStore',
+                'Bookstore',
                 style: TextStyle(
                   color: Colors.black,
                   fontSize: 16,
