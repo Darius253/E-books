@@ -42,39 +42,53 @@ class _AllPageState extends State<AllPage> {
                   int index,
                 ) {
                   Book books = book[index];
-                  return Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Image.asset(
-                        books.imageUrl,
-                        fit: BoxFit.fill,
-                        height: height * 0.35,
-                        width: width * 0.5,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15.0),
-                        child: Text(
-                          books.title,
-                          style: const TextStyle(
-                            fontSize: 12,
-                            fontWeight: FontWeight.w400,
+                  return InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => BookPreview(
+                          bookTitle: books.title,
+                          authorName: books.author,
+                        ),
+                      );
+                    },
+                    child: Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          books.image,
+                          fit: BoxFit.fill,
+                          height: height * 0.35,
+                          width: width * 0.5,
+                        ),
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: Text(
+                            books.title,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 12,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.w600,
+                            ),
                           ),
                         ),
-                      ),
-                      const SizedBox(
-                        height: 1,
-                      ),
-                      Padding(
-                        padding: const EdgeInsets.only(left: 15.0),
-                        child: Text(
-                          books.price,
-                          style: const TextStyle(
-                            fontSize: 11,
-                            fontWeight: FontWeight.w400,
-                          ),
+                        const SizedBox(
+                          height: 5,
                         ),
-                      )
-                    ],
+                        Padding(
+                          padding: const EdgeInsets.only(left: 15.0),
+                          child: Text(
+                            books.price,
+                            style: const TextStyle(
+                              color: Colors.black,
+                              fontSize: 14,
+                              fontFamily: 'Open Sans',
+                              fontWeight: FontWeight.w600,
+                            ),
+                          ),
+                        )
+                      ],
+                    ),
                   );
                 },
               ),
@@ -104,19 +118,29 @@ class _AllPageState extends State<AllPage> {
                     int index,
                   ) {
                     Book books = book[index];
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: width * 0.3,
-                          height: height * 0.210,
-                          child: Image.asset(
-                            books.imageUrl,
-                            fit: BoxFit.fill,
-                          ),
+                    return InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => BookPreview(
+                          bookTitle: books.title,
+                          authorName: books.author,
                         ),
-                      ],
+                      );
+                    },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: width * 0.3,
+                            height: height * 0.210,
+                            child: Image.asset(
+                              books.image,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   }),
             ),
@@ -145,19 +169,29 @@ class _AllPageState extends State<AllPage> {
                     int index,
                   ) {
                     Book books = book[index];
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: width * 0.3,
-                          height: height * 0.210,
-                          child: Image.asset(
-                            books.imageUrl,
-                            fit: BoxFit.fill,
-                          ),
+                    return InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => BookPreview(
+                          bookTitle: books.title,
+                          authorName: books.author,
                         ),
-                      ],
+                      );
+                    },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: width * 0.3,
+                            height: height * 0.210,
+                            child: Image.asset(
+                              books.image,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   }),
             ),
@@ -168,7 +202,7 @@ class _AllPageState extends State<AllPage> {
 
             // Bestsellers Books
             const Padding(
-              padding: EdgeInsets.only(left:8.0),
+              padding: EdgeInsets.only(left: 8.0),
               child: Text(
                 'Bestsellers Books',
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
@@ -187,19 +221,29 @@ class _AllPageState extends State<AllPage> {
                     int index,
                   ) {
                     Book books = book[index];
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: width * 0.3,
-                          height: height * 0.210,
-                          child: Image.asset(
-                            books.imageUrl,
-                            fit: BoxFit.fill,
-                          ),
+                    return InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => BookPreview(
+                          bookTitle: books.title,
+                          authorName: books.author,
                         ),
-                      ],
+                      );
+                    },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: width * 0.3,
+                            height: height * 0.210,
+                            child: Image.asset(
+                              books.image,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   }),
             ),
@@ -210,7 +254,7 @@ class _AllPageState extends State<AllPage> {
 
             // Newly Added Books
             const Padding(
-              padding: EdgeInsets.only(left:8.0),
+              padding: EdgeInsets.only(left: 8.0),
               child: Text(
                 'Newly Added Books',
                 style: TextStyle(fontSize: 17, fontWeight: FontWeight.w600),
@@ -229,19 +273,29 @@ class _AllPageState extends State<AllPage> {
                     int index,
                   ) {
                     Book books = book[index];
-                    return Column(
-                      mainAxisAlignment: MainAxisAlignment.start,
-                      crossAxisAlignment: CrossAxisAlignment.start,
-                      children: [
-                        SizedBox(
-                          width: width * 0.3,
-                          height: height * 0.210,
-                          child: Image.asset(
-                            books.imageUrl,
-                            fit: BoxFit.fill,
-                          ),
+                    return InkWell(
+                    onTap: () {
+                      Get.to(
+                        () => BookPreview(
+                          bookTitle: books.title,
+                          authorName: books.author,
                         ),
-                      ],
+                      );
+                    },
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          SizedBox(
+                            width: width * 0.3,
+                            height: height * 0.210,
+                            child: Image.asset(
+                              books.image,
+                              fit: BoxFit.fill,
+                            ),
+                          ),
+                        ],
+                      ),
                     );
                   }),
             ),
