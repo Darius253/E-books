@@ -1,9 +1,11 @@
+import 'dart:ui';
+
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class CarouselCard extends StatefulWidget {
-  final BookInfoData infodata;
-  const CarouselCard({super.key, required this.infodata});
+  final Book book;
+  const CarouselCard({super.key, required this.book});
 
   @override
   State<CarouselCard> createState() => _CarouselCardState();
@@ -38,80 +40,31 @@ class _CarouselCardState extends State<CarouselCard>
     final double height = MediaQuery.of(context).size.height;
     final double width = MediaQuery.of(context).size.width;
     return Padding(
-      padding: const EdgeInsets.all(8.0),
+      padding: const EdgeInsets.symmetric(horizontal: 10.0),
       child: Container(
-        height: height * 0.26,
-        width: width * 0.82,
-        decoration: const BoxDecoration(
+        height: height * 0.1,
+        decoration: BoxDecoration(
+          color: Colors.black,
           shape: BoxShape.rectangle,
-          borderRadius: BorderRadius.all(Radius.circular(18)),
-          image: DecorationImage(
-            image: AssetImage(Images.background),
-            fit: BoxFit.cover,
-          ),
+          borderRadius: BorderRadius.circular(20),
         ),
-        child: Row(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.start,
-          children: [
-            SizedBox(
-              width: width * 0.030,
-            ),
-            Image.asset(
-              widget.infodata.image,
-              height: height * 0.20,
-            ),
-            SizedBox(
-              width: width * 0.020,
-            ),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Text(
-                  widget.infodata.title,
-                  style: const TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w500,
-                      color: Colors.white),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(20),
+          child: Stack(
+            children: [
+              Image.asset(
+                widget.book.image,
+                width: width,
+                fit: BoxFit.fitWidth,
+              ),
+              BackdropFilter(
+                filter: ImageFilter.blur(sigmaY: 10, sigmaX: 10),
+                child: Container(
+                  color: Colors.black12,
                 ),
-                Text(
-                  'by  ${widget.infodata.author}',
-                  style: const TextStyle(
-                      fontSize: 14,
-                      fontWeight: FontWeight.w400,
-                      color: Color.fromARGB(255, 211, 210, 210)),
-                ),
-                SizedBox(
-                  height: height * 0.05,
-                ),
-                Row(
-                  children: [
-                    SizedBox(
-                      width:
-                          width * 0.35, 
-                      height: 2.5,
-                      child: const LinearProgressIndicator(
-                        value: 0.67,
-                        backgroundColor: Colors.grey,
-                        valueColor: AlwaysStoppedAnimation<Color>(Colors.amber),
-                      ),
-                    ),
-                    SizedBox(
-                      width: width * 0.020,
-                    ),
-                    Text(
-                      '${(0.67 * 100).toInt()}%',
-                      style: const TextStyle(
-                          fontSize: 12,
-                          fontWeight: FontWeight.w400,
-                          color: Color.fromARGB(255, 211, 210, 210)),
-                    ),
-                  ],
-                ),
-              ],
-            )
-          ],
+              )
+            ],
+          ),
         ),
       ),
     );
