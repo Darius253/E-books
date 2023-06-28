@@ -5,7 +5,7 @@ class OrLine extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Row(children: const [
+    return const Row(children: [
       Expanded(child: Divider()),
       Text(" Or "),
       Expanded(child: Divider()),
