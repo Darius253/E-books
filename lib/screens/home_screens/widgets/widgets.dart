@@ -250,18 +250,18 @@ Widget button(double height, String price, String bookTitle, String author) {
   );
 }
 
-Widget art(double width, height, String artist, String name, String gallery,
+Widget art(double? width, double ?height, String artist, String name, String? gallery,
     String price, double fontSize, BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(
-      left: width * 0.07,
+      left: width !* 0.07,
     ),
     child: InkWell(
       onTap: () => Navigator.push(
         context,
         PageTransition(
             type: PageTransitionType.size,
-            duration: const Duration(milliseconds: 500),
+            duration: const Duration(milliseconds: 300),
             alignment: Alignment.bottomCenter,
             child: ArtDetails(
               artName: name,
@@ -281,7 +281,7 @@ Widget art(double width, height, String artist, String name, String gallery,
                 color: Colors.black),
           ),
           SizedBox(
-            height: height * 0.03,
+            height: height! * 0.03,
           ),
           Text(
             artist,
@@ -301,7 +301,7 @@ Widget art(double width, height, String artist, String name, String gallery,
           SizedBox(
             height: height * 0.03,
           ),
-          Text(gallery,
+          Text(gallery!,
               style:
                   const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
           SizedBox(
