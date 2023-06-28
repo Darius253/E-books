@@ -14,50 +14,53 @@ class _LibraryPageState extends State<LibraryPage> {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-    final double width = MediaQuery.of(context).size.width;
+    // final double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
-        body: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 14),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              booksORartsLibraryButtons(height),
-              const SizedBox(
-                height: 5,
-              ),
-              const Align(
-                alignment: Alignment.centerLeft,
-                child: Text(
-                  "CURRENTLY READING:",
-                  style: TextStyle(fontSize: 13, fontWeight: FontWeight.w500),
-                ),
-              ),
-              SizedBox(
-                height: height * 0.025,
-              ),
-              SizedBox(
-                height: height * 0.26,
-                width: width * 0.85,
-                child: ListView.builder(
-                    itemCount: infodata.length,
-                    scrollDirection: Axis.horizontal,
-                    itemBuilder: (context, index) {
-                      return CarouselCard(
-                        infodata: infodata[index],
-                      );
-                    }),
-              ),
-              SizedBox(
-                height: height * 0.008,
-              ),
-              //wishlistORpurchaseButtons(),
-              SizedBox(
-                height: height * 0.009,
-              ),
-              Expanded(child: booksORartsLibrary()),
-            ],
-          ),
+        body: Column(
+          crossAxisAlignment: CrossAxisAlignment.center,
+          children: [
+            booksORartsLibraryButtons(height),
+            const SizedBox(
+              height: 5,
+            ),
+            const Padding(
+              padding: EdgeInsets.only(left: 20.0),
+              child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Text(
+                    'CURRENTLY READING:',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 12,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                    ),
+                  )),
+            ),
+            SizedBox(
+              height: height * 0.025,
+            ),
+            SizedBox(
+              height: height * 0.2,
+              child: ListView.builder(
+                  itemCount: book.length,
+                  scrollDirection: Axis.horizontal,
+                  itemBuilder: (context, index) {
+                    return CarouselCard(
+                      book: book[index],
+                    );
+                  }),
+            ),
+            SizedBox(
+              height: height * 0.008,
+            ),
+            //wishlistORpurchaseButtons(),
+            SizedBox(
+              height: height * 0.009,
+            ),
+            Expanded(child: booksORartsLibrary()),
+          ],
         ),
       ),
     );
