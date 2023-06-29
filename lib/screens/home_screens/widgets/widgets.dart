@@ -40,7 +40,7 @@ Widget booksType(double width, String type) {
       ));
 }
 
-Widget appBar(double width, height, String title) {
+Widget appBar(double width, height, String title, bool actions) {
   return Padding(
     padding: EdgeInsets.symmetric(
         horizontal: width * 0.07, vertical: height * 0.025),
@@ -73,25 +73,26 @@ Widget appBar(double width, height, String title) {
         const Expanded(
           child: SizedBox(),
         ),
-        InkWell(
-          onTap: () {},
-          child: Icon(
-            CupertinoIcons.share,
-            color: Colors.black,
-            size: width * 0.06,
-          ),
-        ),
-        const SizedBox(
-          width: 0.0,
-        ),
-        InkWell(
-          onTap: () {},
-          child: Icon(
-            CupertinoIcons.info_circle,
-            color: Colors.black,
-            size: width * 0.06,
-          ),
-        ),
+        actions == true
+            ? InkWell(
+                onTap: () {},
+                child: Icon(
+                  CupertinoIcons.share,
+                  color: Colors.black,
+                  size: width * 0.06,
+                ),
+              )
+            : const SizedBox.shrink(),
+        actions == true
+            ? InkWell(
+                onTap: () {},
+                child: Icon(
+                  CupertinoIcons.info_circle,
+                  color: Colors.black,
+                  size: width * 0.06,
+                ),
+              )
+            : const SizedBox.shrink(),
       ],
     ),
   );
@@ -250,11 +251,11 @@ Widget button(double height, String price, String bookTitle, String author) {
   );
 }
 
-Widget art(double? width, double ?height, String artist, String name, String? gallery,
-    String price, double fontSize, BuildContext context) {
+Widget art(double? width, double? height, String artist, String name,
+    String? gallery, String price, double fontSize, BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(
-      left: width !* 0.07,
+      left: width! * 0.07,
     ),
     child: InkWell(
       onTap: () => Navigator.push(
@@ -304,6 +305,92 @@ Widget art(double? width, double ?height, String artist, String name, String? ga
           Text(gallery!,
               style:
                   const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Text('GHS $price',
+              style: TextStyle(
+                  fontSize: fontSize,
+                  fontWeight: FontWeight.w700,
+                  color: const Color.fromARGB(255, 237, 112, 23))),
+        ],
+      ),
+    ),
+  );
+}
+
+Widget books(double? width, double? height, String author, String title,
+    String? genre, String price, double fontSize, BuildContext context) {
+  return Padding(
+    padding: EdgeInsets.only(
+      left: width! * 0.07,
+    ),
+    child: InkWell(
+      onTap: () => Navigator.push(
+        context,
+        PageTransition(
+            type: PageTransitionType.size,
+            duration: const Duration(milliseconds: 300),
+            alignment: Alignment.bottomCenter,
+            child: BookPreview(
+              bookTitle: title,
+              authorName: author,
+            ),
+            isIos: true),
+      ),
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
+        children: [
+          Container(
+            height: height,
+            width: width,
+            decoration: BoxDecoration(
+                borderRadius: BorderRadiusDirectional.circular(8),
+                color: Colors.black),
+          ),
+          SizedBox(
+            height: height! * 0.03,
+          ),
+          Text(
+            author,
+            style: const TextStyle(
+              color: Colors.black,
+              fontSize: 14,
+              fontFamily: 'Open Sans',
+              fontWeight: FontWeight.w600,
+            ),
+          ),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Opacity(
+            opacity: 0.60,
+            child: Text(
+              title,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontStyle: FontStyle.italic,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
+          SizedBox(
+            height: height * 0.03,
+          ),
+          Opacity(
+            opacity: 0.60,
+            child: Text(
+              genre!,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ),
           SizedBox(
             height: height * 0.03,
           ),
