@@ -10,7 +10,7 @@ class LibraryPage extends StatefulWidget {
 }
 
 class _LibraryPageState extends State<LibraryPage> {
-  String libraryPart = 'books';
+  String section = 'books';
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
@@ -24,13 +24,13 @@ class _LibraryPageState extends State<LibraryPage> {
             const SizedBox(
               height: 5,
             ),
-            const Padding(
-              padding: EdgeInsets.only(left: 20.0),
-              child: Align(
+             Padding(
+              padding: const EdgeInsets.only(left: 20.0),
+              child:  Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                    'CURRENTLY READING:',
-                    style: TextStyle(
+                   section == 'books' ? 'CURRENTLY READING': 'RECENTLY VIEWED',
+                    style: const TextStyle(
                       color: Colors.black,
                       fontSize: 12,
                       fontFamily: 'Inter',
@@ -47,7 +47,7 @@ class _LibraryPageState extends State<LibraryPage> {
                   itemCount: book.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return CarouselCard(
+                    return CurrentlyReadingBooks(
                       book: book[index],
                     );
                   }),
@@ -67,7 +67,7 @@ class _LibraryPageState extends State<LibraryPage> {
   }
 
   Widget booksORartsLibrary() {
-    if (libraryPart == 'books') {
+    if (section == 'books') {
       return const BooksLibrary();
     } else {
       return const ArtStoreLibrary();
@@ -82,16 +82,14 @@ class _LibraryPageState extends State<LibraryPage> {
         children: [
           TextButtons(
             btext: 'Books',
-            // bbackgroundColor:
-            //     accountType == 'creator' ? Palette.primary : Colors.transparent,
             bcolor:
-                libraryPart == 'books' ? Palette.primary : Colors.transparent,
+                section == 'books' ? Palette.primary : Colors.transparent,
             onTap: () {
               setState(() {
-                libraryPart = 'books';
+                section = 'books';
               });
             },
-            textcolor: libraryPart == 'books' ? Palette.primary : Colors.grey,
+            textcolor: section == 'books' ? Palette.primary : Colors.black,
             fsize: 14,
           ),
           Container(
@@ -101,15 +99,14 @@ class _LibraryPageState extends State<LibraryPage> {
           ),
           TextButtons(
             btext: 'Art Store',
-            //bbackgroundColor: libraryPart == 'customer' ? Palette.primary : Colors.transparent,
             bcolor:
-                libraryPart == 'arts' ? Palette.primary : Colors.transparent,
+                section == 'arts' ? Palette.primary : Colors.transparent,
             onTap: () {
               setState(() {
-                libraryPart = 'arts';
+                section = 'arts';
               });
             },
-            textcolor: libraryPart == 'arts' ? Palette.primary : Colors.grey,
+            textcolor: section == 'arts' ? Palette.primary : Colors.black,
             fsize: 14,
           ),
         ],
