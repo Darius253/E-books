@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_rating_bar/flutter_rating_bar.dart';
+import 'package:reader_app/screens/home_screens/review_page.dart';
 import '../../shared/exports.dart';
 
 class BookPreview extends StatelessWidget {
@@ -19,7 +21,7 @@ class BookPreview extends StatelessWidget {
       body: SafeArea(
         child: Stack(
           children: [
-            appBar(width, height, bookTitle),
+            appBar(width, height, bookTitle, true),
             Padding(
               padding: EdgeInsets.only(top: height * 0.075),
               child: SingleChildScrollView(
@@ -29,7 +31,7 @@ class BookPreview extends StatelessWidget {
                       horizontal: width * 0.07,
                     ),
                     child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.start,
+                        crossAxisAlignment: CrossAxisAlignment.center,
                         children: [
                           Center(
                             child: Container(
@@ -57,10 +59,39 @@ class BookPreview extends StatelessWidget {
                             height: height * 0.04,
                           ),
                           const Text(
-                            'Book Description',
+                            'Rate this book:',
                             style: TextStyle(
-                              fontWeight: FontWeight.w600,
-                              fontSize: 16,
+                              color: Colors.black,
+                              fontSize: 10,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                              letterSpacing: 0.10,
+                            ),
+                          ),
+                          RatingBar.builder(
+                            initialRating: 0,
+                            minRating: 0,
+                            direction: Axis.horizontal,
+                            allowHalfRating: true,
+                            itemBuilder: (context, _) => Icon(
+                              PhosphorIcons.fill.star,
+                              color: const Color.fromARGB(255, 255, 217, 0),
+                            ),
+                            onRatingUpdate: (rating) {
+                              print(rating);
+                            },
+                          ),
+                          SizedBox(
+                            height: height * 0.04,
+                          ),
+                          const Align(
+                            alignment: Alignment.topLeft,
+                            child: Text(
+                              'Book Description',
+                              style: TextStyle(
+                                fontWeight: FontWeight.w600,
+                                fontSize: 16,
+                              ),
                             ),
                           ),
                           SizedBox(
@@ -121,6 +152,21 @@ class BookPreview extends StatelessWidget {
                               return commentsCard(width, height);
                             },
                             itemCount: genre.length),
+                      ),
+                      Align(
+                        alignment: Alignment.bottomRight,
+                        child: TextButton(
+                          onPressed: () => Get.to(() => const ReviewPage()),
+                          child: const Text(
+                            'Leave a review',
+                            style: TextStyle(
+                              color: Color(0xFF8C3E04),
+                              fontSize: 12,
+                              fontFamily: 'Inter',
+                              fontWeight: FontWeight.w400,
+                            ),
+                          ),
+                        ),
                       ),
                       SizedBox(
                         height: height * 0.045,
