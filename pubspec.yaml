@@ -30,6 +30,7 @@ dependencies:
   flextras: ^1.0.0
   flutter_custom_clippers: ^2.1.0
   flutter_staggered_animations: ^1.0.0
+  flutter_rating_bar:
 
 
   # g
@@ -42,6 +43,7 @@ dependencies:
   pin_code_fields: ^7.4.0
   page_transition: "^2.0.9"
   phosphor_flutter: ^2.0.0
+  percent_indicator:
 
   # r
   readmore: ^2.2.0
