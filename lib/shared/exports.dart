@@ -13,6 +13,7 @@ export 'package:dropdown_button2/dropdown_button2.dart';
 export 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
 export 'package:page_transition/page_transition.dart';
 export 'package:phosphor_flutter/phosphor_flutter.dart';
+export 'package:percent_indicator/linear_percent_indicator.dart';
 
 // controllers
 
@@ -52,8 +53,8 @@ export 'package:reader_app/screens/authenticate/signin/reset_password.dart';
 export 'package:reader_app/screens/home_screens/bookstore/pages/books.dart';
 export 'package:reader_app/screens/home_screens/bookstore/book_store.dart';
 
-export 'package:reader_app/screens/home_screens/library/widgets/carousel_card.dart';
-export 'package:reader_app/screens/home_screens/library/widgets/oval_button.dart';
+export 'package:reader_app/screens/home_screens/library/widgets/currently_reading_books.dart';
+export 'package:reader_app/screens/home_screens/library/widgets/purchase_button.dart';
 
 export 'package:reader_app/screens/home_screens/search/search_page.dart';
 export 'package:reader_app/screens/home_screens/search/filter/filter_artstore.dart';
@@ -68,15 +69,8 @@ export 'package:reader_app/screens/authenticate/new_user/signup/sign_up_costumer
 export 'package:reader_app/widgets/text_buttons.dart';
 
 export 'package:reader_app/screens/home_screens/library/library_page.dart';
-export 'package:reader_app/screens/home_screens/library/artstore_library.dart';
+export 'package:reader_app/screens/home_screens/library/artstorepart/artstore_library.dart';
 export 'package:reader_app/screens/home_screens/library/books_library.dart';
-
-export 'package:reader_app/screens/home_screens/library/bookpart/purchase_part.dart';
-export 'package:reader_app/screens/home_screens/library/bookpart/wishlist_part.dart';
-
-export 'package:reader_app/screens/home_screens/library/artstorepart/purchase_art_part.dart';
-export 'package:reader_app/screens/home_screens/library/artstorepart/wishlist_art_part.dart';
-export 'package:reader_app/screens/home_screens/library/bookpart/book_preview.dart';
 
 //Widgets
 
@@ -96,4 +90,4 @@ export 'package:reader_app/widgets/genre_button.dart';
 export 'package:reader_app/screens/home_screens/library/bookpart/widget/genre_chips.dart';
 export 'package:reader_app/screens/home_screens/library/bookpart/widget/top_bar.dart';
 
-export 'package:reader_app/screens/home_screens/library/bookpart/widget/purchase_card.dart';
+export 'package:reader_app/screens/home_screens/library/bookpart/widget/purchased_books.dart';
