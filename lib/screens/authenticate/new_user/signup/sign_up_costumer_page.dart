@@ -249,17 +249,17 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
 
             Button(
               onTap: () {
-                // if (_formKey.currentState!.validate() && isChecked == true) {
+                if (_formKey.currentState!.validate() && isChecked == true) {
                   Get.to(() => VerifyEmail(
                         signUp: true,
                       ));
-                // } else {
-                //   Get.showSnackbar(GetSnackBar(
-                //     message:
-                //         'Please make sure you agree to our Terms and Condition.',
-                //     duration: Duration(seconds: 3),
-                //   ));
-                // }
+                } else {
+                  Get.showSnackbar(GetSnackBar(
+                    message:
+                        'Please make sure you agree to our Terms and Condition.',
+                    duration: Duration(seconds: 3),
+                  ));
+                }
               },
               text: 'Sign Up',
             ),
@@ -278,7 +278,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               text: 'Facebook',
             ),
             SizedBox(height: height * 0.02),
-            RichTextWidget(),
+            signIn(context),
           ],
         ),
       ),
