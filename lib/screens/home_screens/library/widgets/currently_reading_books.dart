@@ -3,37 +3,9 @@ import 'dart:ui';
 import 'package:flutter/material.dart';
 import 'package:reader_app/shared/exports.dart';
 
-class CurrentlyReadingBooks extends StatefulWidget {
+class CurrentlyReadingBooks extends StatelessWidget {
   final Book book;
   const CurrentlyReadingBooks({super.key, required this.book});
-
-  @override
-  State<CurrentlyReadingBooks> createState() => _CurrentlyReadingBooksState();
-}
-
-class _CurrentlyReadingBooksState extends State<CurrentlyReadingBooks>
-    with TickerProviderStateMixin {
-  //late AnimationController controller;
-
-  @override
-  // void initState() {
-  //   controller = AnimationController(
-  //     /// [AnimationController]s can be created with `vsync: this` because of
-  //     /// [TickerProviderStateMixin].
-  //     vsync: this,
-  //     duration: const Duration(seconds: 5),
-  //   )..addListener(() {
-  //       setState(() {});
-  //     });
-  //   controller.repeat(reverse: true);
-  //   super.initState();
-  // }
-
-  // @override
-  // void dispose() {
-  //   controller.dispose();
-  //   super.dispose();
-  // }
 
   @override
   Widget build(BuildContext context) {
@@ -53,7 +25,7 @@ class _CurrentlyReadingBooksState extends State<CurrentlyReadingBooks>
           child: Stack(
             children: [
               Image.asset(
-                widget.book.image,
+                book.image,
                 width: width,
                 fit: BoxFit.fitWidth,
               ),
@@ -71,7 +43,7 @@ class _CurrentlyReadingBooksState extends State<CurrentlyReadingBooks>
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Image(
-                      image: AssetImage(widget.book.image),
+                      image: AssetImage(book.image),
                     ),
                     SizedBox(
                       width: width * 0.05,
@@ -83,7 +55,7 @@ class _CurrentlyReadingBooksState extends State<CurrentlyReadingBooks>
                           height: height * 0.025,
                         ),
                         Text(
-                          widget.book.title,
+                          book.title,
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: Colors.white,
@@ -93,7 +65,7 @@ class _CurrentlyReadingBooksState extends State<CurrentlyReadingBooks>
                           ),
                         ),
                         Text(
-                          'by ${widget.book.author}',
+                          'by ${book.author}',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: Colors.white,
@@ -107,8 +79,10 @@ class _CurrentlyReadingBooksState extends State<CurrentlyReadingBooks>
                         ),
                         LinearPercentIndicator(
                           padding: EdgeInsets.zero,
-                          width: 150,
+                          width: width * 0.5,
+                          animation: true,
                           percent: 0.5,
+                          animationDuration: 2500,
                           backgroundColor: Colors.grey,
                           progressColor: const Color(0xFFFFD700),
                         ),
