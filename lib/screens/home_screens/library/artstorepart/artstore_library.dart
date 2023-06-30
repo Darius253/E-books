@@ -14,8 +14,9 @@ class _ArtStoreLibraryState extends State<ArtStoreLibrary> {
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
     return Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
       children: [
-        purchaseButton('Purchases'),
+        Center(child: purchaseButton('Purchases')),
         const SizedBox(
           height: 26,
         ),
