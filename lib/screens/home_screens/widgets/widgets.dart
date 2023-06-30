@@ -1,7 +1,9 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/home_screens/checkout/checkout_dart.dart';
+
 import 'package:reader_app/shared/exports.dart';
+
+
 
 Widget bookCover(double width, height) {
   return Padding(
@@ -61,14 +63,17 @@ Widget appBar(double width, height, String title, bool actions) {
         const Expanded(
           child: SizedBox(),
         ),
-        Text(
-          title,
-          softWrap: true,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 18,
-              overflow: TextOverflow.ellipsis),
+        Align(
+          alignment: Alignment.center,
+          child: Text(
+            title,
+            softWrap: true,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
+                overflow: TextOverflow.ellipsis),
+          ),
         ),
         const Expanded(
           child: SizedBox(),
@@ -251,8 +256,8 @@ Widget button(double height, String price, String bookTitle, String author) {
   );
 }
 
-Widget art(double? width, double? height, String artist, String name,
-    String? gallery, String price, double fontSize, BuildContext context) {
+Widget art(double? width, double? height, String? artist, String? name,
+    String? gallery, String? price, double? fontSize, BuildContext context) {
   return Padding(
     padding: EdgeInsets.only(
       left: width! * 0.07,
@@ -265,56 +270,65 @@ Widget art(double? width, double? height, String artist, String name,
             duration: const Duration(milliseconds: 300),
             alignment: Alignment.bottomCenter,
             child: ArtDetails(
-              artName: name,
-              artistName: artist,
-              price: price,
+              artName: name!,
+              artistName: artist!,
+              price: price!,
             ),
             isIos: true),
       ),
-      child: Column(
-        crossAxisAlignment: CrossAxisAlignment.start,
-        children: [
-          Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadiusDirectional.circular(8),
-                color: Colors.black),
-          ),
-          SizedBox(
-            height: height! * 0.03,
-          ),
-          Text(
-            artist,
-            style: const TextStyle(fontSize: 17, fontWeight: FontWeight.w400),
-          ),
-          SizedBox(
-            height: height * 0.03,
-          ),
-          Text(
-            name,
-            style: TextStyle(
-                color: Colors.black.withOpacity(0.6),
-                fontSize: 15,
-                fontWeight: FontWeight.w400,
-                fontStyle: FontStyle.italic),
-          ),
-          SizedBox(
-            height: height * 0.03,
-          ),
-          Text(gallery!,
-              style:
-                  const TextStyle(fontSize: 15, fontWeight: FontWeight.w400)),
-          SizedBox(
-            height: height * 0.03,
-          ),
-          Text('GHS $price',
-              style: TextStyle(
-                  fontSize: fontSize,
-                  fontWeight: FontWeight.w700,
-                  color: const Color.fromARGB(255, 237, 112, 23))),
-        ],
-      ),
+      child: artist == null
+          ? Container(
+              height: height,
+              width: width,
+              decoration: BoxDecoration(
+                  borderRadius: BorderRadiusDirectional.circular(8),
+                  color: Colors.black),
+            )
+          : Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Container(
+                  height: height,
+                  width: width,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadiusDirectional.circular(8),
+                      color: Colors.black),
+                ),
+                SizedBox(
+                  height: height! * 0.03,
+                ),
+                Text(
+                  artist,
+                  style: const TextStyle(
+                      fontSize: 17, fontWeight: FontWeight.w400),
+                ),
+                SizedBox(
+                  height: height * 0.03,
+                ),
+                Text(
+                  name!,
+                  style: TextStyle(
+                      color: Colors.black.withOpacity(0.6),
+                      fontSize: 15,
+                      fontWeight: FontWeight.w400,
+                      fontStyle: FontStyle.italic),
+                ),
+                SizedBox(
+                  height: height * 0.03,
+                ),
+                Text(gallery!,
+                    style: const TextStyle(
+                        fontSize: 15, fontWeight: FontWeight.w400)),
+                SizedBox(
+                  height: height * 0.03,
+                ),
+                Text('GHS $price',
+                    style: TextStyle(
+                        fontSize: fontSize,
+                        fontWeight: FontWeight.w700,
+                        color: const Color.fromARGB(255, 237, 112, 23))),
+              ],
+            ),
     ),
   );
 }
