@@ -342,7 +342,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
               text: 'Facebook',
             ),
             SizedBox(height: height * 0.02),
-            RichTextWidget(),
+            signIn(context),
           ],
         ),
       ),
