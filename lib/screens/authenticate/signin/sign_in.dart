@@ -216,6 +216,10 @@ class _SignInState extends State<SignIn> {
               ],
             ),
             SizedBox(
+              height: MediaQuery.of(context).size.height * 0.015,
+            ),
+            signUp(context),
+             SizedBox(
               height: MediaQuery.of(context).size.height * 0.065,
             ),
             const Text.rich(
@@ -237,7 +241,8 @@ class _SignInState extends State<SignIn> {
                             fontSize: 12))
                   ]),
               textAlign: TextAlign.center,
-            )
+            ),
+            signUp(context),
           ]),
         ),
       )),
