@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/home_screens/book_preview.dart';
-
 import '../../../shared/exports.dart';
 
 class BookShelf extends StatelessWidget {
