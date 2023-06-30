@@ -14,7 +14,7 @@ class _LibraryPageState extends State<LibraryPage> {
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
-    // final double width = MediaQuery.of(context).size.width;
+    final double width = MediaQuery.of(context).size.width;
     return SafeArea(
       child: Scaffold(
         body: Column(
@@ -24,12 +24,14 @@ class _LibraryPageState extends State<LibraryPage> {
             const SizedBox(
               height: 5,
             ),
-             Padding(
+            Padding(
               padding: const EdgeInsets.only(left: 20.0),
-              child:  Align(
+              child: Align(
                   alignment: Alignment.centerLeft,
                   child: Text(
-                   section == 'books' ? 'CURRENTLY READING': 'RECENTLY VIEWED',
+                    section == 'books'
+                        ? 'CURRENTLY READING'
+                        : 'RECENTLY VIEWED',
                     style: const TextStyle(
                       color: Colors.black,
                       fontSize: 12,
@@ -47,15 +49,17 @@ class _LibraryPageState extends State<LibraryPage> {
                   itemCount: book.length,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
-                    return CurrentlyReadingBooks(
-                      book: book[index],
-                    );
+                    return section == 'books'
+                        ? CurrentlyReadingBooks(
+                            book: book[index],
+                          )
+                        : art(width * 0.5, height * 0.15, null, null, null,
+                            null, null, context);
                   }),
             ),
             SizedBox(
-              height: height * 0.008,
+              height: height * 0.02,
             ),
-            //wishlistORpurchaseButtons(),
             SizedBox(
               height: height * 0.009,
             ),
@@ -82,8 +86,7 @@ class _LibraryPageState extends State<LibraryPage> {
         children: [
           TextButtons(
             btext: 'Books',
-            bcolor:
-                section == 'books' ? Palette.primary : Colors.transparent,
+            bcolor: section == 'books' ? Palette.primary : Colors.transparent,
             onTap: () {
               setState(() {
                 section = 'books';
@@ -99,8 +102,7 @@ class _LibraryPageState extends State<LibraryPage> {
           ),
           TextButtons(
             btext: 'Art Store',
-            bcolor:
-                section == 'arts' ? Palette.primary : Colors.transparent,
+            bcolor: section == 'arts' ? Palette.primary : Colors.transparent,
             onTap: () {
               setState(() {
                 section = 'arts';
