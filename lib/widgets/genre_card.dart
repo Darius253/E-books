@@ -129,7 +129,7 @@ class _GenreSelectionGridState extends State<GenreSelectionGrid> {
                               selectedGenres.remove(genres[index]);
                             }
                           });
-                           widget.onGenresSelected(selectedGenres);
+                          widget.onGenresSelected(selectedGenres);
                         },
                       ),
                     ),
@@ -138,7 +138,4 @@ class _GenreSelectionGridState extends State<GenreSelectionGrid> {
               })),
     );
   }
-
- 
-  
 }
