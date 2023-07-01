@@ -95,7 +95,7 @@ class _ReviewPageState extends State<ReviewPage> {
                           }
                         },
                         child: Container(
-                          width: 80,
+                          width: width*0.25,
                           height: 41,
                           padding: const EdgeInsets.all(12),
                           decoration: ShapeDecoration(
