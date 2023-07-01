@@ -138,7 +138,7 @@ class BookPreview extends StatelessWidget {
                   Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      booksType(width, 'Comments'),
+                      itemType(width, 'Comments'),
                       SizedBox(
                         height: height * 0.01,
                       ),
@@ -147,7 +147,7 @@ class BookPreview extends StatelessWidget {
                         child: ListView.builder(
                             scrollDirection: Axis.horizontal,
                             itemBuilder: (BuildContext context, int index) {
-                              return commentsCard(width, height);
+                              return commentsCard(width, height, null, null);
                             },
                             itemCount: genre.length),
                       ),
@@ -169,7 +169,7 @@ class BookPreview extends StatelessWidget {
                       SizedBox(
                         height: height * 0.045,
                       ),
-                      booksType(width, 'Related Books'),
+                      itemType(width, 'Related Books'),
                       SizedBox(
                         height: height * 0.01,
                       ),
@@ -185,7 +185,7 @@ class BookPreview extends StatelessWidget {
                       SizedBox(
                         height: height * 0.045,
                       ),
-                      booksType(width, 'Other books by the author'),
+                      itemType(width, 'Other books by the author'),
                       SizedBox(
                         height: height * 0.01,
                       ),
