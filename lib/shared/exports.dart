@@ -41,7 +41,7 @@ export 'package:reader_app/screens/home_screens/home_page.dart';
 export 'package:reader_app/screens/authenticate/signin/sign_in.dart';
 export 'package:reader_app/screens/authenticate/on_boarding/onborading.dart';
 export 'package:reader_app/screens/home_screens/home/settings/order_history.dart';
-
+export 'package:reader_app/screens/creator_dashboards/dashboard.dart';
 export 'package:reader_app/screens/home_screens/widgets/art_details.dart';
 export 'package:reader_app/screens/home_screens/home/profile_page.dart';
 export 'package:reader_app/screens/authenticate/new_user/signup/widgets/creater_button.dart';
