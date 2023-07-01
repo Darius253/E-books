@@ -3,8 +3,6 @@ import 'package:flutter/material.dart';
 
 import 'package:reader_app/shared/exports.dart';
 
-
-
 Widget bookCover(double width, height) {
   return Padding(
     padding: EdgeInsets.only(
@@ -28,7 +26,7 @@ Widget bookCover(double width, height) {
   );
 }
 
-Widget booksType(double width, String type) {
+Widget itemType(double width, String type) {
   return Padding(
       padding: EdgeInsets.only(
         left: width * 0.07,
@@ -63,17 +61,14 @@ Widget appBar(double width, height, String title, bool actions) {
         const Expanded(
           child: SizedBox(),
         ),
-        Align(
-          alignment: Alignment.center,
-          child: Text(
-            title,
-            softWrap: true,
-            overflow: TextOverflow.ellipsis,
-            style: const TextStyle(
-                fontWeight: FontWeight.w400,
-                fontSize: 18,
-                overflow: TextOverflow.ellipsis),
-          ),
+        Text(
+          title,
+          softWrap: true,
+          overflow: TextOverflow.ellipsis,
+          style: const TextStyle(
+              fontWeight: FontWeight.w400,
+              fontSize: 18,
+              overflow: TextOverflow.ellipsis),
         ),
         const Expanded(
           child: SizedBox(),
@@ -116,7 +111,7 @@ Widget relatedGenres(double width, height, String genre) {
   );
 }
 
-Widget commentsCard(double width, height) {
+Widget commentsCard(double width, double height, String? name, String? comment ) {
   return Padding(
     padding: EdgeInsets.only(
       left: width * 0.04,
@@ -128,23 +123,23 @@ Widget commentsCard(double width, height) {
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: const Color.fromARGB(255, 140, 63, 4)),
-      child: const Column(
+      child:  Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
           Text(
-            'Fantastic',
-            style: TextStyle(
+            name ?? 'Fantastic',
+            style: const TextStyle(
                 color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
           ),
-          Text(
-            'I love this book. I recommend it to everyone. It’s fantastic. I like the suspence and ',
-            style: TextStyle(
+           Text(
+            comment ?? 'I love this book. I recommend it to everyone. It’s fantastic. I like the suspence and ',
+            style: const TextStyle(
                 color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400),
           ),
-          Text(
-            'Fantastic',
-            style: TextStyle(
+           Text(
+           name??  'Fantastic',
+            style: const TextStyle(
                 color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400),
           ),
         ],
