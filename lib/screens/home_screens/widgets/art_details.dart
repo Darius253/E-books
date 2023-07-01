@@ -51,12 +51,40 @@ class _ArtDetailsState extends State<ArtDetails> {
                               'Golden Palm',
                               'Dreamland Gallery',
                               '1,500',
-                              17, context);
+                              17,
+                              context);
                         })),
                 SizedBox(
                   height: height * 0.03,
                 ),
-                booksType(width, 'Comments'),
+                const Center(
+                  child: Text(
+                    'Rate this art:',
+                    style: TextStyle(
+                      color: Colors.black,
+                      fontSize: 10,
+                      fontFamily: 'Inter',
+                      fontWeight: FontWeight.w400,
+                      letterSpacing: 0.10,
+                    ),
+                  ),
+                ),
+                Center(
+                  child: RatingBar.builder(
+                    initialRating: 0,
+                    minRating: 0,
+                    direction: Axis.horizontal,
+                    allowHalfRating: true,
+                    itemBuilder: (context, _) => Icon(
+                      PhosphorIcons.fill.star,
+                      color: const Color.fromARGB(255, 255, 217, 0),
+                    ),
+                    onRatingUpdate: (rating) {
+                      print(rating);
+                    },
+                  ),
+                ),
+                itemType(width, 'Comments'),
                 SizedBox(
                   height: height * 0.01,
                 ),
@@ -65,7 +93,8 @@ class _ArtDetailsState extends State<ArtDetails> {
                   child: ListView.builder(
                       scrollDirection: Axis.horizontal,
                       itemBuilder: (BuildContext context, int index) {
-                        return commentsCard(width, height);
+                        return commentsCard(width, height, 'Darius Tron',
+                            'This beauty. I love everything about this art.');
                       },
                       itemCount: 4),
                 ),
