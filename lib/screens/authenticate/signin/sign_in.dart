@@ -170,7 +170,7 @@ class _SignInState extends State<SignIn> {
                   if (_formKey.currentState!.validate()) {
                     print(email);
                     print(password);
-                    Get.offAll(() => const HomePage());
+                    Get.offAll(() => const Dashboard());
                   }
                 }),
             SizedBox(
