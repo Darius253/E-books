@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class AccountDetails extends StatefulWidget {
@@ -164,32 +165,89 @@ class _AccountDetailsState extends State<AccountDetails> {
               const SizedBox(
                 height: 20,
               ),
-              InternationalPhoneNumberInput(
-                maxLength: 11,
-                textFieldController: _phoneNumberController,
-                onInputChanged: ((value) {
-                  setState(() {
-                    phoneNumber = value.phoneNumber;
-                    country = value.isoCode;
-                  });
-                }),
-                cursorColor: Colors.black,
-                formatInput: true,
-                selectorConfig: const SelectorConfig(
-                    selectorType: PhoneInputSelectorType.DROPDOWN),
-                inputDecoration: InputDecoration(
-                  border: const OutlineInputBorder(
-                    borderSide: BorderSide(color: Palette.primary),
-                  ),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Color.fromARGB(216, 237, 112, 23)),
-                      borderRadius: BorderRadius.circular(8)),
-                  hintText: '123456789',
-                  hintStyle: const TextStyle(fontSize: 14),
-                ),
-              ),
-              const SizedBox(
+             IntlPhoneField(
+                        flagsButtonPadding: const EdgeInsets.only(left: 20),
+                        initialCountryCode: '+233',
+                        disableLengthCheck: false,
+                        pickerDialogStyle: PickerDialogStyle(
+                            listTileDivider: const SizedBox.shrink(),
+                            searchFieldInputDecoration: InputDecoration(
+                              suffixIcon: const Icon(Icons.search),
+                              hintText: 'Country/Country code',
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(88, 28, 55, 90),
+                                ),
+                              ),
+                              focusedBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(88, 28, 55, 90),
+                                ),
+                              ),
+                              focusedErrorBorder: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(50),
+                                borderSide: const BorderSide(
+                                  color: Color.fromARGB(88, 28, 55, 90),
+                                ),
+                              ),
+                            ),
+                            searchFieldCursorColor:
+                                const Color.fromARGB(255, 41, 45, 50),
+                            countryNameStyle:
+                                const TextStyle(fontWeight: FontWeight.w500)),
+                        dropdownIcon: const Icon(
+                          Icons.arrow_drop_down,
+                          color: Color.fromARGB(255, 41, 45, 50),
+                        ),
+                        dropdownIconPosition: IconPosition.trailing,
+                        controller: _phoneNumberController,
+                        decoration: InputDecoration(
+                          prefix: const Padding(
+                            padding: EdgeInsets.only(left: 8.0),
+                            child: SizedBox(
+                              height: 20,
+                            ),
+                          ),
+                          hintText: 'Phone Number',
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(88, 28, 55, 90),
+                            ),
+                          ),
+                          disabledBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(88, 28, 55, 90),
+                            ),
+                          ),
+                          focusedBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(88, 28, 55, 90),
+                            ),
+                          ),
+                          focusedErrorBorder: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(4),
+                            borderSide: const BorderSide(
+                              color: Color.fromARGB(88, 28, 55, 90),
+                            ),
+                          ),
+                        ),
+                        onChanged: (phone) {
+                          setState(() {
+                            phoneNumber = phone.completeNumber;
+                          });
+                        },
+                        onCountryChanged: (country) {
+                          setState(() {
+                            // selectedCountry = country.toString();
+                          });
+                        },
+                      ),
+                    const SizedBox(
                 height: 20,
               ),
               textForm(
