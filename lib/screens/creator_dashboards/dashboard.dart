@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/screens/creator_dashboards/widgets.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -63,7 +64,53 @@ class _DashboardState extends State<Dashboard> {
           const SizedBox(
             height: 32,
           ),
-          RevenueRange(height: height, width: width,)
+          RevenueRange(
+            height: height,
+            width: width,
+          ),
+          SizedBox(
+            height: height * 0.6,
+            child: ListView.builder(
+              itemCount: book.length,
+              itemBuilder: (context, index) {
+                return Padding(
+                  padding: const EdgeInsets.all(5.0),
+                  child: ListTile(
+                    leading: Image.asset(
+                      book[index].image,
+                    ),
+                    title: Text(
+                      book[index].title,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 16,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                    subtitle: Text(
+                      book[index].author,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 12,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                      ),
+                    ),
+                    trailing: Text(
+                      book[index].price,
+                      style: const TextStyle(
+                        color: Colors.black,
+                        fontSize: 14,
+                        fontFamily: 'Open Sans',
+                        fontWeight: FontWeight.w600,
+                      ),
+                    ),
+                  ),
+                );
+              },
+            ),
+          ),
         ],
       ),
     );
