@@ -2,6 +2,7 @@
 
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SellerSignUpPage extends StatefulWidget {
@@ -20,7 +21,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
-  final TextEditingController phoneNumberController = TextEditingController();
+  final TextEditingController _phoneNumberController = TextEditingController();
   final TextEditingController _emailController = TextEditingController();
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
@@ -31,7 +32,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   String username = '';
   String password = '';
   String confirmpassword = '';
-  PhoneNumber? phonenumber;
+  String? phonenumber;
   bool obscurePassword = false;
   bool obscureConfirmPassword = false;
   String accountType = 'creator';
@@ -171,36 +172,88 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             SizedBox(height: height * 0.03),
 
             //Phone Number
-            Container(
-              height: 74.2,
-              decoration: BoxDecoration(
-                shape: BoxShape.rectangle,
-                border: Border.all(width: 1.0, color: Palette.grey),
-                borderRadius: BorderRadius.circular(8.0),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.symmetric(horizontal: 8.0),
-                child: InternationalPhoneNumberInput(
-                  onInputChanged: ((value) {
-                    setState(() {
-                      phonenumber = value;
-                    });
-                  }),
-                  cursorColor: Palette.primary,
-                  formatInput: false,
-                  selectorConfig: const SelectorConfig(
-                      selectorType: PhoneInputSelectorType.DROPDOWN),
-                  inputDecoration: InputDecoration(
-                    contentPadding: const EdgeInsets.only(bottom: 15, left: 5),
-                    border: InputBorder.none,
-                    floatingLabelStyle: TextStyle(
-                      fontSize: 14,
-                      color: Palette.primary,
-                      fontWeight: FontWeight.w400,
+            IntlPhoneField(
+              
+              flagsButtonPadding: const EdgeInsets.only(left: 20),
+              initialCountryCode: '+233',
+              disableLengthCheck: false,
+              pickerDialogStyle: PickerDialogStyle(
+                  listTileDivider: const SizedBox.shrink(),
+                  searchFieldInputDecoration: InputDecoration(
+                    suffixIcon: const Icon(Icons.search),
+                    hintText: 'Country/Country code',
+                    border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(88, 28, 55, 90),
+                      ),
                     ),
+                    focusedBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(88, 28, 55, 90),
+                      ),
+                    ),
+                    focusedErrorBorder: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(50),
+                      borderSide: const BorderSide(
+                        color: Color.fromARGB(88, 28, 55, 90),
+                      ),
+                    ),
+                  ),
+                  searchFieldCursorColor: const Color.fromARGB(255, 41, 45, 50),
+                  countryNameStyle:
+                      const TextStyle(fontWeight: FontWeight.w500)),
+              dropdownIcon: const Icon(
+                Icons.arrow_drop_down,
+                color: Color.fromARGB(255, 41, 45, 50),
+              ),
+              dropdownIconPosition: IconPosition.trailing,
+              controller: _phoneNumberController,
+              decoration: InputDecoration(
+                prefix: const Padding(
+                  padding: EdgeInsets.only(left: 8.0),
+                  child: SizedBox(
+                    height: 20,
+                  ),
+                ),
+                hintText: 'Phone Number',
+                border: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(88, 28, 55, 90),
+                  ),
+                ),
+                disabledBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(88, 28, 55, 90),
+                  ),
+                ),
+                focusedBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(88, 28, 55, 90),
+                  ),
+                ),
+                focusedErrorBorder: OutlineInputBorder(
+                  borderRadius: BorderRadius.circular(8),
+                  borderSide: const BorderSide(
+                    color: Color.fromARGB(88, 28, 55, 90),
                   ),
                 ),
               ),
+              onChanged: (phone) {
+                setState(() {
+                  phonenumber = phone.completeNumber;
+                });
+                print(phonenumber);
+              },
+              onCountryChanged: (country) {
+                setState(() {
+                  // selectedCountry = country.toString();
+                });
+              },
             ),
 
             //Password
