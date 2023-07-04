@@ -4,7 +4,7 @@ export 'dart:io' show Platform;
 // pub
 export 'package:get/get.dart';
 export 'package:flutter_svg/flutter_svg.dart';
-export 'package:intl_phone_number_input/intl_phone_number_input.dart';
+export 'package:intl_phone_field/intl_phone_field.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
 export 'package:carousel_slider/carousel_slider.dart';
