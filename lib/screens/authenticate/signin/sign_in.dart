@@ -1,6 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/creator_dashboards/creator_home.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SignIn extends StatefulWidget {
@@ -170,7 +171,7 @@ class _SignInState extends State<SignIn> {
                   if (_formKey.currentState!.validate()) {
                     print(email);
                     print(password);
-                    Get.offAll(() => const Dashboard());
+                    Get.offAll(() => const CreatorHome());
                   }
                 }),
             SizedBox(
@@ -219,7 +220,7 @@ class _SignInState extends State<SignIn> {
               height: MediaQuery.of(context).size.height * 0.015,
             ),
             signUp(context),
-             SizedBox(
+            SizedBox(
               height: MediaQuery.of(context).size.height * 0.065,
             ),
             const Text.rich(
@@ -242,7 +243,6 @@ class _SignInState extends State<SignIn> {
                   ]),
               textAlign: TextAlign.center,
             ),
-            signUp(context),
           ]),
         ),
       )),
