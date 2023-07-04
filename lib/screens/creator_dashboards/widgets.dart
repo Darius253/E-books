@@ -109,13 +109,8 @@ class _RevenueRangeState extends State<RevenueRange> {
             ),
           ),
         ),
-        const SizedBox(
-          height: 32,
-        ),
-        SizedBox(
-          height: widget.height * 0.5,
-          child: PageView(),
-        )
+        
+       
       ],
     );
   }
