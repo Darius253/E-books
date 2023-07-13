@@ -27,7 +27,7 @@ class _RequestPaymentState extends State<RequestPayment> {
       child: Column(
         children: [
           SizedBox(height: height * 0.075),
-          const Text('Enter your Mobile Money mobile number',
+          const Text('Enter your Mobile Money Deatils',
               style: TextStyle(fontWeight: FontWeight.w400)),
           SizedBox(height: height * 0.05),
           DropdownButtonHideUnderline(
@@ -110,6 +110,7 @@ class _RequestPaymentState extends State<RequestPayment> {
           SizedBox(height: height * 0.05),
           TextFormField(
             controller: _textEditingController,
+            keyboardType: TextInputType.phone,
             validator: (value) {
               if (value == null || value.isEmpty) {
                 return 'Please enter your email';
