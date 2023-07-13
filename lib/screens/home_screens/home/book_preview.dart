@@ -115,7 +115,8 @@ class BookPreview extends StatelessWidget {
                                   itemBuilder:
                                       (BuildContext context, int index) {
                                     return relatedGenres(
-                                        width, height, genre[index]);
+                                      genre[index],
+                                    );
                                   },
                                   separatorBuilder:
                                       (BuildContext context, int index) {
