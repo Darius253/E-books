@@ -1,5 +1,5 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:reader_app/screens/creator_dashboards/creator_profile.dart';
 import 'package:reader_app/screens/creator_dashboards/sales.dart';
 
 import '../../shared/exports.dart';
@@ -23,6 +23,7 @@ class _CreatorHomeState extends State<CreatorHome> {
     List<Widget> pages = [
       const Dashboard(),
       const Sales(),
+      const CreatorProfile(),
     ];
     return Scaffold(
       body: Stack(
@@ -51,7 +52,9 @@ class _CreatorHomeState extends State<CreatorHome> {
                   navBarItem(
                       'Home',
                       height,
-                      PhosphorIcons.bold.house,
+                      currentpageIndex == 0
+                          ? PhosphorIcons.fill.house
+                          : PhosphorIcons.regular.house,
                       currentpageIndex == 0
                           ? Colors.white
                           : const Color.fromARGB(255, 41, 45, 50), () {
@@ -66,7 +69,9 @@ class _CreatorHomeState extends State<CreatorHome> {
                   navBarItem(
                       'Sales',
                       height,
-                      PhosphorIcons.bold.chartBar,
+                      currentpageIndex == 1
+                          ? PhosphorIcons.fill.chartBar
+                          : PhosphorIcons.regular.chartBar,
                       currentpageIndex == 1
                           ? Colors.white
                           : const Color.fromARGB(255, 41, 45, 50), () {
@@ -76,14 +81,16 @@ class _CreatorHomeState extends State<CreatorHome> {
                     pageController.jumpToPage(
                       1,
                     );
-                    print('BooksStore');
+                    print('Sales');
                   }),
 
                   //Profile
                   navBarItem(
                       'Profile',
                       height,
-                      PhosphorIcons.bold.user,
+                      currentpageIndex == 2
+                          ? PhosphorIcons.fill.user
+                          : PhosphorIcons.regular.user,
                       currentpageIndex == 2
                           ? Colors.white
                           : const Color.fromARGB(255, 41, 45, 50), () {
@@ -93,7 +100,25 @@ class _CreatorHomeState extends State<CreatorHome> {
                     pageController.jumpToPage(
                       2,
                     );
-                    print('Search');
+                    print('Profile');
+                  }),
+
+                  // Switch
+
+                  navBarItem(
+                      'Explore',
+                      height,
+                      currentpageIndex == 3
+                          ? PhosphorIcons.fill.userSwitch
+                          : PhosphorIcons.regular.userSwitch,
+                      currentpageIndex == 3
+                          ? Colors.white
+                          : const Color.fromARGB(255, 41, 45, 50), () {
+                    setState(() {
+                      currentpageIndex = 3;
+                    });
+                    Get.to(() => const HomePage());
+                    print('Explore');
                   }),
                 ],
               ),
