@@ -43,7 +43,7 @@ Widget itemType(double width, String type) {
 Widget appBar(double width, height, String title, bool actions) {
   return Padding(
     padding: EdgeInsets.symmetric(
-        horizontal: width * 0.07, vertical: height * 0.025),
+        horizontal: width * 0.05, vertical: height * 0.025),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -52,11 +52,17 @@ Widget appBar(double width, height, String title, bool actions) {
           onTap: () {
             Get.back();
           },
-          child: Icon(
-            Icons.arrow_back,
-            color: const Color.fromARGB(249, 41, 45, 50),
-            size: width * 0.06,
-          ),
+          child: Platform.isAndroid
+              ? Icon(
+                  PhosphorIcons.regular.arrowLeft,
+                  color: const Color.fromARGB(249, 41, 45, 50),
+                  size: width * 0.06,
+                )
+              : Icon(
+                  CupertinoIcons.arrow_left,
+                  color: const Color.fromARGB(249, 41, 45, 50),
+                  size: width * 0.06,
+                ),
         ),
         const Expanded(
           child: SizedBox(),
@@ -98,10 +104,12 @@ Widget appBar(double width, height, String title, bool actions) {
   );
 }
 
-Widget relatedGenres(double width, height, String genre) {
+Widget relatedGenres(
+ 
+  String genre,
+) {
   return Container(
-    width: width * 0.2,
-    height: height * 0.03,
+    padding: const EdgeInsets.all(6),
     decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(20),
         border: Border.all(color: Colors.grey)),
@@ -111,7 +119,8 @@ Widget relatedGenres(double width, height, String genre) {
   );
 }
 
-Widget commentsCard(double width, double height, String? name, String? comment ) {
+Widget commentsCard(
+    double width, double height, String? name, String? comment) {
   return Padding(
     padding: EdgeInsets.only(
       left: width * 0.04,
@@ -123,7 +132,7 @@ Widget commentsCard(double width, double height, String? name, String? comment )
       decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(8),
           color: const Color.fromARGB(255, 140, 63, 4)),
-      child:  Column(
+      child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         mainAxisAlignment: MainAxisAlignment.spaceEvenly,
         children: [
@@ -132,13 +141,14 @@ Widget commentsCard(double width, double height, String? name, String? comment )
             style: const TextStyle(
                 color: Colors.white, fontSize: 14, fontWeight: FontWeight.w600),
           ),
-           Text(
-            comment ?? 'I love this book. I recommend it to everyone. It’s fantastic. I like the suspence and ',
+          Text(
+            comment ??
+                'I love this book. I recommend it to everyone. It’s fantastic. I like the suspence and ',
             style: const TextStyle(
                 color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400),
           ),
-           Text(
-           name??  'Fantastic',
+          Text(
+            name ?? 'Fantastic',
             style: const TextStyle(
                 color: Colors.white, fontSize: 12, fontWeight: FontWeight.w400),
           ),
