@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:reader_app/shared/exports.dart';
 
 class RevenueRange extends StatefulWidget {
   final double height;
@@ -109,9 +110,280 @@ class _RevenueRangeState extends State<RevenueRange> {
             ),
           ),
         ),
-        
-       
       ],
     );
+  }
+}
+
+Widget textField(
+  double height,
+  String label,
+  String sublabel,
+  String text,
+  Function(String) onchanged,
+) {
+  return Form(
+      child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text.rich(
+        TextSpan(
+          children: [
+            TextSpan(
+              text: label,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            TextSpan(
+              text: sublabel,
+              style: const TextStyle(
+                color: Color(0xFFA5A5A5),
+                fontSize: 14,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(
+        height: 8,
+      ),
+      SizedBox(
+        height: height * 0.06,
+        child: TextFormField(
+          keyboardType: TextInputType.text,
+          onChanged: onchanged,
+          decoration: InputDecoration(
+            border: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  width: 0.50,
+                  strokeAlign: BorderSide.strokeAlignOutside,
+                  color: Color(0xFFD9D9D9)),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            focusedBorder: OutlineInputBorder(
+              borderSide: const BorderSide(
+                  width: 0.50,
+                  strokeAlign: BorderSide.strokeAlignOutside,
+                  color: Color(0xFFD9D9D9)),
+              borderRadius: BorderRadius.circular(4),
+            ),
+            errorBorder: OutlineInputBorder(
+              borderSide: const BorderSide(color: Colors.red),
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+        ),
+      ),
+    ],
+  ));
+}
+
+Widget descriptiontextField(
+  double height,
+  String label,
+  String sublabel,
+  String description,
+  Function(String) onchanged,
+) {
+  return Form(
+      child: Column(
+    crossAxisAlignment: CrossAxisAlignment.start,
+    children: [
+      Text.rich(
+        TextSpan(
+          children: [
+            TextSpan(
+              text: label,
+              style: const TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+            TextSpan(
+              text: sublabel,
+              style: const TextStyle(
+                color: Color(0xFFA5A5A5),
+                fontSize: 14,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.w400,
+              ),
+            ),
+          ],
+        ),
+      ),
+      const SizedBox(
+        height: 8,
+      ),
+      Container(
+        height: height * 0.35,
+        decoration: ShapeDecoration(
+          shape: RoundedRectangleBorder(
+            side: const BorderSide(
+              width: 0.50,
+              strokeAlign: BorderSide.strokeAlignOutside,
+              color: Color(0xFFD9D9D9),
+            ),
+            borderRadius: BorderRadius.circular(4),
+          ),
+        ),
+        child: TextFormField(
+          initialValue: description,
+          maxLines: 300,
+          onChanged: onchanged,
+          keyboardType: TextInputType.multiline,
+          decoration: const InputDecoration(
+            contentPadding: EdgeInsets.all(20),
+            border: InputBorder.none,
+          ),
+        ),
+      ),
+    ],
+  ));
+}
+
+Widget tags(double width, double height, String label, Function()? ontap,
+    Widget? widget) {
+  return InkWell(
+    onTap: ontap,
+    child: Column(
+      crossAxisAlignment: CrossAxisAlignment.start,
+      children: [
+        Text(
+          label,
+          style: const TextStyle(
+            color: Colors.black,
+            fontSize: 14,
+            fontFamily: 'Open Sans',
+            fontWeight: FontWeight.w400,
+          ),
+        ),
+        const SizedBox(
+          height: 8,
+        ),
+        Container(
+          width: width,
+          height: height * 0.075,
+          decoration: ShapeDecoration(
+            shape: RoundedRectangleBorder(
+              side: const BorderSide(
+                width: 0.50,
+                strokeAlign: BorderSide.strokeAlignOutside,
+                color: Color(0xFFD9D9D9),
+              ),
+              borderRadius: BorderRadius.circular(4),
+            ),
+          ),
+          child: widget,
+        ),
+      ],
+    ),
+  );
+}
+
+class RelatedGenres extends StatefulWidget {
+  final String genre;
+  final Genre genres;
+  final Function(bool isSelected) onSelect;
+
+  const RelatedGenres({
+    super.key,
+    required this.genre,
+    required this.genres,
+    required this.onSelect,
+  });
+
+  @override
+  State<RelatedGenres> createState() => _RelatedGenresState();
+}
+
+class _RelatedGenresState extends State<RelatedGenres> {
+  @override
+  Widget build(BuildContext context) {
+    double height = MediaQuery.of(context).size.height;
+    return InkWell(
+      onTap: () {
+        setState(() {
+           widget.onSelect(!widget.genres.isSelected);
+        });
+       
+      },
+      child: Container(
+        height: height * 0.03,
+        decoration: BoxDecoration(
+            color: widget.genres.isSelected ? Palette.primary : Colors.white,
+            borderRadius: BorderRadius.circular(20),
+            border: Border.all(
+                color: widget.genres.isSelected ? Palette.primary : Colors.grey)),
+        child: Center(
+          child: Text(widget.genre),
+        ),
+      ),
+    );
+  }
+}
+
+class DottedBorderPainter extends CustomPainter {
+  @override
+  void paint(Canvas canvas, Size size) {
+    final paint = Paint()
+      ..color = const Color(0xFFD9D9D9)
+      ..style = PaintingStyle.stroke
+      ..strokeWidth = 1.0
+      ..strokeCap = StrokeCap.round;
+
+    final dashedPath = Path();
+    const double dashWidth = 4; // Width of each dash
+    const double dashSpace = 4; // Space between each dash
+
+    // Top border
+    dashedPath.moveTo(0, 0);
+    for (double startX = 0;
+        startX < size.width;
+        startX += dashWidth + dashSpace) {
+      dashedPath.lineTo(startX, 0);
+      dashedPath.moveTo(startX + dashWidth, 0);
+    }
+
+    // Right border
+    dashedPath.moveTo(size.width, 0);
+    for (double startY = 0;
+        startY < size.height;
+        startY += dashWidth + dashSpace) {
+      dashedPath.lineTo(size.width, startY);
+      dashedPath.moveTo(size.width, startY + dashWidth);
+    }
+
+    // Bottom border
+    dashedPath.moveTo(size.width, size.height);
+    for (double startX = size.width;
+        startX > 0;
+        startX -= dashWidth + dashSpace) {
+      dashedPath.lineTo(startX, size.height);
+      dashedPath.moveTo(startX - dashWidth, size.height);
+    }
+
+    // Left border
+    dashedPath.moveTo(0, size.height);
+    for (double startY = size.height;
+        startY > 0;
+        startY -= dashWidth + dashSpace) {
+      dashedPath.lineTo(0, startY);
+      dashedPath.moveTo(0, startY - dashWidth);
+    }
+
+    canvas.drawPath(dashedPath, paint);
+  }
+
+  @override
+  bool shouldRepaint(CustomPainter oldDelegate) {
+    return false;
   }
 }
