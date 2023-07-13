@@ -1,3 +1,6 @@
+import 'dart:io';
+
+import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
 import 'package:reader_app/screens/home_screens/home/settings/account_details.dart';
 import 'package:reader_app/screens/home_screens/home/settings/fav_genre.dart';
@@ -5,7 +8,8 @@ import 'package:reader_app/screens/home_screens/home/settings/push_notifications
 import 'package:reader_app/shared/exports.dart';
 
 class ProfilePage extends StatefulWidget {
-  const ProfilePage({super.key});
+  final String? accountType;
+  const ProfilePage({super.key, this.accountType});
 
   @override
   State<ProfilePage> createState() => _ProfilePageState();
@@ -13,6 +17,7 @@ class ProfilePage extends StatefulWidget {
 
 class _ProfilePageState extends State<ProfilePage> {
   String userId = '';
+  File? profilePicture;
 
   @override
   Widget build(BuildContext context) {
@@ -41,20 +46,48 @@ class _ProfilePageState extends State<ProfilePage> {
 
   Widget header(double width) {
     return Container(
-        padding: EdgeInsets.symmetric(horizontal: width * 0.05),
+        padding: EdgeInsets.symmetric(horizontal: width * 0.01),
         decoration: const BoxDecoration(
           color: Color(0xFFFEFAF6),
         ),
         child: ListTile(
-          leading: CircleAvatar(
-              backgroundColor: const Color.fromARGB(255, 217, 217, 217),
-              child: Center(
-                child: Icon(
-                  Icons.account_circle_outlined,
-                  size: width * 0.1,
-                  color: const Color.fromARGB(255, 41, 45, 50),
-                ),
-              )),
+          leading: Stack(
+            children: [
+              InkWell(
+                  onTap: () => uploadProfilePicture(),
+                  child: profilePicture == null
+                      ? Container(
+                          width: width * 0.2,
+                          decoration: const BoxDecoration(
+                              color: Color.fromARGB(255, 217, 217, 217),
+                              shape: BoxShape.circle),
+                          child: Center(
+                            child: Icon(
+                              Icons.account_circle_outlined,
+                              size: width * 0.1,
+                              color: const Color.fromARGB(255, 41, 45, 50),
+                            ),
+                          ))
+                      : Container(
+                          width: width * 0.15,
+                          decoration: const ShapeDecoration(
+                            image: DecorationImage(
+                              image: NetworkImage(
+                                  "https://via.placeholder.com/50x50"),
+                              fit: BoxFit.cover,
+                            ),
+                            shape: OvalBorder(),
+                          ),
+                        )),
+              Positioned(
+                  bottom: 5,
+                  right: 0.5,
+                  child: PhosphorIcon(
+                    PhosphorIcons.regular.pencil,
+                    color: const Color.fromARGB(255, 240, 138, 66),
+                  ))
+            ],
+          ),
           title: const Text(
             'Darius Tron',
             style: TextStyle(fontWeight: FontWeight.w600),
@@ -92,6 +125,14 @@ class _ProfilePageState extends State<ProfilePage> {
               width,
               () => Get.to(() => const FavouriteGenre()),
             ),
+            widget.accountType == 'creator'
+                ? iconsText(
+                    PhosphorIcons.regular.money,
+                    'Payments',
+                    width,
+                    () => Get.to(() => const OrderHistory()),
+                  )
+                : const SizedBox.shrink(),
           ],
         ));
   }
@@ -143,5 +184,25 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
       ),
     );
+  }
+
+  Future uploadProfilePicture() async {
+    FilePickerResult? result = await FilePicker.platform.pickFiles(
+      type: FileType.image,
+      onFileLoading: (p0) =>
+          const Center(child: CircularProgressIndicator.adaptive()),
+    );
+    if (result != null) {
+      File file = File(result.files.single.path!);
+      setState(() {
+        profilePicture = file;
+      });
+      Get.snackbar('Please Wait', 'Updating profile picture ...',
+          snackPosition: SnackPosition.BOTTOM);
+      return profilePicture;
+    } else {
+      Get.snackbar('Image Selection', 'Cancelled',
+          snackPosition: SnackPosition.BOTTOM);
+    }
   }
 }
