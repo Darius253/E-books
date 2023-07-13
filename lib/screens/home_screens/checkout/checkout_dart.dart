@@ -271,7 +271,12 @@ class CheckOut extends StatelessWidget {
                     horizontal: width * 0.07, vertical: height * 0.03),
                 width: width,
                 height: height * 0.4,
-                color: Colors.white,
+                decoration: const BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.only(
+                      topLeft: Radius.circular(16),
+                      topRight: Radius.circular(16)),
+                ),
                 child: Column(
                   children: [
                     Row(
