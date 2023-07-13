@@ -15,6 +15,7 @@ export 'package:page_transition/page_transition.dart';
 export 'package:phosphor_flutter/phosphor_flutter.dart';
 export 'package:percent_indicator/linear_percent_indicator.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
+export 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
 
 // controllers
 
@@ -26,6 +27,7 @@ export 'package:reader_app/screens/home_screens/bookstore/pages/book_info.dart';
 export '../../../../models/art_model.dart';
 
 // screens
+
 export 'package:reader_app/app.dart';
 export 'package:reader_app/shared/constants.dart';
 export 'package:reader_app/screens/home_screens/checkout/confirm_payment.dart';
@@ -53,7 +55,7 @@ export 'package:reader_app/screens/home_screens/home/author_preview.dart';
 export 'package:reader_app/screens/home_screens/widgets/widgets.dart';
 export 'package:reader_app/screens/authenticate/new_user/signup/sign_up_page.dart';
 export 'package:reader_app/screens/authenticate/signin/reset_password.dart';
-
+export 'package:reader_app/screens/creator_dashboards/author_collections.dart';
 export 'package:reader_app/screens/home_screens/bookstore/pages/books.dart';
 export 'package:reader_app/screens/home_screens/bookstore/book_store.dart';
 
@@ -66,6 +68,7 @@ export 'package:reader_app/screens/home_screens/search/filter/filter_bookstore.d
 export 'package:reader_app/screens/home_screens/search/search_field.dart';
 export 'package:reader_app/screens/home_screens/search/search_tags.dart';
 
+export 'package:reader_app/screens/creator_dashboards/wallet.dart';
 export 'package:reader_app/screens/authenticate/new_user/signup/sign_up_seller_page.dart';
 
 export 'package:reader_app/screens/authenticate/new_user/signup/select_sign_up.dart';
