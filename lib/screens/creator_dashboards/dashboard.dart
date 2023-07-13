@@ -33,85 +33,87 @@ class _DashboardState extends State<Dashboard> {
           ),
         ),
       ),
-      body: Column(
-        children: [
-          const SizedBox(
-            height: 32,
-          ),
-          const Center(
-            child: Text(
-              'GHS 488.98',
-              style: TextStyle(
-                color: Color(0xFFED7117),
-                fontSize: 28,
-                fontFamily: 'Satoshi',
-                fontWeight: FontWeight.w700,
+      body: SingleChildScrollView(
+        child: Column(
+          children: [
+            const SizedBox(
+              height: 32,
+            ),
+            const Center(
+              child: Text(
+                'GHS 488.98',
+                style: TextStyle(
+                  color: Color(0xFFED7117),
+                  fontSize: 28,
+                  fontFamily: 'Satoshi',
+                  fontWeight: FontWeight.w700,
+                ),
               ),
             ),
-          ),
-          const SizedBox(
-            height: 10,
-          ),
-          const Text(
-            'From 5 customers',
-            style: TextStyle(
-              color: Colors.black,
-              fontSize: 14,
-              fontFamily: 'Open Sans',
-              fontWeight: FontWeight.w400,
+            const SizedBox(
+              height: 10,
             ),
-          ),
-          const SizedBox(
-            height: 32,
-          ),
-          RevenueRange(
-            height: height,
-            width: width,
-          ),
-          SizedBox(
-            height: height * 0.6,
-            child: ListView.builder(
-              itemCount: book.length,
-              itemBuilder: (context, index) {
-                return Padding(
-                  padding: const EdgeInsets.all(5.0),
-                  child: ListTile(
-                    leading: Image.asset(
-                      book[index].image,
-                    ),
-                    title: Text(
-                      book[index].title,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 16,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                    subtitle: Text(
-                      book[index].author,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 12,
-                        fontFamily: 'Inter',
-                        fontWeight: FontWeight.w400,
-                      ),
-                    ),
-                    trailing: Text(
-                      book[index].price,
-                      style: const TextStyle(
-                        color: Colors.black,
-                        fontSize: 14,
-                        fontFamily: 'Open Sans',
-                        fontWeight: FontWeight.w600,
-                      ),
-                    ),
-                  ),
-                );
-              },
+            const Text(
+              'From 5 customers',
+              style: TextStyle(
+                color: Colors.black,
+                fontSize: 14,
+                fontFamily: 'Open Sans',
+                fontWeight: FontWeight.w400,
+              ),
             ),
-          ),
-        ],
+            const SizedBox(
+              height: 32,
+            ),
+            RevenueRange(
+              height: height,
+              width: width,
+            ),
+            SizedBox(
+              height: height * 0.6,
+              child: ListView.builder(
+                itemCount: book.length,
+                itemBuilder: (context, index) {
+                  return Padding(
+                    padding: const EdgeInsets.all(5.0),
+                    child: ListTile(
+                      leading: Image.asset(
+                        book[index].image,
+                      ),
+                      title: Text(
+                        book[index].title,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 16,
+                          fontFamily: 'Open Sans',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                      subtitle: Text(
+                        book[index].author,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 12,
+                          fontFamily: 'Inter',
+                          fontWeight: FontWeight.w400,
+                        ),
+                      ),
+                      trailing: Text(
+                        book[index].price,
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 14,
+                          fontFamily: 'Open Sans',
+                          fontWeight: FontWeight.w600,
+                        ),
+                      ),
+                    ),
+                  );
+                },
+              ),
+            ),
+          ],
+        ),
       ),
     );
   }
