@@ -54,8 +54,8 @@ class _HomePageState extends State<HomePage> {
                         'Home',
                         height,
                         currentpageIndex == 0
-                            ? PhosphorIcons.bold.house
-                            : PhosphorIcons.regular.house,
+                            ? PhosphorIcons.regular.house
+                            : PhosphorIcons.fill.house,
                         currentpageIndex == 0
                             ? Colors.white
                             : const Color.fromARGB(200, 182, 180, 178), () {
@@ -71,8 +71,8 @@ class _HomePageState extends State<HomePage> {
                         'Bookstore',
                         height,
                         currentpageIndex == 1
-                            ? PhosphorIcons.bold.books
-                            : PhosphorIcons.regular.bookBookmark,
+                            ? PhosphorIcons.regular.books
+                            : PhosphorIcons.fill.bookBookmark,
                         currentpageIndex == 1
                             ? Colors.white
                             : const Color.fromARGB(201, 204, 200, 196), () {
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                         'Search',
                         height,
                         currentpageIndex == 2
-                            ? PhosphorIcons.bold.magnifyingGlass
+                            ? PhosphorIcons.regular.magnifyingGlass
                             : CupertinoIcons.search_circle,
                         currentpageIndex == 2
                             ? Colors.white
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                         'Art Store',
                         height,
                         currentpageIndex == 3
-                            ? PhosphorIcons.bold.storefront
+                            ? PhosphorIcons.regular.storefront
                             : Icons.store_mall_directory_outlined,
                         currentpageIndex == 3
                             ? Colors.white
