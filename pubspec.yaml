@@ -32,6 +32,7 @@ dependencies:
   flutter_staggered_animations: ^1.0.0
   flutter_rating_bar:
   fl_chart: ^0.63.0
+  file_picker: ^5.3.2
 
 
   # g
@@ -51,6 +52,7 @@ dependencies:
   
   # s
   stretchy_header: ^2.0.0
+  syncfusion_flutter_datepicker: ^22.1.38
   flutter_staggered_grid_view: 
 
 dev_dependencies:
