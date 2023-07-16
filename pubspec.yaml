@@ -20,6 +20,7 @@ dependencies:
 
   #d
   dropdown_button2: ^2.0.1
+  dio: 
 
   # e
   expandable_text: ^2.3.0
