@@ -108,12 +108,8 @@ class _CreatorHomeState extends State<CreatorHome> {
                   navBarItem(
                       'Explore',
                       height,
-                      currentpageIndex == 3
-                          ? PhosphorIcons.fill.userSwitch
-                          : PhosphorIcons.regular.userSwitch,
-                      currentpageIndex == 3
-                          ? Colors.white
-                          : const Color.fromARGB(255, 41, 45, 50), () {
+                       PhosphorIcons.fill.userSwitch,
+                       const Color.fromARGB(255, 41, 45, 50), () {
                     setState(() {
                       currentpageIndex = 3;
                     });
