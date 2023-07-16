@@ -13,10 +13,8 @@ class AccountDetails extends StatefulWidget {
 class _AccountDetailsState extends State<AccountDetails> {
   String? name;
   String? phoneNumber;
-  String? email;
   String? value;
   String? country;
-  final _emailController = TextEditingController();
   final _nameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
@@ -250,14 +248,7 @@ class _AccountDetailsState extends State<AccountDetails> {
                     const SizedBox(
                 height: 20,
               ),
-              textForm(
-                PhosphorIcons.regular.envelope,
-                'Email',
-                (String? value) {
-                  email = value;
-                },
-                _emailController,
-              ),
+              
               const SizedBox(
                 height: 50,
               ),
@@ -267,7 +258,6 @@ class _AccountDetailsState extends State<AccountDetails> {
                     if (_formKey.currentState!.validate()) {
                       print(name);
                       print(phoneNumber);
-                      print(email);
                     }
                   })
             ],
