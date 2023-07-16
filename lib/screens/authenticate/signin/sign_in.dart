@@ -1,7 +1,7 @@
 // ignore_for_file: avoid_print
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/creator_dashboards/creator_home.dart';
+import 'package:reader_app/services/login_api.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SignIn extends StatefulWidget {
@@ -19,6 +19,8 @@ class _SignInState extends State<SignIn> {
 
   String email = '';
   String password = '';
+
+  bool isloading = false;
 
   @override
   Widget build(BuildContext context) {
@@ -165,15 +167,36 @@ class _SignInState extends State<SignIn> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.03,
             ),
-            Button(
-                text: 'Login',
-                onTap: () {
-                  if (_formKey.currentState!.validate()) {
-                    print(email);
-                    print(password);
-                    Get.offAll(() => const CreatorHome());
-                  }
-                }),
+            isloading == false
+                ? Button(
+                    text: 'Login',
+                    onTap: () async {
+                      setState(() {
+                        isloading = true;
+                      });
+
+                      if (_formKey.currentState!.validate()) {
+                        try {
+                          await Login().login(email, password);
+                          // Perform any additional actions after successful login
+
+                          // Example: Navigate to the home screen
+                         
+                        } catch (error) {
+                       
+                          print('Login failed: $error');
+                        }
+                      }
+
+                      setState(() {
+                        isloading = false;
+                      });
+                    },
+                  )
+                : const CircularProgressIndicator.adaptive(
+                    backgroundColor: Palette.primary,
+                    valueColor: AlwaysStoppedAnimation(Colors.white),
+                  ),
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
