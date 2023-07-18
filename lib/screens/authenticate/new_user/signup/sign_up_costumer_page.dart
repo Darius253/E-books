@@ -3,6 +3,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
+import 'package:reader_app/services/signup_api.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class CustomerSignUpPage extends StatefulWidget {
@@ -13,6 +14,7 @@ class CustomerSignUpPage extends StatefulWidget {
 }
 
 class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
+  final TextEditingController _usernameController = TextEditingController();
   final TextEditingController _fullnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
@@ -24,12 +26,13 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   bool obscurePassword = false;
   bool obscureConfirmPassword = false;
   String fullname = '';
+  String username = '';
   String email = '';
   String password = '';
   String confirmpassword = '';
-  String? phonenumber;
-
-  String accountType = 'customer';
+  String phonenumber = '';
+  String userCountry = '';
+  bool isloading = false;
   bool selected = false;
   bool isChecked = false;
   @override
@@ -58,16 +61,42 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             ),
 
             SizedBox(height: height * 0.03),
-
-            //Username
+            //full name
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _fullnameController,
               keyboardType: TextInputType.name,
               validator: (value) =>
-                  value!.length < 5 ? 'This field cannot be empty' : null,
+                  value!.isEmpty ? 'This field cannot be empty' : null,
               onChanged: (value) {
                 setState(() => fullname = value);
+              },
+              decoration: InputDecoration(
+                  labelText: 'Full Name',
+                  labelStyle: const TextStyle(
+                    color: Color.fromARGB(214, 165, 165, 165),
+                    fontWeight: FontWeight.w400,
+                    fontSize: 14,
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                      borderSide: const BorderSide(
+                          color: Color.fromARGB(216, 237, 112, 23)),
+                      borderRadius: BorderRadius.circular(8)),
+                  border: OutlineInputBorder(
+                      borderRadius: BorderRadius.circular(8))),
+            ),
+
+            SizedBox(height: height * 0.03),
+
+            //Username
+            TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
+              controller: _usernameController,
+              keyboardType: TextInputType.name,
+              validator: (value) =>
+                  value!.isEmpty ? 'This field cannot be empty' : null,
+              onChanged: (value) {
+                setState(() => username = value);
               },
               decoration: InputDecoration(
                   labelText: 'Username',
@@ -87,6 +116,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             //Email
             SizedBox(height: height * 0.03),
             TextFormField(
+              keyboardType: TextInputType.emailAddress,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _emailController,
               decoration: InputDecoration(
@@ -119,6 +149,13 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             //Phone Number
             SizedBox(height: height * 0.03),
             IntlPhoneField(
+              validator: (value) {
+                if (value!.number.isEmpty) {
+                  return 'Invalid Phone Number';
+                }
+                return null;
+              },
+              keyboardType: TextInputType.phone,
               flagsButtonPadding: const EdgeInsets.only(left: 20),
               initialCountryCode: '+233',
               disableLengthCheck: false,
@@ -195,17 +232,18 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
               },
               onCountryChanged: (country) {
                 setState(() {
-                  // selectedCountry = country.toString();
+                  userCountry = country.name;
                 });
               },
             ),
+
             //Password
             SizedBox(height: height * 0.03),
             TextFormField(
               controller: _passwordController,
               obscureText: !obscurePassword,
               validator: (value) {
-                if (value == null || value.isEmpty) {
+                if (value!.isEmpty) {
                   return 'Please enter password';
                 }
                 return null;
@@ -305,22 +343,49 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
 
             SizedBox(height: height * 0.05),
 
-            Button(
-              onTap: () {
-                if (_formKey.currentState!.validate() && isChecked == true) {
-                  Get.to(() => VerifyEmail(
-                        signUp: true,
-                      ));
-                } else {
-                  Get.showSnackbar(GetSnackBar(
-                    message:
-                        'Please make sure you agree to our Terms and Condition.',
-                    duration: Duration(seconds: 3),
-                  ));
-                }
-              },
-              text: 'Sign Up',
-            ),
+            isloading == false
+                ? Button(
+                    onTap: () async {
+                      if (_formKey.currentState!.validate() &&
+                          isChecked == true) {
+                        setState(() {
+                          isloading = true;
+                        });
+                        // try {
+                        //   SignUp().customerSignUp(
+                        //     username,
+                        //     fullname,
+                        //     email,
+                        //     phonenumber,
+                        //     password,
+                        //     userCountry,
+                        //     3,
+                        //   );
+                        // } catch (error) {
+                        //   print('Failed to Create Account: $error');
+                        // }
+
+                        setState(() {
+                          isloading = false;
+                        });
+
+                        // Get.to(() => VerifyEmail(
+                        //       signUp: true,
+                        //     ));
+                      } else {
+                        Get.showSnackbar(GetSnackBar(
+                          message:
+                              'Please make sure you agree to our Terms and Condition.',
+                          duration: Duration(seconds: 3),
+                        ));
+                      }
+                    },
+                    text: 'Sign Up',
+                  )
+                : const CircularProgressIndicator.adaptive(
+                    backgroundColor: Palette.primary,
+                    valueColor: AlwaysStoppedAnimation(Colors.white),
+                  ),
             SizedBox(height: height * 0.03),
             OrLine(),
             SizedBox(height: height * 0.03),
