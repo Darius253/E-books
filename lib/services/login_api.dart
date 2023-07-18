@@ -36,7 +36,7 @@ class Login {
       } else {
         Get.snackbar(
           'Login Failed:',
-          '${response.data['message']}',
+          'Kindly check your details provided.',
           duration: const Duration(seconds: 5),
           colorText: Colors.red,
           backgroundColor: Colors.black,
@@ -44,12 +44,16 @@ class Login {
         );
       }
     } catch (error) {
-      print('Error during login: $error');
+       Get.snackbar(
+          'Login Failed:',
+          'Something happened. Please Try again later.',
+          duration: const Duration(seconds: 5),
+          colorText: Colors.red,
+          backgroundColor: Colors.black,
+          snackPosition: SnackPosition.BOTTOM,
+        );
     }
   }
 }
 
-void main() {
-  final login = Login();
-  login.login('user@example.com', 'password');
-}
+
