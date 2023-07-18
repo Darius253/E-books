@@ -17,7 +17,6 @@ class SellerSignUpPage extends StatefulWidget {
 class _SellerSignUpPageState extends State<SellerSignUpPage> {
   final TextEditingController _artistnameController = TextEditingController();
   final TextEditingController _usernameController = TextEditingController();
-  final TextEditingController _shopnameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final TextEditingController _confirmPasswordController =
       TextEditingController();
@@ -26,8 +25,8 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
 
   final GlobalKey<FormState> _formKey = GlobalKey<FormState>();
 
-  String artistname = '';
-  String shopname = '';
+  String fullname = '';
+  String? authorType;
   String email = '';
   String username = '';
   String password = '';
@@ -35,20 +34,24 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   String? phonenumber;
   bool obscurePassword = false;
   bool obscureConfirmPassword = false;
-  String accountType = 'creator';
   bool selected = false;
   bool isChecked = false;
+
+  List<String> items = [
+    'author-individual',
+    'author-publication',
+  ];
 
   @override
   Widget build(BuildContext context) {
     final double height = MediaQuery.of(context).size.height;
+    final double width = MediaQuery.of(context).size.width;
     return Form(
       key: _formKey,
       child: Padding(
         padding: const EdgeInsets.all(16.0),
         child: Column(
           children: [
-            // SizedBox(height: height * 0.04),
             const Text(
               "Create an account",
               style: TextStyle(
@@ -72,10 +75,10 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
               validator: (value) =>
                   value!.length < 5 ? 'This field cannot be empty' : null,
               onChanged: (value) {
-                setState(() => artistname = value);
+                setState(() => fullname = value);
               },
               decoration: InputDecoration(
-                  labelText: 'Artist Name',
+                  labelText: 'Full Name',
                   labelStyle: const TextStyle(
                     color: Color.fromARGB(214, 165, 165, 165),
                     fontWeight: FontWeight.w400,
@@ -89,12 +92,14 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                       borderRadius: BorderRadius.circular(8))),
             ),
             SizedBox(height: height * 0.03),
+
+            //username
             TextFormField(
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _usernameController,
               keyboardType: TextInputType.name,
               validator: (value) =>
-                  value!.length < 5 ? 'This field cannot be empty' : null,
+                  value!.isNotEmpty ? 'This field cannot be empty' : null,
               onChanged: (value) {
                 setState(() => username = value);
               },
@@ -114,28 +119,83 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             ),
 
             SizedBox(height: height * 0.03),
-            TextFormField(
-              autovalidateMode: AutovalidateMode.onUserInteraction,
-              controller: _shopnameController,
-              keyboardType: TextInputType.name,
-              validator: (value) =>
-                  value!.length < 5 ? 'This field cannot be empty' : null,
-              onChanged: (value) {
-                setState(() => shopname = value);
-              },
-              decoration: InputDecoration(
-                  labelText: 'Enter Store name',
-                  labelStyle: const TextStyle(
-                    color: Color.fromARGB(214, 165, 165, 165),
-                    fontWeight: FontWeight.w400,
-                    fontSize: 14,
+
+            DropdownButtonHideUnderline(
+              child: DropdownButton2(
+                isExpanded: true,
+                barrierLabel: 'Choose Account Type',
+                hint: const Row(
+                  children: [
+                    Expanded(
+                      child: Text(
+                        'Choose Account Type',
+                        style: TextStyle(
+                          fontSize: 14,
+                          fontWeight: FontWeight.w400,
+                          color: Colors.black,
+                        ),
+                        overflow: TextOverflow.ellipsis,
+                      ),
+                    ),
+                  ],
+                ),
+                items: items
+                    .map((item) => DropdownMenuItem<String>(
+                          value: item,
+                          child: Text(
+                            item,
+                            style: const TextStyle(
+                              fontSize: 14,
+                              fontWeight: FontWeight.w400,
+                              color: Colors.black,
+                            ),
+                            overflow: TextOverflow.ellipsis,
+                          ),
+                        ))
+                    .toList(),
+                value: authorType,
+                onChanged: (value) {
+                  setState(() {
+                    authorType = value as String;
+                  });
+                },
+                buttonStyleData: ButtonStyleData(
+                  height: height * 0.075,
+                  width: width,
+                  padding: const EdgeInsets.only(left: 14, right: 14),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                    border: Border.all(
+                      color: authorType == null
+                          ? const Color.fromARGB(255, 217, 217, 217)
+                          : const Color.fromARGB(255, 237, 112, 23),
+                    ),
+                    color: authorType == null
+                        ? Color.fromARGB(255, 255, 255, 255)
+                        : Colors.white,
                   ),
-                  focusedBorder: OutlineInputBorder(
-                      borderSide: const BorderSide(
-                          color: Color.fromARGB(216, 237, 112, 23)),
-                      borderRadius: BorderRadius.circular(8)),
-                  border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(8))),
+                  // elevation: 2,
+                ),
+                iconStyleData: const IconStyleData(
+                  icon: Icon(Icons.keyboard_arrow_down_outlined),
+                ),
+                dropdownStyleData: DropdownStyleData(
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(8),
+                  ),
+                  elevation: 8,
+                  offset: const Offset(-5, 0),
+                  scrollbarTheme: ScrollbarThemeData(
+                    radius: const Radius.circular(40),
+                    thickness: MaterialStateProperty.all(6),
+                    thumbVisibility: MaterialStateProperty.all(true),
+                  ),
+                ),
+                menuItemStyleData: const MenuItemStyleData(
+                  height: 40,
+                  padding: EdgeInsets.only(left: 14, right: 14),
+                ),
+              ),
             ),
 
             //Email
@@ -173,7 +233,6 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
 
             //Phone Number
             IntlPhoneField(
-              
               flagsButtonPadding: const EdgeInsets.only(left: 20),
               initialCountryCode: '+233',
               disableLengthCheck: false,
@@ -365,9 +424,9 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             Button(
               onTap: () {
                 if (_formKey.currentState!.validate() && isChecked == true) {
-                  Get.to(() => VerifyEmail(
-                        signUp: true,
-                      ));
+                  // Get.to(() => VerifyEmail(
+                  //       signUp: true,
+                  //     ));
                 } else {
                   Get.showSnackbar(GetSnackBar(
                     message:
