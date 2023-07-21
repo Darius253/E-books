@@ -171,19 +171,17 @@ class _SignInState extends State<SignIn> {
                 ? Button(
                     text: 'Login',
                     onTap: () async {
-                      setState(() {
-                        isloading = true;
-                      });
-
                       if (_formKey.currentState!.validate()) {
+                        setState(() {
+                          isloading = true;
+                        });
                         try {
                           await Login().login(email, password);
-                          // Perform any additional actions after successful login
-
-                          // Example: Navigate to the home screen
-                         
                         } catch (error) {
-                       
+                          setState(() {
+                            isloading = false;
+                          });
+
                           print('Login failed: $error');
                         }
                       }
