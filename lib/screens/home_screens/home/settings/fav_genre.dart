@@ -9,7 +9,7 @@ class FavouriteGenre extends StatefulWidget {
 }
 
 class _FavouriteGenreState extends State<FavouriteGenre> {
-  List<Genre> selectedGenres = [];
+  List<String> selectedGenres = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
