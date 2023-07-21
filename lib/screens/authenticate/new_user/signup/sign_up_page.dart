@@ -14,6 +14,7 @@ class _SignUpPageState extends State<SignUpPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.white,
         body: CustomScrollView(
       slivers: [
         SliverAppBar(
