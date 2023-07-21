@@ -1,8 +1,7 @@
-// ignore_for_file: non_constant_identifier_names, prefer_const_constructors
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
+import 'package:reader_app/services/signup_api.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class SellerSignUpPage extends StatefulWidget {
@@ -31,11 +30,12 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   String username = '';
   String password = '';
   String confirmpassword = '';
-  String? phonenumber;
+  String phonenumber = '';
   bool obscurePassword = false;
   bool obscureConfirmPassword = false;
-  bool selected = false;
   bool isChecked = false;
+  int? userRoles;
+  bool isloading = false;
 
   List<String> items = [
     'author-individual',
@@ -69,11 +69,12 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             //Name
             SizedBox(height: height * 0.03),
             TextFormField(
+              textCapitalization: TextCapitalization.words,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _artistnameController,
               keyboardType: TextInputType.name,
               validator: (value) =>
-                  value!.length < 5 ? 'This field cannot be empty' : null,
+                  value!.isEmpty ? 'This field cannot be empty' : null,
               onChanged: (value) {
                 setState(() => fullname = value);
               },
@@ -95,11 +96,12 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
 
             //username
             TextFormField(
+              textCapitalization: TextCapitalization.words,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _usernameController,
               keyboardType: TextInputType.name,
               validator: (value) =>
-                  value!.isNotEmpty ? 'This field cannot be empty' : null,
+                  value!.isEmpty ? 'This field cannot be empty' : null,
               onChanged: (value) {
                 setState(() => username = value);
               },
@@ -155,9 +157,17 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                     .toList(),
                 value: authorType,
                 onChanged: (value) {
-                  setState(() {
-                    authorType = value as String;
-                  });
+                  if (value == 'author-individual') {
+                    setState(() {
+                      authorType = value as String;
+                      userRoles = 2;
+                    });
+                  } else {
+                    setState(() {
+                      authorType = value as String;
+                      userRoles = 4;
+                    });
+                  }
                 },
                 buttonStyleData: ButtonStyleData(
                   height: height * 0.075,
@@ -171,7 +181,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                           : const Color.fromARGB(255, 237, 112, 23),
                     ),
                     color: authorType == null
-                        ? Color.fromARGB(255, 255, 255, 255)
+                        ? const Color.fromARGB(255, 255, 255, 255)
                         : Colors.white,
                   ),
                   // elevation: 2,
@@ -306,7 +316,6 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 setState(() {
                   phonenumber = phone.completeNumber;
                 });
-                print(phonenumber);
               },
               onCountryChanged: (country) {
                 setState(() {
@@ -318,11 +327,12 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             //Password
             SizedBox(height: height * 0.03),
             TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _passwordController,
               obscureText: !obscurePassword,
               validator: (value) {
-                if (value == null || value.isEmpty) {
-                  return 'Please enter password';
+                if (value!.length < 7) {
+                  return 'Password should be more than 6 characters.';
                 }
                 return null;
               },
@@ -365,6 +375,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
             SizedBox(height: height * 0.03),
             //Confirm Password
             TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _confirmPasswordController,
               obscureText: !obscureConfirmPassword,
               validator: (value) {
@@ -420,26 +431,59 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                 }),
 
             SizedBox(height: height * 0.01),
-            //isChecked ?
-            Button(
-              onTap: () {
-                if (_formKey.currentState!.validate() && isChecked == true) {
-                  // Get.to(() => VerifyEmail(
-                  //       signUp: true,
-                  //     ));
-                } else {
-                  Get.showSnackbar(GetSnackBar(
-                    message:
-                        'Please make sure you agree to our Terms and Condition.',
-                    duration: Duration(seconds: 3),
-                  ));
-                }
-              },
-              text: 'Sign Up',
-            ),
+
+            isloading == false
+                ? Button(
+                    onTap: () async {
+                      if (_formKey.currentState!.validate() &&
+                          isChecked == true &&
+                          phonenumber.isNotEmpty &&
+                          userRoles != null) {
+                        setState(() {
+                          isloading = true;
+                        });
+                        try {
+                          await SignUp().creatorSignup(username, fullname,
+                              email, phonenumber, password, userRoles!);
+
+                          setState(() {
+                            isloading = false;
+                          });
+
+                          // Get.to(() => VerifyEmail(
+                          //       signUp: true,
+                          //     ));
+                        } catch (error) {
+                          Get.snackbar(
+                            'Error Creating Account:',
+                            'Something went wrong. Please try again later.',
+                            duration: const Duration(seconds: 5),
+                            colorText: Colors.red,
+                            backgroundColor: Colors.black,
+                            snackPosition: SnackPosition.BOTTOM,
+                          );
+                          setState(() {
+                            isloading = false;
+                          });
+                        }
+                      } else {
+                        Get.showSnackbar(const GetSnackBar(
+                          message: 'All fields are required.',
+                          duration: Duration(seconds: 3),
+                        ));
+                      }
+                    },
+                    text: 'Sign Up',
+                  )
+                : const Center(
+                    child: CircularProgressIndicator.adaptive(
+                      backgroundColor: Palette.primary,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
+                  ),
 
             SizedBox(height: height * 0.03),
-            OrLine(),
+            const OrLine(),
 
             SizedBox(height: height * 0.03),
             ExSignUpButton(
