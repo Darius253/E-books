@@ -1,5 +1,3 @@
-// ignore_for_file: prefer_const_constructors
-
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
@@ -33,7 +31,6 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
   String phonenumber = '';
   String userCountry = '';
   bool isloading = false;
-  bool selected = false;
   bool isChecked = false;
   @override
   Widget build(BuildContext context) {
@@ -63,6 +60,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             SizedBox(height: height * 0.03),
             //full name
             TextFormField(
+              textCapitalization: TextCapitalization.words,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _fullnameController,
               keyboardType: TextInputType.name,
@@ -90,6 +88,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
 
             //Username
             TextFormField(
+              textCapitalization: TextCapitalization.words,
               autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _usernameController,
               keyboardType: TextInputType.name,
@@ -240,12 +239,14 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             //Password
             SizedBox(height: height * 0.03),
             TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _passwordController,
               obscureText: !obscurePassword,
               validator: (value) {
-                if (value!.isEmpty) {
-                  return 'Please enter password';
+                if (value!.length < 7) {
+                  return 'Password should be more than 6 characters.';
                 }
+
                 return null;
               },
               onChanged: (value) {
@@ -287,6 +288,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
             SizedBox(height: height * 0.03),
             //Confirm Password
             TextFormField(
+              autovalidateMode: AutovalidateMode.onUserInteraction,
               controller: _confirmPasswordController,
               obscureText: !obscureConfirmPassword,
               validator: (value) {
@@ -345,49 +347,63 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
 
             isloading == false
                 ? Button(
+                    text: 'Sign Up',
                     onTap: () async {
                       if (_formKey.currentState!.validate() &&
-                          isChecked == true) {
+                          isChecked == true &&
+                          phonenumber.isNotEmpty) {
                         setState(() {
                           isloading = true;
                         });
-                        // try {
-                        //   SignUp().customerSignUp(
-                        //     username,
-                        //     fullname,
-                        //     email,
-                        //     phonenumber,
-                        //     password,
-                        //     userCountry,
-                        //     3,
-                        //   );
-                        // } catch (error) {
-                        //   print('Failed to Create Account: $error');
-                        // }
+                        try {
+                          await SignUp().customerSignUp(
+                            username,
+                            fullname,
+                            email,
+                            phonenumber,
+                            password,
+                          );
 
+                          setState(() {
+                            isloading = false;
+                          });
+
+                          // Get.to(() => VerifyEmail(
+                          //       signUp: true,
+                          //     ));
+                        } catch (error) {
+                          Get.snackbar(
+                            'Error Creating Account:',
+                            'Something went wrong. Please try again later.',
+                            duration: const Duration(seconds: 5),
+                            colorText: Colors.red,
+                            backgroundColor: Colors.black,
+                            snackPosition: SnackPosition.BOTTOM,
+                          );
+                          setState(() {
+                            isloading = false;
+                          });
+                        }
+                      } else {
                         setState(() {
                           isloading = false;
                         });
-
-                        // Get.to(() => VerifyEmail(
-                        //       signUp: true,
-                        //     ));
-                      } else {
-                        Get.showSnackbar(GetSnackBar(
-                          message:
-                              'Please make sure you agree to our Terms and Condition.',
+                        Get.showSnackbar(const GetSnackBar(
+                          message: 'All fields are required.',
                           duration: Duration(seconds: 3),
                         ));
                       }
                     },
-                    text: 'Sign Up',
                   )
-                : const CircularProgressIndicator.adaptive(
-                    backgroundColor: Palette.primary,
-                    valueColor: AlwaysStoppedAnimation(Colors.white),
+                : const Center(
+                    child: CircularProgressIndicator.adaptive(
+                      backgroundColor: Palette.primary,
+                      valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+                    ),
                   ),
+
             SizedBox(height: height * 0.03),
-            OrLine(),
+            const OrLine(),
             SizedBox(height: height * 0.03),
             ExSignUpButton(
               image: Images.google,
