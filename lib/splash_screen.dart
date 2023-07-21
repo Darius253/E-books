@@ -1,5 +1,10 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
+import 'package:reader_app/models/boxes.dart';
+import 'package:reader_app/models/favGenres.dart';
+import 'package:reader_app/models/person.dart';
+import 'package:reader_app/screens/authenticate/new_user/genre.dart';
+import 'package:reader_app/screens/creator_dashboards/creator_home.dart';
 import '../shared/exports.dart';
 
 class Splash extends StatefulWidget {
@@ -12,9 +17,23 @@ class Splash extends StatefulWidget {
 class SplashScreenState extends State<Splash> {
   @override
   void initState() {
+    Person? person = boxPersons.get('personDetails');
+    FavGenres? favGenres = boxGenres.get('favGenres');
     super.initState();
-    Timer(const Duration(seconds: 2),
-        () => Get.off(() => const OnboardingScreen()));
+    Timer(const Duration(seconds: 2), () {
+      if (person == null || person.userId.isEmpty) {
+        Get.off(() => const OnboardingScreen());
+      } else if (person.userId.isNotEmpty && favGenres == null ||
+          favGenres!.genres.isEmpty) {
+        Get.off(() => const SelectGenre());
+      } else if (person.accountType == 'subscriber' &&
+          favGenres.genres.isNotEmpty) {
+        Get.off(() => const HomePage());
+      } else if (person.accountType != 'subscriber' &&
+          favGenres.genres.isNotEmpty) {
+        Get.off(() => const CreatorHome());
+      }
+    });
   }
 
   @override
@@ -26,7 +45,7 @@ class SplashScreenState extends State<Splash> {
       child: Center(
         child: Image.asset(
           'assets/images/awstorelogo.png',
-          height: MediaQuery.of(context).size.height*0.3,
+          height: MediaQuery.of(context).size.height * 0.3,
           filterQuality: FilterQuality.high,
         ),
       ),
