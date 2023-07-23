@@ -362,6 +362,7 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                             email,
                             phonenumber,
                             password,
+                            userCountry,
                           );
 
                           setState(() {
