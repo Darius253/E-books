@@ -7,6 +7,7 @@ class Genre {
   String image;
   String genre;
   bool isSelected;
+  int id;
   CustomClipper<Path>? clipper;
 
   Genre(
@@ -14,11 +15,12 @@ class Genre {
       required this.image,
       required this.clipper,
       required this.isSelected,
+      required this.id,
       required this.genre});
 
   @override
-  String toString() {
-    return genre;
+  int toInt() {
+    return id;
   }
 }
 
@@ -28,6 +30,7 @@ List<Genre> genres = [
     text: 'Horror',
     clipper: HexagonalClipper(),
     isSelected: false,
+    id: 6,
     genre: 'Horror',
   ),
   Genre(
@@ -36,13 +39,15 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Action and Adventure',
+    id: 5,
   ),
   Genre(
     image: Images.anthology,
     text: 'Anthology',
-    clipper:HexagonalClipper(),
+    clipper: HexagonalClipper(),
     isSelected: false,
     genre: 'Anthology',
+    id:18,
   ),
   Genre(
     image: Images.authobiography,
@@ -50,13 +55,15 @@ List<Genre> genres = [
     clipper: OctagonalClipper(),
     isSelected: false,
     genre: 'AutoBiographies',
+    id:30,
   ),
   Genre(
     image: Images.authobiography,
     text: 'Biography',
-    clipper:OctagonalClipper(),
+    clipper: OctagonalClipper(),
     isSelected: false,
     genre: 'Biographies',
+    id:29,
   ),
   Genre(
     image: Images.children,
@@ -64,6 +71,7 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Children',
+    id:15,
   ),
   Genre(
     image: Images.comic,
@@ -71,6 +79,7 @@ List<Genre> genres = [
     clipper: OctagonalClipper(),
     isSelected: false,
     genre: 'Comics',
+    id: 21,
   ),
   Genre(
     image: Images.cook,
@@ -78,6 +87,7 @@ List<Genre> genres = [
     clipper: OvalTopBorderClipper(),
     isSelected: false,
     genre: 'Cookbooks',
+    id: 23,
   ),
   Genre(
     image: Images.diaries,
@@ -85,6 +95,7 @@ List<Genre> genres = [
     clipper: HexagonalClipper(),
     isSelected: false,
     genre: 'Diaries',
+    id: 24,
   ),
   Genre(
     image: Images.diaries,
@@ -92,13 +103,15 @@ List<Genre> genres = [
     clipper: OvalTopBorderClipper(),
     isSelected: false,
     genre: 'Dictionaries',
+    id: 20,
   ),
   Genre(
     image: Images.diaries,
     text: 'Encyclopedia',
-    clipper:OvalTopBorderClipper(),
+    clipper: OvalTopBorderClipper(),
     isSelected: false,
     genre: 'Encyclopedias',
+    id: 19,
   ),
   Genre(
     image: Images.romance,
@@ -106,6 +119,7 @@ List<Genre> genres = [
     clipper: MovieTicketBothSidesClipper(),
     isSelected: false,
     genre: 'Fantasy',
+    id: 3,
   ),
   Genre(
     image: Images.guide,
@@ -113,6 +127,7 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Guide',
+    id: 9,
   ),
   Genre(
     image: Images.sports,
@@ -120,6 +135,7 @@ List<Genre> genres = [
     clipper: OvalTopBorderClipper(),
     isSelected: false,
     genre: 'Health',
+    id: 10,
   ),
   Genre(
     image: Images.diaries,
@@ -127,6 +143,7 @@ List<Genre> genres = [
     clipper: WaveClipperOne(reverse: true, flip: true),
     isSelected: false,
     genre: 'Journals',
+    id:25,
   ),
   Genre(
     image: Images.math,
@@ -134,6 +151,7 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Math',
+    id: 17,
   ),
   Genre(
     image: Images.religion,
@@ -141,6 +159,7 @@ List<Genre> genres = [
     clipper: OctagonalClipper(),
     isSelected: false,
     genre: 'Prayer Books',
+    id: 27,
   ),
   Genre(
     image: Images.religion,
@@ -148,6 +167,7 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Religion, Spiritual, and New Age ',
+    id: 13,
   ),
   Genre(
     image: Images.comedy,
@@ -155,6 +175,7 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Satire',
+    id: 2,
   ),
   Genre(
     image: Images.self,
@@ -162,6 +183,7 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Self help',
+    id: 4,
   ),
   Genre(
     image: Images.adventure,
@@ -169,6 +191,7 @@ List<Genre> genres = [
     clipper: OctagonalClipper(),
     isSelected: false,
     genre: 'Series',
+    id: 26,
   ),
   Genre(
     image: Images.adventure,
@@ -176,13 +199,15 @@ List<Genre> genres = [
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
     genre: 'Travel',
+    id: 11,
   ),
   Genre(
     image: Images.adventure,
-    text: 'Triology',
+    text: 'Trilogy',
     clipper: OvalLeftBorderClipper(),
     isSelected: false,
-    genre: 'Triology',
+    genre: 'Trilogy',
+    id: 28,
   ),
   Genre(
     image: Images.history,
@@ -190,6 +215,7 @@ List<Genre> genres = [
     clipper: OvalTopBorderClipper(),
     isSelected: false,
     genre: 'History',
+    id: 14,
   ),
   Genre(
     image: Images.mystery,
@@ -197,6 +223,7 @@ List<Genre> genres = [
     clipper: WaveClipperOne(reverse: true, flip: true),
     isSelected: false,
     genre: 'Mystery',
+    id: 8,
   ),
   Genre(
     image: Images.science,
@@ -204,6 +231,7 @@ List<Genre> genres = [
     clipper: SideCutClipper(),
     isSelected: false,
     genre: 'Science',
+    id: 12,
   ),
   Genre(
     image: Images.romance,
@@ -211,6 +239,7 @@ List<Genre> genres = [
     clipper: MovieTicketBothSidesClipper(),
     isSelected: false,
     genre: 'Romance',
+    id: 3,
   ),
   Genre(
     image: Images.fiction,
@@ -218,6 +247,7 @@ List<Genre> genres = [
     clipper: WaveClipperOne(reverse: true, flip: true),
     isSelected: false,
     genre: 'Science Fiction',
+    id: 1,
   ),
   Genre(
     image: Images.poetry,
@@ -225,6 +255,7 @@ List<Genre> genres = [
     clipper: OvalTopBorderClipper(),
     isSelected: false,
     genre: 'Poetry',
+    id: 16,
   ),
   Genre(
     image: Images.art,
@@ -232,6 +263,7 @@ List<Genre> genres = [
     clipper: OctagonalClipper(),
     isSelected: false,
     genre: 'Art',
+    id: 22,
   ),
   Genre(
     image: Images.crime,
@@ -239,12 +271,14 @@ List<Genre> genres = [
     clipper: WaveClipperOne(flip: true, reverse: true),
     isSelected: false,
     genre: 'Drama',
+    id: 7,
   ),
-  Genre(
-    image: Images.sports,
-    text: 'Sports',
-    clipper: SideCutClipper(),
-    isSelected: false,
-    genre: 'Sports',
-  ),
+  // Genre(
+  //   image: Images.sports,
+  //   text: 'Sports',
+  //   clipper: SideCutClipper(),
+  //   isSelected: false,
+  //   genre: 'Sports',
+  //   id: 
+  // ),
 ];
