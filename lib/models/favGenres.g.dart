@@ -17,7 +17,7 @@ class FavGenresAdapter extends TypeAdapter<FavGenres> {
       for (int i = 0; i < numOfFields; i++) reader.readByte(): reader.read(),
     };
     return FavGenres(
-      genres: (fields[0] as List).cast<String>(),
+      genres: (fields[0] as List).cast<int>(),
     );
   }
 
