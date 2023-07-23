@@ -2,6 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
 import 'package:reader_app/models/boxes.dart';
 import 'package:reader_app/models/person.dart';
+import 'package:reader_app/screens/authenticate/new_user/genre.dart';
 import 'package:reader_app/services/api_constants.dart';
 import 'package:reader_app/shared/exports.dart';
 
@@ -12,6 +13,7 @@ class SignUp {
     String email,
     String phoneNumber,
     String password,
+    String country,
   ) async {
     final dio = Dio();
 
@@ -44,14 +46,18 @@ class SignUp {
     // Handle the response here
     try {
       if (response.statusCode == 200 && response.data['success'] == true) {
-        print(response.data);
+        
         boxPersons.put(
           'personDetails',
           Person(
               name: response.data['jwt']['name'],
               accountType: response.data['jwt']['account_type'],
-              userId: response.data['jwt']['user_id']),
+              userId: response.data['jwt']['user_id'],
+              token:response.data['jwt']['token'] ,
+              country: country),
         );
+
+        Get.to(() => const SelectGenre());
       } else {
         Get.snackbar(
           'Account Creation Failed:',
@@ -80,6 +86,7 @@ class SignUp {
     String email,
     String phoneNumber,
     String password,
+    String country,
     int accountType,
   ) async {
     final dio = Dio();
@@ -107,15 +114,24 @@ class SignUp {
         'name': fullName,
         'mobile_money_number': phoneNumber,
         'account_type': accountType,
+        'country': country,
       },
     );
 
     // Handle the response here
     try {
       if (response.statusCode == 200 && response.data['success'] == true) {
-        print(response.data);
-        // print(response.data['jwt']['account_type']);
-        // print(response.data['jwt']['token']);
+       boxPersons.put(
+          'personDetails',
+          Person(
+              name: response.data['jwt']['name'],
+              accountType: response.data['jwt']['account_type'],
+              userId: response.data['jwt']['user_id'],
+              token:response.data['jwt']['token'] ,
+              country: country),
+        );
+
+        Get.to(() => const SelectGenre());
       } else {
         Get.snackbar(
           'Account Creation Failed:',
