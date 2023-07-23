@@ -11,7 +11,7 @@ class SelectGenre extends StatefulWidget {
 }
 
 class _SelectGenreState extends State<SelectGenre> {
-  List<String> selectedGenres = [];
+  List<int> selectedGenres = [];
   @override
   Widget build(BuildContext context) {
     return Scaffold(
