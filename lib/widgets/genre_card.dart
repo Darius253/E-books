@@ -87,7 +87,7 @@ class GenreCard extends StatelessWidget {
 }
 
 class GenreSelectionGrid extends StatefulWidget {
-  final Function(List<String>) onGenresSelected;
+  final Function(List<int>) onGenresSelected;
   const GenreSelectionGrid({super.key, required this.onGenresSelected});
 
   @override
@@ -95,7 +95,7 @@ class GenreSelectionGrid extends StatefulWidget {
 }
 
 class _GenreSelectionGridState extends State<GenreSelectionGrid> {
-  List<String> selectedGenres = [];
+  List<int> selectedGenres = [];
   @override
   Widget build(BuildContext context) {
     final double width = MediaQuery.of(context).size.width;
@@ -124,10 +124,10 @@ class _GenreSelectionGridState extends State<GenreSelectionGrid> {
                           setState(() {
                             genres[index].isSelected = isSelected;
                             if (isSelected) {
-                              selectedGenres.add(genres[index].text);
+                              selectedGenres.add(genres[index].id);
                               
                             } else {
-                              selectedGenres.remove(genres[index].text);
+                              selectedGenres.remove(genres[index].id);
                             }
                           });
                           widget.onGenresSelected(selectedGenres);
