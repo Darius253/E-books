@@ -8,5 +8,5 @@ class FavGenres {
     required this.genres,
   });
   @HiveField(0)
-  List<String> genres;
+  List<int> genres;
 }
