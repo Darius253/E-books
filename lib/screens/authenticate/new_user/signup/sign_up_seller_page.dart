@@ -35,6 +35,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
   bool obscureConfirmPassword = false;
   bool isChecked = false;
   int? userRoles;
+  String userCountry = "";
   bool isloading = false;
 
   List<String> items = [
@@ -319,7 +320,7 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
               },
               onCountryChanged: (country) {
                 setState(() {
-                  // selectedCountry = country.toString();
+                  userCountry = country.name;
                 });
               },
             ),
@@ -443,8 +444,15 @@ class _SellerSignUpPageState extends State<SellerSignUpPage> {
                           isloading = true;
                         });
                         try {
-                          await SignUp().creatorSignup(username, fullname,
-                              email, phonenumber, password, userRoles!);
+                          await SignUp().creatorSignup(
+                            username,
+                            fullname,
+                            email,
+                            phonenumber,
+                            password,
+                            userCountry,
+                            userRoles!,
+                          );
 
                           setState(() {
                             isloading = false;
