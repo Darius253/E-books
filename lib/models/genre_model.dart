@@ -18,10 +18,7 @@ class Genre {
       required this.id,
       required this.genre});
 
-  @override
-  int toInt() {
-    return id;
-  }
+ 
 }
 
 List<Genre> genres = [

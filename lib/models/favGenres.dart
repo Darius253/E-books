@@ -9,4 +9,9 @@ class FavGenres {
   });
   @HiveField(0)
   List<int> genres;
+
+   @override
+  String toString() {
+    return '$genres';
+  }
 }

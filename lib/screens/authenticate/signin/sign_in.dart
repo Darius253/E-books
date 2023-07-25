@@ -66,6 +66,7 @@ class _SignInState extends State<SignIn> {
                 children: [
                   //Email TextField
                   TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: _emailController,
                     validator: (value) {
                       if (value == null || value.isEmpty) {
@@ -104,6 +105,7 @@ class _SignInState extends State<SignIn> {
                   ),
                   //Password Field
                   TextFormField(
+                    autovalidateMode: AutovalidateMode.onUserInteraction,
                     controller: _passwordController,
                     obscureText: !obscurePassword,
                     validator: (value) {

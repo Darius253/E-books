@@ -1,20 +1,44 @@
 import 'package:flutter/material.dart';
+import 'package:reader_app/models/boxes.dart';
+import 'package:reader_app/models/person.dart';
+import 'package:reader_app/services/books_api.dart';
 import '../../../shared/exports.dart';
 
-class BookShelf extends StatelessWidget {
+class BookShelf extends StatefulWidget {
   @override
   final Key? key;
   const BookShelf({this.key}) : super(key: key);
 
   @override
+  State<BookShelf> createState() => _BookShelfState();
+}
+
+class _BookShelfState extends State<BookShelf> {
+  List<String> genre = ['Adventure', 'Romance', 'Horror', 'Sports'];
+  List<String> book = [];
+  String token = '';
+
+  Future<void> getToken() async {
+    final person = boxPersons.get('personDetails');
+
+    if (person != null && person is Person) {
+      setState(() {
+        token = person.token;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    getToken();
+
+    BooksApi().getBooks(token);
+    print(token);
+  }
+
+  @override
   Widget build(BuildContext context) {
-    List<String> genre = ['Adventure', 'Romance', 'Horror', 'Sports'];
-    List<String> book = [
-      'My life',
-      'How I Met Your Mother',
-      'We Broke Up',
-      'Dream Big'
-    ];
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return SafeArea(
@@ -70,23 +94,23 @@ class BookShelf extends StatelessWidget {
               SizedBox(
                 height: height * 0.035,
               ),
-              Padding(
-                padding: const EdgeInsets.only(bottom: 20.0),
-                child: SizedBox(
-                  height: height * 0.8,
-                  child: ListView.separated(
-                      separatorBuilder: (BuildContext context, int index) {
-                        return SizedBox(
-                          height: height * 0.05,
-                        );
-                      },
-                      itemCount: genre.length,
-                      itemBuilder: (BuildContext context, int index) {
-                        return favouriteGenre(height, width, genre[index],
-                            book[index], 'Darius Tron', 'GHS 89.99', context);
-                      }),
-                ),
-              ),
+              // Padding(
+              //   padding: const EdgeInsets.only(bottom: 20.0),
+              //   child: SizedBox(
+              //     height: height * 0.8,
+              //     child: ListView.separated(
+              //         separatorBuilder: (BuildContext context, int index) {
+              //           return SizedBox(
+              //             height: height * 0.05,
+              //           );
+              //         },
+              //         itemCount: genre.length,
+              //         itemBuilder: (BuildContext context, int index) {
+              //           return favouriteGenre(height, width, genre[index],
+              //               book[index], 'Darius Tron', 'GHS 89.99', context);
+              //         }),
+              //   ),
+              // ),
             ],
           ),
         ),

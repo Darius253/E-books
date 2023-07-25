@@ -1,17 +1,14 @@
 import 'package:dio/dio.dart';
 import 'package:reader_app/services/api_constants.dart';
 
-class Categories {
-  
-
-  Future<void> getCategories(String bearerToken) async {
+class BooksApi {
+  Future<void> getBooks(String bearerToken) async {
     try {
       final dio = Dio();
 
       // Define the headers
       final headers = {
-        'Authorization':'Bearer $bearerToken',
-        'Access-Control-Allow-Origin': 'false',
+        'Authorization': 'Bearer $bearerToken',
         'content-length': '71',
         'Connection': 'keep-alive',
         'Content-Type': 'application/json; charset=utf-8',
@@ -25,27 +22,25 @@ class Categories {
       dio.options.headers = headers;
 
       final response = await dio.get(
-        '$api$genrePath',
+        '$api$booksPath',
       );
 
       // Handle the response here
-      if (response.statusCode == 200 && response.data['success'] == true) {
-        
-      
+      if (response.statusCode == 200 && response.data['data'] != null) {
+        print(response.data);
       } else {
-       print(response.data);
-        
+        print(response.data);
       }
-    } catch (error) {
-      print(error);
-      // Get.snackbar(
-      //   'Login Failed:',
-      //   'Something happened. Please Try again later.',
-      //   duration: const Duration(seconds: 5),
-      //   colorText: Colors.red,
-      //   backgroundColor: Colors.black,
-      //   snackPosition: SnackPosition.BOTTOM,
-      // );
-    }
+    }  catch (error) {
+  if (error is DioError) {
+    print('DioError: ${error.response?.data}');
+    print('Status Code: ${error.response?.statusCode}');
+  } else {
+    print('Unknown Error: $error');
+  }
+  // Show the error using Get.snackbar
+  // ...
+}
+
   }
 }

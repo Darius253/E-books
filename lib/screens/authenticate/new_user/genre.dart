@@ -12,6 +12,8 @@ class SelectGenre extends StatefulWidget {
 
 class _SelectGenreState extends State<SelectGenre> {
   List<int> selectedGenres = [];
+
+  
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -47,12 +49,14 @@ class _SelectGenreState extends State<SelectGenre> {
                       ),
                     ),
                     GenreSelectionGrid(
-                      onGenresSelected: (selectedGenres) {
-                        setState(() {
-                          this.selectedGenres = selectedGenres;
-                        });
-                      },
-                    ),
+                  genres: genres,
+                  selectedGenres: selectedGenres,
+                  onGenresSelected: (selectedGenres) {
+                    setState(() {
+                      this.selectedGenres = selectedGenres;
+                    });
+                  },
+                ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0, top: 10),
                       child: Button(
