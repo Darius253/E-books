@@ -16,15 +16,24 @@ export 'package:phosphor_flutter/phosphor_flutter.dart';
 export 'package:percent_indicator/linear_percent_indicator.dart';
 export 'package:flutter_rating_bar/flutter_rating_bar.dart';
 export 'package:flutter_staggered_grid_view/flutter_staggered_grid_view.dart';
-
+export 'package:cached_network_image/cached_network_image.dart';
+export 'package:skeletonizer/skeletonizer.dart';
+export 'package:file_picker/file_picker.dart';
 // controllers
 
-// models
+// models && api calls
 export 'package:reader_app/screens/authenticate/on_boarding/onborading_widget.dart';
 export 'package:reader_app/models/genre_model.dart';
 export 'package:reader_app/models/books_model.dart';
 export 'package:reader_app/screens/home_screens/bookstore/pages/book_info.dart';
 export '../../../../models/art_model.dart';
+export 'package:reader_app/models/boxes.dart';
+export 'package:reader_app/models/person.dart';
+export 'package:reader_app/services/books_api.dart';
+export 'package:reader_app/models/favGenres.dart';
+export 'package:reader_app/services/fav_genre_books_api.dart';
+export 'package:reader_app/services/author_books.dart';
+
 
 // screens
 
@@ -62,6 +71,9 @@ export 'package:reader_app/screens/home_screens/bookstore/book_store.dart';
 export 'package:reader_app/screens/home_screens/library/widgets/currently_reading_books.dart';
 export 'package:reader_app/screens/home_screens/library/widgets/purchase_button.dart';
 
+export 'package:reader_app/screens/home_screens/home/settings/account_details.dart';
+export 'package:reader_app/screens/home_screens/home/settings/fav_genre.dart';
+export 'package:reader_app/screens/home_screens/home/settings/push_notifications.dart';
 export 'package:reader_app/screens/home_screens/search/search_page.dart';
 export 'package:reader_app/screens/home_screens/search/filter/filter_artstore.dart';
 export 'package:reader_app/screens/home_screens/search/filter/filter_bookstore.dart';
@@ -86,7 +98,7 @@ export 'package:reader_app/screens/authenticate/new_user/signup/widgets/or_line.
 export 'package:reader_app/widgets/confirm_button.dart';
 export 'package:reader_app/widgets/back_button.dart';
 export 'package:reader_app/screens/authenticate/new_user/signup/widgets/ex_signup_button.dart';
-
+export 'package:reader_app/widgets/loading.dart';
 export 'package:reader_app/screens/authenticate/signin/widgets/button.dart';
 export 'package:reader_app/widgets/rich_text.dart';
 export 'package:reader_app/on_boarding/widgets/getstarted_button.dart';

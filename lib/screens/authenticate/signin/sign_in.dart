@@ -42,7 +42,7 @@ class _SignInState extends State<SignIn> {
                     filterQuality: FilterQuality.high,
                   ),
                   const SizedBox(height: 30),
-                  const Text('Welcome back, Darius!',
+                  const Text('Welcome back!',
                       textAlign: TextAlign.center,
                       style: TextStyle(
                         fontWeight: FontWeight.w600,
@@ -184,7 +184,14 @@ class _SignInState extends State<SignIn> {
                             isloading = false;
                           });
 
-                          print('Login failed: $error');
+                          Get.snackbar(
+                            'Login Failed:',
+                            'Something happened. Please Try again later.',
+                            duration: const Duration(seconds: 5),
+                            colorText: Colors.red,
+                            backgroundColor: Colors.black,
+                            snackPosition: SnackPosition.BOTTOM,
+                          );
                         }
                       }
 

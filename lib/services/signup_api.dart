@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/models/boxes.dart';
-import 'package:reader_app/models/person.dart';
 import 'package:reader_app/screens/authenticate/new_user/genre.dart';
 import 'package:reader_app/services/api_constants.dart';
 import 'package:reader_app/shared/exports.dart';

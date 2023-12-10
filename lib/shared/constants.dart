@@ -26,7 +26,10 @@ class Font {
 }
 
 class Images {
+  
   static const String imagesPath = 'assets/images/';
+  static const String noBooks = '${imagesPath}noBooks.svg';
+   static const String error = '${imagesPath}no_data.svg';
   static const String google = '${imagesPath}google.png';
   static const String facebook = '${imagesPath}facebook.png';
   static const String welcome = '${imagesPath}welcome.svg';

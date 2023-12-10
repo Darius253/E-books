@@ -1,59 +1,79 @@
-
-import '../shared/constants.dart';
-
 class Book {
-  final String image;
-  final String title;
-  final String author;
-  final String desc;
-  final String price;
-  final String genre;
-  final String? id;
+  String? image;
+  String? title;
+  String? author;
+  String? desc;
+  String? language;
+  double? price;
+  int? id;
+  String? authorId;
+  String? publisher;
+  List<String>? genres;
+  List<int>? genreIds;
+  List<int>? ratings;
+  List<String>? comments;
+  String? isbn;
+  String? edition;
+  String? pseudonym;
+  String? releaseDate;
+  int? pages;
+  List? bookAuthors;
 
-  const Book(
-      {required this.image,
-      required this.title,
-      required this.author,
-      required this.desc,
-      required this.price,
-      required this.genre,
-      this.id});
+  Book({
+    this.image,
+    this.title,
+    this.author,
+    this.desc,
+    this.language,
+    this.price,
+    this.genres,
+    this.id,
+    this.authorId,
+    this.bookAuthors,
+    this.edition,
+    this.isbn,
+    this.pages,
+    this.pseudonym,
+    this.publisher,
+    this.releaseDate,
+    this.ratings,
+    this.comments,
+    this.genreIds,
+  });
+
+  factory Book.fromJson(Map<String, dynamic> json) {
+    return Book(
+      image: json['featured_image_url'],
+      title: json['title_of_book'],
+      author: json['display_name'],
+      desc: json['description'],
+      price: json['sale_price']?.toDouble(),
+      genres: (json["bookCategory"] as List<dynamic>?)
+          ?.map((category) => category["category_name"])
+          .toList()
+          .cast<String>(),
+      genreIds: (json["bookCategory"] as List<dynamic>?)
+          ?.map((category) => category["category_id"])
+          .toList()
+          .cast<int>(),
+      id: json["book_id"],
+      authorId: json["author_id"],
+      bookAuthors:
+          json["bookAuthors"] != null ? List.from(json["bookAuthors"]) : [],
+      edition: json["edition"],
+      isbn: json["isbn"],
+      pages: json["book_page_count"],
+      pseudonym: json["pseudonym"],
+      publisher: json["publisher"],
+      releaseDate: json["release_date"],
+      ratings: (json["bookReviews"] as List<dynamic>?)
+          ?.map<int>((review) => review["rating"] as int)
+          .toList(),
+
+      comments: [],
+      // comments: (json["bookReviews"] as List<dynamic>?)
+      //     ?.map<String>((review) => review["message"].toString())
+      //     .toList(),
+    );
+  }
 }
-
-List<Book> book = [
-  const Book(
-      image: Images.tbook1,
-      title: 'Ugly',
-      author: 'Him',
-      desc: lorem2,
-      price: 'GHS 89',
-      genre: 'Fantansy'),
-  const Book(
-      image: Images.tbook2,
-      title: 'Merchant of Venom',
-      author: 'Seth',
-      desc: lorem2,
-      price: 'GHS 89',
-      genre: 'Comic'),
-  const Book(
-      image: Images.book1,
-      title: 'Goal',
-      author: 'Michael',
-      desc: lorem2,
-      price: 'GHS 89',
-      genre: 'Action and Adventures'),
-  const Book(
-      image: Images.book4,
-      title: 'Merchant',
-      author: 'Tron',
-      desc: lorem2,
-      price: 'GHS 89',
-      genre: 'Romancr'),
-  const Book(
-      image: Images.tbook1,
-      title: 'Venom',
-      author: 'Darius',
-      desc: lorem2,
-      price: 'GHS 89',
-      genre: 'Travel'),
-];

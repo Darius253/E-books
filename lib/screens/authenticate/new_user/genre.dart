@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/models/boxes.dart';
-import 'package:reader_app/models/favGenres.dart';
+import 'package:reader_app/screens/creator_dashboards/creator_home.dart';
 import '../../../shared/exports.dart';
 
 class SelectGenre extends StatefulWidget {
@@ -12,8 +11,19 @@ class SelectGenre extends StatefulWidget {
 
 class _SelectGenreState extends State<SelectGenre> {
   List<int> selectedGenres = [];
+  String? name;
+  String? userCatergory;
 
-  
+  @override
+  void initState() {
+    super.initState();
+    Person? person = boxPersons.get('personDetails');
+    setState(() {
+      name = person!.name;
+      userCatergory = person.accountType;
+    });
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -28,9 +38,9 @@ class _SelectGenreState extends State<SelectGenre> {
                     Center(
                       child: Column(
                         children: [
-                          const Text('Hello, Darius!',
+                          Text('Hello, $name',
                               textAlign: TextAlign.center,
-                              style: TextStyle(
+                              style: const TextStyle(
                                 fontWeight: FontWeight.w600,
                                 color: Color.fromARGB(235, 237, 112, 23),
                                 fontSize: 16,
@@ -49,22 +59,24 @@ class _SelectGenreState extends State<SelectGenre> {
                       ),
                     ),
                     GenreSelectionGrid(
-                  genres: genres,
-                  selectedGenres: selectedGenres,
-                  onGenresSelected: (selectedGenres) {
-                    setState(() {
-                      this.selectedGenres = selectedGenres;
-                    });
-                  },
-                ),
+                      genres: genres,
+                      selectedGenres: selectedGenres,
+                      onGenresSelected: (selectedGenres) {
+                        setState(() {
+                          this.selectedGenres = selectedGenres;
+                        });
+                      },
+                    ),
                     Padding(
                       padding: const EdgeInsets.only(bottom: 10.0, top: 10),
                       child: Button(
                         text: 'Next',
                         onTap: () {
                           saveSelectedGenres();
-                          selectedGenres.isNotEmpty
-                              ? Get.to(const HomePage())
+                          selectedGenres.isNotEmpty?
+                               userCatergory == 'subscriber'
+                                  ? Get.off(() => const HomePage())
+                                  : Get.off(() => const CreatorHome())
                               : Get.snackbar(
                                   'Genre', 'Select atleast one genre',
                                   borderRadius: 0.0,
@@ -80,7 +92,10 @@ class _SelectGenreState extends State<SelectGenre> {
   }
 
   void saveSelectedGenres() {
-    boxGenres.put('favGenres', FavGenres(genres: selectedGenres));
-    
+    boxGenres.put(
+        'favGenres',
+        FavGenres(
+          genres: selectedGenres,
+        ));
   }
 }

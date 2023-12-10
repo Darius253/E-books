@@ -1,8 +1,5 @@
 import 'dart:async';
 import 'package:flutter/material.dart';
-import 'package:reader_app/models/boxes.dart';
-import 'package:reader_app/models/favGenres.dart';
-import 'package:reader_app/models/person.dart';
 import 'package:reader_app/screens/authenticate/new_user/genre.dart';
 import 'package:reader_app/screens/creator_dashboards/creator_home.dart';
 import '../shared/exports.dart';
@@ -25,13 +22,16 @@ class SplashScreenState extends State<Splash> {
         Get.off(() => const OnboardingScreen());
       } else if (person.userId.isNotEmpty && favGenres == null ||
           favGenres!.genres.isEmpty) {
-        Get.off(() => const SelectGenre());
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: ((context) => const SelectGenre())));
       } else if (person.accountType == 'subscriber' &&
           favGenres.genres.isNotEmpty) {
-        Get.off(() => const HomePage());
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: ((context) => const HomePage())));
       } else if (person.accountType != 'subscriber' &&
           favGenres.genres.isNotEmpty) {
-        Get.off(() => const CreatorHome());
+        Navigator.pushReplacement(context,
+            MaterialPageRoute(builder: ((context) => const CreatorHome())));
       }
     });
   }

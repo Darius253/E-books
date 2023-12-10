@@ -34,8 +34,7 @@ Widget onboarding(
             ),
           ),
         ),
-        Padding(
-          padding:  EdgeInsets.symmetric(horizontal:MediaQuery.of(context).size.width *0.08),
+        Center(
           child: Column(
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
@@ -44,9 +43,10 @@ Widget onboarding(
               ),
               Text(
                 title,
+                textAlign: TextAlign.center,
                 style: TextStyle(
                   color: titleColor,
-                  fontSize: 28,
+                  fontSize: 20,
                   fontWeight: FontWeight.w600,
                 ),
               ),
@@ -58,7 +58,7 @@ Widget onboarding(
                 style: TextStyle(
                   color: textColor,
                 ),
-                textAlign: TextAlign.center,
+                // textAlign: TextAlign.center,
               ),
               SizedBox(
                 height: MediaQuery.of(context).size.height * 0.05,
@@ -72,8 +72,8 @@ Widget onboarding(
                         InkWell(
                           onTap: skip,
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            height: MediaQuery.of(context).size.height * 0.08,
+                            width: 150,
+                            height: 65,
                             decoration: BoxDecoration(
                               color: color,
                               border: Border.all(color: textColor),
@@ -97,8 +97,8 @@ Widget onboarding(
                         InkWell(
                           onTap: onTap,
                           child: Container(
-                            width: MediaQuery.of(context).size.width * 0.4,
-                            height: MediaQuery.of(context).size.height * 0.08,
+                            width: 150,
+                            height: 65,
                             decoration: BoxDecoration(
                               color: textColor,
                               borderRadius: BorderRadius.circular(12),

@@ -46,13 +46,14 @@ class _LibraryPageState extends State<LibraryPage> {
             SizedBox(
               height: height * 0.2,
               child: ListView.builder(
-                  itemCount: book.length,
+                  itemCount: 3,
                   scrollDirection: Axis.horizontal,
                   itemBuilder: (context, index) {
                     return section == 'books'
-                        ? CurrentlyReadingBooks(
-                            book: book[index],
-                          )
+                        ? SizedBox()
+                        // CurrentlyReadingBooks(
+                        //     book:,
+                        //   )
                         : art(width * 0.5, height * 0.15, null, null, null,
                             null, null, context);
                   }),

@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:reader_app/screens/creator_dashboards/widgets.dart';
-import 'package:reader_app/shared/exports.dart';
 
 class Dashboard extends StatefulWidget {
   const Dashboard({super.key});
@@ -72,16 +71,16 @@ class _DashboardState extends State<Dashboard> {
             SizedBox(
               height: height * 0.6,
               child: ListView.builder(
-                itemCount: book.length,
+                itemCount: 3,
                 itemBuilder: (context, index) {
                   return Padding(
                     padding: const EdgeInsets.all(5.0),
                     child: ListTile(
                       leading: Image.asset(
-                        book[index].image,
+                        'book[index].image',
                       ),
                       title: Text(
-                        book[index].title,
+                        'book[index].title',
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 16,
@@ -90,7 +89,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ),
                       subtitle: Text(
-                        book[index].author,
+                       ' book[index].author',
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 12,
@@ -99,7 +98,7 @@ class _DashboardState extends State<Dashboard> {
                         ),
                       ),
                       trailing: Text(
-                        book[index].price,
+                        'book[index].price',
                         style: const TextStyle(
                           color: Colors.black,
                           fontSize: 14,

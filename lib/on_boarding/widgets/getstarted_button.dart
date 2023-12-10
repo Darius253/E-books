@@ -12,12 +12,11 @@ class GetStartedButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
     return GestureDetector(
       onTap: onPressed,
       child: Container(
-        height: height * 0.08,
+        height: 65,
         width: width * 0.7,
         decoration: BoxDecoration(
           borderRadius: BorderRadius.circular(10),

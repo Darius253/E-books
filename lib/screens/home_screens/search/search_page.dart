@@ -11,11 +11,15 @@ class SearchPage extends StatefulWidget {
   State<SearchPage> createState() => _SearchPageState();
 }
 
-class _SearchPageState extends State<SearchPage> {
+class _SearchPageState extends State<SearchPage>
+    with AutomaticKeepAliveClientMixin<SearchPage> {
+  @override
+  bool get wantKeepAlive => true;
   final _controlller = TextEditingController();
   String? search;
   @override
   Widget build(BuildContext context) {
+    super.build(context);
     final double height = MediaQuery.of(context).size.height;
     return SafeArea(
       child: Scaffold(
@@ -27,7 +31,6 @@ class _SearchPageState extends State<SearchPage> {
               setState(() {
                 search = value;
               });
-              print(search);
             },
           ),
         ),
@@ -59,6 +62,9 @@ class _SearchPageState extends State<SearchPage> {
                       SizedBox(
                         height: height * 0.75,
                         child: const SearchTags(),
+                      ),
+                      SizedBox(
+                        height: height * 0.1,
                       ),
                     ],
                   ),

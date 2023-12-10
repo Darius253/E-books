@@ -1,7 +1,5 @@
 import 'package:dio/dio.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/models/boxes.dart';
-import 'package:reader_app/models/person.dart';
 import 'package:reader_app/screens/authenticate/new_user/genre.dart';
 import 'package:reader_app/services/api_constants.dart';
 import 'package:reader_app/shared/exports.dart';
@@ -42,6 +40,12 @@ class Login {
             token: response.data['jwt']['token'],
           ),
         );
+        Get.snackbar(
+          'Login Succesful:',
+          'Welcome Back!' ,
+          duration: const Duration(seconds: 5),
+          snackPosition: SnackPosition.BOTTOM,
+        );
         Get.to(() => const SelectGenre());
       } else {
         Get.snackbar(
@@ -54,7 +58,6 @@ class Login {
         );
       }
     } catch (error) {
-      print(error);
       Get.snackbar(
         'Login Failed:',
         'Something happened. Please Try again later.',

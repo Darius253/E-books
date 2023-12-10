@@ -1,8 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:hive_flutter/hive_flutter.dart';
-import 'package:reader_app/models/boxes.dart';
-import 'package:reader_app/models/favGenres.dart';
-import 'package:reader_app/models/person.dart';
 import 'package:reader_app/shared/exports.dart';
 
 void main() async {

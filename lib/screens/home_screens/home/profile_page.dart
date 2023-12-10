@@ -1,11 +1,8 @@
 import 'dart:io';
-
-import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
-import 'package:reader_app/screens/home_screens/home/settings/account_details.dart';
-import 'package:reader_app/screens/home_screens/home/settings/fav_genre.dart';
-import 'package:reader_app/screens/home_screens/home/settings/push_notifications.dart';
+import 'package:hive/hive.dart';
 import 'package:reader_app/shared/exports.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 class ProfilePage extends StatefulWidget {
   final String? accountType;
@@ -16,7 +13,29 @@ class ProfilePage extends StatefulWidget {
 }
 
 class _ProfilePageState extends State<ProfilePage> {
-  String userId = '';
+  String username = '';
+  String accountType = '';
+
+  final Uri _url =
+      Uri.parse('https://readerapp.godaddysites.com/privacy-policy');
+
+  Future<void> _getUserDetails() async {
+    final person = boxPersons.get('personDetails');
+
+    if (person != null && person is Person) {
+      setState(() {
+        username = person.name;
+        accountType = person.accountType;
+      });
+    }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    _getUserDetails();
+  }
+
   File? profilePicture;
 
   @override
@@ -54,7 +73,7 @@ class _ProfilePageState extends State<ProfilePage> {
           leading: Stack(
             children: [
               InkWell(
-                  onTap: () => uploadProfilePicture(),
+                  //onTap: () => uploadProfilePicture(),
                   child: profilePicture == null
                       ? Container(
                           width: width * 0.2,
@@ -68,15 +87,14 @@ class _ProfilePageState extends State<ProfilePage> {
                               color: const Color.fromARGB(255, 41, 45, 50),
                             ),
                           ))
-                      : Container(
+                      : SizedBox(
                           width: width * 0.15,
-                          decoration: const ShapeDecoration(
-                            image: DecorationImage(
-                              image: NetworkImage(
-                                  "https://via.placeholder.com/50x50"),
+                          child: ClipRRect(
+                            borderRadius: BorderRadius.circular(100),
+                            child: Image.file(
+                              profilePicture!,
                               fit: BoxFit.cover,
                             ),
-                            shape: OvalBorder(),
                           ),
                         )),
               Positioned(
@@ -88,13 +106,13 @@ class _ProfilePageState extends State<ProfilePage> {
                   ))
             ],
           ),
-          title: const Text(
-            'Darius Tron',
-            style: TextStyle(fontWeight: FontWeight.w600),
+          title: Text(
+            username,
+            style: const TextStyle(fontWeight: FontWeight.w600),
           ),
-          subtitle: const Text(
-            'trondarius@gmail.com',
-            style: TextStyle(
+          subtitle: Text(
+            accountType.toUpperCase(),
+            style: const TextStyle(
               fontWeight: FontWeight.w400,
             ),
           ),
@@ -109,8 +127,11 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         child: Column(
           children: [
-            iconsText(PhosphorIcons.regular.user, 'Settings', width,
-                () => Get.to(() => AccountDetails(id: userId))),
+            iconsText(
+              PhosphorIcons.regular.user, 'Settings', width,
+              // () => Get.to(() => const AccountDetails())
+              () {},
+            ),
             iconsText(Icons.delivery_dining_outlined, 'Order History', width,
                 () => Get.to(() => const OrderHistory())),
             iconsText(
@@ -145,13 +166,24 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         child: Column(
           children: [
-            iconsText(
-                Icons.privacy_tip_outlined, 'Privacy Policy', width, () {}),
+            iconsText(Icons.privacy_tip_outlined, 'Privacy Policy', width, () {
+              _launchInWebViewWithoutJavaScript(_url);
+            }),
             iconsText(Icons.flag_outlined, 'Report Content', width, () {}),
             iconsText(Icons.assignment_late_outlined, 'Terms and Conditions',
                 width, () {}),
           ],
         ));
+  }
+
+  Future<void> _launchInWebViewWithoutJavaScript(Uri url) async {
+    if (!await launchUrl(
+      url,
+      mode: LaunchMode.inAppWebView,
+      webViewConfiguration: const WebViewConfiguration(enableJavaScript: false),
+    )) {
+      throw Exception('Could not launch $url');
+    }
   }
 
   Widget logOut(double width) {
@@ -160,8 +192,62 @@ class _ProfilePageState extends State<ProfilePage> {
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
-        child:
-            iconsText(PhosphorIcons.regular.signOut, 'Log Out', width, () {}));
+        child: iconsText(PhosphorIcons.regular.signOut, 'Log Out', width, () {
+          logOutPop();
+        }));
+  }
+
+  Future<void> clearUserData() async {
+    final boxPersons = await Hive.openBox<Person>('userDetails');
+    final boxGenres = await Hive.openBox<FavGenres>('favGenres');
+    await boxPersons.clear();
+    await boxGenres.clear();
+  }
+
+  Future<void> signOut() async {
+    await clearUserData();
+    Get.offAll(() => const SignIn());
+  }
+
+  logOutPop() {
+    return showAdaptiveDialog(
+      context: context,
+      builder: (BuildContext context) {
+        return AlertDialog.adaptive(
+          title: const Text(
+            'Sign Out',
+            style: TextStyle(color: Colors.red),
+          ),
+          content: const SingleChildScrollView(
+            child: ListBody(
+              children: <Widget>[
+                Text('Do you want to sign out?'),
+              ],
+            ),
+          ),
+          actions: <Widget>[
+            TextButton(
+              child: const Text(
+                'Yes',
+                style: TextStyle(color: Colors.red),
+              ),
+              onPressed: () {
+                signOut();
+              },
+            ),
+            TextButton(
+              child: const Text(
+                'No',
+                style: TextStyle(color: Colors.black),
+              ),
+              onPressed: () {
+                Navigator.of(context).pop();
+              },
+            ),
+          ],
+        );
+      },
+    );
   }
 
   Widget iconsText(

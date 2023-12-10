@@ -3,8 +3,8 @@ import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class AccountDetails extends StatefulWidget {
-  final String id;
-  const AccountDetails({super.key, required this.id});
+  
+  const AccountDetails({super.key, });
 
   @override
   State<AccountDetails> createState() => _AccountDetailsState();

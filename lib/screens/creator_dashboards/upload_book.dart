@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:ui';
 
 import 'package:file_picker/file_picker.dart';
 import 'package:flutter/material.dart';
@@ -7,8 +8,32 @@ import 'package:reader_app/shared/exports.dart';
 import 'package:syncfusion_flutter_datepicker/datepicker.dart';
 
 class UploadBook extends StatefulWidget {
+  final String? bookCover;
+  final String? selectedDate;
+  final String? description;
+  final String? title;
+  final String? pseudonym;
+  final String? pages;
+  final String? price;
+  final String? isbn;
+  final String? edition;
+  final String? language;
+  final String? book;
+  final List<String>? selectedGenres;
   const UploadBook({
     super.key,
+    this.book,
+    this.bookCover,
+    this.description,
+    this.edition,
+    this.isbn,
+    this.language,
+    this.pages,
+    this.price,
+    this.pseudonym,
+    this.selectedDate,
+    this.title,
+    this.selectedGenres,
   });
 
   @override
@@ -48,75 +73,224 @@ class _UploadBookState extends State<UploadBook> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text(
-                    'Upload Book',
-                    style: TextStyle(
-                      color: Colors.black,
-                      fontSize: 24,
-                      fontFamily: 'Open Sans',
-                      fontWeight: FontWeight.w700,
-                      letterSpacing: 0.48,
-                    ),
+                  Row(
+                    children: [
+                      Text(
+                        widget.title != null ? 'Edit Book' : 'Upload Book',
+                        style: const TextStyle(
+                          color: Colors.black,
+                          fontSize: 24,
+                          fontFamily: 'Open Sans',
+                          fontWeight: FontWeight.w700,
+                          letterSpacing: 0.48,
+                        ),
+                      ),
+                      const Expanded(child: SizedBox()),
+                      PhosphorIcon(
+                        PhosphorIcons.regular.trash,
+                        color: Colors.red,
+                      ),
+                      InkWell(
+                        onTap: () {
+                          showAdaptiveDialog(
+                              context: context,
+                              barrierDismissible: false,
+                              builder: (BuildContext context) {
+                                return Column(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    GestureDetector(
+                                      onTap: () => Navigator.pop(context),
+                                      child: Align(
+                                        alignment: Alignment.topRight,
+                                        child: Container(
+                                          width:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.1,
+                                          height:
+                                              MediaQuery.sizeOf(context).width *
+                                                  0.1,
+                                          decoration: const BoxDecoration(
+                                            shape: BoxShape.circle,
+                                            color: Colors.grey,
+                                          ),
+                                          child: PhosphorIcon(
+                                            PhosphorIcons.bold.x,
+                                            color: Colors.black,
+                                            size: 25,
+                                          ),
+                                        ),
+                                      ),
+                                    ),
+                                    AlertDialog.adaptive(
+                                      shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(10),
+                                      ),
+                                      title: const Text(
+                                        'Delete Book',
+                                        style: TextStyle(
+                                            color: Colors.red,
+                                            fontWeight: FontWeight.w600,
+                                            fontSize: 18),
+                                      ),
+                                      content: const Text(
+                                          'Are you sure you want to delete this Book?'),
+                                      actions: <Widget>[
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'Cancel'),
+                                          child: const Text('Cancel'),
+                                        ),
+                                        TextButton(
+                                          onPressed: () =>
+                                              Navigator.pop(context, 'OK'),
+                                          child: const Text(
+                                            'Yes',
+                                            style: TextStyle(color: Colors.red),
+                                          ),
+                                        ),
+                                      ],
+                                    )
+                                  ],
+                                );
+                              });
+                        },
+                        child: const Text(
+                          'Delete Book',
+                          style: TextStyle(
+                              color: Colors.red, fontWeight: FontWeight.bold),
+                        ),
+                      ),
+                    ],
                   ),
                   const SizedBox(
                     height: 10,
                   ),
                   InkWell(
-                    onTap: () => selectBookCover(),
-                    child: Container(
-                      width: width,
-                      height: height * 0.2,
-                      decoration: ShapeDecoration(
-                        color: const Color(0xFFF8F8F8),
-                        shape: RoundedRectangleBorder(
-                          borderRadius: BorderRadius.circular(32),
-                        ),
-                      ),
-                      child: bookCover != null
-                          ? ClipRRect(
-                              borderRadius: BorderRadius.circular(32),
-                              child: Image.file(
-                                bookCover!,
-                                fit: BoxFit.cover,
+                      onTap: () => selectBookCover(),
+                      child: widget.bookCover != null
+                          ? Padding(
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: Container(
+                                width: width,
+                                height: height * 0.2,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: ClipRRect(
+                                  borderRadius: BorderRadius.circular(20),
+                                  child: Stack(
+                                    children: [
+                                      CachedNetworkImage(
+                                        imageUrl: widget.bookCover!,
+                                        width: width,
+                                        fit: BoxFit.fitWidth,
+                                      ),
+                                      BackdropFilter(
+                                        filter: ImageFilter.blur(
+                                            sigmaY: 10, sigmaX: 10),
+                                        child: Container(
+                                          color: const Color.fromARGB(
+                                              40, 53, 51, 51),
+                                        ),
+                                      ),
+                                      Padding(
+                                        padding: const EdgeInsets.symmetric(
+                                            vertical: 10.0),
+                                        child: Align(
+                                          alignment: Alignment.center,
+                                          child: CachedNetworkImage(
+                                              imageUrl: widget.bookCover!),
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                ),
                               ),
                             )
                           : Padding(
-                              padding: EdgeInsetsDirectional.symmetric(
-                                  vertical: height * 0.05),
-                              child: Column(
-                                crossAxisAlignment: CrossAxisAlignment.center,
-                                children: [
-                                  PhosphorIcon(
-                                    PhosphorIcons.regular.image,
-                                    color: Colors.black,
-                                  ),
-                                  const Text(
-                                    'Upload Book Cover',
-                                    style: TextStyle(
-                                      color: Color(0xFF222222),
-                                      fontSize: 20,
-                                      fontFamily: 'Epilogue',
-                                      fontWeight: FontWeight.w700,
-                                    ),
-                                  ),
-                                  const Text(
-                                    'PNG,JPEG, JPG',
-                                    textAlign: TextAlign.center,
-                                    style: TextStyle(
-                                      color: Color(0xFF888888),
-                                      fontSize: 13,
-                                      fontWeight: FontWeight.w500,
-                                    ),
-                                  )
-                                ],
+                              padding:
+                                  const EdgeInsets.symmetric(horizontal: 10.0),
+                              child: Container(
+                                width: width,
+                                height: height * 0.2,
+                                decoration: BoxDecoration(
+                                  shape: BoxShape.rectangle,
+                                  borderRadius: BorderRadius.circular(20),
+                                ),
+                                child: bookCover != null
+                                    ? ClipRRect(
+                                        borderRadius: BorderRadius.circular(20),
+                                        child: Stack(
+                                          children: [
+                                            Image.file(
+                                              bookCover!,
+                                              width: width,
+                                              fit: BoxFit.fitWidth,
+                                            ),
+                                            BackdropFilter(
+                                              filter: ImageFilter.blur(
+                                                  sigmaY: 10, sigmaX: 10),
+                                              child: Container(
+                                                color: const Color.fromARGB(
+                                                    40, 53, 51, 51),
+                                              ),
+                                            ),
+                                            Padding(
+                                              padding:
+                                                  const EdgeInsets.symmetric(
+                                                      vertical: 10.0),
+                                              child: Align(
+                                                alignment: Alignment.center,
+                                                child: Image.file(bookCover!),
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      )
+                                    : Padding(
+                                        padding:
+                                            EdgeInsetsDirectional.symmetric(
+                                                vertical: height * 0.05),
+                                        child: Column(
+                                          crossAxisAlignment:
+                                              CrossAxisAlignment.center,
+                                          children: [
+                                            PhosphorIcon(
+                                              PhosphorIcons.regular.image,
+                                              color: Colors.black,
+                                            ),
+                                            const Text(
+                                              'Upload Book Cover',
+                                              style: TextStyle(
+                                                color: Color(0xFF222222),
+                                                fontSize: 20,
+                                                fontFamily: 'Epilogue',
+                                                fontWeight: FontWeight.w700,
+                                              ),
+                                            ),
+                                            const Text(
+                                              'PNG,JPEG, JPG',
+                                              textAlign: TextAlign.center,
+                                              style: TextStyle(
+                                                color: Color(0xFF888888),
+                                                fontSize: 13,
+                                                fontWeight: FontWeight.w500,
+                                              ),
+                                            )
+                                          ],
+                                        ),
+                                      ),
                               ),
-                            ),
-                    ),
-                  ),
+                            )),
                   const SizedBox(
                     height: 40,
                   ),
-                  textField(height, 'TITLE ', 'Required', title, (value) {
+                  textField(height, 'TITLE ', 'Required', widget.title,
+                      (value) {
                     setState(() {
                       title = value;
                     });
@@ -124,7 +298,8 @@ class _UploadBookState extends State<UploadBook> {
                   const SizedBox(
                     height: 30,
                   ),
-                  textField(height, 'PSEUDONYM ', '', pseudonym, (value) {
+                  textField(height, 'PSEUDONYM ', '', widget.pseudonym,
+                      (value) {
                     setState(() {
                       pseudonym = value;
                     });
@@ -132,7 +307,8 @@ class _UploadBookState extends State<UploadBook> {
                   const SizedBox(
                     height: 30,
                   ),
-                  textField(height, 'EDITION ', 'Required', edition, (value) {
+                  textField(height, 'EDITION ', 'Required', widget.edition,
+                      (value) {
                     setState(() {
                       edition = value;
                     });
@@ -140,7 +316,8 @@ class _UploadBookState extends State<UploadBook> {
                   const SizedBox(
                     height: 30,
                   ),
-                  textField(height, 'ISBN ', 'Required', isbn, (value) {
+                  textField(height, 'ISBN ', 'Required', widget.isbn ?? '',
+                      (value) {
                     setState(() {
                       isbn = value;
                     });
@@ -148,7 +325,9 @@ class _UploadBookState extends State<UploadBook> {
                   const SizedBox(
                     height: 30,
                   ),
-                  textField(height, 'LANGUAGE ', '', language, (value) {
+                  textField(
+                      height, 'LANGUAGE ', '', widget.language ?? "English",
+                      (value) {
                     setState(() {
                       language = value;
                     });
@@ -156,7 +335,7 @@ class _UploadBookState extends State<UploadBook> {
                   const SizedBox(
                     height: 30,
                   ),
-                  textField(height, 'PRICE ', '(GHS)', price, (value) {
+                  textField(height, 'PRICE ', '(GHS)', widget.price, (value) {
                     setState(() {
                       price = value;
                     });
@@ -180,7 +359,8 @@ class _UploadBookState extends State<UploadBook> {
                   const SizedBox(
                     height: 30,
                   ),
-                  textField(height, 'NUMBER OF PAGES ', 'Required', pages,
+                  textField(
+                      height, 'NUMBER OF PAGES ', 'Required', widget.pages,
                       (value) {
                     setState(() {
                       pages = value;
@@ -198,19 +378,25 @@ class _UploadBookState extends State<UploadBook> {
                       todayHighlightColor: Palette.primary,
                       controller: controller,
                       showNavigationArrow: true,
+                      initialDisplayDate: widget.selectedDate != null
+                          ? DateTime.parse(widget.selectedDate!)
+                          : DateTime.now(),
                       selectionColor: Palette.primary,
                       onSelectionChanged: onSelectionChanged,
                       selectionMode: DateRangePickerSelectionMode.single,
                       initialSelectedDate: selectedDate.isNotEmpty
                           ? DateTime.parse(selectedDate)
-                          : DateTime.now(),
+                          : widget.selectedDate != null
+                              ? DateTime.parse(widget.selectedDate!)
+                              : DateTime.now(),
                     ),
                   ),
                   const SizedBox(
                     height: 30,
                   ),
                   descriptiontextField(
-                      height, 'DESCRIPTION ', 'Required', description, (value) {
+                      height, 'DESCRIPTION ', 'Required', widget.description,
+                      (value) {
                     setState(() {
                       description = value;
                     });
@@ -343,7 +529,10 @@ class _UploadBookState extends State<UploadBook> {
     );
   }
 
-  void chooseGenre(double height, double width) {
+  void chooseGenre(
+    double height,
+    double width,
+  ) {
     showModalBottomSheet(
         backgroundColor: Colors.white,
         isDismissible: false,
@@ -354,8 +543,7 @@ class _UploadBookState extends State<UploadBook> {
         context: context,
         builder: (BuildContext context) {
           return SingleChildScrollView(
-            child: Container(
-              padding: const EdgeInsets.all(8.0),
+            child: SizedBox(
               height: height * 0.5,
               child: GridView.builder(
                 gridDelegate: const SliverGridDelegateWithMaxCrossAxisExtent(

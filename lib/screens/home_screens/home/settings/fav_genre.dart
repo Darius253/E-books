@@ -1,6 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:reader_app/models/boxes.dart';
-import 'package:reader_app/models/favGenres.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class FavouriteGenre extends StatefulWidget {

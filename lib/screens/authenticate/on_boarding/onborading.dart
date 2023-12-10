@@ -100,22 +100,20 @@ class _OnboardingScreenState extends State<OnboardingScreen> {
         true,
       ),
     ];
-    final double height = MediaQuery.of(context).size.height;
-    final double width = MediaQuery.of(context).size.width;
     return Scaffold(
-        body: SizedBox(
-      height: height,
-      width: width,
-      child: PageView(
-        controller: _controller,
-        physics: const NeverScrollableScrollPhysics(),
-        onPageChanged: (value) {
-          setState(() {
-            currentIndex = value;
-          });
-        },
-        children: onBoardingScreens,
-      ),
+        body: Stack(
+      children: [
+        PageView(
+          controller: _controller,
+          physics: const NeverScrollableScrollPhysics(),
+          onPageChanged: (value) {
+            setState(() {
+              currentIndex = value;
+            });
+          },
+          children: onBoardingScreens,
+        ),
+      ],
     ));
   }
 }

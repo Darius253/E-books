@@ -4,7 +4,8 @@ import 'package:reader_app/shared/exports.dart';
 
 class AuthorPreview extends StatefulWidget {
   final String authorName;
-  const AuthorPreview({super.key, required this.authorName});
+  final String id;
+  const AuthorPreview({super.key, required this.authorName, required this.id});
 
   @override
   State<AuthorPreview> createState() => _AuthorPreviewState();

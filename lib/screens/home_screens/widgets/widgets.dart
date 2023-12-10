@@ -1,43 +1,111 @@
+// ignore_for_file: use_build_context_synchronously
+
+import 'dart:async';
+import 'dart:io';
 import 'package:flutter/cupertino.dart';
+import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
+import 'package:path_provider/path_provider.dart';
+import 'package:reader_app/models/orders.dart';
+import 'package:reader_app/screens/home_screens/library/purchased_book_preview.dart';
 
 import 'package:reader_app/shared/exports.dart';
 
-Widget bookCover(double width, height) {
+Widget pageButton(double height, PhosphorIconData icon, Function()? onTap) {
+  return InkWell(
+    onTap: onTap,
+    child: Container(
+      padding: const EdgeInsets.all(5.0),
+      decoration: const BoxDecoration(
+        shape: BoxShape.circle,
+        color: Palette.primary,
+      ),
+      child: Center(
+        child: PhosphorIcon(
+          icon,
+          color: Colors.white,
+        ),
+      ),
+    ),
+  );
+}
+
+Widget changePage(double height, double width, int currentPage, int lastPage,
+    Function()? leftButton, Function()? rightButton) {
+  return lastPage != 0
+      ? Padding(
+          padding: const EdgeInsets.only(right: 10.0),
+          child: Row(
+            children: [
+              currentPage > 1
+                  ? pageButton(
+                      height,
+                      PhosphorIcons.regular.arrowArcLeft,
+                      leftButton,
+                    )
+                  : const SizedBox.shrink(),
+              SizedBox(
+                width: width * 0.05,
+              ),
+              Text('$currentPage of $lastPage'),
+              SizedBox(
+                width: width * 0.05,
+              ),
+              currentPage != lastPage
+                  ? pageButton(
+                      height,
+                      PhosphorIcons.regular.arrowRight,
+                      rightButton,
+                    )
+                  : const SizedBox.shrink(),
+            ],
+          ),
+        )
+      : const Text('Sorry, there are no books related to this genre.');
+}
+
+Widget bookCover(double width, double height, String image, Function()? onTap) {
   return Padding(
     padding: EdgeInsets.only(
-      left: width * 0.04,
+      right: width * 0.04,
     ),
-    child: Container(
-      width: width * 0.3,
-      height: height * 0.2,
-      decoration: BoxDecoration(
-          color: Colors.black,
-          boxShadow: const [
-            BoxShadow(
-              color: Color.fromRGBO(0, 123, 64, 0.35),
-              spreadRadius: 2,
-              blurRadius: 5,
-            )
-          ],
-          border: Border.all(color: const Color.fromARGB(255, 140, 63, 4)),
-          borderRadius: BorderRadius.circular(8)),
+    child: InkWell(
+      onTap: onTap,
+      child: Container(
+        width: width * 0.3,
+        height: height * 0.2,
+        decoration: BoxDecoration(
+            color: Colors.black,
+            boxShadow: const [
+              BoxShadow(
+                color: Color.fromRGBO(1, 8, 5, 0.349),
+                spreadRadius: 0,
+                blurRadius: 5,
+              )
+            ],
+            border: Border.all(color: const Color.fromARGB(255, 140, 63, 4)),
+            borderRadius: BorderRadius.circular(8)),
+        child: ClipRRect(
+          borderRadius: BorderRadius.circular(8),
+          child: CachedNetworkImage(
+              imageUrl: image,
+              filterQuality: FilterQuality.low,
+              fit: BoxFit.fill,
+              placeholder: (context, url) => loader()),
+        ),
+      ),
     ),
   );
 }
 
 Widget itemType(double width, String type) {
-  return Padding(
-      padding: EdgeInsets.only(
-        left: width * 0.07,
-      ),
-      child: Text(
-        type,
-        style: const TextStyle(
-          fontWeight: FontWeight.w600,
-          fontSize: 17,
-        ),
-      ));
+  return Text(
+    type,
+    style: const TextStyle(
+      fontWeight: FontWeight.w600,
+      fontSize: 17,
+    ),
+  );
 }
 
 Widget appBar(double width, height, String title, bool actions) {
@@ -67,14 +135,18 @@ Widget appBar(double width, height, String title, bool actions) {
         const Expanded(
           child: SizedBox(),
         ),
-        Text(
-          title,
-          softWrap: true,
-          overflow: TextOverflow.ellipsis,
-          style: const TextStyle(
-              fontWeight: FontWeight.w400,
-              fontSize: 18,
-              overflow: TextOverflow.ellipsis),
+        SizedBox(
+          width: width * 0.3,
+          child: Text(
+            title,
+            softWrap: true,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 18,
+                overflow: TextOverflow.ellipsis),
+          ),
         ),
         const Expanded(
           child: SizedBox(),
@@ -105,7 +177,6 @@ Widget appBar(double width, height, String title, bool actions) {
 }
 
 Widget relatedGenres(
- 
   String genre,
 ) {
   return Container(
@@ -123,7 +194,7 @@ Widget commentsCard(
     double width, double height, String? name, String? comment) {
   return Padding(
     padding: EdgeInsets.only(
-      left: width * 0.04,
+      right: width * 0.04,
     ),
     child: Container(
       width: width * 0.75,
@@ -158,7 +229,20 @@ Widget commentsCard(
   );
 }
 
-Widget bookInfo(double width, height, String title, author, Function()? ontap) {
+Widget bookInfo(double width, height, String title, author, Function()? ontap,
+    List<int> ratings, List<String> comments, int pages) {
+  double totalRatings = 0;
+
+  if (ratings.isNotEmpty) {
+    for (var rating in ratings) {
+      totalRatings += rating;
+    }
+
+    double averageRating = totalRatings / ratings.length;
+    totalRatings = double.parse(averageRating.toStringAsFixed(2));
+  } else {
+    totalRatings = 0.0;
+  }
   return Center(
     child: Column(
       children: [
@@ -190,20 +274,20 @@ Widget bookInfo(double width, height, String title, author, Function()? ontap) {
         Row(
           mainAxisAlignment: MainAxisAlignment.spaceEvenly,
           children: [
-            const Text(
-              '7000 ratings',
+            Text(
+              '${ratings.length} ratings',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 12,
               ),
             ),
             Row(
               children: [
-                const Text(
-                  '5.0',
+                Text(
+                  totalRatings.toString(),
                   textAlign: TextAlign.center,
-                  style: TextStyle(
+                  style: const TextStyle(
                     fontWeight: FontWeight.w400,
                     fontSize: 12,
                   ),
@@ -215,14 +299,22 @@ Widget bookInfo(double width, height, String title, author, Function()? ontap) {
                 )
               ],
             ),
-            const Text(
-              '74 Comments',
+            Text(
+              '${comments.length} Comments',
               textAlign: TextAlign.center,
-              style: TextStyle(
+              style: const TextStyle(
                 fontWeight: FontWeight.w400,
                 fontSize: 12,
               ),
             ),
+            Text(
+              '$pages Pages',
+              textAlign: TextAlign.center,
+              style: const TextStyle(
+                fontWeight: FontWeight.w400,
+                fontSize: 12,
+              ),
+            )
           ],
         )
       ],
@@ -339,33 +431,47 @@ Widget art(double? width, double? height, String? artist, String? name,
 }
 
 Widget books(double? width, double? height, String author, String title,
-    String? genre, String price, double fontSize, BuildContext context) {
+    double fontSize, BuildContext context, String image, OrderItem book) {
   return Padding(
     padding: EdgeInsets.only(
       left: width! * 0.07,
     ),
     child: InkWell(
-      onTap: () => Navigator.push(
-        context,
-        PageTransition(
-            type: PageTransitionType.size,
-            duration: const Duration(milliseconds: 300),
-            alignment: Alignment.bottomCenter,
-            child: BookPreview(
-              bookTitle: title,
-              authorName: author,
-            ),
-            isIos: true),
-      ),
+      onTap: () async {
+        loading(
+          context,
+        );
+        String? file;
+        await GetPdfFile().createFileOfPdfUrl(book.fileUrl!).then((f) {
+          file = f.path;
+        });
+
+        Navigator.pop(context);
+        Navigator.push(
+          context,
+          PageTransition(
+              type: PageTransitionType.size,
+              duration: const Duration(milliseconds: 300),
+              alignment: Alignment.bottomCenter,
+              child: Preview(
+                bookTitle: book.titleOfBook!,
+                authorName: book.authorName!,
+                image: image,
+                bookUrl: file!,
+              ),
+              isIos: true),
+        );
+      },
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Container(
-            height: height,
-            width: width,
-            decoration: BoxDecoration(
-                borderRadius: BorderRadiusDirectional.circular(8),
-                color: Colors.black),
+          ClipRRect(
+            borderRadius: BorderRadiusDirectional.circular(8),
+            child: CachedNetworkImage(
+              imageUrl: image,
+              filterQuality: FilterQuality.high,
+              fit: BoxFit.cover,
+            ),
           ),
           SizedBox(
             height: height! * 0.03,
@@ -398,22 +504,7 @@ Widget books(double? width, double? height, String author, String title,
           SizedBox(
             height: height * 0.03,
           ),
-          Opacity(
-            opacity: 0.60,
-            child: Text(
-              genre!,
-              style: const TextStyle(
-                color: Colors.black,
-                fontSize: 14,
-                fontFamily: 'Open Sans',
-                fontWeight: FontWeight.w400,
-              ),
-            ),
-          ),
-          SizedBox(
-            height: height * 0.03,
-          ),
-          Text('GHS $price',
+          Text('Read',
               style: TextStyle(
                   fontSize: fontSize,
                   fontWeight: FontWeight.w700,
@@ -422,4 +513,50 @@ Widget books(double? width, double? height, String author, String title,
       ),
     ),
   );
+}
+
+void loading(
+  BuildContext context,
+) {
+  showDialog(
+      context: context,
+      barrierDismissible: false,
+      builder: (context) {
+        return AlertDialog(
+          shape: RoundedRectangleBorder(
+            borderRadius: BorderRadius.circular(10),
+          ),
+          content: SizedBox(
+            height: MediaQuery.sizeOf(context).height * 0.05,
+            width: MediaQuery.sizeOf(context).width * 0.9,
+            child: const Center(
+              child: CircularProgressIndicator.adaptive(
+                backgroundColor: Palette.primary,
+                valueColor: AlwaysStoppedAnimation<Color>(Colors.white),
+              ),
+            ),
+          ),
+        );
+      });
+}
+
+class GetPdfFile {
+  Future<File> createFileOfPdfUrl(String url) async {
+    Completer<File> completer = Completer();
+    try {
+      final filename = url.substring(url.lastIndexOf("/") + 1);
+      var request = await HttpClient().getUrl(Uri.parse(url));
+      var response = await request.close();
+      var bytes = await consolidateHttpClientResponseBytes(response);
+      var dir = await getApplicationDocumentsDirectory();
+      File file = File("${dir.path}/$filename");
+
+      await file.writeAsBytes(bytes, flush: true);
+      completer.complete(file);
+    } catch (e) {
+      throw Exception('Error parsing asset file!');
+    }
+
+    return completer.future;
+  }
 }

@@ -28,7 +28,7 @@ class _ReviewPageState extends State<ReviewPage> {
               false,
             ),
             SizedBox(
-              height: height * 0.05,
+              height: height * 0.02,
             ),
             Padding(
               padding: EdgeInsets.symmetric(horizontal: width * 0.07),
@@ -37,6 +37,32 @@ class _ReviewPageState extends State<ReviewPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
+                    const Text(
+                      'Rate this book:',
+                      style: TextStyle(
+                        color: Colors.black,
+                        fontSize: 10,
+                        fontFamily: 'Inter',
+                        fontWeight: FontWeight.w400,
+                        letterSpacing: 0.10,
+                      ),
+                    ),
+                    RatingBar.builder(
+                      initialRating: 0,
+                      minRating: 0,
+                      direction: Axis.horizontal,
+                      allowHalfRating: true,
+                      itemBuilder: (context, _) => Icon(
+                        PhosphorIcons.fill.star,
+                        color: const Color.fromARGB(255, 255, 217, 0),
+                      ),
+                      onRatingUpdate: (rating) {
+                        print(rating);
+                      },
+                    ),
+                    SizedBox(
+                      height: height * 0.05,
+                    ),
                     const Text(
                       'Write a comment',
                       style: TextStyle(
@@ -95,7 +121,7 @@ class _ReviewPageState extends State<ReviewPage> {
                           }
                         },
                         child: Container(
-                          width: width*0.25,
+                          width: width * 0.25,
                           height: 41,
                           padding: const EdgeInsets.all(12),
                           decoration: ShapeDecoration(

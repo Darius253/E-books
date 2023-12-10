@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:liquid_pull_to_refresh/liquid_pull_to_refresh.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class Home extends StatefulWidget {
@@ -10,35 +11,47 @@ class Home extends StatefulWidget {
 
 class _HomeState extends State<Home> with AutomaticKeepAliveClientMixin<Home> {
   bool bookshelf = true;
+   final GlobalKey<LiquidPullToRefreshState> _refreshIndicatorKey =
+      GlobalKey<LiquidPullToRefreshState>();
   @override
   bool get wantKeepAlive => true;
 
+
+Future<void> _refreshPage() async {
+    print('refreshing');
+  }
   @override
   Widget build(BuildContext context) {
     super.build(context);
     double width = MediaQuery.of(context).size.width;
     double height = MediaQuery.of(context).size.height;
     return Scaffold(
-        body: CustomScrollView(
-      slivers: [
-        SliverAppBar(
-          automaticallyImplyLeading: false,
-          backgroundColor: Colors.white,
-          pinned: false,
-          snap: false,
-          floating: true,
-          expandedHeight: height * 0.05,
-          flexibleSpace: FlexibleSpaceBar(
-            title: appBar(width, height),
+        body:  LiquidPullToRefresh(
+          color: Palette.primary,
+          backgroundColor: Palette.white,
+                            key: _refreshIndicatorKey, // key if you want to add
+                            onRefresh: _refreshPage,
+          child: CustomScrollView(
+              slivers: [
+          SliverAppBar(
+            automaticallyImplyLeading: false,
+            backgroundColor: Colors.white,
+            pinned: false,
+            snap: false,
+            floating: true,
+            expandedHeight: height * 0.05,
+            flexibleSpace: FlexibleSpaceBar(
+              title: appBar(width, height),
+            ),
           ),
-        ),
-        SliverToBoxAdapter(
-            child: Padding(
-          padding: EdgeInsets.only(bottom: height * 0.05),
-          child: bookshelf ? const BookShelf() : const ArtGallery(),
-        )),
-      ],
-    ));
+          SliverToBoxAdapter(
+              child: Padding(
+            padding: EdgeInsets.only(bottom: height * 0.05),
+            child: bookshelf ? const BookShelf() : const ArtGallery(),
+          )),
+              ],
+            ),
+        ));
   }
 
   //APPBar

@@ -119,7 +119,7 @@ Widget textField(
   double height,
   String label,
   String sublabel,
-  String text,
+  String? text,
   Function(String) onchanged,
 ) {
   return Form(
@@ -154,10 +154,11 @@ Widget textField(
         height: 8,
       ),
       SizedBox(
-        height: height * 0.06,
+        // height: height * 0.1,
         child: TextFormField(
           keyboardType: TextInputType.text,
           onChanged: onchanged,
+          initialValue: text,
           decoration: InputDecoration(
             border: OutlineInputBorder(
               borderSide: const BorderSide(
@@ -188,7 +189,7 @@ Widget descriptiontextField(
   double height,
   String label,
   String sublabel,
-  String description,
+  String? description,
   Function(String) onchanged,
 ) {
   return Form(
@@ -250,7 +251,7 @@ Widget descriptiontextField(
 }
 
 Widget tags(double width, double height, String label, Function()? ontap,
-    Widget? widget) {
+    Widget? tagsWidget) {
   return InkWell(
     onTap: ontap,
     child: Column(
@@ -281,7 +282,7 @@ Widget tags(double width, double height, String label, Function()? ontap,
               borderRadius: BorderRadius.circular(4),
             ),
           ),
-          child: widget,
+          child: tagsWidget,
         ),
       ],
     ),
@@ -311,9 +312,8 @@ class _RelatedGenresState extends State<RelatedGenres> {
     return InkWell(
       onTap: () {
         setState(() {
-           widget.onSelect(!widget.genres.isSelected);
+          widget.onSelect(!widget.genres.isSelected);
         });
-       
       },
       child: Container(
         height: height * 0.03,
@@ -321,7 +321,8 @@ class _RelatedGenresState extends State<RelatedGenres> {
             color: widget.genres.isSelected ? Palette.primary : Colors.white,
             borderRadius: BorderRadius.circular(20),
             border: Border.all(
-                color: widget.genres.isSelected ? Palette.primary : Colors.grey)),
+                color:
+                    widget.genres.isSelected ? Palette.primary : Colors.grey)),
         child: Center(
           child: Text(widget.genre),
         ),

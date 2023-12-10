@@ -25,7 +25,7 @@ class CurrentlyReadingBooks extends StatelessWidget {
           child: Stack(
             children: [
               Image.asset(
-                book.image,
+               ' book.image',
                 width: width,
                 fit: BoxFit.fitWidth,
               ),
@@ -43,7 +43,7 @@ class CurrentlyReadingBooks extends StatelessWidget {
                   mainAxisAlignment: MainAxisAlignment.start,
                   children: [
                     Image(
-                      image: AssetImage(book.image),
+                      image: AssetImage('book.image'),
                     ),
                     SizedBox(
                       width: width * 0.05,
@@ -55,7 +55,7 @@ class CurrentlyReadingBooks extends StatelessWidget {
                           height: height * 0.025,
                         ),
                         Text(
-                          book.title,
+                          'book.title',
                           textAlign: TextAlign.center,
                           style: const TextStyle(
                             color: Colors.white,
