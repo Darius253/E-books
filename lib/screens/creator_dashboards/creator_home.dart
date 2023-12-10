@@ -53,8 +53,8 @@ class _CreatorHomeState extends State<CreatorHome> {
                       'Home',
                       height,
                       currentpageIndex == 0
-                          ? PhosphorIcons.fill.house
-                          : PhosphorIcons.regular.house,
+                          ? PhosphorIconsFill.house
+                          : PhosphorIconsRegular.house,
                       currentpageIndex == 0
                           ? Colors.white
                           : const Color.fromARGB(255, 41, 45, 50), () {
