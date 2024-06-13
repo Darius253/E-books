@@ -26,7 +26,7 @@ Widget signUp(BuildContext context) {
     text: TextSpan(
       children: <TextSpan>[
         const TextSpan(
-            text: 'Are you need new here? ',
+            text: 'New Here? ',
             style: TextStyle(color: Colors.black)),
         TextSpan(
           text: 'Signup',
