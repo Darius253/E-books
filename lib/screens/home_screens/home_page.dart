@@ -54,8 +54,8 @@ class _HomePageState extends State<HomePage> {
                         'Home',
                         height,
                         currentpageIndex == 0
-                            ? PhosphorIcons.regular.house
-                            : PhosphorIcons.fill.house,
+                            ? PhosphorIconsRegular.house
+                            : PhosphorIconsFill.house,
                         currentpageIndex == 0
                             ? Colors.white
                             : const Color.fromARGB(200, 182, 180, 178), () {
@@ -71,8 +71,8 @@ class _HomePageState extends State<HomePage> {
                         'Bookstore',
                         height,
                         currentpageIndex == 1
-                            ? PhosphorIcons.regular.books
-                            : PhosphorIcons.fill.bookBookmark,
+                            ? PhosphorIconsRegular.books
+                            : PhosphorIconsFill.bookBookmark,
                         currentpageIndex == 1
                             ? Colors.white
                             : const Color.fromARGB(201, 204, 200, 196), () {
@@ -90,7 +90,7 @@ class _HomePageState extends State<HomePage> {
                         'Search',
                         height,
                         currentpageIndex == 2
-                            ? PhosphorIcons.regular.magnifyingGlass
+                            ? PhosphorIconsRegular.magnifyingGlass
                             : CupertinoIcons.search_circle,
                         currentpageIndex == 2
                             ? Colors.white
@@ -109,7 +109,7 @@ class _HomePageState extends State<HomePage> {
                         'Art Store',
                         height,
                         currentpageIndex == 3
-                            ? PhosphorIcons.regular.storefront
+                            ? PhosphorIconsRegular.storefront
                             : Icons.store_mall_directory_outlined,
                         currentpageIndex == 3
                             ? Colors.white
@@ -126,8 +126,8 @@ class _HomePageState extends State<HomePage> {
                         'Library',
                         height,
                         currentpageIndex == 4
-                            ? PhosphorIcons.bold.bookmarks
-                            : PhosphorIcons.bold.bookmarksSimple,
+                            ? PhosphorIconsBold.bookmarks
+                            : PhosphorIconsBold.bookmarksSimple,
                         currentpageIndex == 4
                             ? Colors.white
                             : const Color.fromARGB(201, 204, 200, 196), () {
