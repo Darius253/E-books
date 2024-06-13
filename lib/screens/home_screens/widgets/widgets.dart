@@ -40,7 +40,7 @@ Widget changePage(double height, double width, int currentPage, int lastPage,
               currentPage > 1
                   ? pageButton(
                       height,
-                      PhosphorIcons.regular.arrowArcLeft,
+                      PhosphorIconsRegular.arrowArcLeft,
                       leftButton,
                     )
                   : const SizedBox.shrink(),
@@ -54,7 +54,7 @@ Widget changePage(double height, double width, int currentPage, int lastPage,
               currentPage != lastPage
                   ? pageButton(
                       height,
-                      PhosphorIcons.regular.arrowRight,
+                      PhosphorIconsRegular.arrowRight,
                       rightButton,
                     )
                   : const SizedBox.shrink(),
@@ -111,7 +111,7 @@ Widget itemType(double width, String type) {
 Widget appBar(double width, height, String title, bool actions) {
   return Padding(
     padding: EdgeInsets.symmetric(
-        horizontal: width * 0.05, vertical: height * 0.025),
+        horizontal: width * 0.025, vertical: height * 0.025),
     child: Row(
       mainAxisAlignment: MainAxisAlignment.start,
       crossAxisAlignment: CrossAxisAlignment.start,
@@ -122,7 +122,7 @@ Widget appBar(double width, height, String title, bool actions) {
           },
           child: Platform.isAndroid
               ? Icon(
-                  PhosphorIcons.regular.arrowLeft,
+                  PhosphorIconsRegular.arrowLeft,
                   color: const Color.fromARGB(249, 41, 45, 50),
                   size: width * 0.06,
                 )
@@ -136,7 +136,7 @@ Widget appBar(double width, height, String title, bool actions) {
           child: SizedBox(),
         ),
         SizedBox(
-          width: width * 0.3,
+          // width: width * 0.3,
           child: Text(
             title,
             softWrap: true,

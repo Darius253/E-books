@@ -79,11 +79,11 @@ class _SignInState extends State<SignIn> {
                         email = value;
                       });
                     },
-                    onFieldSubmitted: (value) {
-                      setState(() {
-                        email = value;
-                      });
-                    },
+                    // onFieldSubmitted: (value) {
+                    //   setState(() {
+                    //     email = value;
+                    //   });
+                    // },
                     decoration: InputDecoration(
                         suffixIcon:
                             const Icon(CupertinoIcons.mail, color: Colors.grey),
@@ -207,51 +207,51 @@ class _SignInState extends State<SignIn> {
             SizedBox(
               height: MediaQuery.of(context).size.height * 0.05,
             ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-              children: [
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  height: 2,
-                  color: const Color.fromARGB(255, 131, 130, 130),
-                ),
-                const Text(
-                  'Or Continue with',
-                  style: TextStyle(
-                    fontSize: 14,
-                  ),
-                ),
-                Container(
-                  width: MediaQuery.of(context).size.width * 0.3,
-                  height: 2,
-                  color: const Color.fromARGB(255, 131, 130, 130),
-                ),
-              ],
-            ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+            //   children: [
+            //     Container(
+            //       width: MediaQuery.of(context).size.width * 0.3,
+            //       height: 2,
+            //       color: const Color.fromARGB(255, 131, 130, 130),
+            //     ),
+            //     const Text(
+            //       'Or Continue with',
+            //       style: TextStyle(
+            //         fontSize: 14,
+            //       ),
+            //     ),
+            //     Container(
+            //       width: MediaQuery.of(context).size.width * 0.3,
+            //       height: 2,
+            //       color: const Color.fromARGB(255, 131, 130, 130),
+            //     ),
+            //   ],
+            // ),
+            // SizedBox(
+            //   height: MediaQuery.of(context).size.height * 0.032,
+            // ),
+            // Row(
+            //   mainAxisAlignment: MainAxisAlignment.center,
+            //   children: [
+            //     IconButton(
+            //         onPressed: () {},
+            //         icon: const Icon(
+            //           Icons.facebook,
+            //           color: Color.fromARGB(255, 11, 132, 238),
+            //           size: 30,
+            //         )),
+            //     IconButton(
+            //         onPressed: () {},
+            //         icon: SvgPicture.asset('assets/images/icons8-google.svg')),
+            //   ],
+            // ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.032,
-            ),
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                IconButton(
-                    onPressed: () {},
-                    icon: const Icon(
-                      Icons.facebook,
-                      color: Color.fromARGB(255, 11, 132, 238),
-                      size: 30,
-                    )),
-                IconButton(
-                    onPressed: () {},
-                    icon: SvgPicture.asset('assets/images/icons8-google.svg')),
-              ],
-            ),
-            SizedBox(
-              height: MediaQuery.of(context).size.height * 0.015,
+              height: MediaQuery.of(context).size.height * 0.01,
             ),
             signUp(context),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.065,
+              height: MediaQuery.of(context).size.height * 0.075,
             ),
             const Text.rich(
               TextSpan(

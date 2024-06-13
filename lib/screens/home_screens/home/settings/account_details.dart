@@ -1,10 +1,13 @@
+import 'dart:math';
+
 import 'package:flutter/material.dart';
 import 'package:intl_phone_field/country_picker_dialog.dart';
 import 'package:reader_app/shared/exports.dart';
 
 class AccountDetails extends StatefulWidget {
-  
-  const AccountDetails({super.key, });
+  const AccountDetails({
+    super.key,
+  });
 
   @override
   State<AccountDetails> createState() => _AccountDetailsState();
@@ -18,6 +21,18 @@ class _AccountDetailsState extends State<AccountDetails> {
   final _nameController = TextEditingController();
   final _phoneNumberController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+  int? number;
+
+  @override
+  void initState() {
+    super.initState();
+    Person? person = boxPersons.get('personDetails');
+    setState(() {
+      name = person!.name;
+      // accountType = person.accountType;
+      number = Random().nextInt(100);
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -40,19 +55,19 @@ class _AccountDetailsState extends State<AccountDetails> {
                 'trondarius13@gmail.com',
                 'Ghana',
               ),
-              Padding(
-                padding: EdgeInsets.symmetric(
-                  horizontal: width * 0.05,
-                ),
-                child: Button(
-                    text: 'Edit',
-                    onTap: () {
-                      editForm(
-                        context,
-                        width,
-                      );
-                    }),
-              )
+              // Padding(
+              //   padding: EdgeInsets.symmetric(
+              //     horizontal: width * 0.05,
+              //   ),
+              //   child: Button(
+              //       text: 'Edit',
+              //       onTap: () {
+              //         editForm(
+              //           context,
+              //           width,
+              //         );
+              //       }),
+              // )
             ],
           ),
         ),
@@ -153,7 +168,7 @@ class _AccountDetailsState extends State<AccountDetails> {
           child: Column(
             children: [
               textForm(
-                PhosphorIcons.regular.user,
+                PhosphorIconsRegular.user,
                 'Username',
                 (value) {
                   name = value;
@@ -163,92 +178,91 @@ class _AccountDetailsState extends State<AccountDetails> {
               const SizedBox(
                 height: 20,
               ),
-             IntlPhoneField(
-                        flagsButtonPadding: const EdgeInsets.only(left: 20),
-                        initialCountryCode: '+233',
-                        disableLengthCheck: false,
-                        pickerDialogStyle: PickerDialogStyle(
-                            listTileDivider: const SizedBox.shrink(),
-                            searchFieldInputDecoration: InputDecoration(
-                              suffixIcon: const Icon(Icons.search),
-                              hintText: 'Country/Country code',
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(88, 28, 55, 90),
-                                ),
-                              ),
-                              focusedBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(88, 28, 55, 90),
-                                ),
-                              ),
-                              focusedErrorBorder: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(50),
-                                borderSide: const BorderSide(
-                                  color: Color.fromARGB(88, 28, 55, 90),
-                                ),
-                              ),
-                            ),
-                            searchFieldCursorColor:
-                                const Color.fromARGB(255, 41, 45, 50),
-                            countryNameStyle:
-                                const TextStyle(fontWeight: FontWeight.w500)),
-                        dropdownIcon: const Icon(
-                          Icons.arrow_drop_down,
-                          color: Color.fromARGB(255, 41, 45, 50),
+              IntlPhoneField(
+                flagsButtonPadding: const EdgeInsets.only(left: 20),
+                initialCountryCode: '+233',
+                disableLengthCheck: false,
+                pickerDialogStyle: PickerDialogStyle(
+                    listTileDivider: const SizedBox.shrink(),
+                    searchFieldInputDecoration: InputDecoration(
+                      suffixIcon: const Icon(Icons.search),
+                      hintText: 'Country/Country code',
+                      border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                          color: Color.fromARGB(88, 28, 55, 90),
                         ),
-                        dropdownIconPosition: IconPosition.trailing,
-                        controller: _phoneNumberController,
-                        decoration: InputDecoration(
-                          prefix: const Padding(
-                            padding: EdgeInsets.only(left: 8.0),
-                            child: SizedBox(
-                              height: 20,
-                            ),
-                          ),
-                          hintText: 'Phone Number',
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(4),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(88, 28, 55, 90),
-                            ),
-                          ),
-                          disabledBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(4),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(88, 28, 55, 90),
-                            ),
-                          ),
-                          focusedBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(4),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(88, 28, 55, 90),
-                            ),
-                          ),
-                          focusedErrorBorder: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(4),
-                            borderSide: const BorderSide(
-                              color: Color.fromARGB(88, 28, 55, 90),
-                            ),
-                          ),
-                        ),
-                        onChanged: (phone) {
-                          setState(() {
-                            phoneNumber = phone.completeNumber;
-                          });
-                        },
-                        onCountryChanged: (country) {
-                          setState(() {
-                            // selectedCountry = country.toString();
-                          });
-                        },
                       ),
-                    const SizedBox(
+                      focusedBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                          color: Color.fromARGB(88, 28, 55, 90),
+                        ),
+                      ),
+                      focusedErrorBorder: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(50),
+                        borderSide: const BorderSide(
+                          color: Color.fromARGB(88, 28, 55, 90),
+                        ),
+                      ),
+                    ),
+                    searchFieldCursorColor:
+                        const Color.fromARGB(255, 41, 45, 50),
+                    countryNameStyle:
+                        const TextStyle(fontWeight: FontWeight.w500)),
+                dropdownIcon: const Icon(
+                  Icons.arrow_drop_down,
+                  color: Color.fromARGB(255, 41, 45, 50),
+                ),
+                dropdownIconPosition: IconPosition.trailing,
+                controller: _phoneNumberController,
+                decoration: InputDecoration(
+                  prefix: const Padding(
+                    padding: EdgeInsets.only(left: 8.0),
+                    child: SizedBox(
+                      height: 20,
+                    ),
+                  ),
+                  hintText: 'Phone Number',
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(88, 28, 55, 90),
+                    ),
+                  ),
+                  disabledBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(88, 28, 55, 90),
+                    ),
+                  ),
+                  focusedBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(88, 28, 55, 90),
+                    ),
+                  ),
+                  focusedErrorBorder: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(4),
+                    borderSide: const BorderSide(
+                      color: Color.fromARGB(88, 28, 55, 90),
+                    ),
+                  ),
+                ),
+                onChanged: (phone) {
+                  setState(() {
+                    phoneNumber = phone.completeNumber;
+                  });
+                },
+                onCountryChanged: (country) {
+                  setState(() {
+                    // selectedCountry = country.toString();
+                  });
+                },
+              ),
+              const SizedBox(
                 height: 20,
               ),
-              
               const SizedBox(
                 height: 50,
               ),
@@ -318,17 +332,23 @@ class _AccountDetailsState extends State<AccountDetails> {
           Center(
             child: Container(
               height: height * 0.15,
-              width: width * 0.35,
-              decoration: const BoxDecoration(
-                  shape: BoxShape.circle, color: Colors.grey),
+              decoration: BoxDecoration(
+                shape: BoxShape.circle,
+                color: const Color.fromARGB(107, 158, 158, 158),
+                image: DecorationImage(
+                  image:
+                      NetworkImage("https://picsum.photos/id/$number/200/300"),
+                  fit: BoxFit.fitHeight,
+                ),
+              ),
             ),
           ),
           SizedBox(
             height: height * 0.01,
           ),
-          const Text(
-            'Darius Tron',
-            style: TextStyle(
+          Text(
+            name!,
+            style: const TextStyle(
               color: Colors.black,
               fontSize: 16,
               fontFamily: 'Open Sans',

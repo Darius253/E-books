@@ -53,7 +53,7 @@ class _ReviewPageState extends State<ReviewPage> {
                       direction: Axis.horizontal,
                       allowHalfRating: true,
                       itemBuilder: (context, _) => Icon(
-                        PhosphorIcons.fill.star,
+                        PhosphorIconsFill.star,
                         color: const Color.fromARGB(255, 255, 217, 0),
                       ),
                       onRatingUpdate: (rating) {

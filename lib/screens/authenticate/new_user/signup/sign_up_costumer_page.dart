@@ -404,19 +404,19 @@ class _CustomerSignUpPageState extends State<CustomerSignUpPage> {
                   ),
 
             SizedBox(height: height * 0.03),
-            const OrLine(),
-            SizedBox(height: height * 0.03),
-            ExSignUpButton(
-              image: Images.google,
-              onTap: () {},
-              text: 'Google',
-            ),
-            SizedBox(height: height * 0.02),
-            ExSignUpButton(
-              image: Images.facebook,
-              onTap: () {},
-              text: 'Facebook',
-            ),
+            // const OrLine(),
+            // SizedBox(height: height * 0.03),
+            // ExSignUpButton(
+            //   image: Images.google,
+            //   onTap: () {},
+            //   text: 'Google',
+            // ),
+            // SizedBox(height: height * 0.02),
+            // ExSignUpButton(
+            //   image: Images.facebook,
+            //   onTap: () {},
+            //   text: 'Facebook',
+            // ),
             SizedBox(height: height * 0.02),
             signIn(context),
           ],

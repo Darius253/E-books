@@ -1,4 +1,5 @@
 import 'dart:io';
+import 'dart:math';
 import 'package:flutter/material.dart';
 import 'package:hive/hive.dart';
 import 'package:reader_app/shared/exports.dart';
@@ -15,6 +16,7 @@ class ProfilePage extends StatefulWidget {
 class _ProfilePageState extends State<ProfilePage> {
   String username = '';
   String accountType = '';
+  int? number;
 
   final Uri _url =
       Uri.parse('https://readerapp.godaddysites.com/privacy-policy');
@@ -34,6 +36,7 @@ class _ProfilePageState extends State<ProfilePage> {
   void initState() {
     super.initState();
     _getUserDetails();
+    number = Random().nextInt(100);
   }
 
   File? profilePicture;
@@ -70,41 +73,17 @@ class _ProfilePageState extends State<ProfilePage> {
           color: Color(0xFFFEFAF6),
         ),
         child: ListTile(
-          leading: Stack(
-            children: [
-              InkWell(
-                  //onTap: () => uploadProfilePicture(),
-                  child: profilePicture == null
-                      ? Container(
-                          width: width * 0.2,
-                          decoration: const BoxDecoration(
-                              color: Color.fromARGB(255, 217, 217, 217),
-                              shape: BoxShape.circle),
-                          child: Center(
-                            child: Icon(
-                              Icons.account_circle_outlined,
-                              size: width * 0.1,
-                              color: const Color.fromARGB(255, 41, 45, 50),
-                            ),
-                          ))
-                      : SizedBox(
-                          width: width * 0.15,
-                          child: ClipRRect(
-                            borderRadius: BorderRadius.circular(100),
-                            child: Image.file(
-                              profilePicture!,
-                              fit: BoxFit.cover,
-                            ),
-                          ),
-                        )),
-              Positioned(
-                  bottom: 5,
-                  right: 0.5,
-                  child: PhosphorIcon(
-                    PhosphorIcons.regular.pencil,
-                    color: const Color.fromARGB(255, 240, 138, 66),
-                  ))
-            ],
+          leading: Container(
+            width: width * 0.15,
+            decoration: BoxDecoration(
+              shape: BoxShape.circle,
+              color: Colors.grey,
+              image: DecorationImage(
+                image: NetworkImage(
+                    "https://picsum.photos/id/$number/200/300"),
+                fit: BoxFit.cover,
+              ),
+            ),
           ),
           title: Text(
             username,
@@ -127,11 +106,8 @@ class _ProfilePageState extends State<ProfilePage> {
         ),
         child: Column(
           children: [
-            iconsText(
-              PhosphorIcons.regular.user, 'Settings', width,
-              // () => Get.to(() => const AccountDetails())
-              () {},
-            ),
+            iconsText(PhosphorIconsRegular.user, 'Settings', width,
+                () => Get.to(() => const AccountDetails())),
             iconsText(Icons.delivery_dining_outlined, 'Order History', width,
                 () => Get.to(() => const OrderHistory())),
             iconsText(
@@ -141,14 +117,14 @@ class _ProfilePageState extends State<ProfilePage> {
               () => Get.to((const PushNotification())),
             ),
             iconsText(
-              PhosphorIcons.regular.sparkle,
+              PhosphorIconsRegular.sparkle,
               'Favourite Genre',
               width,
               () => Get.to(() => const FavouriteGenre()),
             ),
             widget.accountType == 'creator'
                 ? iconsText(
-                    PhosphorIcons.regular.money,
+                    PhosphorIconsRegular.money,
                     'Payments',
                     width,
                     () => Get.to(() => const OrderHistory()),
@@ -192,7 +168,7 @@ class _ProfilePageState extends State<ProfilePage> {
         decoration: const BoxDecoration(
           color: Colors.white,
         ),
-        child: iconsText(PhosphorIcons.regular.signOut, 'Log Out', width, () {
+        child: iconsText(PhosphorIconsRegular.signOut, 'Log Out', width, () {
           logOutPop();
         }));
   }

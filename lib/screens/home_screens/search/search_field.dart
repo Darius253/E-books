@@ -3,15 +3,12 @@ import '../../../shared/exports.dart';
 
 class SearchField extends StatelessWidget {
   final Function(String) onSearch;
-  final  TextEditingController controller;
+  final TextEditingController controller;
   const SearchField({
     super.key,
     required this.onSearch,
     required this.controller,
-
   });
-
-  
 
   @override
   Widget build(BuildContext context) {
@@ -40,7 +37,7 @@ class SearchField extends StatelessWidget {
                 leading: Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
                   child: PhosphorIcon(
-                    PhosphorIcons.regular.magnifyingGlass,
+                    PhosphorIconsRegular.magnifyingGlass,
                     color: Colors.grey.withOpacity(0.6),
                   ),
                 ),
@@ -64,7 +61,7 @@ class SearchField extends StatelessWidget {
                 ),
                 trailing: Padding(
                   padding: const EdgeInsets.only(bottom: 15.0),
-                  child: PhosphorIcon(PhosphorIcons.regular.funnelSimple),
+                  child: PhosphorIcon(PhosphorIconsRegular.funnelSimple),
                 ),
               ),
             ),

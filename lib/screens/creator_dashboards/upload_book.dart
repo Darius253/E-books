@@ -86,8 +86,8 @@ class _UploadBookState extends State<UploadBook> {
                         ),
                       ),
                       const Expanded(child: SizedBox()),
-                      PhosphorIcon(
-                        PhosphorIcons.regular.trash,
+                      const PhosphorIcon(
+                        PhosphorIconsRegular.trash,
                         color: Colors.red,
                       ),
                       InkWell(
@@ -115,8 +115,8 @@ class _UploadBookState extends State<UploadBook> {
                                             shape: BoxShape.circle,
                                             color: Colors.grey,
                                           ),
-                                          child: PhosphorIcon(
-                                            PhosphorIcons.bold.x,
+                                          child: const PhosphorIcon(
+                                            PhosphorIconsBold.x,
                                             color: Colors.black,
                                             size: 25,
                                           ),
@@ -255,15 +255,15 @@ class _UploadBookState extends State<UploadBook> {
                                         padding:
                                             EdgeInsetsDirectional.symmetric(
                                                 vertical: height * 0.05),
-                                        child: Column(
+                                        child: const Column(
                                           crossAxisAlignment:
                                               CrossAxisAlignment.center,
                                           children: [
                                             PhosphorIcon(
-                                              PhosphorIcons.regular.image,
+                                              PhosphorIconsRegular.image,
                                               color: Colors.black,
                                             ),
-                                            const Text(
+                                            Text(
                                               'Upload Book Cover',
                                               style: TextStyle(
                                                 color: Color(0xFF222222),
@@ -272,7 +272,7 @@ class _UploadBookState extends State<UploadBook> {
                                                 fontWeight: FontWeight.w700,
                                               ),
                                             ),
-                                            const Text(
+                                            Text(
                                               'PNG,JPEG, JPG',
                                               textAlign: TextAlign.center,
                                               style: TextStyle(
@@ -414,7 +414,7 @@ class _UploadBookState extends State<UploadBook> {
                         child: Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            PhosphorIcon(PhosphorIcons.regular.fileDoc,
+                            const PhosphorIcon(PhosphorIconsRegular.fileDoc,
                                 color: Colors.black),
                             book != null
                                 ? Text(

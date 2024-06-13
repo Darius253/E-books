@@ -87,7 +87,7 @@ class _UploadArtWorkState extends State<UploadArtWork> {
                                   crossAxisAlignment: CrossAxisAlignment.center,
                                   children: [
                                     PhosphorIcon(
-                                      PhosphorIcons.regular.plusCircle,
+                                      PhosphorIconsRegular.plusCircle,
                                       color: Colors.black,
                                     ),
                                     const SizedBox(
@@ -151,9 +151,8 @@ class _UploadArtWorkState extends State<UploadArtWork> {
                   const SizedBox(
                     height: 30,
                   ),
-                  textField(
-                      height, 'CERTIFICATE OF AUTHENTICITY ', 'Required', certificate,
-                      (value) {
+                  textField(height, 'CERTIFICATE OF AUTHENTICITY ', 'Required',
+                      certificate, (value) {
                     setState(() {
                       certificate = value;
                     });
@@ -169,7 +168,6 @@ class _UploadArtWorkState extends State<UploadArtWork> {
                   const SizedBox(
                     height: 30,
                   ),
-                  
                   tags(
                     width,
                     height * 5,

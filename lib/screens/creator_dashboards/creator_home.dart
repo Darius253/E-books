@@ -34,7 +34,7 @@ class _CreatorHomeState extends State<CreatorHome> {
         backgroundColor: const Color.fromARGB(255, 237, 112, 23),
         shape: const CircleBorder(),
         child: Icon(
-          PhosphorIcons.fill.userSwitch,
+          PhosphorIconsFill.userSwitch,
           color: Colors.black,
         ),
       ),
@@ -66,8 +66,8 @@ class _CreatorHomeState extends State<CreatorHome> {
       //     //             'Home',
       //     //             height,
       //     //             currentpageIndex == 0
-      //     //                 ? PhosphorIcons.fill.house
-      //     //                 : PhosphorIcons.regular.house,
+      //     //                 ? PhosphorIconsFill.house
+      //     //                 : PhosphorIconsRegular.house,
       //     //             currentpageIndex == 0
       //     //                 ? Colors.white
       //     //                 : const Color.fromARGB(255, 41, 45, 50), () {
@@ -83,8 +83,8 @@ class _CreatorHomeState extends State<CreatorHome> {
       //     //             'Sales',
       //     //             height,
       //     //             currentpageIndex == 1
-      //     //                 ? PhosphorIcons.fill.chartBar
-      //     //                 : PhosphorIcons.regular.chartBar,
+      //     //                 ? PhosphorIconsFill.chartBar
+      //     //                 : PhosphorIconsRegular.chartBar,
       //     //             currentpageIndex == 1
       //     //                 ? Colors.white
       //     //                 : const Color.fromARGB(255, 41, 45, 50), () {
@@ -102,8 +102,8 @@ class _CreatorHomeState extends State<CreatorHome> {
       //     //             'Profile',
       //     //             height,
       //     //             currentpageIndex == 2
-      //     //                 ? PhosphorIcons.fill.user
-      //     //                 : PhosphorIcons.regular.user,
+      //     //                 ? PhosphorIconsFill.user
+      //     //                 : PhosphorIconsRegular.user,
       //     //             currentpageIndex == 2
       //     //                 ? Colors.white
       //     //                 : const Color.fromARGB(255, 41, 45, 50), () {
@@ -121,7 +121,7 @@ class _CreatorHomeState extends State<CreatorHome> {
       //     //         navBarItem(
       //     //             'Explore',
       //     //             height,
-      //     //              PhosphorIcons.fill.userSwitch,
+      //     //              PhosphorIconsFill.userSwitch,
       //     //              const Color.fromARGB(255, 41, 45, 50), () {
       //     //           setState(() {
       //     //             currentpageIndex = 3;

@@ -93,7 +93,7 @@ class _CreatorProfileState extends State<CreatorProfile> {
                       onTap: () => Get.to(() => const ProfilePage(
                             accountType: 'creator',
                           )),
-                      child: PhosphorIcon(PhosphorIcons.regular.gearSix),
+                      child: const PhosphorIcon(PhosphorIconsRegular.gearSix),
                     ),
                   ),
                   Padding(
@@ -103,7 +103,7 @@ class _CreatorProfileState extends State<CreatorProfile> {
                       mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         Icon(
-                          PhosphorIcons.regular.mapPin,
+                          PhosphorIconsRegular.mapPin,
                           color: const Color.fromARGB(255, 41, 45, 50)
                               .withOpacity(0.6),
                         ),
@@ -268,15 +268,15 @@ class _CreatorProfileState extends State<CreatorProfile> {
                             ),
                             color: const Color(0xFFED7117),
                           ),
-                          child: Row(
+                          child: const Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               PhosphorIcon(
-                                PhosphorIcons.regular.plusCircle,
+                                PhosphorIconsRegular.plusCircle,
                                 color: Colors.white,
                               ),
-                              const SizedBox(width: 10),
-                              const Text(
+                              SizedBox(width: 10),
+                              Text(
                                 'Upload Content',
                                 style: TextStyle(
                                   color: Color(0xFFFEFAF6),
@@ -313,7 +313,6 @@ class _CreatorProfileState extends State<CreatorProfile> {
                         ),
                       ),
               )
-           
             ],
           ),
         ));
@@ -341,8 +340,8 @@ class _CreatorProfileState extends State<CreatorProfile> {
                       shape: BoxShape.circle,
                       color: Colors.grey,
                     ),
-                    child: PhosphorIcon(
-                      PhosphorIcons.bold.x,
+                    child: const PhosphorIcon(
+                      PhosphorIconsBold.x,
                       color: Colors.black,
                       size: 25,
                     ),
