@@ -7,7 +7,6 @@ export 'package:flutter_svg/flutter_svg.dart';
 export 'package:intl_phone_field/intl_phone_field.dart';
 export 'package:pin_code_fields/pin_code_fields.dart';
 export 'package:flutter_password_strength/flutter_password_strength.dart';
-export 'package:carousel_slider/carousel_slider.dart';
 export 'package:flutter_custom_clippers/flutter_custom_clippers.dart';
 export 'package:dropdown_button2/dropdown_button2.dart';
 export 'package:flutter_staggered_animations/flutter_staggered_animations.dart';
@@ -22,7 +21,7 @@ export 'package:file_picker/file_picker.dart';
 // controllers
 
 // models && api calls
-export 'package:reader_app/screens/authenticate/on_boarding/onborading_widget.dart';
+export 'package:reader_app/screens/authenticate/on_boarding/onboarding_widget.dart';
 export 'package:reader_app/models/genre_model.dart';
 export 'package:reader_app/models/books_model.dart';
 export 'package:reader_app/screens/home_screens/bookstore/pages/book_info.dart';
@@ -50,7 +49,7 @@ export 'package:reader_app/screens/home_screens/widgets/art_gallery.dart';
 export 'package:reader_app/screens/home_screens/bookstore/pages/all_books.dart';
 export 'package:reader_app/screens/home_screens/home_page.dart';
 export 'package:reader_app/screens/authenticate/signin/sign_in.dart';
-export 'package:reader_app/screens/authenticate/on_boarding/onborading.dart';
+export 'package:reader_app/screens/authenticate/on_boarding/onboardingPage.dart';
 export 'package:reader_app/screens/home_screens/home/settings/order_history.dart';
 export 'package:reader_app/screens/creator_dashboards/dashboard.dart';
 export 'package:reader_app/screens/home_screens/widgets/art_details.dart';
